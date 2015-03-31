@@ -1,0 +1,40 @@
+template:
+    # Name of the directory containing the website template (default is "website")
+    directory: website
+    # Or if you are using a remote template, you can set the Git URL
+    url: https://github.com/CouscousPHP/Template-ReadTheDocs
+
+# Any variable you put in this file is also available in the Twig layouts:
+title: Elcodi Documentation
+
+github:
+    user: elcodi-docs
+    repo: elcodi-docs
+
+# The left menu bar
+menu:
+    items:
+        quick-start:
+            text: Quick Start
+            # You can use relative urls
+            absoluteUrl: /quick-start.html
+        book:
+            text: The book
+            # Or absolute urls
+            absoluteUrl: /book/index.html
+        cookbook:
+            text: The Cookbook
+            # Or absolute urls
+            absoluteUrl: /cookbook/index.html
+        components:
+            text: The Components
+            # Or absolute urls
+            absoluteUrl: /components/index.html
+        reference:
+            text: Reference
+            # Or absolute urls
+            absoluteUrl: /reference/index.html
+
+# Base URL of the published website (no "/" at the end!)
+# You are advised to set and use this variable to write your links in the HTML layouts
+baseUrl: http://localhost:8000
