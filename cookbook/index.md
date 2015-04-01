@@ -7,5 +7,6 @@ scenario.
 
 ### Implementation
 
+* [How to Implement an Entity](implementation/entity.md)
 * [How to Implement a Factory](implementation/factory.md)
 * [How to Implement a Form Type](implementation/form-type.md)
