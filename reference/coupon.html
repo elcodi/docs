@@ -69,7 +69,18 @@
                         <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main" class="document">
-                        
+                        <h1>CouponBundle Reference</h1>
+<pre><code class="language-yaml">elcodi_coupon:
+    mapping:
+        coupon:
+            # Coupon entity implementing CouponInterface
+            class: Elcodi\Component\Coupon\Entity\Coupon
+            # Doctrine mapping file for this entity
+            mapping_file: '@ElcodiCouponBundle/Resources/config/doctrine/Coupon.orm.yml'
+            # Doctrine manager name
+            manager: default
+            # Is this entity enabled?
+            enabled: true</code></pre>
                     </div>
 
                     <footer>

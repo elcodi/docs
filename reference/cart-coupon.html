@@ -69,7 +69,27 @@
                         <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main" class="document">
-                        
+                        <h1>CartCouponBundle Reference</h1>
+<pre><code class="language-yaml">elcodi_cart_coupon:
+    mapping:
+        cart_coupon:
+            # CartCoupon entity implementing CartCouponInterface
+            class: Elcodi\Component\CartCoupon\Entity\CartCoupon
+            # Doctrine mapping file for this entity
+            mapping_file: '@ElcodiCartCouponBundle/Resources/config/doctrine/CartCoupon.orm.yml'
+            # Doctrine manager name
+            manager: default
+            # Is this entity enabled?
+            enabled: true
+        order_coupon:
+            # OrderCoupon entity implementing OrderCouponInterface
+            class: Elcodi\Component\CartCoupon\Entity\OrderCoupon
+            # Doctrine mapping file for this entity
+            mapping_file: '@ElcodiCartCouponBundle/Resources/config/doctrine/OrderCoupon.orm.yml'
+            # Doctrine manager name
+            manager: default
+            # Is this entity enabled?
+            enabled: true</code></pre>
                     </div>
 
                     <footer>
