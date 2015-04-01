@@ -8,8 +8,8 @@ template:
 title: Elcodi Documentation
 
 github:
-    user: elcodi-docs
-    repo: elcodi-docs
+    user: elcodi
+    repo: docs
 
 # The left menu bar
 menu:
@@ -17,24 +17,24 @@ menu:
         quick-start:
             text: Quick Start
             # You can use relative urls
-            absoluteUrl: /quick-start.html
+            relativeUrl: quick-start.html
         book:
             text: The book
             # Or absolute urls
-            absoluteUrl: /book/index.html
+            relativeUrl: book/index.html
         cookbook:
             text: The Cookbook
             # Or absolute urls
-            absoluteUrl: /cookbook/index.html
+            relativeUrl: cookbook/index.html
         components:
             text: The Components
             # Or absolute urls
-            absoluteUrl: /components/index.html
+            relativeUrl: components/index.html
         reference:
             text: Reference
             # Or absolute urls
-            absoluteUrl: /reference/index.html
+            relativeUrl: reference/index.html
 
 # Base URL of the published website (no "/" at the end!)
 # You are advised to set and use this variable to write your links in the HTML layouts
-baseUrl: http://localhost:8000
+baseUrl: http://elcodi.io/docs

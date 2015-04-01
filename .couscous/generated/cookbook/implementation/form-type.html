@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elcodi Documentation</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700&subset=latin,cyrillic'
+          rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="/css/theme.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/theme-fixes.css" type="text/css"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/github.min.css">
+</head>
+<body class="wy-body-for-nav">
+
+    <div class="wy-grid-for-nav">
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-nav-search">
+                <a href="/" class="fa fa-home"> Elcodi Documentation</a>
+            </div>
+
+            <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="/quick-start.html">
+                                Quick Start
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="/book/index.html">
+                                The book
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="/cookbook/index.html">
+                                The Cookbook
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="/components/index.html">
+                                The Components
+                            </a>
+                        </li>
+                                            <li class="toctree-l1 ">
+                            <a class="reference internal "
+                               href="/reference/index.html">
+                                Reference
+                            </a>
+                        </li>
+                                    </ul>
+            </div>
+            &nbsp;
+        </nav>
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+                        <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+                <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+                <a href="/">Elcodi Documentation</a>
+            </nav>
+
+
+                        <div class="wy-nav-content">
+                <div class="rst-content">
+                    <div role="main" class="document">
+                        <h1>How to Implement a Form Type</h1>
+<p>A FormType object in Elcodi ecosystem must follow some rules in order to comply
+the project flexibility.</p>
+<h3>Using Factories</h3>
+<p>Remember that every single entity must be created given its factory in Elcodi
+Bundles. For more information, please see <a href="factory.html">Factories</a>. In order to
+use this feature in Symfony Form Types, we must inject always the related
+entity factory.</p>
+<pre><code class="language-php">use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
+
+/**
+ * @var AbstractFactory
+ *
+ * Factory
+ */
+protected $factory;
+
+/**
+ * Sets Factory
+ *
+ * @param AbstractFactory $factory Factory
+ *
+ * @return $this Self object
+ */
+public function setFactory(AbstractFactory $factory)
+{
+    $this-&gt;factory = $factory;
+
+    return $this;
+}</code></pre>
+<p>After the factory is injected, we can use it in our FormType specification for
+defining the <code>empty_data</code> value and the <code>data_class</code>.</p>
+<pre><code class="language-php">/**
+ * Default form options
+ *
+ * @param OptionsResolverInterface $resolver
+ *
+ * @return array With the options
+ */
+public function setDefaultOptions(OptionsResolverInterface $resolver)
+{
+    $resolver-&gt;setDefaults([
+        'empty_data' =&gt; function () {
+            $this
+                -&gt;factory
+                -&gt;create();
+        },
+        'data_class' =&gt; $this
+            -&gt;factory
+            -&gt;getEntityNamespace(),
+    ]);
+}</code></pre>
+<p>In order to make things easier, there is a Trait in package <code>elcodi/core</code>,
+designed as a Factory container. To use it, just add it in your class, like any
+other trait, and you will be able to use the <code>$this-&gt;factory</code> in your class.</p>
+<pre><code class="language-php">use Elcodi\Component\Core\Factory\Traits\FactoryTrait;
+
+/**
+ * Class BannerType
+ */
+class BannerType extends AbstractType
+{
+    use FactoryTrait;
+
+    /**
+     * Default form options
+     *
+     * @param OptionsResolverInterface $resolver
+     *
+     * @return array With the options
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver-&gt;setDefaults([
+            'empty_data' =&gt; function () {
+                $this
+                    -&gt;factory
+                    -&gt;create();
+            },
+            'data_class' =&gt; $this
+                -&gt;factory
+                -&gt;getEntityNamespace(),
+        ]);
+    }
+}</code></pre>
+<h3>Using namespaces</h3>
+<p>If your FormType has any kind of relation with another entity, you will need to
+define this relation using a namespace. In order to comply again with the
+flexibility, we need to inject all namespaces using the entity manager
+parameter.</p>
+<p>These namespaces in Elcodi must be injected through the class constructor.</p>
+<pre><code class="language-php">/**
+ * Class BannerType
+ */
+class BannerType extends AbstractType
+{
+    use FactoryTrait;
+
+    /**
+     * @var string
+     *
+     * Image namespace
+     */
+    protected $imageNamespace;
+
+    /**
+     * Construct
+     *
+     * @param string $imageNamespace Image namespace
+     */
+    public function __construct($imageNamespace)
+    {
+        $this-&gt;imageNamespace = $imageNamespace;
+    }
+
+    /**
+     * Buildform function
+     *
+     * @param FormBuilderInterface $builder the formBuilder
+     * @param array                $options the options for this form
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            -&gt;add('image', 'entity', [
+                'class'    =&gt; $this-&gt;imageNamespace,
+                'required' =&gt; false,
+                'label'    =&gt; 'image',
+                'multiple' =&gt; false,
+            ]);
+    }
+}</code></pre>
+<h3>FormType as a service</h3>
+<p>We are using dependencies in our FormTypes, so remember that we need to define
+our classes as services.</p>
+<pre><code class="language-yaml">services:
+
+    #
+    # Form Types
+    #
+    elcodi.admin.banner.form_type.banner:
+        class: Elcodi\Admin\BannerBundle\Form\Type\BannerType
+        arguments:
+            - %elcodi.entity.image.class%
+        calls:
+            - [setFactory, [@elcodi.factory.banner]]
+        tags:
+            - { name: form.type, alias: elcodi_admin_banner_form_type_banner }</code></pre>
+<p>The alias of the FormType must be the same than the value returned by the method
+<code>getName()</code> of the class</p>
+<pre><code class="language-php">/**
+ * Return unique name for this form
+ *
+ * @return string
+ */
+public function getName()
+{
+    return 'elcodi_admin_banner_form_type_banner';
+}</code></pre>
+                    </div>
+
+                    <footer>
+                        <hr/>
+                                                    <div role="contentinfo">
+                                <p>
+                                    Find Elcodi Documentation on <a href="https://github.com/elcodi/docs">GitHub</a>.
+                                </p>
+                            </div>
+                                                Built with <a href="http://couscous.io/">Couscous</a> using a <a href="https://github.com/CouscousPHP/Template-ReadTheDocs">theme</a> based on <a href="https://readthedocs.org/">Read the Docs</a>.
+                    </footer>
+
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script src="/js/theme.js"></script>
+
+    <script>
+        $(function() {
+            // Syntax highlighting
+            hljs.initHighlightingOnLoad();
+        });
+    </script>
+
+</body>
+</html>

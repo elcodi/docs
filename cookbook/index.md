@@ -1,85 +1,11 @@
 Cookbook
 ========
 
-### Attribute
+The Elcodi Cookbook is a set of recipes related to Elcodi development flow and
+the Bamboo implementation. Each one solves a specific problem or a specific
+scenario.
 
+### Implementation
 
-### Banner
-
-
-### Cart
-
-
-### CartCoupon
-
-
-### Comment
-
-
-### Configuration
-
-
-### Core
-
-
-### Coupon
-
-
-### Currency
-
-
-### Entity Translator
-
-
-### Geo
-
-
-### Language
-
-
-### Media
-
-
-### Menu
-
-
-### Metadata
-
-
-### Metric
-
-
-### Newsletter
-
-
-### Page
-
-
-### Plugin
-
-
-### Product
-
-
-### Rule
-
-
-### Shipping
-
-
-### Sitemap
-
-
-### State Transition Machine
-
-
-### Tax
-
-
-### Template
-
-
-### User
-
-
-### Zone
+* [How to Implement a Factory](implementation/factory.md)
+* [How to Implement a Form Type](implementation/form-type.md)
