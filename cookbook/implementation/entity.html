@@ -69,16 +69,70 @@
                         <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main" class="document">
-                        <h1>Cookbook</h1>
-<p>The Elcodi Cookbook is a set of recipes related to Elcodi development flow and
-the Bamboo implementation. Each one solves a specific problem or a specific
-scenario.</p>
-<h3>Implementation</h3>
-<ul>
-<li><a href="implementation/entity.html">How to Implement an Entity</a></li>
-<li><a href="implementation/factory.html">How to Implement a Factory</a></li>
-<li><a href="implementation/form-type.html">How to Implement a Form Type</a></li>
-</ul>
+                        <h1>How to Implement an Entity</h1>
+<p>In Elcodi we use an extremely thin model. It means that our entities are just
+parameters, getters and setters.</p>
+<p>Creating an entity is as easy as defining what an actor should own (parameters),
+forgetting about the behavior of this one. This logic will be placed then in the
+service layer.</p>
+<p>Let's see a basic implementation of an entity.</p>
+<pre><code class="language-php">class Product
+{
+    /**
+     * @var name
+     *
+     * Product name
+     */
+    protected $name;
+
+    /**
+     * Get name
+     *
+     * @return string Product name
+     */
+    public function getName()
+    {
+        return $this-&gt;name;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name Product name
+     *
+     * @return $this Self object
+     */
+    public function setName($name)
+    {
+        $this-&gt;name = $name;
+
+        return $this;
+    }
+}
+
+As you can see all properties are defined as protected. This is because some
+properties (entities relations) will need Doctrine's *lazy loading* to make 
+softer all entity requests.
+
+### Interfaces
+
+All Elcodi entities are an implementation of a [
+Header Interface](http://http://martinfowler.com/bliki/HeaderInterface.html).
+We use some 
+[Role Interfaces](http://http://martinfowler.com/bliki/RoleInterface.html) in 
+our code, but we are more focused in the first one because is more 
+understandable for everyone when overriding default implementations.
+
+``` php
+use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
+
+/**
+ * Class ProductInterface
+ */
+class Product implements ProductInterface
+{
+    // ...
+}</code></pre>
                     </div>
 
                     <footer>
