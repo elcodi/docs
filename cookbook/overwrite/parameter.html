@@ -69,20 +69,22 @@
                         <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main" class="document">
-                        <h1>Cookbook</h1>
-<p>The Elcodi Cookbook is a set of recipes related to Elcodi development flow and
-the Bamboo implementation. Each one solves a specific problem or a specific
-scenario.</p>
-<h3>Implementation</h3>
-<ul>
-<li><a href="implementation/entity.html">How to Implement an Entity</a></li>
-<li><a href="implementation/factory.html">How to Implement a Factory</a></li>
-<li><a href="implementation/form-type.html">How to Implement a Form Type</a></li>
-</ul>
-<h3>Overwrite Elcodi &amp; Bamboo</h3>
-<ul>
-<li><a href="overwrite/parameter.html">How to Overwrite a parameter</a></li>
-</ul>
+                        <h1>How to Overwrite a Parameter</h1>
+<p>You can overwrite Elcodi by using the file <code>app/config/config_local.yml</code>. This
+file is loaded at the end of the <code>app/config/config.yml</code> file, allowing final
+users to add custom elements, overriding all project definitions.</p>
+<p>Why you should use <code>config_local.yml</code> file?</p>
+<p>Well, this file will never be improved nor evolved, so even if you pull into
+your project last Elcodi versions, you will never have conflicts in that file.</p>
+<p>Let's see an example</p>
+<pre><code class="language-yaml"># app/config/config_local.yml
+parameters:
+    database_host: 10.0.0.1
+
+elcodi_currency:
+    currency:
+        default_currency: EUR
+        session_field_name: currency_id</code></pre>
                     </div>
 
                     <footer>
