@@ -6,7 +6,7 @@ Bamboo e-commerce
 > Warning. This project is not tagged as stable yet. It means that we don't
 > promise BC between minor versions or patch versions. As soon as possible, we
 > will release our first Release Candidate, and the first Stable Version will
-> be release on June 1st. Stay Tuned and enjoy Elcodi.
+> be released on June 1st. Stay Tuned and enjoy Elcodi.
 
 Welcome to Bamboo e-commerce - a fully-functional e-commerce application built
 using [Elcodi] components on top of the
@@ -77,7 +77,7 @@ errors, and building our first release, so be sure you are not using master, but
 a closed version of the package.
 
 ```bash
-    $ php composer.phar create-project elcodi/bamboo path/ 0.5.*
+    $ php composer.phar create-project elcodi/bamboo path/to/your/store/ 0.5.*
 ```
 
 > The installation process will ask you for some parameters like the database
@@ -101,7 +101,7 @@ provides you an easy way for doing that.
 
 We also load some fixtures to show on our store. This fixtures will set your
 store in a testing mode, with some categories, some manufacturers and a bunch of
-t-shirts. Just for testing :)
+t-shirts. Only for testing purposes :)
 
 ```bash
     $ php app/console doctrine:fixtures:load --fixtures="src/Elcodi/Fixtures" --no-interaction
@@ -173,15 +173,15 @@ You can start using these credentials we've already created for you. For the
 admin panel use
 
 ```
-Customer username: customer@customer.com
-Customer password: 1234
+Admin username: admin@admin.com
+Admin password: 1234
 ```
 
 And for the store, use this Customer credentials
 
 ```
-Admin username: admin@admin.com
-Admin password: 1234
+Customer username: customer@customer.com
+Customer password: 1234
 ```
 
 ### 8. Play!
