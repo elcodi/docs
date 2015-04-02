@@ -75,7 +75,7 @@
 <p>Warning. This project is not tagged as stable yet. It means that we don't
 promise BC between minor versions or patch versions. As soon as possible, we
 will release our first Release Candidate, and the first Stable Version will
-be release on June 1st. Stay Tuned and enjoy Elcodi.</p>
+be released on June 1st. Stay Tuned and enjoy Elcodi.</p>
 </blockquote>
 <p>Welcome to Bamboo e-commerce - a fully-functional e-commerce application built
 using <a href="https://github.com/elcodi/elcodi">Elcodi</a> components on top of the
@@ -124,7 +124,7 @@ command:</p>
 use any version, but we're still creating new features, fixing some issues and
 errors, and building our first release, so be sure you are not using master, but
 a closed version of the package.</p>
-<pre><code class="language-bash">    $ php composer.phar create-project elcodi/bamboo path/ 0.5.*</code></pre>
+<pre><code class="language-bash">    $ php composer.phar create-project elcodi/bamboo path/to/your/store/ 0.5.*</code></pre>
 <blockquote>
 <p>The installation process will ask you for some parameters like the database
 driver, username, password, database name, etc</p>
@@ -138,7 +138,7 @@ provides you an easy way for doing that.</p>
     $ php app/console doctrine:schema:create</code></pre>
 <p>We also load some fixtures to show on our store. This fixtures will set your
 store in a testing mode, with some categories, some manufacturers and a bunch of
-t-shirts. Just for testing :)</p>
+t-shirts. Only for testing purposes :)</p>
 <pre><code class="language-bash">    $ php app/console doctrine:fixtures:load --fixtures="src/Elcodi/Fixtures" --no-interaction</code></pre>
 <p>You can also add the geo information for any country. Just find the two letters
 <a href="http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes">ISO code</a> for the
@@ -180,11 +180,11 @@ all the Symfony apps.</p>
 store interface for your customers and some nice features for administrating it.</p>
 <p>You can start using these credentials we've already created for you. For the
 admin panel use</p>
-<pre><code>Customer username: customer@customer.com
-Customer password: 1234</code></pre>
-<p>And for the store, use this Customer credentials</p>
 <pre><code>Admin username: admin@admin.com
 Admin password: 1234</code></pre>
+<p>And for the store, use this Customer credentials</p>
+<pre><code>Customer username: customer@customer.com
+Customer password: 1234</code></pre>
 <h3>8. Play!</h3>
 <p>You can now play with the bamboo :)
 Don't forget to <strong>create an issue</strong> on

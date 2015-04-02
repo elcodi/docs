@@ -108,23 +108,18 @@ service layer.</p>
 
         return $this;
     }
-}
-
-As you can see all properties are defined as protected. This is because some
-properties (entities relations) will need Doctrine's *lazy loading* to make 
-softer all entity requests.
-
-### Interfaces
-
-All Elcodi entities are an implementation of a [
-Header Interface](http://http://martinfowler.com/bliki/HeaderInterface.html).
-We use some 
-[Role Interfaces](http://http://martinfowler.com/bliki/RoleInterface.html) in 
-our code, but we are more focused in the first one because is more 
-understandable for everyone when overriding default implementations.
-
-``` php
-use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
+}</code></pre>
+<p>As you can see all properties are defined as protected. This is because Doctrine
+will need to extend the class using <a href="http://doctrine-orm.readthedocs.org/en/latest/reference/advanced-configuration.html#proxy-objects">transparent Proxy Objects</a>
+to implement lazy-loading.</p>
+<h3>Interfaces</h3>
+<p>All Elcodi entities are an implementation of a <a href="http://http://martinfowler.com/bliki/HeaderInterface.html">
+Header Interface</a>.
+We use some
+<a href="http://http://martinfowler.com/bliki/RoleInterface.html">Role Interfaces</a> in
+our code, but we are more focused in the first one because is more
+understandable for everyone when overriding default implementations.</p>
+<pre><code class="language-php">use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
 
 /**
  * Class ProductInterface
