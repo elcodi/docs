@@ -44,10 +44,11 @@ class Product
         return $this;
     }
 }
+```
 
-As you can see all properties are defined as protected. This is because some
-properties (entities relations) will need Doctrine's *lazy loading* to make 
-softer all entity requests.
+As you can see all properties are defined as protected. This is because Doctrine
+will need to extend the class using [transparent Proxy Objects](http://doctrine-orm.readthedocs.org/en/latest/reference/advanced-configuration.html#proxy-objects)
+to implement lazy-loading.
 
 ### Interfaces
 
