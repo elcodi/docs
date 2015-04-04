@@ -69,15 +69,65 @@
                         <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main" class="document">
-                        <h1>Book</h1>
-<p>Prepared by Elcodi core team, this is the Elcodi bible. It is the reference for
-any user of the platform, who will typically want to keep it close at hand.</p>
-<h3>Table of contents</h3>
-<ul>
-<li><a href="standards/dependency-injection.html">Dependency Injection Standards</a></li>
-<li><a href="standards/classes.html">Classes Standards</a></li>
-<li><a href="standards/code.html">Coding Standards</a></li>
-</ul>
+                        <h1>Classes Standards</h1>
+<p>In order to create homogeneous code, we've defined a set of rules when creating
+and naming classes.</p>
+<h3>Abstracts</h3>
+<p>Maybe is not the best standard, but we strongly believe that a name of a class
+should explain itself as much as possible the mission of itself. Because we this
+is an OpenSource project we must take care about all different skilled
+developers so the name of an abstract class, even if it is redundant, will have
+the word <code>Abstract</code> at the end of the name.</p>
+<pre><code class="language-php">class AbstractFactory
+{
+}</code></pre>
+<p>Furthermore, any abstract class will be placed in a folder called <code>Abstracts/</code>,
+to make it easier to be found.</p>
+<pre><code class="language-php">\Elcodi\Component\Core\Factory\Abstracts\AbstractFactory</code></pre>
+<blockquote>
+<p>The namespace must be Abstracts instead of Abstract because Abstract is a PHP
+reserved word</p>
+</blockquote>
+<h3>Traits</h3>
+<p>Same as Abstract classes. All Traits will have the word <code>Trait</code> at the end of
+the name</p>
+<pre><code class="language-php">trait DateTimeTrait
+{
+}</code></pre>
+<p>Furthermore, any trait will be placed in a folder called <code>Traits/</code>, to make it
+easier to be found.</p>
+<pre><code class="language-php">\Elcodi\Component\Core\Enitity\Traits\DateTimeTrait</code></pre>
+<blockquote>
+<p>The namespace must be Traits instead of Trait because Trait is a PHP reserved
+word</p>
+</blockquote>
+<p>There is a limitation in the definition of Traits almost in PHP, and is that
+there is a collision problem of namespaces. Because they are virtually
+copy/pasted to the final class, you can have some problems if you work with
+namespaces inside the Trait classes.</p>
+<p>The way of solving this is never using use statements in a Trait, and always
+using all the namespace when referencing a PHP namespace.</p>
+<pre><code>trait PriceTrait
+{
+    /**
+     * @var \Elcodi\Component\Currency\Entity\Interfaces\CurrencyInterface
+     *
+     * Currency for the amounts stored in this entity
+     */
+    protected $productCurrency;</code></pre>
+<h3>Interfaces</h3>
+<p>Same as Abstract classes. All Interfaces will have the word <code>Interface</code> at the
+end of the name</p>
+<pre><code class="language-php">interface OrderInterface
+{
+}</code></pre>
+<p>Furthermore, any interface will be placed in a folder called <code>Interfaces/</code>, to
+make it easier to be found.</p>
+<pre><code class="language-php">\Elcodi\Component\Cart\Enitity\Interfaces\OrderInterface</code></pre>
+<blockquote>
+<p>The namespace must be Interfaces instead of Interface because Interface is a
+PHP reserved word</p>
+</blockquote>
                     </div>
 
                     <footer>

@@ -69,15 +69,93 @@
                         <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main" class="document">
-                        <h1>Book</h1>
-<p>Prepared by Elcodi core team, this is the Elcodi bible. It is the reference for
-any user of the platform, who will typically want to keep it close at hand.</p>
-<h3>Table of contents</h3>
+                        <h1>Coding Standards</h1>
+<p>We are noticed that everyone has a different way of developing. In our team,
+some people place the braces at the end of the class definition, while other
+people place them in a new line.</p>
+<p>Is anyone wrong? Absolutely not, even PHP have some standards since a long time
+ago, anyone should be able to work the way he wants.</p>
+<p>But in Elcodi we have some standards for our code</p>
+<h3>Small classes and methods</h3>
+<p>Each class should be enough small to contain specific information. Remember to
+use small methods (no more than 20 lines) and to take care of the complexity of
+them. The more complex is a method, the more hard is to understand what is all
+about</p>
+<h3>PHPDoc</h3>
+<p>This is an important part of the project.</p>
+<p>All methods must be explained for humans. Some people think that the code should
+be self-explainable, and we agree on that. This doesn't mean that all people
+should read code to understand what a method is intended for.</p>
+<p>Pretending them to understand our method by its code is to prevent them to focus
+on their own business logic, and can hinder the development speed.</p>
+<p>All methods must follow these rules as well, related to PHP Doc format</p>
+<pre><code class="language-php">/**
+ * This is my detailed description about what my code is intended for
+ * I can use as many lines as possible.
+ * I repeat, as many lines as possible.
+ *
+ * @param MyObject $myObject My object description
+ * @param string   $info     Some information
+ * @param integer  $number   Some number
+ *
+ * @return Factory Description of the result
+ *
+ * @throws AnException Scenario when this exception is thrown
+ */</code></pre>
+<p>Using this kind of blocks there are some tips we all need to take in account.</p>
 <ul>
-<li><a href="standards/dependency-injection.html">Dependency Injection Standards</a></li>
-<li><a href="standards/classes.html">Classes Standards</a></li>
-<li><a href="standards/code.html">Coding Standards</a></li>
+<li>There is a space between all blocks</li>
+<li>The order is that one. Description, Params, Return and Exceptions</li>
+<li>All params should be aligned as is shown in the example</li>
+<li>Never using @inheritBlock. Is not useful at all and makes so difficult the
+comprehension of the code</li>
 </ul>
+<h2>Tools</h2>
+<p>We provide you a way of converting your way of programming to ours. Why don't
+you use this tools?</p>
+<h3>PHP-CS-Fixer</h3>
+<ul>
+<li>(Github repository)[<a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer">https://github.com/FriendsOfPHP/PHP-CS-Fixer</a>]</li>
+</ul>
+<p>This library analyzes all the PHP source and tries to fix coding standards
+issues, using a custom definition set in the root of the project.</p>
+<pre><code class="language-php">&lt;?php
+
+return Symfony\CS\Config\Config::create()
+    // use SYMFONY_LEVEL:
+    -&gt;level(Symfony\CS\FixerInterface::SYMFONY_LEVEL)
+    // and extra fixers:
+    -&gt;fixers(array(
+        'concat_with_spaces',
+        'multiline_spaces_before_semicolon',
+        'short_array_syntax',
+        '-remove_lines_between_uses'
+    ))
+    -&gt;finder(
+        Symfony\CS\Finder\DefaultFinder::create()
+            -&gt;in('src/')
+    )
+;</code></pre>
+<p>This library is a dependency of the project, but only in development
+environment, so while you are developing, if you have already updated your
+composer dependencies, you can run the fixer as follows</p>
+<pre><code class="language-bash">php bin/php-cs-fixer fix</code></pre>
+<p>Because the dependency is set using an specific version of the code, all
+developers will fix the code the same way.</p>
+<h3>PHP-Formatter</h3>
+<ul>
+<li>(Github repository)[<a href="https://github.com/mmoreram/php-formatter">https://github.com/mmoreram/php-formatter</a>]</li>
+</ul>
+<p>Another simple php formatter. This one just will format your class headers,
+setting the project one in your PHP classes, and will sort all use statements in
+order to comply with the specification</p>
+<p>This library is a dependency of the project, but only in development
+environment, so while you are developing, if you have already updated your
+composer dependencies, you can run the fixer as follows</p>
+<pre><code class="language-bash">php bin/php-formatter formatter:use:sort src/
+php bin/php-formatter formatter:headers:fix src/</code></pre>
+<p>Because the dependency is set using an specific version of the code, all
+developers will fix the code the same way.</p>
                     </div>
 
                     <footer>
