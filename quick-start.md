@@ -13,10 +13,10 @@ using [Elcodi] components on top of the
 [Symfony] framework.
 
 Yes, you got it right! Bamboo uses the Symfony framework but our components are
-framework agnostic, that is, they only depend on the Symfony components.
+framework agnostic, that is, they only depend on the Symfony components as opposed to the whole framework or any of its distributions.
 
 Why should I use Bamboo?
-That's simple, to sell. We provide you with an interface to sell and to manage
+That's simple, to sell your products. We provide you with an interface to sell your products and manage
 your store. You only have to focus on offering a good product, we take care of
 the rest.
 
@@ -40,8 +40,8 @@ sure your Redis version is at least `v2.8.9`.
 Also, don't forget to install the php extension for redis.
 
 ### Imagick
-The images are a really important part of an store. Bamboo uses Imagick to
-resize and optimize all the product images
+Images are a really important part of an store. Bamboo uses Imagick to
+resize and optimize all product images
 
 For more info just visit their
 [installation page](http://php.net/manual/en/imagick.setup.php)
