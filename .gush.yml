@@ -1,0 +1,5 @@
+adapter: github
+issue_tracker: github
+base: master
+table-pr:
+    place_holder: ['Notes', ':+1: :older_man:']
