@@ -2,11 +2,11 @@ How to Implement a Form Type
 ============================
 
 A FormType object in Elcodi ecosystem must follow some rules in order to comply
-the project flexibility.
+with the project flexibility.
 
 ### Using Factories
 
-Remember that every single entity must be created given its factory in Elcodi
+Remember that every single entity must be created via its factory in Elcodi
 Bundles. For more information, please see [Factories](factory.md). In order to
 use this feature in Symfony Form Types, we must inject always the related 
 entity factory.
@@ -62,7 +62,7 @@ public function setDefaultOptions(OptionsResolverInterface $resolver)
 }
 ```
 
-In order to make things easier, there is a Trait in package `elcodi/core`, 
+In order to make things easier, there is a Trait in the package `elcodi/core`, 
 designed as a Factory container. To use it, just add it in your class, like any
 other trait, and you will be able to use the `$this->factory` in your class.
 
@@ -134,7 +134,7 @@ class BannerType extends AbstractType
     }
 
     /**
-     * Buildform function
+     * buildForm function
      *
      * @param FormBuilderInterface $builder the formBuilder
      * @param array                $options the options for this form
@@ -173,7 +173,7 @@ services:
             - { name: form.type, alias: elcodi_admin_banner_form_type_banner }
 ```
 
-The alias of the FormType must be the same than the value returned by the method
+The alias of the FormType must be the same as the value returned by the method
 `getName()` of the class
 
 ``` php

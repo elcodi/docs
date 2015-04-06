@@ -211,7 +211,7 @@ You can report any issue on [Bamboo](https://github.com/elcodi/bamboo/issues) or
 
 If you need any help with the installation or understanding elcodi or bamboo you
 can contact us on [gitter](https://gitter.im/elcodi/elcodi).
-We will be glad of helping you, just ask for help.
+We will be glad to help you, just ask for help.
 
 
 [Composer]: http://getcomposer.org/
