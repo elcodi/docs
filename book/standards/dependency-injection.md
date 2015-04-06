@@ -1,7 +1,7 @@
 Dependency Injection
 ====================
 
-We take care as well on how Elcodi services are defined in the Symfony 
+We care as well on how Elcodi services are defined in the Symfony 
 Dependency Injection container, in order to make easier for the final user to
 remember the name of the service given the namespace of the class.
 
@@ -61,11 +61,11 @@ definition spectre.
 service is not a permanent class but an adapter of an existing port.
 
 **Third level** is the name of the port. In this example our port is
-`currency_exchange_rate`, a was of calculating rates between currencies.
+`currency_exchange_rate`, a way of calculating rates between currencies.
 
 ``` yml
 elcodi.adapter.currency_exchange_rate.open_exchange
 ```
 
-**Fourth level** is the name of the adapter. In last example, our adapter is
+**Fourth level** is the name of the adapter. In the last example, our adapter is
 `open_exchange`, a website that implements this feature.

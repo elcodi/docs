@@ -1,32 +1,32 @@
 Coding Standards
 ================
 
-We are noticed that everyone has a different way of developing. In our team, 
+We have noticed that everyone has a different way of developing. In our team, 
 some people place the braces at the end of the class definition, while other
 people place them in a new line.
 
-Is anyone wrong? Absolutely not, even PHP have some standards since a long time
-ago, anyone should be able to work the way he wants.
+Is anyone wrong? Absolutely not, even PHP has standards since long time
+ago, and besides anyone should also be able to work the way they want.
 
-But in Elcodi we have some standards for our code
+But in Elcodi we have some standards for our code.
 
 ### Small classes and methods
 
-Each class should be enough small to contain specific information. Remember to
-use small methods (no more than 20 lines) and to take care of the complexity of
-them. The more complex is a method, the more hard is to understand what is all
-about
+Each class should be small enough to contain specific information. Remember to
+use small methods (no more than 20 lines) and to take care of their complexity.
+The more complex a method is, the harder to understand what is all
+about.
 
 ### PHPDoc
 
 This is an important part of the project.
 
 All methods must be explained for humans. Some people think that the code should
-be self-explainable, and we agree on that. This doesn't mean that all people 
-should read code to understand what a method is intended for.
+be self-explanatory, and we agree on that. This doesn't mean that all people 
+should read the code to understand what a method is intended for.
 
 Pretending them to understand our method by its code is to prevent them to focus 
-on their own business logic, and can hinder the development speed.
+on their own business logic, and can hinder development speed.
 
 All methods must follow these rules as well, related to PHP Doc format
 
@@ -46,18 +46,18 @@ All methods must follow these rules as well, related to PHP Doc format
  */
 ```
 
-Using this kind of blocks there are some tips we all need to take in account.
+Using this kind of blocks there are some tips we all need to take into account.
 
 * There is a space between all blocks
-* The order is that one. Description, Params, Return and Exceptions
-* All params should be aligned as is shown in the example
-* Never using @inheritBlock. Is not useful at all and makes so difficult the
-comprehension of the code
+* The order is: Description, Params, Return and Exceptions
+* All params should be aligned as shown in the example
+* Never use @inheritBlock. It is not useful at all and makes the
+comprehension of the code so difficult
 
 ## Tools
 
 We provide you a way of converting your way of programming to ours. Why don't 
-you use this tools?
+you use these tools?
 
 ### PHP-CS-Fixer
 
@@ -101,13 +101,13 @@ developers will fix the code the same way.
 
 * (Github repository)[https://github.com/mmoreram/php-formatter]
 
-Another simple php formatter. This one just will format your class headers, 
-setting the project one in your PHP classes, and will sort all use statements in
-order to comply with the specification
+Another simple php formatter. This one will just format your class headers, 
+setting the project headers in your PHP classes, and will sort all use statements in
+order to comply with a given specification.
 
 This library is a dependency of the project, but only in development 
 environment, so while you are developing, if you have already updated your 
-composer dependencies, you can run the fixer as follows
+composer dependencies, you can run the fixer as follows:
 
 ``` bash
 php bin/php-formatter formatter:use:sort src/
