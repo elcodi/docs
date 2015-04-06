@@ -3,11 +3,11 @@ How to Implement a Factory
 
 Factories usage is one of the most distinctive things in Elcodi architecture
 style. Every single entity in Elcodi ecosystem is created using its own Factory,
-so by default, an entity never should define its own construction state.
+so by default, an entity should never define its own construction state.
 
-We strongly believe that an entity is not responsible of how should be created,
-so the factory has this responsibility. This means that an entity never should
-implement the `__construct()` method and never should initialize any variable.
+We strongly believe that an entity is not responsible of how it should be created,
+so the factory holds this responsibility. This means that an entity should never
+implement the `__construct()` method and it should never initialize any variable.
 
 Because in Elcodi all entity namespaces are defined by a parameter, any factory
 must use these parameters to create an instance.
