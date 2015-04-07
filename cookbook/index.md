@@ -19,3 +19,7 @@ scenario.
 
 * [How to Overwrite a parameter](overwrite/parameter.md)
 * [How to Overwrite an Entity](overwrite/entity.md)
+
+### Common Caveats
+
+* [Running the Test Suite](caveats/test-suite.md)
