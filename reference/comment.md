@@ -3,6 +3,7 @@ Comment Reference
 
 ``` yaml
 elcodi_comment:
+    
     mapping:
         comment:
             # Comment entity implementing CommentInterface
@@ -22,6 +23,7 @@ elcodi_comment:
             manager: default
             # Is this entity enabled?
             enabled: true
+    
     comments:
         # Your comments will be cached, so maybe you want to customize the key
         cache_key: comments

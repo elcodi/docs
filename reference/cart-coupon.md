@@ -3,6 +3,7 @@ CartCouponBundle Reference
 
 ```yaml
 elcodi_cart_coupon:
+    
     mapping:
         cart_coupon:
             # CartCoupon entity implementing CartCouponInterface

@@ -1,8 +1,9 @@
 SitemapBundle Reference
 =======================
 
-```yaml
+``` yaml
 elcodi_sitemap:
+    
     # Each block defines a way of creating dynamically a set of elements of a
     # sitemap file, each one mapped from a database entry
     blocks:
@@ -20,6 +21,7 @@ elcodi_sitemap:
             changeFrequency: ~
             # Specific priority for this block
             priority: ~
+    
     # Each static is a route entry
     statics:
         store_homepage:
@@ -27,14 +29,19 @@ elcodi_sitemap:
             changeFrequency: ~
             # Specific priority for this static
             priority: ~
+    
     # A builder is a set of blocks and statics, grouped and saved in a file
     builder:
         main:
             # You can define the name of the file, taking in account the locale
             # used by using {_locale} format
             path: %kernel.root_dir%/../web/sitemap/sitemap_{_locale}.xml
-            # Each builder can use a different renderer
+            # Each builder can use a different renderer, by referencing the
+            # service definition
             renderer: ~
+            # Each builder can use a different dumper, by referencing the
+            # service definition
+            dumper: ~
             # Set of block references
             blocks:
                 - enabled_products
@@ -42,6 +49,7 @@ elcodi_sitemap:
             # Set of static references
             statics:
                 - store_homepage
+    
     # A profile is a set of builders, grouped and combined with all available
     # languages. Special for bulk actions
     profile:
