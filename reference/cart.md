@@ -2,7 +2,7 @@ CartBundle Reference
 ====================
 
 ``` yaml
-elcodi_cart
+elcodi_cart:
     mapping:
         cart:
             # Cart entity implementing CartInterface
@@ -40,13 +40,11 @@ elcodi_cart
             manager: default
             # Is this entity enabled?
             enabled: true
-    
     cart:
         # Your cart is saved in session
         save_in_session: true
         # If your cart is saved in session, what's the field name?
         Session_field_name: cart_id
-    
     # You can define a set of states inside the payment machine
     # This machine is used as the payment workflow guide
     payment_states_machine:
@@ -59,7 +57,6 @@ elcodi_cart
         states:
             - ["unpaid", "pay", "paid"]
             - ["paid", "refund", "refunded"]
-            
     # You can define a set of states inside the shipping machine
     # This machine is used as the shipping workflow guide
     shipping_states_machine:
