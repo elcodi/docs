@@ -3,6 +3,7 @@ CouponBundle Reference
 
 ```yaml
 elcodi_coupon:
+    
     mapping:
         coupon:
             # Coupon entity implementing CouponInterface

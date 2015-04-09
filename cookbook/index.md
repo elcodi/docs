@@ -11,6 +11,11 @@ scenario.
 * [How to Implement a Factory](implementation/factory.md)
 * [How to Implement a Form Type](implementation/form-type.md)
 
+### Installation
+
+* [How to Install dependent Bundles](installation/dependent-bundles.md)
+
 ### Overwrite Elcodi & Bamboo
 
 * [How to Overwrite a parameter](overwrite/parameter.md)
+* [How to Overwrite an Entity](overwrite/entity.md)

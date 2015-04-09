@@ -3,6 +3,7 @@ AttributeBundle Reference
 
 ```yaml
 elcodi_attribute:
+    
     mapping:
         attribute:
             # Attribute entity implementing AttributeInterface

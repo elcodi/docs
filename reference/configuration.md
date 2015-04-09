@@ -3,6 +3,7 @@ Configuration Reference
 
 ``` yaml
 elcodi_configuration:
+    
     mapping:
         configuration:
             # Configuration entity implementing ConfigurationInterface
@@ -13,6 +14,7 @@ elcodi_configuration:
             manager: default
             # Is this entity enabled?
             enabled: true
+    
     # Set of configuration elements. Each one can be defined as parameter-based
     # configuration item, or not
     elements:

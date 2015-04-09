@@ -3,6 +3,7 @@ BannerBundle Reference
 
 ```yaml
 elcodi_banner:
+    
     mapping:
         banner:
             # Banner entity implementing BannerInterface
