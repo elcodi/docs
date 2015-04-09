@@ -71,9 +71,9 @@
                     <div role="main" class="document">
                         <h1>How to Implement a Form Type</h1>
 <p>A FormType object in Elcodi ecosystem must follow some rules in order to comply
-the project flexibility.</p>
+with the project flexibility.</p>
 <h3>Using Factories</h3>
-<p>Remember that every single entity must be created given its factory in Elcodi
+<p>Remember that every single entity must be created via its factory in Elcodi
 Bundles. For more information, please see <a href="factory.html">Factories</a>. In order to
 use this feature in Symfony Form Types, we must inject always the related
 entity factory.</p>
@@ -121,7 +121,7 @@ public function setDefaultOptions(OptionsResolverInterface $resolver)
             -&gt;getEntityNamespace(),
     ]);
 }</code></pre>
-<p>In order to make things easier, there is a Trait in package <code>elcodi/core</code>,
+<p>In order to make things easier, there is a Trait in the package <code>elcodi/core</code>,
 designed as a Factory container. To use it, just add it in your class, like any
 other trait, and you will be able to use the <code>$this-&gt;factory</code> in your class.</p>
 <pre><code class="language-php">use Elcodi\Component\Core\Factory\Traits\FactoryTrait;
@@ -185,7 +185,7 @@ class BannerType extends AbstractType
     }
 
     /**
-     * Buildform function
+     * buildForm function
      *
      * @param FormBuilderInterface $builder the formBuilder
      * @param array                $options the options for this form
@@ -217,7 +217,7 @@ our classes as services.</p>
             - [setFactory, [@elcodi.factory.banner]]
         tags:
             - { name: form.type, alias: elcodi_admin_banner_form_type_banner }</code></pre>
-<p>The alias of the FormType must be the same than the value returned by the method
+<p>The alias of the FormType must be the same as the value returned by the method
 <code>getName()</code> of the class</p>
 <pre><code class="language-php">/**
  * Return unique name for this form

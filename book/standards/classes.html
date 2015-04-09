@@ -73,20 +73,20 @@
 <p>In order to create homogeneous code, we've defined a set of rules when creating
 and naming classes.</p>
 <h3>Abstracts</h3>
-<p>Maybe is not the best standard, but we strongly believe that a name of a class
-should explain itself as much as possible the mission of itself. Because we this
+<p>Maybe is not the best standard, but we strongly believe that the name of a class
+should explain its mission as much as possible. Because this
 is an OpenSource project we must take care about all different skilled
 developers so the name of an abstract class, even if it is redundant, will have
 the word <code>Abstract</code> at the end of the name.</p>
-<pre><code class="language-php">class AbstractFactory
+<pre><code class="language-php">abstract class AbstractFactory
 {
 }</code></pre>
 <p>Furthermore, any abstract class will be placed in a folder called <code>Abstracts/</code>,
-to make it easier to be found.</p>
+to make them easier to find.</p>
 <pre><code class="language-php">\Elcodi\Component\Core\Factory\Abstracts\AbstractFactory</code></pre>
 <blockquote>
 <p>The namespace must be Abstracts instead of Abstract because Abstract is a PHP
-reserved word</p>
+reserved keyword</p>
 </blockquote>
 <h3>Traits</h3>
 <p>Same as Abstract classes. All Traits will have the word <code>Trait</code> at the end of
@@ -94,14 +94,14 @@ the name</p>
 <pre><code class="language-php">trait DateTimeTrait
 {
 }</code></pre>
-<p>Furthermore, any trait will be placed in a folder called <code>Traits/</code>, to make it
-easier to be found.</p>
+<p>Furthermore, any trait will be placed in a folder called <code>Traits/</code>, to make them
+easier to find.</p>
 <pre><code class="language-php">\Elcodi\Component\Core\Enitity\Traits\DateTimeTrait</code></pre>
 <blockquote>
 <p>The namespace must be Traits instead of Trait because Trait is a PHP reserved
-word</p>
+keyword</p>
 </blockquote>
-<p>There is a limitation in the definition of Traits almost in PHP, and is that
+<p>There is a limitation in the definition of Traits in PHP, and it is that
 there is a collision problem of namespaces. Because they are virtually
 copy/pasted to the final class, you can have some problems if you work with
 namespaces inside the Trait classes.</p>
@@ -122,11 +122,11 @@ end of the name</p>
 {
 }</code></pre>
 <p>Furthermore, any interface will be placed in a folder called <code>Interfaces/</code>, to
-make it easier to be found.</p>
+make them easier to find.</p>
 <pre><code class="language-php">\Elcodi\Component\Cart\Enitity\Interfaces\OrderInterface</code></pre>
 <blockquote>
 <p>The namespace must be Interfaces instead of Interface because Interface is a
-PHP reserved word</p>
+PHP reserved keyword</p>
 </blockquote>
                     </div>
 

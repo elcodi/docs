@@ -70,7 +70,7 @@
                 <div class="rst-content">
                     <div role="main" class="document">
                         <h1>Dependency Injection</h1>
-<p>We take care as well on how Elcodi services are defined in the Symfony
+<p>We care as well on how Elcodi services are defined in the Symfony
 Dependency Injection container, in order to make easier for the final user to
 remember the name of the service given the namespace of the class.</p>
 <p>First of all what you need to know is that all services in Elcodi ecosystem
@@ -108,9 +108,9 @@ definition spectre.</p>
 <p><strong>Second level</strong> is always <code>adapter</code>. This will help you identifying that such
 service is not a permanent class but an adapter of an existing port.</p>
 <p><strong>Third level</strong> is the name of the port. In this example our port is
-<code>currency_exchange_rate</code>, a was of calculating rates between currencies.</p>
+<code>currency_exchange_rate</code>, a way of calculating rates between currencies.</p>
 <pre><code class="language-yml">elcodi.adapter.currency_exchange_rate.open_exchange</code></pre>
-<p><strong>Fourth level</strong> is the name of the adapter. In last example, our adapter is
+<p><strong>Fourth level</strong> is the name of the adapter. In the last example, our adapter is
 <code>open_exchange</code>, a website that implements this feature.</p>
                     </div>
 
