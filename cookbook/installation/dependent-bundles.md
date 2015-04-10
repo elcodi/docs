@@ -29,13 +29,13 @@ class ElcodiCartBundle extends Bundle
 }
 ```
 
-Maybe this Bundle need the instantiation of another bundle (previously added in
+Maybe this Bundle needs the instantiation of another bundle (previously added in
 the composer definition), but is not defined anywhere. So... let's do that.
 
-The first step is to define a set of Bundle namespaces that must be instanced
+The first step is to define a set of Bundle namespaces that must be instantiated
 before this Bundle.
 
-All dependent Bundles will be instanced before this Bundle. This is because a
+All dependent Bundles will be instantiated before this Bundle. This is because a
 Bundle should be able to override another Bundle definition, and Symfony has in
 most cases a **Last defined wins** strategy.
 
