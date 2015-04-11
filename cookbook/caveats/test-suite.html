@@ -69,96 +69,17 @@
                         <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main" class="document">
-                        <h1>How to Install dependent Bundles</h1>
-<p>This chapter is not only to show how to install a Dependent Bundle in Elcodi
-environment, but to show how to do it properly.</p>
-<h3>Package dependencies</h3>
-<p>All Bundles in Elcodi follow the same installation strategy than Symfony
-standard packages. Elcodi uses composer for package dependencies, so each
-standalone Elcodi repository comes with a properly configured <code>composer.json</code>
-file.</p>
-<p>But when we talk about Bundles in Symfony, defining the dependencies in the
-composer file is not enough. The Kernel will instance only the Bundles you
-define in <code>AppKernel.php</code> file, ignoring the real dependencies this Bundle has.</p>
-<p>So, regarding this real problem, Elcodi has developed some business logic in
-order to solve this problem.</p>
-<p>First of all, let's take a look at a simple Symfony Bundle class.</p>
-<pre><code class="language-php">/**
- * ElcodiCartBundle Bundle
- */
-class ElcodiCartBundle extends Bundle
-{
-}</code></pre>
-<p>Maybe this Bundle needs the instantiation of another bundle (previously added in
-the composer definition), but is not defined anywhere. So... let's do that.</p>
-<p>The first step is to define a set of Bundle namespaces that must be instanced
-before this Bundle.</p>
-<p>All dependent Bundles will be instanced before this Bundle. This is because a
-Bundle should be able to override another Bundle definition, and Symfony has in
-most cases a <strong>Last defined wins</strong> strategy.</p>
-<pre><code class="language-php">use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Elcodi\Bundle\CoreBundle\Interfaces\DependentBundleInterface;
-
-/**
- * ElcodiCartBundle Bundle
- */
-class ElcodiCartBundle extends Bundle implements DependentBundleInterface
-{
-    /**
-     * Create instance of current bundle, and return dependent bundle namespaces
-     *
-     * @return array Bundle instances
-     */
-    public static function getBundleDependencies()
-    {
-        return [
-            'Elcodi\Bundle\UserBundle\ElcodiUserBundle',
-            'Elcodi\Bundle\ProductBundle\ElcodiProductBundle',
-            'Elcodi\Bundle\CurrencyBundle\ElcodiCurrencyBundle',
-            'Elcodi\Bundle\StateTransitionMachineBundle\ElcodiStateTransitionMachineBundle',
-            'Elcodi\Bundle\ShippingBundle\ElcodiShippingBundle',
-            'Elcodi\Bundle\ConfigurationBundle\ElcodiConfigurationBundle',
-            'Elcodi\Bundle\CoreBundle\ElcodiCoreBundle',
-        ];
-    }
-}</code></pre>
-<p>So, what else? Is that enough?</p>
-<p>Then, in order to make it happen, we must use a specific method in our
-<code>AppKernel</code> class, using a Trait provided by <code>ElcodiCoreBundle</code>.</p>
-<pre><code class="language-php">use Elcodi\Bundle\CoreBundle\Traits\BundleDependenciesResolver;
-use Elcodi\Bundle\TestCommonBundle\Functional\Abstracts\AbstractElcodiKernel;
-
-/**
- * Class AppKernel
- */
-class AppKernel extends AbstractElcodiKernel
-{
-    use BundleDependenciesResolver;
-
-    /**
-     * Register application bundles
-     *
-     * @return array Array of bundles instances
-     */
-    public function registerBundles()
-    {
-        return $this-&gt;getBundleInstances([
-            '\Elcodi\Bundle\CartBundle\ElcodiCartBundle',
-        ]);
-    }
-}</code></pre>
-<p>And that's it. Your kernel will instance your <code>ElcodiCartBundle</code> bundle and all
-its dependencies.</p>
-<blockquote>
-<p>This method will work as well, even if the Bundle has no dependencies or is
-not extending DependentBundleInterface.</p>
-</blockquote>
-<h3>Using dependencies in your project</h3>
-<p>If you want to use this classes and methods in your Symfony project, you don't
-really need to instance <code>ElcodiCoreBundle</code> because you will not need any kind
-of Dependency Injection definition.</p>
-<p>You only need to add <code>elcodi/core-bundle</code> in your package requirements and then
-use the Interface and the Trait as is shown in this CookBook entry.</p>
+                        <h1>Running the Test Suite</h1>
+<p>Running the test suite for elcodi/elcodi is simply one command:</p>
+<pre><code>php bin/phpunit</code></pre>
+<p>However in order to don't keep state on a temporal database you may need
+to remove temporal files on your tmp folder. On mac you can just do:</p>
+<pre><code>rm -rf /tmp/*.backup.database</code></pre>
+<p>Also running the test suite for elcodi/bamboo is also simple:</p>
+<pre><code>php bin/behat</code></pre>
+<p>However the first time you want to create a folder inside your /tmp:</p>
+<pre><code>mkdir -p /tmp/Bamboo</code></pre>
+<p>That way it will not complain it cannot create certain files inside.</p>
                     </div>
 
                     <footer>
