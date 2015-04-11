@@ -12,7 +12,7 @@ standalone Elcodi repository comes with a properly configured `composer.json`
 file.
 
 But when we talk about Bundles in Symfony, defining the dependencies in the
-composer file is not enough. The Kernel will instantiate only the Bundles you
+composer file is not enough. The Kernel will instance only the Bundles you
 define in `AppKernel.php` file, ignoring the real dependencies this Bundle has.
 
 So, regarding this real problem, Elcodi has developed some business logic in
@@ -29,7 +29,7 @@ class ElcodiCartBundle extends Bundle
 }
 ```
 
-Maybe this Bundle need the instantiation of another bundle (previously added in
+Maybe this Bundle needs the instantiation of another bundle (previously added in
 the composer definition), but is not defined anywhere. So... let's do that.
 
 The first step is to define a set of Bundle namespaces that must be instanced
@@ -98,7 +98,7 @@ class AppKernel extends AbstractElcodiKernel
 }
 ```
 
-And that's it. You kernel will instance your `ElcodiCartBundle` bundle and all
+And that's it. Your kernel will instance your `ElcodiCartBundle` bundle and all
 its dependencies.
 
 > This method will work as well, even if the Bundle has no dependencies or is
