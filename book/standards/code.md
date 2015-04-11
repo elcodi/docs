@@ -111,7 +111,7 @@ composer dependencies, you can run the fixer as follows:
 
 ``` bash
 php bin/php-formatter formatter:use:sort src/
-php bin/php-formatter formatter:headers:fix src/
+php bin/php-formatter formatter:header:fix src/
 ```
 
 Because the dependency is set using an specific version of the code, all 
