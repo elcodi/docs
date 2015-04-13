@@ -9,3 +9,4 @@ any user of the platform, who will typically want to keep it close at hand.
 * [Dependency Injection Standards](standards/dependency-injection.md)
 * [Classes Standards](standards/classes.md)
 * [Coding Standards](standards/code.md)
+* [Bundle Extensions](bundles/extensions.md)
