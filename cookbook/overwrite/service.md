@@ -10,7 +10,7 @@ use Elcodi\Component\Cart\Services\CartManager;
 /**
  * New cart manager
  */
-public function NewCartManager extends CartManager
+class NewCartManager extends CartManager
 {
     /**
      * Adds cartLine to Cart
@@ -36,7 +36,7 @@ public function NewCartManager extends CartManager
 }
 ```
 
-Finally we need to make the project know that this new implementation is the one
+Finally we need to let the project know that this new implementation is the one
 we really want to use in our project. For this reason, we should redefine this
 service in our `config.yml` file, and overwrite the main service implementation.
 
@@ -49,5 +49,5 @@ services:
             ...
 ```
 
-Done that, all the project will use your `elcodi.manager.cart` implementation 
+Having done that, all the project will use your `elcodi.manager.cart` implementation 
 instead of the default one.
