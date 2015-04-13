@@ -77,7 +77,7 @@ main service and overwrite the methods you need to overwrite.</p>
 /**
  * New cart manager
  */
-public function NewCartManager extends CartManager
+class NewCartManager extends CartManager
 {
     /**
      * Adds cartLine to Cart
@@ -101,7 +101,7 @@ public function NewCartManager extends CartManager
         // My own addLine implementation
     }
 }</code></pre>
-<p>Finally we need to make the project know that this new implementation is the one
+<p>Finally we need to let the project know that this new implementation is the one
 we really want to use in our project. For this reason, we should redefine this
 service in our <code>config.yml</code> file, and overwrite the main service implementation.</p>
 <pre><code class="language-yaml">services:
@@ -110,7 +110,7 @@ service in our <code>config.yml</code> file, and overwrite the main service impl
         cart: My\New\Bundle\Services\NewCartManager
         arguments:
             ...</code></pre>
-<p>Done that, all the project will use your <code>elcodi.manager.cart</code> implementation
+<p>Having done that, all the project will use your <code>elcodi.manager.cart</code> implementation
 instead of the default one.</p>
                     </div>
 
