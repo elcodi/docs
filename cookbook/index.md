@@ -17,8 +17,9 @@ scenario.
 
 ### Overwrite Elcodi & Bamboo
 
-* [How to Overwrite a parameter](overwrite/parameter.md)
+* [How to Overwrite a Parameter](overwrite/parameter.md)
 * [How to Overwrite an Entity](overwrite/entity.md)
+* [How to Overwrite a Service](overwrite/service.md)
 
 ### Common Caveats
 
