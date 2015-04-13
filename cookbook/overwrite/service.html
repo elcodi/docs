@@ -69,16 +69,49 @@
                         <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main" class="document">
-                        <h1>Book</h1>
-<p>Prepared by Elcodi core team and contributors, this is the Elcodi bible. It is the reference for
-any user of the platform, who will typically want to keep it close at hand.</p>
-<h3>Table of contents</h3>
-<ul>
-<li><a href="standards/dependency-injection.html">Dependency Injection Standards</a></li>
-<li><a href="standards/classes.html">Classes Standards</a></li>
-<li><a href="standards/code.html">Coding Standards</a></li>
-<li><a href="bundles/extensions.html">Bundle Extensions</a></li>
-</ul>
+                        <h1>How to overwrite a service</h1>
+<p>To overwrite a service you must create a new class in your project, extend the
+main service and overwrite the methods you need to overwrite.</p>
+<pre><code class="language-php">use Elcodi\Component\Cart\Services\CartManager;
+
+/**
+ * New cart manager
+ */
+public function NewCartManager extends CartManager
+{
+    /**
+     * Adds cartLine to Cart
+     *
+     * This method dispatches all Cart Check and Load events
+     * It should NOT be used to add a Purchasable to a Cart,
+     * by manually passing a newly crafted CartLine, since
+     * no product duplication check is performed: in that
+     * case CartManager::addProduct should be used
+     *
+     * @param CartInterface     $cart     Cart
+     * @param CartLineInterface $cartLine Cart line
+     *
+     * @return $this Self object
+     */
+    protected function addLine(
+        CartInterface $cart,
+        CartLineInterface $cartLine
+    ) {
+
+        // My own addLine implementation
+    }
+}</code></pre>
+<p>Finally we need to make the project know that this new implementation is the one
+we really want to use in our project. For this reason, we should redefine this
+service in our <code>config.yml</code> file, and overwrite the main service implementation.</p>
+<pre><code class="language-yaml">services:
+
+    elcodi.manager.cart:
+        cart: My\New\Bundle\Services\NewCartManager
+        arguments:
+            ...</code></pre>
+<p>Done that, all the project will use your <code>elcodi.manager.cart</code> implementation
+instead of the default one.</p>
                     </div>
 
                     <footer>
