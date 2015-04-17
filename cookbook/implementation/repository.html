@@ -69,31 +69,17 @@
                         <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main" class="document">
-                        <h1>Cookbook</h1>
-<p>The Elcodi Cookbook is a set of recipes related to Elcodi development flow and
-the Bamboo implementation. Each one solves a specific problem or a specific
-scenario.</p>
-<h3>Implementation</h3>
-<ul>
-<li><a href="implementation/entity.html">How to Implement an Entity</a></li>
-<li><a href="implementation/factory.html">How to Implement a Factory</a></li>
-<li><a href="implementation/repository.html">How to Implement a Repository</a></li>
-<li><a href="implementation/form-type.html">How to Implement a Form Type</a></li>
-</ul>
-<h3>Installation</h3>
-<ul>
-<li><a href="installation/dependent-bundles.html">How to Install dependent Bundles</a></li>
-</ul>
-<h3>Overwrite Elcodi &amp; Bamboo</h3>
-<ul>
-<li><a href="overwrite/parameter.html">How to Overwrite a Parameter</a></li>
-<li><a href="overwrite/entity.html">How to Overwrite an Entity</a></li>
-<li><a href="overwrite/service.html">How to Overwrite a Service</a></li>
-</ul>
-<h3>Common Caveats</h3>
-<ul>
-<li><a href="caveats/test-suite.html">Running the Test Suite</a></li>
-</ul>
+                        <h1>How to Implement a Repository</h1>
+<p>Extremely easy, as Elcodi repositories are exactly the same thing that how
+Symfony treat these classes.</p>
+<p>Each entity has its own Repository. You will find all entities related
+repositories inside the Components, hosted in <code>repository/</code> folder.</p>
+<p>All of them are mostly empty, so they extend <code>AbstractRepository</code> and, by
+default, have a set of accessible public methods, but some of them have custom
+methods in order to build specific and complex queries.</p>
+<p>If you want to learn about how to create these methods, please take a look at
+the <a href="http://symfony.com/doc/current/book/doctrine.html#custom-repository-classes">Symfony Documentation</a>
+for custom repository classes.</p>
                     </div>
 
                     <footer>
