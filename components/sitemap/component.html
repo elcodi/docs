@@ -69,7 +69,324 @@
                         <div class="wy-nav-content">
                 <div class="rst-content">
                     <div role="main" class="document">
-                        
+                        <h1>Sitemap</h1>
+<p>This component is intended to provide an easy way of creating sitemaps from your
+e-commerce implementations.</p>
+<p>The component is built in different layers, going from the real seed of any kind
+of sitemap implementation (each element), to the final profiling.</p>
+<h3>Blocks</h3>
+<p>When we talk about a block, we are really talking about a specific set of
+entities provided by a specific repository, for example all enabled products.</p>
+<pre><code class="language-yml"># Each block defines a way of creating dynamically a set of elements of a
+# sitemap file, each one mapped from a database entry
+blocks:
+    enabled_products:
+        # Transformer
+        transformer: ~
+        # Repository service used for retrieving the array of entities
+        repository_service: elcodi.repository.product
+        # Repository method
+        method: findBy
+        # Array of arguments for the repository call
+        arguments:
+            enabled: true
+        # Specific change frequency for this block
+        changeFrequency: ~
+        # Specific priority for this block
+        priority: ~</code></pre>
+<p>Each block needs a transformer, intended to transform an entity instance to
+every single information needed by the sitemap generator. Every transormer must
+be an implementation of SitemapTransformerInterface and must be defined as a
+service in our Dependency Injection Container.</p>
+<pre><code class="language-php">/**
+ * Interface SitemapTransformerInterface
+ */
+interface SitemapTransformerInterface
+{
+    /**
+     * Get url given an entity
+     *
+     * @param Mixed  $element  Element
+     * @param string $language Language
+     *
+     * @return string url
+     */
+    public function getLoc($element, $language = null);
+
+    /**
+     * Get last mod
+     *
+     * @param Mixed  $element  Element
+     * @param string $language Language
+     *
+     * @return string Last mod value
+     */
+    public function getLastMod($element, $language = null);
+}</code></pre>
+<p>Then we need to notice the SitemapBundle the name of the service.</p>
+<pre><code class="language-yml"># Each block defines a way of creating dynamically a set of elements of a
+# sitemap file, each one mapped from a database entry
+blocks:
+    enabled_products:
+        # Transformer
+        transformer: elcodi.sitemap_transformer.product</code></pre>
+<blockquote>
+<p>This element is a must and must be defined for each Block</p>
+</blockquote>
+<p>Said that, we need to define as well how this product collection must be
+retrieved from our database. For this reason you must define as well the
+repository service, the method used and the arguments for such method.</p>
+<pre><code class="language-yml"># Each block defines a way of creating dynamically a set of elements of a
+# sitemap file, each one mapped from a database entry
+blocks:
+    enabled_products:
+        repository_service: elcodi.repository.product
+        # Repository method
+        method: findBy
+        # Array of arguments for the repository call
+        arguments:
+            enabled: true
+            disabled: false</code></pre>
+<p>These elements are required as well and have no default values, to make sure
+that every block definition is carefully defined and configured. </p>
+<p>Finally we can define the <code>changeFrequence</code> and the <code>priority</code> elements. Both
+values will be used for all block instances. They are not required.</p>
+<pre><code class="language-yml"># Each block defines a way of creating dynamically a set of elements of a
+# sitemap file, each one mapped from a database entry
+blocks:
+    enabled_products:
+        # Specific change frequency for this block
+        changeFrequency: ~
+        # Specific priority for this block
+        priority: ~</code></pre>
+<h3>Statics</h3>
+<p>An Static is a representation of a route, defined by its name and some
+non-required values.</p>
+<pre><code class="language-yaml">elcodi_sitemap:
+
+    # Each static is a route entry
+    statics:
+        store_homepage:
+            # Specific change frequency for this static
+            changeFrequency: ~
+            # Specific priority for this static
+            priority: ~</code></pre>
+<h3>Builders</h3>
+<p>A sitemap instance is built using a sorted set of Statics and Blocks and
+rendered by a specific renderer. The result of this built is dumped using a
+specific dumper in a pre-defined path.</p>
+<pre><code class="language-yaml">elcodi_sitemap:
+
+    # A builder is a set of blocks and statics, grouped and saved in a file
+    builder:
+        main:
+            # Set of block references
+            blocks:
+                - enabled_products
+            # Set of static references
+            statics:
+                - store_homepage
+            # Each builder can use a different renderer, by referencing the
+            # service definition
+            renderer: ~
+            # Each builder can use a different dumper, by referencing the
+            # service definition
+            dumper: ~
+            # You can define the name of the file, taking in account the locale
+            # used by using {_locale} format
+            path: %kernel.root_dir%/../web/sitemap/sitemap_{_locale}.xml</code></pre>
+<p>First of all we need to define what blocks and statics we are going to use for
+such sitemap. It is important for you to know that in that case the order
+matters.</p>
+<p>For example, in that case, we will create a new sitemap called <code>main</code> that will
+contain a block and a static.</p>
+<pre><code class="language-yaml">elcodi_sitemap:
+
+    # A builder is a set of blocks and statics, grouped and saved in a file
+    builder:
+        main:
+            # Set of block references
+            blocks:
+                - enabled_products
+            # Set of static references
+            statics:
+                - store_homepage</code></pre>
+<blockquote>
+<p>This component will render first of all the statics and finally the blocks.</p>
+</blockquote>
+<p>Then, a renderer will transform this set of entries into a special format. By
+default this component gives you one implemented renderer, the <code>XmlRenderer</code>.
+This implementation is the used one by default as well.</p>
+<pre><code class="language-yaml">elcodi_sitemap:
+
+    # A builder is a set of blocks and statics, grouped and saved in a file
+    builder:
+        main:
+            # Each builder can use a different renderer, by referencing the
+            # service definition
+            renderer: ~</code></pre>
+<p>If you want to use your own renderer, you can create a new service implementing
+<code>SitemapRendererInterface</code>.</p>
+<pre><code class="language-php">/**
+ * Interface SitemapRendererInterface
+ */
+interface SitemapRendererInterface
+{
+    /**
+     * Given an array of sitemapElements, render the Sitemap
+     *
+     * @param SitemapElement[] $sitemapElements Elements
+     * @param string           $basepath        Base path
+     *
+     * @return string Render
+     */
+    public function render(array $sitemapElements, $basepath);
+}</code></pre>
+<p>Finally, a dumper will dump your rendered data. By default this component gives
+you one implemented dumper, the <code>FilesystemDumper</code>. This implementation is the
+used one by default as well.</p>
+<pre><code class="language-yaml">elcodi_sitemap:
+
+    # A builder is a set of blocks and statics, grouped and saved in a file
+    builder:
+        main:
+            dumper: ~
+            # You can define the name of the file, taking in account the locale
+            # used by using {_locale} format
+            path: %kernel.root_dir%/../web/sitemap/sitemap_{_locale}.xml</code></pre>
+<p>If you want to use your own dumper, you can create a new dumper implementing
+<code>SitemapDumperInterface</code>.</p>
+<pre><code class="language-php">/**
+ * Interface SitemapDumperInterface
+ */
+interface SitemapDumperInterface
+{
+    /**
+     * Dumps a sitemap given a path
+     *
+     * @param string $path    Path
+     * @param string $sitemap Sitemap
+     *
+     * @return $this Self object
+     */
+    public function dump($path, $sitemap);
+}</code></pre>
+<p>This dumper uses a path. This path is required by any defined builder and can
+contain a placeholder for the sitemap language, using <code>{_locale}</code>.</p>
+<h3>Services</h3>
+<p>Elcodi generates a Dependency Injection service for each builder using our
+standard. In our example, with given configuration we will have available a new
+public service.</p>
+<pre><code class="language-yml">elcodi.sitemap_builder.main</code></pre>
+<p>Calling this service, the DI will create you a SitemapBuilder instance, ready
+to be used.</p>
+<pre><code class="language-php">/**
+ * Class SitemapBuilder
+ */
+class SitemapBuilder
+{
+    /**
+     * Build sitemap builder
+     *
+     * @param string      $basepath Base path
+     * @param string|null $language Language
+     *
+     * @return string Generated data
+     */
+    public function build($basepath, $language = null);
+}</code></pre>
+<p>Elcodi generates as well a service for each dumper, using the same notation than
+builders.</p>
+<pre><code class="language-yml">elcodi.sitemap_dumper.main</code></pre>
+<p>Calling this service, the DI will create you a SitemapDumper instance, ready
+to be used.</p>
+<p>/**</p>
+<ul>
+<li>Class SitemapDumper
+*/
+class SitemapDumper
+{
+/**
+<ul>
+<li>Dump builder using a dumper</li>
+<li>
+</li>
+<li>@param string      $basepath Base path</li>
+<li>@param string|null $language Language
+*/
+public function dump($basepath, $language = null);
+}</li>
+</ul></li>
+</ul>
+<p>As you can see, both services require the basepath of the site. It means that
+you can call, for example, the <code>build</code> method using firstly the basepath
+<code>http://localhost:8000</code> and then <code>https://myurl.com</code>. Because this information
+does not belong to the instance but the call, is required to set this
+information when the sitemap is generated.</p>
+<p>You must define the language as well, but this second parameter is not required.
+This value is passed to the transformer, and your transformer implementation
+will decide what to do with this language.</p>
+<h3>Dumper Command</h3>
+<p>This command is intended for a single sitemap generation. You must provide the
+name of the builder as each builder has an associated dumper and a specific
+basepath used for this built and an optional language.</p>
+<pre><code class="language-bash">php app/console elcodi:sitemap:dump main http://localhost:8000
+php app/console elcodi:sitemap:dump main https://myurl.com
+php app/console elcodi:sitemap:dump main http://localhost:8000 --language=es</code></pre>
+<h3>Profiles</h3>
+<p>Using the dumper is so nice and easy if you just manage static languages, but
+how about if our site needs to generate several builders using, for example, all
+the enabled languages of our site?</p>
+<p>In order to solve this common problem, this bundle provides as well what we call
+a sitemap profile.</p>
+<pre><code class="language-yaml">elcodi_sitemap:
+
+    # A profile is a set of builders, grouped and combined with all available
+    # languages. Special for bulk actions
+    profile:
+        main:
+            # Service reference, result which is an array of languages
+            languages: elcodi.languages_iso_array
+            # Set of builder references
+            builders:
+                - main</code></pre>
+<p>There are two elements to be defined here, both required.</p>
+<p>First one we need to decide what builders we want to include in this profile.
+This is just a set of builders, an array. That easy.</p>
+<p>Second, we must define a service in our project, intended to return all enabled
+languages in our site. This service must return an array of locales.</p>
+<p>In elcodi we have a service called <code>elcodi.languages_iso</code>.</p>
+<pre><code class="language-yml">elcodi.languages_iso_array:
+    class: stdClass
+    factory: [@elcodi.languages_iso, toArray]</code></pre>
+<blockquote>
+<p>Yes, in Symfony a service can use the factory pattern to return a simple
+array using the stdClass keyword.</p>
+</blockquote>
+<p>Elcodi generates a service for each profile, using our standard. In our example,
+with given configuration we will have available a new public service.</p>
+<pre><code class="language-yml">elcodi.sitemap_profile.main</code></pre>
+<p>Calling this service, the DI will create you a SitemapProfile instance, ready
+to be used.</p>
+<pre><code class="language-php">/**
+ * Class SitemapProfile
+ */
+class SitemapProfile
+{
+    /**
+     * Build full profile
+     *
+     * @param string $basepath Basepath
+     *
+     * @return $this Self object
+     */
+    public function dump($basepath);
+}</code></pre>
+<h3>Profile Command</h3>
+<p>This command is intended for a profile generation. You must provide the
+name of the profile and a specific basepath used for this built.</p>
+<pre><code class="language-bash">php app/console elcodi:sitemap:profile main http://localhost:8000
+php app/console elcodi:sitemap:profile main https://myurl.com</code></pre>
                     </div>
 
                     <footer>

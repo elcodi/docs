@@ -101,15 +101,6 @@
     # A builder is a set of blocks and statics, grouped and saved in a file
     builder:
         main:
-            # You can define the name of the file, taking in account the locale
-            # used by using {_locale} format
-            path: %kernel.root_dir%/../web/sitemap/sitemap_{_locale}.xml
-            # Each builder can use a different renderer, by referencing the
-            # service definition
-            renderer: ~
-            # Each builder can use a different dumper, by referencing the
-            # service definition
-            dumper: ~
             # Set of block references
             blocks:
                 - enabled_products
@@ -117,6 +108,15 @@
             # Set of static references
             statics:
                 - store_homepage
+            # Each builder can use a different renderer, by referencing the
+            # service definition
+            renderer: ~
+            # Each builder can use a different dumper, by referencing the
+            # service definition
+            dumper: ~
+            # You can define the name of the file, taking in account the locale
+            # used by using {_locale} format
+            path: %kernel.root_dir%/../web/sitemap/sitemap_{_locale}.xml
 
     # A profile is a set of builders, grouped and combined with all available
     # languages. Special for bulk actions
