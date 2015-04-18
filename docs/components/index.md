@@ -1,4 +1,4 @@
 The Elcodi components
 =====================
 
-* [Sitemap](sitemap/component.md)
+* [Sitemap](sitemap.md)

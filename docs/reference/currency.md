@@ -1,3 +1,0 @@
-CurrencyBundle Reference
-========================
-
