@@ -16,25 +16,25 @@ life easier to find a certain bundle configuration because elcodi
 follows a common system-wide nomenclature for extension names as well.
 
 ```php
-    // Bundle Extension Class
+// Bundle Extension Class
 
-    /**
-     * @var string
-     *
-     * Extension name
-     */
-    const EXTENSION_NAME = 'elcodi_attribute';
+/**
+ * @var string
+ *
+ * Extension name
+ */
+const EXTENSION_NAME = 'elcodi_attribute';
 
 
-    /**
-     * Returns the extension alias, same value as extension name
-     *
-     * @return string The alias
-     */
-    public function getAlias()
-    {
-        return static::EXTENSION_NAME;
-    }
+/**
+ * Returns the extension alias, same value as extension name
+ *
+ * @return string The alias
+ */
+public function getAlias()
+{
+    return static::EXTENSION_NAME;
+}
 ```
 
 The ```AbstractConfiguration``` class is the base class for all bundle
@@ -45,24 +45,24 @@ mapping override. This configuration tree is always the same so there is
 no need to specify it each time on your custom extension.
 
 ```
-    // Bundle Extension Class
+// Bundle Extension Class
 
-    /**
-     * Return a new Configuration instance.
-     *
-     * If object returned by this method is an instance of
-     * ConfigurationInterface, extension will use the Configuration to read all
-     * bundle config definitions.
-     *
-     * Also will call getParametrizationValues method to load some config values
-     * to internal parameters.
-     *
-     * @return ConfigurationInterface Configuration file
-     */
-    protected function getConfigurationInstance()
-    {
-        return new Configuration(static::EXTENSION_NAME);
-    }
+/**
+ * Return a new Configuration instance.
+ *
+ * If object returned by this method is an instance of
+ * ConfigurationInterface, extension will use the Configuration to read all
+ * bundle config definitions.
+ *
+ * Also will call getParametrizationValues method to load some config values
+ * to internal parameters.
+ *
+ * @return ConfigurationInterface Configuration file
+ */
+protected function getConfigurationInstance()
+{
+    return new Configuration(static::EXTENSION_NAME);
+}
 ```
 
 The configuration class is precooked in the core bundles which already knows
@@ -89,34 +89,34 @@ location and which ones to load. If ```getConfigFiles``` returns an empty
 list then nothing will be loaded.
 
 ```php
-    // Bundle Extension Class
+// Bundle Extension Class
 
-    /**
-     * Get the Config file location
-     *
-     * @return string Config file location
-     */
-    public function getConfigFilesLocation()
-    {
-        return __DIR__ . '/../Resources/config';
-    }
+/**
+ * Get the Config file location
+ *
+ * @return string Config file location
+ */
+public function getConfigFilesLocation()
+{
+    return __DIR__ . '/../Resources/config';
+}
 
-    /**
-     * Config files to load
-     *
-     * @param array $config Configuration array
-     *
-     * @return array Config files
-     */
-    public function getConfigFiles(array $config)
-    {
-        return [
-            'factories',
-            'repositories',
-            'objectManagers',
-            'directors',
-        ];
-    }
+/**
+ * Config files to load
+ *
+ * @param array $config Configuration array
+ *
+ * @return array Config files
+ */
+public function getConfigFiles(array $config)
+{
+    return [
+        'factories',
+        'repositories',
+        'objectManagers',
+        'directors',
+    ];
+}
 ```
 
 Let's now override some mapping!
@@ -141,52 +141,52 @@ configuration into the container ```doctrine``` and ```elcodi_core```
 sections thereby achieving the wanted dynamic mapping behavior.
 
 ```php
-    // Bundle Extension Class
+// Bundle Extension Class
 
-    /**
-     * Get entities overrides.
-     *
-     * Result must be an array with:
-     * index: Original Interface
-     * value: Parameter where class is defined.
-     *
-     * @return array Overrides definition
-     */
-    public function getEntitiesOverrides()
-    {
-        return [
-            'Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface' => 'elcodi.entity.attribute.class',
-            'Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface' => 'elcodi.entity.attribute_value.class',
-        ];
-    }
+/**
+ * Get entities overrides.
+ *
+ * Result must be an array with:
+ * index: Original Interface
+ * value: Parameter where class is defined.
+ *
+ * @return array Overrides definition
+ */
+public function getEntitiesOverrides()
+{
+    return [
+        'Elcodi\Component\Attribute\Entity\Interfaces\AttributeInterface' => 'elcodi.entity.attribute.class',
+        'Elcodi\Component\Attribute\Entity\Interfaces\ValueInterface' => 'elcodi.entity.attribute_value.class',
+    ];
+}
 
-    /**
-     * Load Parametrization definition
-     *
-     * return array(
-     *      'parameter1' => $config['parameter1'],
-     *      'parameter2' => $config['parameter2'],
-     *      ...
-     * );
-     *
-     * @param array $config Bundles config values
-     *
-     * @return array Parametrization values
-     */
-    protected function getParametrizationValues(array $config)
-    {
-        return [
-            "elcodi.entity.attribute.class" => $config['mapping']['attribute']['class'],
-            "elcodi.entity.attribute.mapping_file" => $config['mapping']['attribute']['mapping_file'],
-            "elcodi.entity.attribute.manager" => $config['mapping']['attribute']['manager'],
-            "elcodi.entity.attribute.enabled" => $config['mapping']['attribute']['enabled'],
+/**
+ * Load Parametrization definition
+ *
+ * return array(
+ *      'parameter1' => $config['parameter1'],
+ *      'parameter2' => $config['parameter2'],
+ *      ...
+ * );
+ *
+ * @param array $config Bundles config values
+ *
+ * @return array Parametrization values
+ */
+protected function getParametrizationValues(array $config)
+{
+    return [
+        "elcodi.entity.attribute.class" => $config['mapping']['attribute']['class'],
+        "elcodi.entity.attribute.mapping_file" => $config['mapping']['attribute']['mapping_file'],
+        "elcodi.entity.attribute.manager" => $config['mapping']['attribute']['manager'],
+        "elcodi.entity.attribute.enabled" => $config['mapping']['attribute']['enabled'],
 
-            "elcodi.entity.attribute_value.class" => $config['mapping']['value']['class'],
-            "elcodi.entity.attribute_value.mapping_file" => $config['mapping']['value']['mapping_file'],
-            "elcodi.entity.attribute_value.manager" => $config['mapping']['value']['manager'],
-            "elcodi.entity.attribute_value.enabled" => $config['mapping']['value']['enabled'],
-        ];
-    }
+        "elcodi.entity.attribute_value.class" => $config['mapping']['value']['class'],
+        "elcodi.entity.attribute_value.mapping_file" => $config['mapping']['value']['mapping_file'],
+        "elcodi.entity.attribute_value.manager" => $config['mapping']['value']['manager'],
+        "elcodi.entity.attribute_value.enabled" => $config['mapping']['value']['enabled'],
+    ];
+}
 ```
 
 As you can see in the last method we can also provide parameterizable values
@@ -200,8 +200,6 @@ places where we just hook configuration files that usually just have service
 definitions for our glue services.
 
 ```php
-<?php
-
 namespace Elcodi\Admin\AttributeBundle\DependencyInjection;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
@@ -211,51 +209,51 @@ use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;
  */
 class AdminAttributeExtension extends AbstractExtension
 {
-    /**
-     * @var string
-     *
-     * Extension name
-     */
-    const EXTENSION_NAME = 'admin_attribute';
+/**
+ * @var string
+ *
+ * Extension name
+ */
+const EXTENSION_NAME = 'admin_attribute';
 
-    /**
-     * Get the Config file location
-     *
-     * @return string Config file location
-     */
-    public function getConfigFilesLocation()
-    {
-        return __DIR__ . '/../Resources/config';
-    }
+/**
+ * Get the Config file location
+ *
+ * @return string Config file location
+ */
+public function getConfigFilesLocation()
+{
+    return __DIR__ . '/../Resources/config';
+}
 
-    /**
-     * Config files to load
-     *
-     * return array(
-     *      'file1.yml',
-     *      'file2.yml',
-     *      ...
-     * );
-     *
-     * @param array $config Config
-     *
-     * @return array Config files
-     */
-    public function getConfigFiles(array $config)
-    {
-        return [
-            'formTypes',
-        ];
-    }
+/**
+ * Config files to load
+ *
+ * return array(
+ *      'file1.yml',
+ *      'file2.yml',
+ *      ...
+ * );
+ *
+ * @param array $config Config
+ *
+ * @return array Config files
+ */
+public function getConfigFiles(array $config)
+{
+    return [
+        'formTypes',
+    ];
+}
 
-    /**
-     * Returns the extension alias, same value as extension name
-     *
-     * @return string The alias
-     */
-    public function getAlias()
-    {
-        return self::EXTENSION_NAME;
-    }
+/**
+ * Returns the extension alias, same value as extension name
+ *
+ * @return string The alias
+ */
+public function getAlias()
+{
+    return self::EXTENSION_NAME;
+}
 }
 ```
