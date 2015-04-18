@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../img/favicon.ico">
 
-	<title>Reference - Elcodi Documentation</title>
+	<title>Home - Elcodi Documentation</title>
 
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -60,31 +60,159 @@
                 
                 
                     <li >
-                        <a href="../quick-start/">Quick Start</a>
+                        <a href="../quick-start/">Quick start</a>
                     </li>
                 
                 
                 
-                    <li >
-                        <a href="../book/">Book</a>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="attribute/">Attribute</a>
+                            </li>
+                        
+                            <li >
+                                <a href="banner/">Banner</a>
+                            </li>
+                        
+                            <li >
+                                <a href="cart-coupon/">Cart coupon</a>
+                            </li>
+                        
+                            <li >
+                                <a href="cart/">Cart</a>
+                            </li>
+                        
+                            <li >
+                                <a href="comment/">Comment</a>
+                            </li>
+                        
+                            <li >
+                                <a href="configuration/">Configuration</a>
+                            </li>
+                        
+                            <li >
+                                <a href="coupon/">Coupon</a>
+                            </li>
+                        
+                            <li class="active">
+                                <a href="./">Home</a>
+                            </li>
+                        
+                            <li >
+                                <a href="sitemap/">Sitemap</a>
+                            </li>
+                        
+                        </ul>
                     </li>
                 
                 
                 
-                    <li >
-                        <a href="../cookbook/">Cookbook</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Components <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../components/">Home</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../components/sitemap/">Sitemap</a>
+                            </li>
+                        
+                        </ul>
                     </li>
                 
                 
                 
-                    <li >
-                        <a href="../components/">Components</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../book/">Home</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../book/standards/classes/">Classes</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../book/standards/code/">Code</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../book/standards/dependency-injection/">Dependency injection</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../book/standards/packages-structure/">Packages structure</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../book/workflows/cart/">Cart</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../book/bundles/extensions/">Extensions</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../book/philosophy/elcodi/">Elcodi</a>
+                            </li>
+                        
+                        </ul>
                     </li>
                 
                 
                 
-                    <li class="active">
-                        <a href="./">Reference</a>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../cookbook/">Home</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../cookbook/caveats/test-suite/">Test suite</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../cookbook/installation/dependent-bundles/">Dependent bundles</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../cookbook/overwrite/entity/">Entity</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../cookbook/overwrite/parameter/">Parameter</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../cookbook/overwrite/service/">Service</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../cookbook/implementation/entity/">Entity</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../cookbook/implementation/factory/">Factory</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../cookbook/implementation/form-type/">Form type</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../cookbook/implementation/repository/">Repository</a>
+                            </li>
+                        
+                        </ul>
                     </li>
                 
                 
@@ -97,12 +225,12 @@
                 
                 
                 <li >
-                    <a rel="next" href="../components/">
+                    <a rel="next" href="coupon/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
-                <li class="disabled">
-                    <a rel="prev" >
+                <li >
+                    <a rel="prev" href="sitemap/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -132,15 +260,14 @@ as app/config/config.yml? In this section, all the available configuration is
 broken down by the key (e.g. elcodi_product) that defines each possible section 
 of your Elcodi configuration.</p>
 <ul>
-<li><a href="attribute.md">Attribute</a></li>
-<li><a href="banner.md">Banner</a></li>
-<li><a href="cart.md">Cart</a></li>
-<li><a href="cart-coupon.md">CartCoupon</a></li>
-<li><a href="comment.md">Comment</a></li>
-<li><a href="configuration.md">Configuration</a></li>
-<li><a href="coupon.md">Coupon</a></li>
-<li><a href="currency.md">Currency</a></li>
-<li><a href="sitemap.md">Sitemap</a></li>
+<li><a href="attribute/">Attribute</a></li>
+<li><a href="banner/">Banner</a></li>
+<li><a href="cart/">Cart</a></li>
+<li><a href="cart-coupon/">CartCoupon</a></li>
+<li><a href="comment/">Comment</a></li>
+<li><a href="configuration/">Configuration</a></li>
+<li><a href="coupon/">Coupon</a></li>
+<li><a href="sitemap/">Sitemap</a></li>
 </ul></div>
             
         </div>
@@ -160,7 +287,7 @@ of your Elcodi configuration.</p>
 
         <!--
         MkDocs version  : 0.12.1
-        Docs Build Date : 2015-04-18 22:06:03.824765
+        Docs Build Date : 2015-04-18 22:26:09.989066
         -->
     </body>
 </html>
