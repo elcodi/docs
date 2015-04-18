@@ -13,5 +13,4 @@ of your Elcodi configuration.
 * [Comment](comment.md)
 * [Configuration](configuration.md)
 * [Coupon](coupon.md)
-* [Currency](currency.md)
 * [Sitemap](sitemap.md)
