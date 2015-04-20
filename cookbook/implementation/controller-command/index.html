@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-	<title>Factory - Elcodi Documentation</title>
+	<title>Controller command - Elcodi Documentation</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -196,16 +196,16 @@
                                 <a href="../../overwrite/service/">Service</a>
                             </li>
                         
-                            <li >
-                                <a href="../controller-command/">Controller command</a>
+                            <li class="active">
+                                <a href="./">Controller command</a>
                             </li>
                         
                             <li >
                                 <a href="../entity/">Entity</a>
                             </li>
                         
-                            <li class="active">
-                                <a href="./">Factory</a>
+                            <li >
+                                <a href="../factory/">Factory</a>
                             </li>
                         
                             <li >
@@ -229,12 +229,12 @@
                 
                 
                 <li >
-                    <a rel="next" href="../entity/">
+                    <a rel="next" href="../../overwrite/service/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../form-type/">
+                    <a rel="prev" href="../entity/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -251,123 +251,152 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#how-to-implement-a-factory">How to Implement a Factory</a></li>
+        <li class="main active"><a href="#how-to-implement-a-controller-or-a-command">How to Implement a Controller or a Command</a></li>
         
-            <li><a href="#factory-as-a-service">Factory as a service</a></li>
+            <li><a href="#services-in-elcodi">Services in Elcodi</a></li>
+        
+            <li><a href="#framework-controllers-in-bamboo">Framework Controllers in Bamboo</a></li>
+        
+            <li><a href="#framework-commands-in-bamboo">Framework Commands in Bamboo</a></li>
+        
+            <li><a href="#annotations-in-bamboo-controllers">Annotations in Bamboo Controllers</a></li>
         
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="how-to-implement-a-factory">How to Implement a Factory</h1>
-<p>Factories usage is one of the most distinctive things in Elcodi architecture
-style. Every single entity in Elcodi ecosystem is created using its own Factory,
-so by default, an entity should never define its own construction state.</p>
-<p>We strongly believe that an entity is not responsible of how it should be created,
-so the factory holds this responsibility. This means that an entity should never
-implement the <code>__construct()</code> method and it should never initialize any variable.</p>
-<p>Because in Elcodi all entity namespaces are defined by a parameter, any factory
-must use these parameters to create an instance.</p>
-<pre><code class="php">use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
+<h1 id="how-to-implement-a-controller-or-a-command">How to Implement a Controller or a Command</h1>
+<p>Controllers and Commands in Elcodi are exactly the same than Controllers and 
+Commands in Symfony. No difference between them. But in Elcodi we have a strong
+philosophy about how to create them in order to be valid or usable in the Open
+Source environment.</p>
+<h3 id="services-in-elcodi">Services in Elcodi</h3>
+<p>All Elcodi Controllers and Commands are defined as services. This is because we
+are <em>Overwriting Oriented Programming</em> and we have in mind that every single
+implementation sensible to be changed between projects must be easily 
+customized.</p>
+<p>In Symfony, and because Dependency Injection definition has a very documented 
+overwriting strategy, we have decided that everything must be defined as a 
+service.</p>
+<p>We have a definition about how a Controller and a Command must be registered in
+your DI container</p>
+<pre><code class="yml">elcodi.controller.image_upload
+elcodi.command.populate_currency_rates
+</code></pre>
+
+<p>Of course, and because only should depend on the Symfony Components, but never
+the Symfony Framework nor the FrameworkBundle, both implementations must extend</p>
+<h3 id="framework-controllers-in-bamboo">Framework Controllers in Bamboo</h3>
+<p>When you work in Bamboo (or in your project on top of Elcodi Components and 
+Bundles) we don't recommend the usage of Controllers and Commands as services.
+We think that both implementations are Point of Entries and should be Framework
+related.</p>
+<p>This means that your Controllers or Commands should never have business logic,
+and should should place all this logic in your service layer.</p>
+<p>So, said that, we recommend the usage of <em>FrameworkBundle</em> Controller class to
+endow your controllers with an easy access to the DI container and a good set of
+pre-built methods.</p>
+<pre><code class="php">use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Class LanguageFactory
+ * Cart controllers
  */
-class LanguageFactory extends AbstractFactory
+class CartController extends Controller
+{
+}
+</code></pre>
+
+<h3 id="framework-commands-in-bamboo">Framework Commands in Bamboo</h3>
+<p>We have the same thought with Commands than with Controllers.</p>
+<pre><code class="php">use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+
+/**
+ * Cart controllers
+ */
+class MyCommand extends ContainerAwareCommand
+{
+}
+</code></pre>
+
+<h3 id="annotations-in-bamboo-controllers">Annotations in Bamboo Controllers</h3>
+<p>In Bamboo, we use annotations in all our controllers in order to make more 
+understandable the code and to focus only on business logic. Annotations solve
+repetitive things and should be documented perfectly.</p>
+<blockquote>
+<p>Magic? Yes, of course, same magic than yml readers, than Container 
+compilation, than service builds... so what?</p>
+</blockquote>
+<p>For this reason, we are using 
+<a href="http://github.com/mmoreram/ControllerExtraBundle">ControllerExtraBundle</a> and
+<a href="https://github.com/sensiolabs/SensioFrameworkExtraBundle">SensioFrameworkExtraBundle</a>.</p>
+<p>Let's see an example.</p>
+<pre><code class="php">use Mmoreram\ControllerExtraBundle\Annotation\Entity as AnnotationEntity;
+use Mmoreram\ControllerExtraBundle\Annotation\Form as AnnotationForm;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+/**
+ * Cart controllers
+ *
+ * @Route(
+ *      path = &quot;/cart&quot;,
+ * )
+ */
+class CartController extends Controller
 {
     /**
-     * @var string
+     * Cart view
      *
-     * Entity namespace
+     * @param FormView      $formView Form view
+     * @param CartInterface $cart     Cart
+     *
+     * @return Response Response
+     *
+     * @Route(
+     *      path = &quot;&quot;,
+     *      name = &quot;store_cart_view&quot;,
+     *      methods = {&quot;GET&quot;}
+     * )
+     *
+     * @AnnotationEntity(
+     *      class = {
+     *          &quot;factory&quot; = &quot;elcodi.wrapper.cart&quot;,
+     *          &quot;method&quot; = &quot;loadCart&quot;,
+     *          &quot;static&quot; = false,
+     *      },
+     *      name = &quot;cart&quot;
+     * )
+     * @AnnotationForm(
+     *      class = &quot;store_cart_form_type_cart&quot;,
+     *      name  = &quot;formView&quot;,
+     *      entity = &quot;cart&quot;,
+     * )
      */
-    protected $entityNamespace;
+    public function viewAction(
+        FormView $formView,
+        CartInterface $cart
+    ) {
+        // ...
 
-    /**
-     * Set Entity Namespace
-     *
-     * @param string $entityNamespace Entity namespace
-     *
-     * @return $this Self object
-     */
-    public function setEntityNamespace($entityNamespace)
-    {
-        $this-&gt;entityNamespace = $entityNamespace;
-
-        return $this;
-    }
-
-    /**
-     * Creates an instance of a simple language.
-     *
-     * This method must return always an empty instance for related entity
-     *
-     * @return LanguageInterface Empty entity
-     */
-    public function create()
-    {
-        /**
-         * @var LanguageInterface $language
-         */
-        $classNamespace = $this-&gt;getEntityNamespace();
-        $language = new $classNamespace();
-
-        $language-&gt;setEnabled(false);
-
-        return $language;
+        return $this-&gt;renderTemplate(
+            'Pages:cart-view.html.twig',
+            [
+                // ...
+            ]
+        );
     }
 }
 </code></pre>
 
-<p>As you can see, the namespace is injected, and when the factory creates the 
-instance, uses this namespace. With this strategy, the factory becomes uncoupled
-from the entity implementation.</p>
-<p>In order to make things easier, there is a Trait in package <code>elcodi/core</code>, 
-designed to be an abstraction of a Factory. Extending this abstract class, you
-can access to <code>$this-&gt;getEntityNamespace()</code>.</p>
-<pre><code class="php">use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
-use Elcodi\Component\Language\Entity\Interfaces\LanguageInterface;
-
-/**
- * Class LanguageFactory
- */
-class LanguageFactory extends AbstractFactory
-{
-    /**
-     * Creates an instance of a simple language.
-     *
-     * This method must return always an empty instance for related entity
-     *
-     * @return LanguageInterface Empty entity
-     */
-    public function create()
-    {
-        /**
-         * @var LanguageInterface $language
-         */
-        $classNamespace = $this-&gt;getEntityNamespace();
-        $language = new $classNamespace();
-
-        $language-&gt;setEnabled(false);
-
-        return $language;
-    }
-}
-</code></pre>
-
-<h3 id="factory-as-a-service">Factory as a service</h3>
-<p>Because the factory dependencies need to be resolved, we must define the factory
-as a service.</p>
-<pre><code class="yaml">services:
-
-    #
-    # Factory for entity language
-    #
-    elcodi.factory.language:
-        class: %elcodi.factory.language.class%
-        calls:
-            - [setEntityNamespace, [&quot;%elcodi.entity.language.class%&quot;]]
-</code></pre></div>
+<p>You can find some documentation of both annotation packages</p>
+<ul>
+<li><a href="https://github.com/mmoreram/ControllerExtraBundle/blob/master/README.md">ControllerExtraBundle</a></li>
+<li><a href="http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html">SensioFrameworkExtraBundle</a></li>
+</ul>
+<p>Please, before using annotations in your project make sure that you know how
+they work and how to use them. Read the documentation of both packages and try
+to understand their meaning.</p></div>
             
         </div>
 
@@ -386,7 +415,7 @@ as a service.</p>
 
         <!--
         MkDocs version  : 0.12.1
-        Docs Build Date : 2015-04-20 14:28:03.692148
+        Docs Build Date : 2015-04-20 14:28:03.684954
         -->
     </body>
 </html>
