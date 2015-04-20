@@ -11,6 +11,7 @@ scenario.
 * [How to Implement a Factory](implementation/factory.md)
 * [How to Implement a Repository](implementation/repository.md)
 * [How to Implement a Form Type](implementation/form-type.md)
+* [How to Implement a Controller or a Command](implementation/controller-command.md)
 
 ### Installation
 
