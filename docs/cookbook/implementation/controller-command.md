@@ -13,11 +13,11 @@ are *Overwriting Oriented Programming* and we have in mind that every single
 implementation sensible to be changed between projects must be easily 
 customized.
 
-In Symfony, and because Dependency Injection definition has a very documented 
+In Symfony, and because Dependency Injection definition has a very well documented
 overwriting strategy, we have decided that everything must be defined as a 
 service.
 
-We have a definition about how a Controller and a Command must be registered in
+We have a convention about how a Controller and a Command must be registered in
 your DI container
 
 ``` yml
@@ -25,21 +25,22 @@ elcodi.controller.image_upload
 elcodi.command.populate_currency_rates
 ```
 
-Of course, and because only should depend on the Symfony Components, but never
-the Symfony Framework nor the FrameworkBundle, both implementations must extend
+Of course, and because it should only depend on the Symfony Components, but never
+the Symfony Framework nor the FrameworkBundle, both implementations must not extend
+Framework classes.
 
 ### Framework Controllers in Bamboo
 
 When you work in Bamboo (or in your project on top of Elcodi Components and 
 Bundles) we don't recommend the usage of Controllers and Commands as services.
-We think that both implementations are Point of Entries and should be Framework
+We think that both implementations are Entry Points and should be Framework
 related.
 
 This means that your Controllers or Commands should never have business logic,
-and should should place all this logic in your service layer.
+and should place all this logic in your service layer.
 
-So, said that, we recommend the usage of *FrameworkBundle* Controller class to
-endow your controllers with an easy access to the DI container and a good set of
+Having said that, we recommend the usage of *FrameworkBundle* Controller class to
+endow your controllers with easy access to the DI container and a good set of
 pre-built methods.
 
 ``` php
@@ -55,7 +56,7 @@ class CartController extends Controller
 
 ### Framework Commands in Bamboo
 
-We have the same thought with Commands than with Controllers.
+We have the same opinion for Commands and Controllers.
 
 ``` php
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -70,11 +71,11 @@ class MyCommand extends ContainerAwareCommand
 
 ### Annotations in Bamboo Controllers
 
-In Bamboo, we use annotations in all our controllers in order to make more 
-understandable the code and to focus only on business logic. Annotations solve
-repetitive things and should be documented perfectly.
+In Bamboo, we use annotations in all our controllers in order to make the code more
+understandable and to focus only on business logic. Annotations solve
+repetitive things and should be perfectly documented.
 
-> Magic? Yes, of course, same magic than yml readers, than Container 
+> Magic? Yes, of course, same magic than yml readers, than Container
 > compilation, than service builds... so what?
 
 For this reason, we are using 
