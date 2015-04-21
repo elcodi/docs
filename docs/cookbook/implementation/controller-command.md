@@ -20,7 +20,7 @@ service.
 We have a definition about how a Controller and a Command must be registered in
 your DI container
 
-``` yml
+``` yaml
 elcodi.controller.image_upload
 elcodi.command.populate_currency_rates
 ```

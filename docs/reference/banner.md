@@ -1,7 +1,7 @@
 BannerBundle Reference
 ======================
 
-```yaml
+``` yaml
 elcodi_banner:
     
     mapping:

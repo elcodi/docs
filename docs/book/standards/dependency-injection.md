@@ -10,7 +10,7 @@ start with `elcodi.`.
 
 For example
 
-``` yml
+``` yaml
 elcodi.event_dispatcher.cart
 elcodi.manager.cart
 ```
@@ -22,7 +22,7 @@ We have structured all definitions in three or four levels.
 Most of services will have three levels of definition. Let's analyze previous
 examples:
 
-``` yml
+``` yaml
 elcodi.event_dispatcher.cart
 ```
 
@@ -33,7 +33,7 @@ definition spectre.
 in this example our service will be an EventDispatcher.
 We have some examples of different kind of services in our project
 
-``` yml
+``` yaml
 elcodi.event_dispatcher.cart
 elcodi.event_listener.address_clone_update_carts
 elcodi.manager.cart
@@ -63,7 +63,7 @@ service is not a permanent class but an adapter of an existing port.
 **Third level** is the name of the port. In this example our port is
 `currency_exchange_rate`, a way of calculating rates between currencies.
 
-``` yml
+``` yaml
 elcodi.adapter.currency_exchange_rate.open_exchange
 ```
 

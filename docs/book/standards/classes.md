@@ -58,7 +58,7 @@ namespaces inside the Trait classes.
 The way of solving this is never using use statements in a Trait, and always 
 using all the namespace when referencing a PHP namespace.
 
-```
+``` php
 trait PriceTrait
 {
     /**
