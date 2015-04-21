@@ -5,7 +5,7 @@ A component must be treated as a simple PHP library. This means that it must be
 framework agnostic. At the beginning, Elcodi was a set of Bundles, divided by
 concerns or boundaries, and implemented as a single symfony-framework Bundle.
 
-This was because of different opinions, of course, like every single
+This was the root of some disagreements, and of course, like every single
 implementation of Open Source, but we noticed that there was an opinion repeated
 once and again by some users.
 
