@@ -1,7 +1,7 @@
 CouponBundle Reference
 ======================
 
-```yaml
+``` yaml
 elcodi_coupon:
     
     mapping:

@@ -1,7 +1,7 @@
 AttributeBundle Reference
 =========================
 
-```yaml
+``` yaml
 elcodi_attribute:
     
     mapping:

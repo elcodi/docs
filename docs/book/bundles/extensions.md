@@ -15,7 +15,7 @@ root element of the configuration tree of the extension. And it will make
 life easier to find a certain bundle configuration because elcodi
 follows a common system-wide nomenclature for extension names as well.
 
-```php
+``` php
 // Bundle Extension Class
 
 /**
@@ -44,7 +44,7 @@ implemented mapping configuration node for configuring the respective entity
 mapping override. This configuration tree is always the same so there is
 no need to specify it each time on your custom extension.
 
-```
+``` php
 // Bundle Extension Class
 
 /**
@@ -88,7 +88,7 @@ one. The only thing told to the extension class is the configuration files
 location and which ones to load. If ```getConfigFiles``` returns an empty
 list then nothing will be loaded.
 
-```php
+``` php
 // Bundle Extension Class
 
 /**
@@ -140,7 +140,7 @@ The ```AbstractExtension``` takes this array and prepends this
 configuration into the container ```doctrine``` and ```elcodi_core```
 sections thereby achieving the wanted dynamic mapping behavior.
 
-```php
+``` php
 // Bundle Extension Class
 
 /**
@@ -199,7 +199,7 @@ for the core bundles anymore since this is already done. So they become
 places where we just hook configuration files that usually just have service
 definitions for our glue services.
 
-```php
+``` php
 namespace Elcodi\Admin\AttributeBundle\DependencyInjection;
 
 use Elcodi\Bundle\CoreBundle\DependencyInjection\Abstracts\AbstractExtension;

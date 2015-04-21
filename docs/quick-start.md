@@ -63,7 +63,7 @@ if you have not yet installed Composer, download it following the instructions
 on [http://getcomposer.org/](http://getcomposer.org/) or just run the following
 command:
 
-```bash
+``` bash
     $ curl -s http://getcomposer.org/installer | php
 ```
 
@@ -76,7 +76,7 @@ use any version, but we're still creating new features, fixing some issues and
 errors, and building our first release, so be sure you are not using master, but
 a closed version of the package.
 
-```bash
+``` bash
     $ php composer.phar create-project elcodi/bamboo path/to/your/store/ 0.5.*
 ```
 
@@ -85,7 +85,7 @@ a closed version of the package.
 
 Enter your directory to start the configuration step
 
-```bash
+``` bash
     $ cd path/
 ```
 
@@ -94,7 +94,7 @@ Enter your directory to start the configuration step
 Now we should create the database and all the application schema. Symfony
 provides you an easy way for doing that.
 
-```bash
+``` bash
     $ php app/console doctrine:database:create
     $ php app/console doctrine:schema:create
 ```
@@ -103,7 +103,7 @@ We also load some fixtures to show on our store. This fixtures will set your
 store in a testing mode, with some categories, some manufacturers and a bunch of
 t-shirts. Only for testing purposes :)
 
-```bash
+``` bash
     $ php app/console doctrine:fixtures:load --fixtures="src/Elcodi/Fixtures" --no-interaction
 ```
 
@@ -112,7 +112,7 @@ You can also add the geo information for any country. Just find the two letters
 country you want to load and launch the following command changing ES with your
 code.
 
-```bash
+``` bash
     $ php app/console elcodi:locations:populate ES
 ```
 
@@ -122,7 +122,7 @@ code.
 
 Hey, we have some templates for you! Be sure to load 'em all!
 
-```bash
+``` bash
     $ php app/console elcodi:templates:load
     $ php app/console elcodi:templates:enable StoreTemplateBundle
 ```
@@ -136,7 +136,7 @@ folder.
 
 To install load these plugins, use this command
 
-```bash
+``` bash
     $ php app/console elcodi:plugins:load
 ```
 
@@ -146,7 +146,7 @@ When a store is created it's created "under construction", we can disable that
 mode from the command line. Otherwise, you will not be able to view your new
 awesome store.
 
-```bash
+``` bash
     $ php app/console elcodi:configuration:set store.under_construction "0"
     $ php app/console elcodi:configuration:set store.name "\"My bamboo store\""
 ```
@@ -157,7 +157,7 @@ awesome store.
 
 Finally our store is ready to run :)
 
-```bash
+``` bash
    php app/console server:run
 ```
 
@@ -172,14 +172,14 @@ store interface for your customers and some nice features for administrating it.
 You can start using these credentials we've already created for you. For the
 admin panel use
 
-```
+``` text
 Admin username: admin@admin.com
 Admin password: 1234
 ```
 
 And for the store, use this Customer credentials
 
-```
+``` text
 Customer username: customer@customer.com
 Customer password: 1234
 ```
@@ -199,7 +199,7 @@ yourself that all the cases we've been working on are actually green. We are
 using Behat and PHPUnit, so you only need to execute all suites by using this
 piece of code.
 
-```bash
+``` bash
 php bin/behat
 php bin/phpunit -c app
 ```

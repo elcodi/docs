@@ -41,7 +41,7 @@ rm -rf /tmp/*.backup.database
 
 Running the test suite for elcodi/bamboo is also simple:
 
-```
+``` bash
 php bin/behat
 php bin/phpunit
 ```

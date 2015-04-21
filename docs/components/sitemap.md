@@ -12,7 +12,7 @@ of sitemap implementation (each element), to the final profiling.
 When we talk about a block, we are really talking about a specific set of 
 entities provided by a specific repository, for example all enabled products.
 
-``` yml
+``` yaml
 # Each block defines a way of creating dynamically a set of elements of a
 # sitemap file, each one mapped from a database entry
 blocks:
@@ -67,7 +67,7 @@ interface SitemapTransformerInterface
 
 Then we need to notice the SitemapBundle the name of the service.
 
-``` yml
+``` yaml
 # Each block defines a way of creating dynamically a set of elements of a
 # sitemap file, each one mapped from a database entry
 blocks:
@@ -83,7 +83,7 @@ retrieved from our database. For this reason you must define as well the
 repository service, the method used and the arguments for such method.
 
 
-``` yml
+``` yaml
 # Each block defines a way of creating dynamically a set of elements of a
 # sitemap file, each one mapped from a database entry
 blocks:
@@ -103,7 +103,7 @@ that every block definition is carefully defined and configured.
 Finally we can define the `changeFrequence` and the `priority` elements. Both 
 values will be used for all block instances. They are not required.
 
-``` yml
+``` yaml
 # Each block defines a way of creating dynamically a set of elements of a
 # sitemap file, each one mapped from a database entry
 blocks:
@@ -265,7 +265,7 @@ Elcodi generates a Dependency Injection service for each builder using our
 standard. In our example, with given configuration we will have available a new
 public service.
 
-``` yml
+``` yaml
 elcodi.sitemap_builder.main
 ```
 
@@ -293,7 +293,7 @@ class SitemapBuilder
 Elcodi generates as well a service for each dumper, using the same notation than
 builders.
 
-``` yml
+``` yaml
 elcodi.sitemap_dumper.main
 ```
 
@@ -369,7 +369,7 @@ languages in our site. This service must return an array of locales.
 
 In elcodi we have a service called `elcodi.languages_iso`.
 
-``` yml
+``` yaml
 elcodi.languages_iso_array:
     class: stdClass
     factory: [@elcodi.languages_iso, toArray]
@@ -381,7 +381,7 @@ elcodi.languages_iso_array:
 Elcodi generates a service for each profile, using our standard. In our example, 
 with given configuration we will have available a new public service.
 
-``` yml
+``` yaml
 elcodi.sitemap_profile.main
 ```
 
