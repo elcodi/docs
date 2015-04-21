@@ -6,7 +6,7 @@ reduce boilerplate, enforce the opinions of the framework, improve or ensure
 functioning of the underlying Symfony framework and overall make life easier
 working with the common needs of elcodi bundles.
 
-```AbstractExtension``` is the base class that needs to be extended when
+`AbstractExtension` is the base class that needs to be extended when
 building your own bundle extension classes. This class takes care of the way
 in which configuration is handled in elcodi framework.
 Firstly the class require an extension name which is a snake case version of
@@ -37,8 +37,8 @@ public function getAlias()
 }
 ```
 
-The ```AbstractConfiguration``` class is the base class for all bundle
-configurations. Together with the ```AbstractExtension``` form the
+The `AbstractConfiguration` class is the base class for all bundle
+configurations. Together with the `AbstractExtension` form the
 foundation to enforce elcodi practices in bundles. It also has built-in the
 implemented mapping configuration node for configuring the respective entity
 mapping override. This configuration tree is always the same so there is
@@ -85,7 +85,7 @@ Let's for example load configuration files!
 One has to only list the names of the configuration files that the bundle
 should load and they will be automatically loaded via a file locator one by
 one. The only thing told to the extension class is the configuration files
-location and which ones to load. If ```getConfigFiles``` returns an empty
+location and which ones to load. If `getConfigFiles` returns an empty
 list then nothing will be loaded.
 
 ``` php
@@ -125,19 +125,19 @@ Overriding the mapping on the doctrine section of the container cannot
 be done simply via a compiler pass or on the extension, especially
 when we also want to use parametrized class names. Elcodi base classes
 have already solved this for us using the prepend Symfony container
-feature via implementing the ```PrependExtensionInterface``` interface.
+feature via implementing the `PrependExtensionInterface` interface.
 This method allows us to override sections of other bundles and yet
 keep the flexibility of using parameters that are resolved in the
 container and that can be customized.
 
 If we are to override mapping then our bundle extension should
-implement the interface ```EntitiesOverridableExtensionInterface```
-in addition to extending the ```AbstractExtension``` class. 
-The method ```getEntitiesOverrides``` from the interface should return
+implement the interface `EntitiesOverridableExtensionInterface`
+in addition to extending the `AbstractExtension` class.
+The method `getEntitiesOverrides` from the interface should return
 a key value array where the key is the original interface and the value
 is the fully qualified class name or parameter.
-The ```AbstractExtension``` takes this array and prepends this
-configuration into the container ```doctrine``` and ```elcodi_core```
+The `AbstractExtension` takes this array and prepends this
+configuration into the container `doctrine` and `elcodi_core`
 sections thereby achieving the wanted dynamic mapping behavior.
 
 ``` php
