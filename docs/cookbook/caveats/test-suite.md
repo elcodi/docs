@@ -43,7 +43,7 @@ Running the test suite for elcodi/bamboo is also simple:
 
 ``` bash
 php bin/behat
-php bin/phpunit
+php bin/phpunit -c app/
 ```
 
 As explained before, Bamboo tests also can be ran against a `tmpfs` unit.
