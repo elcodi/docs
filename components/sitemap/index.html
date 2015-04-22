@@ -280,7 +280,7 @@ of sitemap implementation (each element), to the final profiling.</p>
 <h3 id="blocks">Blocks</h3>
 <p>When we talk about a block, we are really talking about a specific set of 
 entities provided by a specific repository, for example all enabled products.</p>
-<pre><code class="yml"># Each block defines a way of creating dynamically a set of elements of a
+<pre><code class="yaml"># Each block defines a way of creating dynamically a set of elements of a
 # sitemap file, each one mapped from a database entry
 blocks:
     enabled_products:
@@ -331,7 +331,7 @@ interface SitemapTransformerInterface
 </code></pre>
 
 <p>Then we need to notice the SitemapBundle the name of the service.</p>
-<pre><code class="yml"># Each block defines a way of creating dynamically a set of elements of a
+<pre><code class="yaml"># Each block defines a way of creating dynamically a set of elements of a
 # sitemap file, each one mapped from a database entry
 blocks:
     enabled_products:
@@ -345,7 +345,7 @@ blocks:
 <p>Said that, we need to define as well how this product collection must be 
 retrieved from our database. For this reason you must define as well the 
 repository service, the method used and the arguments for such method.</p>
-<pre><code class="yml"># Each block defines a way of creating dynamically a set of elements of a
+<pre><code class="yaml"># Each block defines a way of creating dynamically a set of elements of a
 # sitemap file, each one mapped from a database entry
 blocks:
     enabled_products:
@@ -362,7 +362,7 @@ blocks:
 that every block definition is carefully defined and configured. </p>
 <p>Finally we can define the <code>changeFrequence</code> and the <code>priority</code> elements. Both 
 values will be used for all block instances. They are not required.</p>
-<pre><code class="yml"># Each block defines a way of creating dynamically a set of elements of a
+<pre><code class="yaml"># Each block defines a way of creating dynamically a set of elements of a
 # sitemap file, each one mapped from a database entry
 blocks:
     enabled_products:
@@ -504,7 +504,7 @@ contain a placeholder for the sitemap language, using <code>{_locale}</code>.</p
 <p>Elcodi generates a Dependency Injection service for each builder using our
 standard. In our example, with given configuration we will have available a new
 public service.</p>
-<pre><code class="yml">elcodi.sitemap_builder.main
+<pre><code class="yaml">elcodi.sitemap_builder.main
 </code></pre>
 
 <p>Calling this service, the DI will create you a SitemapBuilder instance, ready 
@@ -528,7 +528,7 @@ class SitemapBuilder
 
 <p>Elcodi generates as well a service for each dumper, using the same notation than
 builders.</p>
-<pre><code class="yml">elcodi.sitemap_dumper.main
+<pre><code class="yaml">elcodi.sitemap_dumper.main
 </code></pre>
 
 <p>Calling this service, the DI will create you a SitemapDumper instance, ready 
@@ -588,7 +588,7 @@ This is just a set of builders, an array. That easy.</p>
 <p>Second, we must define a service in our project, intended to return all enabled
 languages in our site. This service must return an array of locales.</p>
 <p>In elcodi we have a service called <code>elcodi.languages_iso</code>.</p>
-<pre><code class="yml">elcodi.languages_iso_array:
+<pre><code class="yaml">elcodi.languages_iso_array:
     class: stdClass
     factory: [@elcodi.languages_iso, toArray]
 </code></pre>
@@ -599,7 +599,7 @@ array using the stdClass keyword.</p>
 </blockquote>
 <p>Elcodi generates a service for each profile, using our standard. In our example, 
 with given configuration we will have available a new public service.</p>
-<pre><code class="yml">elcodi.sitemap_profile.main
+<pre><code class="yaml">elcodi.sitemap_profile.main
 </code></pre>
 
 <p>Calling this service, the DI will create you a SitemapProfile instance, ready 
@@ -644,7 +644,7 @@ php app/console elcodi:sitemap:profile main https://myurl.com
 
         <!--
         MkDocs version  : 0.12.1
-        Docs Build Date : 2015-04-20 14:28:03.614307
+        Docs Build Date : 2015-04-22 19:40:02.887198
         -->
     </body>
 </html>

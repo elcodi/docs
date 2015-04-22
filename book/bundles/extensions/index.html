@@ -298,7 +298,7 @@ foundation to enforce elcodi practices in bundles. It also has built-in the
 implemented mapping configuration node for configuring the respective entity
 mapping override. This configuration tree is always the same so there is
 no need to specify it each time on your custom extension.</p>
-<pre><code>// Bundle Extension Class
+<pre><code class="php">// Bundle Extension Class
 
 /**
  * Return a new Configuration instance.
@@ -377,7 +377,7 @@ keep the flexibility of using parameters that are resolved in the
 container and that can be customized.</p>
 <p>If we are to override mapping then our bundle extension should
 implement the interface <code>EntitiesOverridableExtensionInterface</code>
-in addition to extending the <code>AbstractExtension</code> class. 
+in addition to extending the <code>AbstractExtension</code> class.
 The method <code>getEntitiesOverrides</code> from the interface should return
 a key value array where the key is the original interface and the value
 is the fully qualified class name or parameter.
@@ -515,7 +515,7 @@ public function getAlias()
 
         <!--
         MkDocs version  : 0.12.1
-        Docs Build Date : 2015-04-20 14:28:03.649593
+        Docs Build Date : 2015-04-22 19:40:02.920957
         -->
     </body>
 </html>
