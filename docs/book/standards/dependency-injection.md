@@ -15,7 +15,20 @@ elcodi.event_dispatcher.cart
 elcodi.manager.cart
 ```
 
-We have structured all definitions in three or four levels.
+We have structured all definitions in two, three or four levels.
+
+### Two levels services
+
+Elcodi specific and most important services in Elcodi ecosystem. These services
+cannot be grouped by any kind of *namespace* because they are not an 
+implementation of any family.
+
+``` yaml
+elcodi.languages
+elcodi.languages_iso
+elcodi.languages_iso_array
+elcodi.locale
+```
 
 ### Three levels services
 
