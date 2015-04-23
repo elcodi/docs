@@ -253,6 +253,8 @@
     
         <li class="main active"><a href="#dependency-injection">Dependency Injection</a></li>
         
+            <li><a href="#two-levels-services">Two levels services</a></li>
+        
             <li><a href="#three-levels-services">Three levels services</a></li>
         
             <li><a href="#four-levels-services">Four levels services</a></li>
@@ -273,7 +275,17 @@ start with <code>elcodi.</code>.</p>
 elcodi.manager.cart
 </code></pre>
 
-<p>We have structured all definitions in three or four levels.</p>
+<p>We have structured all definitions in two, three or four levels.</p>
+<h3 id="two-levels-services">Two levels services</h3>
+<p>Elcodi specific and most important services in Elcodi ecosystem. These services
+cannot be grouped by any kind of <em>namespace</em> because they are not an 
+implementation of any family.</p>
+<pre><code class="yaml">elcodi.languages
+elcodi.languages_iso
+elcodi.languages_iso_array
+elcodi.locale
+</code></pre>
+
 <h3 id="three-levels-services">Three levels services</h3>
 <p>Most of services will have three levels of definition. Let's analyze previous
 examples:</p>
@@ -331,7 +343,7 @@ service is not a permanent class but an adapter of an existing port.</p>
 
         <!--
         MkDocs version  : 0.12.1
-        Docs Build Date : 2015-04-22 19:42:28.444662
+        Docs Build Date : 2015-04-23 16:52:42.818497
         -->
     </body>
 </html>
