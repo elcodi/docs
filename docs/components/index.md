@@ -1,6 +1,5 @@
-The Elcodi components
-=====================
+The Components
+==============
 
-* [Sitemap](sitemap.md)
 * [EntityTranslator](entityTranslator.md)
 * [StateTransitionMachine](stateTransitionMachine.md)

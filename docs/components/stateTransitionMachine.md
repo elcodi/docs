@@ -5,7 +5,7 @@ Can your entity change its states? This component will help you to implement
 this in a very decoupled way, providing you a very simple way for definition of
 these states and a very easy way of managing them.
 
-## StateTransitionMachine Component
+## Usage
 
 This component provides you a State Transition Machine for your entities. To
 understand what is a State Transition Machine, let's see an example about a use
@@ -19,11 +19,11 @@ and how you should jump from one to another.
 Let's see an example.
 
 ```php
-$configuration = array(
+$configuration = [
     'new', 'pay', 'paid',
     'paid', 'ship', 'shipped',
     'shipped', 'receive', 'received',
-);
+];
 ```
 
 You have four states here.
@@ -51,11 +51,11 @@ use Elcodi\Component\StateTransitionMachine\Factory\MachineFactor;
 $machineIdentifier = 'order_states';
 $pointOfEntry = 'new';
 $machineFactory = new MachineFactory;
-$configuration = array(
+$configuration = [
     'new', 'pay', 'paid',
     'paid', 'ship', 'shipped',
     'shipped', 'receive', 'received',
-);
+];
 
 $machineBuilder = new MachineBuilder(
     $machineFactory,
