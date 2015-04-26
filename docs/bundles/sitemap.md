@@ -1,21 +1,23 @@
 Sitemap
 =======
 
-This component is intended to provide an easy way to create sitemaps from your
-e-commerce implementation.
+This bundle is intended to provide an easy way to create sitemaps from your
+e-commerce implementation by using and integrating to Symfony the sitemap
+component.
 
-The component is built in different layers, going from the real seed of any kind
+The bundle is built in different layers, going from the real seed of any kind
 of sitemap implementation (each element), to the final profiling.
 
 ### Blocks
 
 On a sitemap, a block is the element that we would like to index. If a product
-has a page then we would like our sitemap to contain an entry url per product page.
-The items to index in a sitemap can be pages of products, categories, and any other
-entity on the project.
+has a page then we would like our sitemap to contain an entry url per product 
+page. The items to index in a sitemap can be pages of products, categories, and 
+any other entity on the project.
 
 When we talk about a block, we are really talking about a specific set of urls
-related to entities provided by a specific repository, for example all enabled products.
+related to entities provided by a specific repository, for example all enabled 
+products.
 
 ``` yaml
 # Each block defines a way of creating dynamically a set of elements of a
@@ -223,8 +225,8 @@ interface SitemapRendererInterface
 ```
 
 Finally, a dumper will dump your rendered data. By default this component gives
-you one dumper implementation, the `FilesystemDumper`. This implementation is the
-one used by default.
+you one dumper implementation, the `FilesystemDumper`. This implementation is 
+the one used by default.
 
 ``` yaml
 elcodi_sitemap:
