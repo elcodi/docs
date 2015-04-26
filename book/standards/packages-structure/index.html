@@ -115,11 +115,19 @@
                         <ul class="dropdown-menu">
                         
                             <li >
+                                <a href="../../../components/entityTranslator/">entityTranslator</a>
+                            </li>
+                        
+                            <li >
                                 <a href="../../../components/">Home</a>
                             </li>
                         
                             <li >
                                 <a href="../../../components/sitemap/">Sitemap</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../../components/stateTransitionMachine/">stateTransitionMachine</a>
                             </li>
                         
                         </ul>
@@ -261,22 +269,22 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="packages-structure">Packages Structure</h1>
-<p>A component must be treated as a simple PHP library. It means that must be 
+<p>A component must be treated as a simple PHP library. This means that it must be
 framework agnostic. At the beginning, Elcodi was a set of Bundles, divided by
 concerns or boundaries, and implemented as a single symfony-framework Bundle.</p>
-<p>This was cause of different opinions, of course, like every single 
+<p>This was the root of some disagreements, and of course, like every single
 implementation of Open Source, but we noticed that there was an opinion repeated
 once and again by some users.</p>
 <blockquote>
 <p>This project is Framework dependent.</p>
 </blockquote>
 <p>We thought that being a Symfony dependent project was a good idea, but we had to 
-decide what to be dependent on. Finally, we decided that Elcodi have to be 
+decide what to be dependent on. Finally, we decided that Elcodi had to be
 coupled to Symfony components and Doctrine library, so we had to split between
-simple PHP libraries (Components) and Symfony Framework adaptions of these 
-libraries (Bundles)</p>
+simple PHP libraries (Components) and Symfony Framework adaptations of these
+libraries (Bundles).</p>
 <h3 id="component-structure">Component Structure</h3>
-<p>As we told before, just a PHP library. Think about it, we could use the Cart
+<p>As we have said before, a component is just a PHP library. Think about it, we could use the Cart
 classes in our own project, far from Symfony Framework, and because we don't 
 want all the Framework dependencies inside our <code>vendor/</code> folder, maybe we should
 only require the classes and their dependencies.</p>
@@ -324,10 +332,10 @@ components follow the same structure.</p>
 </code></pre>
 
 <p>This is just a sample of how a Component is structured, and how you should 
-structure your project if you want to follow our way of doing.</p>
+structure your project if you want to follow our way of doing things.</p>
 <blockquote>
-<p>This does not mean that this one is the best way of structure your code, or 
-does not mean that there is not another way of doing. Is just our
+<p>This does not mean that this one is the best way of structuring your code, or
+does not mean that there is not another way of doing it. Is just our
 implementation and the one we suggest you.</p>
 </blockquote></div>
             
@@ -348,7 +356,7 @@ implementation and the one we suggest you.</p>
 
         <!--
         MkDocs version  : 0.12.1
-        Docs Build Date : 2015-04-23 16:52:42.822640
+        Docs Build Date : 2015-04-26 15:03:56.478797
         -->
     </body>
 </html>

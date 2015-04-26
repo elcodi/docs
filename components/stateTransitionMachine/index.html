@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>stateTransitionMachine - Elcodi Documentation</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Elcodi Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../quick-start/">Quick start</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reference <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../reference/attribute/">Attribute</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../reference/banner/">Banner</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../reference/cart-coupon/">Cart coupon</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../reference/cart/">Cart</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../reference/comment/">Comment</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../reference/configuration/">Configuration</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../reference/coupon/">Coupon</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../reference/">Home</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../reference/sitemap/">Sitemap</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Components <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../entityTranslator/">entityTranslator</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../">Home</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../sitemap/">Sitemap</a>
+                            </li>
+                        
+                            <li class="active">
+                                <a href="./">stateTransitionMachine</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../book/">Home</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../book/standards/classes/">Classes</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../book/standards/code/">Code</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../book/standards/dependency-injection/">Dependency injection</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../book/standards/packages-structure/">Packages structure</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../book/workflows/cart/">Cart</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../book/bundles/extensions/">Extensions</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../book/philosophy/elcodi/">Elcodi</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../cookbook/">Home</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../cookbook/caveats/test-suite/">Test suite</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../cookbook/installation/dependent-bundles/">Dependent bundles</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../cookbook/overwrite/entity/">Entity</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../cookbook/overwrite/parameter/">Parameter</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../cookbook/overwrite/service/">Service</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../cookbook/implementation/controller-command/">Controller command</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../cookbook/implementation/entity/">Entity</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../cookbook/implementation/factory/">Factory</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../cookbook/implementation/form-type/">Form type</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../cookbook/implementation/repository/">Repository</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                <li >
+                    <a rel="next" href="../sitemap/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../../book/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                
+            </ul>
+            
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#statetransitionmachine">StateTransitionMachine</a></li>
+        
+            <li><a href="#statetransitionmachine-component">StateTransitionMachine Component</a></li>
+        
+            <li><a href="#statetransitionmachine-bundle">StateTransitionMachine Bundle</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="statetransitionmachine">StateTransitionMachine</h1>
+<p>Can your entity change its states? This component will help you to implement 
+this in a very decoupled way, providing you a very simple way for definition of
+these states and a very easy way of managing them.</p>
+<h2 id="statetransitionmachine-component">StateTransitionMachine Component</h2>
+<p>This component provides you a State Transition Machine for your entities. To
+understand what is a State Transition Machine, let's see an example about a use
+case.</p>
+<p>Let's figure out we are working with a Order object. We want to give some states
+to this Order, like "new", "paid" and "shipped". Well, this is the perfect
+scenario for this component. The only thing you must define is the set of states
+and how you should jump from one to another.</p>
+<p>Let's see an example.</p>
+<pre><code class="php">$configuration = array(
+    'new', 'pay', 'paid',
+    'paid', 'ship', 'shipped',
+    'shipped', 'receive', 'received',
+);
+</code></pre>
+
+<p>You have four states here.
+<em> new: First state or point of entry
+</em> paid: The order is paid
+<em> shipped: The order is shipped but is not received yet
+</em> received: The order is received</p>
+<p>And we have three transitions between these states.
+<em> pay: We pay an order
+</em> ship: We ship an order
+* receive: A ship is being received</p>
+<h3 id="machine-builder">Machine Builder</h3>
+<p>So, this component provides a way to play with all this information in a very
+single way, providing as well one machine for each configuration, identified by
+a string. Let's see an example of how to build a useful Machine for our project.</p>
+<pre><code class="php">&lt;?php
+
+use Elcodi\Component\StateTransitionMachine\Factory\MachineFactor;
+
+$machineIdentifier = 'order_states';
+$pointOfEntry = 'new';
+$machineFactory = new MachineFactory;
+$configuration = array(
+    'new', 'pay', 'paid',
+    'paid', 'ship', 'shipped',
+    'shipped', 'receive', 'received',
+);
+
+$machineBuilder = new MachineBuilder(
+    $machineFactory,
+    $machineIdentifier,
+    $configuration,
+    $pointOfEntry
+);
+$machine = $machineBuilder-&gt;compile();
+</code></pre>
+
+<p>To build a MachineCompiler we need this information:
+<em> Machine Factory: The factory that the MachineBuilder will use to build a new
+Machine instance
+</em> Machine identifier: The identifier of the machine. This value must be unique
+<em> Configuration: The states definition. This parameter must be an array of
+edges, and each edge must be an array with this elements: <code>from state</code>,
+<code>transition name</code> and <code>to state</code>.
+</em> Point of Entry: The first state to add once the object is initialized</p>
+<h3 id="machine">Machine</h3>
+<p>Once the MachineBuilder is compiled, this method returns us a MachineInterface
+implementation, with the possibility of using 4 methods.</p>
+<pre><code class="php">    /**
+     * Get machine id
+     *
+     * @return string Machine identifier
+     */
+    public function getId();
+
+    /**
+     * Get point of entry
+     *
+     * @return string Point of entry
+     */
+    public function getPointOfEntry();
+
+    /**
+     * Applies a transition from a state
+     *
+     * @param string $startStateName Start state name
+     * @param string $transitionName Transition name
+     *
+     * @return Transition Transition created
+     *
+     * @throws TransitionNotAccessibleException Transition not accessible
+     * @throws TransitionNotValidException      Invalid transition name
+     */
+    public function transition(
+        $startStateName,
+        $transitionName
+    );
+
+    /**
+     * Reaches a state given a start state
+     *
+     * @param string $startStateName Start state name
+     * @param string $finalStateName Final state name
+     *
+     * @return Transition Transition created
+     *
+     * @throws StateNotReachableException State is not reachable
+     */
+    public function reachState(
+        $startStateName,
+        $finalStateName
+    );
+</code></pre>
+
+<p>Given the last example with the last configuration, lets try to do apply the
+<code>pay</code> transition from the <code>new</code> state using the <code>transition</code> method.</p>
+<pre><code class="php">echo $machine-&gt;getId();
+// = order_states
+
+echo $machine-&gt;getPointOfEntry();
+// = new
+
+$transition = $machine-&gt;transition('unpaid', 'pay');
+echo get_class($transition);
+// = \Elcodi\Component\StateTransitionMachine\Definition\Transition
+
+echo $transition-&gt;getName();
+// = pay
+
+echo $transition-&gt;getStart()-&gt;getName();
+// = new
+
+echo $transition-&gt;getFinal()-&gt;getName();
+// = paid
+</code></pre>
+
+<p>We can use the <code>reachState</code> method as well, to reach an specific state no matter
+the name of the transition. The result should be the same as the last example.</p>
+<pre><code class="php">$transition = $machine-&gt;reachState('new', 'paid');
+</code></pre>
+
+<p>Because using a machine is a transactional action, all errors will be notified
+with Exceptions. In that case, because we can not <code>ship</code> an <code>new</code> order, we
+would receive a <code>TransitionNotAccessibleException</code> exception.</p>
+<pre><code class="php">$transition = $machine-&gt;transition('new', 'ship');
+</code></pre>
+
+<h3 id="machinemanager">MachineManager</h3>
+<p>To make things easier and to provide a nice interface for the final user, a
+<code>MachineManager</code> object is created. This object provide as well a nice interface
+to dispatch events using the Symfony Event Dispatcher Component.</p>
+<p>Let's see how it works using the previous Machine object. To make it happen, we
+must work with implementations of the interface
+<code>\Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StatefulInterface</code>,
+so our <code>Order</code> instance is one of these.</p>
+<p>Every entity implementing this interface, in order to be able to work with an
+specific machine, must be initialized once to make sure that the first state is
+already injected. Once this object is initialized, this action is not required
+anymore.</p>
+<pre><code class="php">$stateLineFactory = new StateLineFactory();
+$eventDispatcher = new EventDispatcher();
+$machineManager = new MachineManager(
+    $machine,
+    $eventDispatcher,
+    $stateLineFactory,
+);
+
+$order = new Order();
+$machineManager-&gt;initialize($order, 'First state');
+$transition = $machineManager-&gt;reachState($order, 'paid', 'The order have been
+paid');
+</code></pre>
+
+<p>Because the point of entry state is <code>new</code> and we can reach the State <code>paid</code>,
+this transition will be valid.
+In this action, several events will be dispatched from the $eventDispatched
+instance.</p>
+<h3 id="events">Events</h3>
+<ul>
+<li>Initialization:<ul>
+<li>An object has been initialized in a specific Machine.</li>
+<li>The event name is <code>state_machine.{machine_id}.initialization</code>, overriding
+the <strong>{machine_id}</strong> with the machine identifier
+Dispatches a <code>\Elcodi\Component\StateTransitionMachine\Event\InitializationEvent</code>
+event.</li>
+</ul>
+</li>
+<li>Transition from a state:<ul>
+<li>An object have had a transition from a state.</li>
+<li>The event name is <code>state_machine.{machine_id}.transition_from_{state_name}</code>,
+overriding <strong>{machine_id}</strong> with the machine identifier and <strong>{state_name}</strong>
+with the state name</li>
+<li>Dispatches a <code>\Elcodi\Component\StateTransitionMachine\Event\TransitionEvent</code>
+event.</li>
+</ul>
+</li>
+<li>Transition:<ul>
+<li>An object have had a transition.
+The event name is <code>state_machine.{machine_id}.{transition_name}</code>, overriding
+<strong>{machine_id}</strong> with the machine identifier and <strong>{transition_name}</strong> with
+the transition name</li>
+<li>Dispatches a <code>\Elcodi\Component\StateTransitionMachine\Event\TransitionEvent</code>
+event.</li>
+</ul>
+</li>
+<li>Transition to a state:<ul>
+<li>An object have had a transition to a state.</li>
+<li>The event name is <code>state_machine.{machine_id}.transition_to_{state_name}</code>,
+overriding <strong>{machine_id}</strong> with the machine identifier and <strong>{state_name}</strong>
+with the state name</li>
+<li>Dispatches a <code>\Elcodi\Component\StateTransitionMachine\Event\TransitionEvent</code>
+event.</li>
+</ul>
+</li>
+</ul>
+<h2 id="statetransitionmachine-bundle">StateTransitionMachine Bundle</h2></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script src="../../js/base.js"></script>
+
+        <!--
+        MkDocs version  : 0.12.1
+        Docs Build Date : 2015-04-26 15:03:56.453938
+        -->
+    </body>
+</html>
