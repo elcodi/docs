@@ -1,16 +1,21 @@
 Sitemap
 =======
 
-This component is intended to provide an easy way of creating sitemaps from your
-e-commerce implementations.
+This component is intended to provide an easy way to create sitemaps from your
+e-commerce implementation.
 
-The component is built in different layers, going from the real seed of any kind 
+The component is built in different layers, going from the real seed of any kind
 of sitemap implementation (each element), to the final profiling.
 
 ### Blocks
 
-When we talk about a block, we are really talking about a specific set of 
-entities provided by a specific repository, for example all enabled products.
+On a sitemap, a block is the element that we would like to index. If a product
+has a page then we would like our sitemap to contain an entry url per product page.
+The items to index in a sitemap can be pages of products, categories, and any other
+entity on the project.
+
+When we talk about a block, we are really talking about a specific set of urls
+related to entities provided by a specific repository, for example all enabled products.
 
 ``` yaml
 # Each block defines a way of creating dynamically a set of elements of a
@@ -33,7 +38,7 @@ blocks:
 ```
 
 Each block needs a transformer, intended to transform an entity instance to 
-every single information needed by the sitemap generator. Every transormer must
+every single information needed by the sitemap generator. Every transformer must
 be an implementation of SitemapTransformerInterface and must be defined as a
 service in our Dependency Injection Container.
 
@@ -65,10 +70,10 @@ interface SitemapTransformerInterface
 }
 ```
 
-Then we need to notice the SitemapBundle the name of the service.
+Then we need to pass the name of the service to the block configuration.
 
 ``` yaml
-# Each block defines a way of creating dynamically a set of elements of a
+# Each block defines a way of dynamically creating a set of elements of a
 # sitemap file, each one mapped from a database entry
 blocks:
     enabled_products:
@@ -76,15 +81,14 @@ blocks:
         transformer: elcodi.sitemap_transformer.product
 ```
 
-> This element is a must and must be defined for each Block
+> This element is a mandatory and must be defined for each Block
 
-Said that, we need to define as well how this product collection must be 
-retrieved from our database. For this reason you must define as well the 
+That said, we need to also define how this product collection must be
+retrieved from our database. For this reason you must specify the
 repository service, the method used and the arguments for such method.
 
-
 ``` yaml
-# Each block defines a way of creating dynamically a set of elements of a
+# Each block defines a way of dynamically creating a set of elements of a
 # sitemap file, each one mapped from a database entry
 blocks:
     enabled_products:
@@ -97,14 +101,14 @@ blocks:
             disabled: false
 ```
 
-These elements are required as well and have no default values, to make sure 
+These elements are required and have no default values, to make sure
 that every block definition is carefully defined and configured. 
 
-Finally we can define the `changeFrequence` and the `priority` elements. Both 
+Finally, we can define the `changeFrequency` and the `priority` elements. Both
 values will be used for all block instances. They are not required.
 
 ``` yaml
-# Each block defines a way of creating dynamically a set of elements of a
+# Each block defines a way of dynamically creating a set of elements of a
 # sitemap file, each one mapped from a database entry
 blocks:
     enabled_products:
@@ -133,14 +137,14 @@ elcodi_sitemap:
 
 ### Builders
 
-A sitemap instance is built using a sorted set of Statics and Blocks and 
-rendered by a specific renderer. The result of this built is dumped using a 
+A sitemap instance is built using a sorted set of Statics and Blocks and
+rendered by a specific renderer. The result of this built is dumped using a
 specific dumper in a pre-defined path.
 
 ``` yaml
 elcodi_sitemap:
     
-    # A builder is a set of blocks and statics, grouped and saved in a file
+    # A builder is a set of blocks and statics, grouped and saved to a file
     builder:
         main:
             # Set of block references
@@ -155,22 +159,21 @@ elcodi_sitemap:
             # Each builder can use a different dumper, by referencing the
             # service definition
             dumper: ~
-            # You can define the name of the file, taking in account the locale
+            # You can define the name of the file, taking into account the locale
             # used by using {_locale} format
             path: %kernel.root_dir%/../web/sitemap/sitemap_{_locale}.xml
 ```
 
 First of all we need to define what blocks and statics we are going to use for
-such sitemap. It is important for you to know that in that case the order 
-matters.
+such sitemap. It is important to know that the order matters.
 
-For example, in that case, we will create a new sitemap called `main` that will
+For example, in our case, we will create a new sitemap called `main` that will
 contain a block and a static.
 
 ``` yaml
 elcodi_sitemap:
     
-    # A builder is a set of blocks and statics, grouped and saved in a file
+    # A builder is a set of blocks and statics, grouped and saved to a file
     builder:
         main:
             # Set of block references
@@ -181,16 +184,16 @@ elcodi_sitemap:
                 - store_homepage
 ```
 
-> This component will render first of all the statics and finally the blocks.
+> This component will first render the statics and then the blocks.
 
 Then, a renderer will transform this set of entries into a special format. By 
-default this component gives you one implemented renderer, the `XmlRenderer`.
-This implementation is the used one by default as well.
+default this component gives you one renderer implementation, the `XmlRenderer`.
+This implementation is the one used by default.
 
 ``` yaml
 elcodi_sitemap:
     
-    # A builder is a set of blocks and statics, grouped and saved in a file
+    # A builder is a set of blocks and statics, grouped and saved to a file
     builder:
         main:
             # Each builder can use a different renderer, by referencing the
@@ -208,7 +211,7 @@ If you want to use your own renderer, you can create a new service implementing
 interface SitemapRendererInterface
 {
     /**
-     * Given an array of sitemapElements, render the Sitemap
+     * Given an array of sitemapElements, renders the Sitemap
      *
      * @param SitemapElement[] $sitemapElements Elements
      * @param string           $basepath        Base path
@@ -220,13 +223,13 @@ interface SitemapRendererInterface
 ```
 
 Finally, a dumper will dump your rendered data. By default this component gives
-you one implemented dumper, the `FilesystemDumper`. This implementation is the
-used one by default as well.
+you one dumper implementation, the `FilesystemDumper`. This implementation is the
+one used by default.
 
 ``` yaml
 elcodi_sitemap:
     
-    # A builder is a set of blocks and statics, grouped and saved in a file
+    # A builder is a set of blocks and statics, grouped and saved to a file
     builder:
         main:
             dumper: ~
@@ -269,7 +272,7 @@ public service.
 elcodi.sitemap_builder.main
 ```
 
-Calling this service, the DI will create you a SitemapBuilder instance, ready 
+Calling this service, the DI will create a SitemapBuilder instance, ready
 to be used.
 
 ``` php
@@ -290,14 +293,14 @@ class SitemapBuilder
 }
 ```
 
-Elcodi generates as well a service for each dumper, using the same notation than
+Elcodi also generates a service for each dumper, using the same notation as
 builders.
 
 ``` yaml
 elcodi.sitemap_dumper.main
 ```
 
-Calling this service, the DI will create you a SitemapDumper instance, ready 
+Calling this service, the DI will create a SitemapDumper instance, ready
 to be used.
 
 /**
@@ -317,7 +320,7 @@ class SitemapDumper
 As you can see, both services require the basepath of the site. It means that
 you can call, for example, the `build` method using firstly the basepath 
 `http://localhost:8000` and then `https://myurl.com`. Because this information
-does not belong to the instance but the call, is required to set this 
+does not belong to the instance but the call, it is mandatory to set this
 information when the sitemap is generated.
 
 You must define the language as well, but this second parameter is not required.
@@ -361,7 +364,7 @@ elcodi_sitemap:
 
 There are two elements to be defined here, both required.
 
-First one we need to decide what builders we want to include in this profile. 
+First, we need to decide what builders we want to include in this profile.
 This is just a set of builders, an array. That easy.
 
 Second, we must define a service in our project, intended to return all enabled
@@ -379,13 +382,13 @@ elcodi.languages_iso_array:
 > array using the stdClass keyword.
 
 Elcodi generates a service for each profile, using our standard. In our example, 
-with given configuration we will have available a new public service.
+with the given configuration we will have available a new public service.
 
 ``` yaml
 elcodi.sitemap_profile.main
 ```
 
-Calling this service, the DI will create you a SitemapProfile instance, ready 
+Calling this service, the DI will create a SitemapProfile instance, ready
 to be used.
 
 ``` php
@@ -407,8 +410,8 @@ class SitemapProfile
 
 ### Profile Command
 
-This command is intended for a profile generation. You must provide the
-name of the profile and a specific basepath used for this built.
+This command is intended for profile generation. You must provide the
+name of the profile and a specific basepath used for this build.
 
 ``` bash
 php app/console elcodi:sitemap:profile main http://localhost:8000
