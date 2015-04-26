@@ -110,8 +110,29 @@
                 
                 
                 
-                    <li class="dropdown active">
+                    <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Components <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../components/entityTranslator/">entityTranslator</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../components/">Home</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../components/stateTransitionMachine/">stateTransitionMachine</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bundles <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                         
                             <li >
@@ -124,10 +145,6 @@
                         
                             <li class="active">
                                 <a href="./">Sitemap</a>
-                            </li>
-                        
-                            <li >
-                                <a href="../stateTransitionMachine/">stateTransitionMachine</a>
                             </li>
                         
                         </ul>
@@ -242,7 +259,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../stateTransitionMachine/">
+                    <a rel="prev" href="../../book/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -281,17 +298,19 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="sitemap">Sitemap</h1>
-<p>This component is intended to provide an easy way to create sitemaps from your
-e-commerce implementation.</p>
-<p>The component is built in different layers, going from the real seed of any kind
+<p>This bundle is intended to provide an easy way to create sitemaps from your
+e-commerce implementation by using and integrating to Symfony the sitemap
+component.</p>
+<p>The bundle is built in different layers, going from the real seed of any kind
 of sitemap implementation (each element), to the final profiling.</p>
 <h3 id="blocks">Blocks</h3>
 <p>On a sitemap, a block is the element that we would like to index. If a product
-has a page then we would like our sitemap to contain an entry url per product page.
-The items to index in a sitemap can be pages of products, categories, and any other
-entity on the project.</p>
+has a page then we would like our sitemap to contain an entry url per product 
+page. The items to index in a sitemap can be pages of products, categories, and 
+any other entity on the project.</p>
 <p>When we talk about a block, we are really talking about a specific set of urls
-related to entities provided by a specific repository, for example all enabled products.</p>
+related to entities provided by a specific repository, for example all enabled 
+products.</p>
 <pre><code class="yaml"># Each block defines a way of creating dynamically a set of elements of a
 # sitemap file, each one mapped from a database entry
 blocks:
@@ -477,8 +496,8 @@ interface SitemapRendererInterface
 </code></pre>
 
 <p>Finally, a dumper will dump your rendered data. By default this component gives
-you one dumper implementation, the <code>FilesystemDumper</code>. This implementation is the
-one used by default.</p>
+you one dumper implementation, the <code>FilesystemDumper</code>. This implementation is 
+the one used by default.</p>
 <pre><code class="yaml">elcodi_sitemap:
 
     # A builder is a set of blocks and statics, grouped and saved to a file
@@ -655,7 +674,7 @@ php app/console elcodi:sitemap:profile main https://myurl.com
 
         <!--
         MkDocs version  : 0.12.1
-        Docs Build Date : 2015-04-26 15:03:56.443363
+        Docs Build Date : 2015-04-26 15:19:45.088618
         -->
     </body>
 </html>

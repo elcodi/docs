@@ -122,12 +122,29 @@
                                 <a href="../">Home</a>
                             </li>
                         
-                            <li >
-                                <a href="../sitemap/">Sitemap</a>
-                            </li>
-                        
                             <li class="active">
                                 <a href="./">stateTransitionMachine</a>
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Bundles <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            <li >
+                                <a href="../../bundles/entityTranslator/">entityTranslator</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../bundles/">Home</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../bundles/sitemap/">Sitemap</a>
                             </li>
                         
                         </ul>
@@ -237,12 +254,12 @@
                 
                 
                 <li >
-                    <a rel="next" href="../sitemap/">
+                    <a rel="next" href="../">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../../book/">
+                    <a rel="prev" href="../../bundles/entityTranslator/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -261,7 +278,7 @@
     
         <li class="main active"><a href="#statetransitionmachine">StateTransitionMachine</a></li>
         
-            <li><a href="#statetransitionmachine-component">StateTransitionMachine Component</a></li>
+            <li><a href="#usage">Usage</a></li>
         
             <li><a href="#statetransitionmachine-bundle">StateTransitionMachine Bundle</a></li>
         
@@ -274,7 +291,7 @@
 <p>Can your entity change its states? This component will help you to implement 
 this in a very decoupled way, providing you a very simple way for definition of
 these states and a very easy way of managing them.</p>
-<h2 id="statetransitionmachine-component">StateTransitionMachine Component</h2>
+<h2 id="usage">Usage</h2>
 <p>This component provides you a State Transition Machine for your entities. To
 understand what is a State Transition Machine, let's see an example about a use
 case.</p>
@@ -283,11 +300,11 @@ to this Order, like "new", "paid" and "shipped". Well, this is the perfect
 scenario for this component. The only thing you must define is the set of states
 and how you should jump from one to another.</p>
 <p>Let's see an example.</p>
-<pre><code class="php">$configuration = array(
+<pre><code class="php">$configuration = [
     'new', 'pay', 'paid',
     'paid', 'ship', 'shipped',
     'shipped', 'receive', 'received',
-);
+];
 </code></pre>
 
 <p>You have four states here.
@@ -310,11 +327,11 @@ use Elcodi\Component\StateTransitionMachine\Factory\MachineFactor;
 $machineIdentifier = 'order_states';
 $pointOfEntry = 'new';
 $machineFactory = new MachineFactory;
-$configuration = array(
+$configuration = [
     'new', 'pay', 'paid',
     'paid', 'ship', 'shipped',
     'shipped', 'receive', 'received',
-);
+];
 
 $machineBuilder = new MachineBuilder(
     $machineFactory,
@@ -502,7 +519,7 @@ event.</li>
 
         <!--
         MkDocs version  : 0.12.1
-        Docs Build Date : 2015-04-26 15:03:56.453938
+        Docs Build Date : 2015-04-26 15:19:45.065206
         -->
     </body>
 </html>
