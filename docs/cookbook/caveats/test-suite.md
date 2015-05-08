@@ -71,3 +71,26 @@ mkdir app/cache
 sudo mkdir /tmp/Bamboo
 sudo mount -t tmpfs -o size=512M tmpfs /tmp/cache
 ```
+
+If you want to run a subset of the behat tests you can specify the tag as
+an option:
+
+``` bash
+php bin/behat --tags="store"
+```
+
+This will only run the feature scenarios tagged with @store, e.g.:
+
+``` gherkin
+# bamboo/features/store/cart.feature
+@store @cart
+Feature: Store cart
+  In order to use the cart
+  As a visitor or logged user
+  I need to be able to add products into it and access the checkout
+
+  # ...
+```
+
+A typical use case when to use this feature is when you want to
+run only the tests that require javascript.
