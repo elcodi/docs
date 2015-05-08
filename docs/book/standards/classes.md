@@ -44,7 +44,7 @@ Furthermore, any trait will be placed in a folder called `Traits/`, to make them
 easier to find.
 
 ``` php
-\Elcodi\Component\Core\Enitity\Traits\DateTimeTrait
+\Elcodi\Component\Core\Entity\Traits\DateTimeTrait
 ```
 
 > The namespace must be Traits instead of Trait because Trait is a PHP reserved 
@@ -84,7 +84,7 @@ Furthermore, any interface will be placed in a folder called `Interfaces/`, to
 make them easier to find.
 
 ``` php
-\Elcodi\Component\Cart\Enitity\Interfaces\OrderInterface
+\Elcodi\Component\Cart\Entity\Interfaces\OrderInterface
 ```
 
 > The namespace must be Interfaces instead of Interface because Interface is a 
