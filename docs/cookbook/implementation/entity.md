@@ -53,9 +53,9 @@ to implement lazy-loading.
 ### Interfaces
 
 All Elcodi entities are an implementation of a [
-Header Interface](http://http://martinfowler.com/bliki/HeaderInterface.html).
+Header Interface](http://martinfowler.com/bliki/HeaderInterface.html).
 We use some 
-[Role Interfaces](http://http://martinfowler.com/bliki/RoleInterface.html) in 
+[Role Interfaces](http://martinfowler.com/bliki/RoleInterface.html) in
 our code, but we are more focused in the first one because is more 
 understandable for everyone when overriding default implementations.
 
