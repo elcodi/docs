@@ -12,4 +12,6 @@ any user of the platform, who will typically want to keep it close at hand.
 * [Coding Standards](standards/code.md)
 * [Packages Structure](standards/packages-structure.md)
 * [Bundle Extensions](bundles/extensions.md)
+* [Plugins](bundles/plugins.md)
+* [Templates](bundles/plugins.md)
 * [Using the Cart](workflows/cart.md)

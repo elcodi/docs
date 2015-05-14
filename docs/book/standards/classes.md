@@ -89,3 +89,57 @@ make them easier to find.
 
 > The namespace must be Interfaces instead of Interface because Interface is a 
 > PHP reserved keyword
+
+### Bundles
+
+Each Bundle should avoid the magic of auto-discovering, placed in the class
+`Symfony\Component\HttpKernel\Bundle\Bundle`.
+
+Yes, we're talking about these methods:
+
+* getContainerExtension()
+* registerCommands()
+
+In order to forget about magic there, and to clearly define our Bundles, we will
+always overwrite these methods, returning specifically the data is intended to
+return, even if methods are empty.
+
+``` php
+use Symfony\Component\Console\Application;
+use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+use Elcodi\Bundle\CoreBundle\DependencyInjection\ElcodiCoreExtension;
+
+/**
+ * ElcodiCoreBundle Bundle
+ *
+ * This is the core of the suite.
+ * All available bundles in this suite could have this bundle as a main
+ * dependency.
+ */
+class ElcodiCoreBundle extends Bundle
+{
+    /**
+     * Returns the bundle's container extension.
+     *
+     * @return ExtensionInterface The container extension
+     */
+    public function getContainerExtension()
+    {
+        return new ElcodiCoreExtension();
+    }
+
+    /**
+     * Register Commands.
+     *
+     * Disabled as commands are registered as services
+     *
+     * @param Application $application An Application instance
+     */
+    public function registerCommands(Application $application)
+    {
+        return;
+    }
+}
+```
