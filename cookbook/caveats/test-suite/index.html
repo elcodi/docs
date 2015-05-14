@@ -115,11 +115,19 @@
                         <ul class="dropdown-menu">
                         
                             <li >
+                                <a href="../../../components/attribute/">Attribute</a>
+                            </li>
+                        
+                            <li >
                                 <a href="../../../components/entityTranslator/">entityTranslator</a>
                             </li>
                         
                             <li >
                                 <a href="../../../components/">Home</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../../components/menu/">Menu</a>
                             </li>
                         
                             <li >
@@ -136,11 +144,19 @@
                         <ul class="dropdown-menu">
                         
                             <li >
+                                <a href="../../../bundles/attribute/">Attribute</a>
+                            </li>
+                        
+                            <li >
                                 <a href="../../../bundles/entityTranslator/">entityTranslator</a>
                             </li>
                         
                             <li >
                                 <a href="../../../bundles/">Home</a>
+                            </li>
+                        
+                            <li >
+                                <a href="../../../bundles/menu/">Menu</a>
                             </li>
                         
                             <li >
@@ -337,7 +353,26 @@ faster.</p>
 mkdir app/cache
 sudo mkdir /tmp/Bamboo
 sudo mount -t tmpfs -o size=512M tmpfs /tmp/cache
-</code></pre></div>
+</code></pre>
+
+<p>If you want to run a subset of the behat tests you can specify the tag as
+an option:</p>
+<pre><code class="bash">php bin/behat --tags=&quot;store&quot;
+</code></pre>
+
+<p>This will only run the feature scenarios tagged with @store, e.g.:</p>
+<pre><code class="gherkin"># bamboo/features/store/cart.feature
+@store @cart
+Feature: Store cart
+  In order to use the cart
+  As a visitor or logged user
+  I need to be able to add products into it and access the checkout
+
+  # ...
+</code></pre>
+
+<p>A typical use case when to use this feature is when you want to
+run only the tests that require javascript.</p></div>
             
         </div>
 
@@ -356,7 +391,7 @@ sudo mount -t tmpfs -o size=512M tmpfs /tmp/cache
 
         <!--
         MkDocs version  : 0.12.1
-        Docs Build Date : 2015-04-26 15:19:45.134155
+        Docs Build Date : 2015-05-14 10:40:01.943022
         -->
     </body>
 </html>
