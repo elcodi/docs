@@ -365,7 +365,7 @@ it as well as its extension for PHP</p>
 <p>if you have not yet installed Composer, download it following the instructions
 on <a href="http://getcomposer.org/">http://getcomposer.org/</a> or just run the following
 command:</p>
-<pre><code class="bash">    $ curl -s http://getcomposer.org/installer | php
+<pre><code class="bash">$ curl -s http://getcomposer.org/installer | php
 </code></pre>
 
 <h2 id="installation">Installation</h2>
@@ -374,7 +374,7 @@ command:</p>
 use any version, but we're still creating new features, fixing some issues and
 errors, and building our first release, so be sure you are not using master, but
 a closed version of the package.</p>
-<pre><code class="bash">    $ php composer.phar create-project elcodi/bamboo path/to/your/store/ 0.5.*
+<pre><code class="bash">$ php composer.phar create-project elcodi/bamboo path/to/your/store/ 0.5.*
 </code></pre>
 
 <blockquote>
@@ -382,53 +382,53 @@ a closed version of the package.</p>
 driver, username, password, database name, etc</p>
 </blockquote>
 <p>Enter your directory to start the configuration step</p>
-<pre><code class="bash">    $ cd path/
+<pre><code class="bash">$ cd path/
 </code></pre>
 
 <h3 id="2-init-your-database">2. Init your database</h3>
 <p>Now we should create the database and all the application schema. Symfony
 provides you an easy way for doing that.</p>
-<pre><code class="bash">    $ php app/console doctrine:database:create
-    $ php app/console doctrine:schema:create
+<pre><code class="bash">$ php app/console doctrine:database:create
+$ php app/console doctrine:schema:create
 </code></pre>
 
 <p>We also load some fixtures to show on our store. This fixtures will set your
 store in a testing mode, with some categories, some manufacturers and a bunch of
 t-shirts. Only for testing purposes :)</p>
-<pre><code class="bash">    $ php app/console doctrine:fixtures:load --fixtures=&quot;src/Elcodi/Fixtures&quot; --no-interaction
+<pre><code class="bash">$ php app/console doctrine:fixtures:load --fixtures=&quot;src/Elcodi/Fixtures&quot; --no-interaction
 </code></pre>
 
 <p>You can also add the geo information for any country. Just find the two letters
 <a href="http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes">ISO code</a> for the
 country you want to load and launch the following command changing ES with your
 code.</p>
-<pre><code class="bash">    $ php app/console elcodi:locations:populate ES
+<pre><code class="bash">$ php app/console elcodi:locations:populate ES
 </code></pre>
 
 <blockquote>
 <p>This could take several minutes per country, be patient</p>
 </blockquote>
-<h3 id="3-load-and-enable-the-template">3. Load and enable the template</h3>
-<p>Hey, we have some templates for you! Be sure to load 'em all!</p>
-<pre><code class="bash">    $ php app/console elcodi:templates:load
-    $ php app/console elcodi:templates:enable StoreTemplateBundle
-</code></pre>
-
 <h3 id="4-load-the-plugins">4. Load the plugins</h3>
 <p>Bamboo offers a bunch of plugins to customize your store. In the ecosystem of
 Bamboo, a Plugin is just a Bundle, so first of all, check that all the plugins
 you want to use are actually instantiated in you <code>AppKernel</code> class, under <code>app/</code>
 folder.</p>
 <p>To install load these plugins, use this command</p>
-<pre><code class="bash">    $ php app/console elcodi:plugins:load
+<pre><code class="bash">$ php app/console elcodi:plugins:load
+</code></pre>
+
+<h3 id="3-load-and-enable-the-template">3. Load and enable the template</h3>
+<p>We have some templates for you. In fact, they are already loaded because they 
+are plugins, but you need to configure your used template.</p>
+<pre><code class="bash">$ php app/console elcodi:configuration:set store.template &quot;\&quot;StoreTemplateBundle\&quot;&quot;
 </code></pre>
 
 <h3 id="5-configure-the-store">5. Configure the store</h3>
 <p>When a store is created it's created "under construction", we can disable that
 mode from the command line. Otherwise, you will not be able to view your new
 awesome store.</p>
-<pre><code class="bash">    $ php app/console elcodi:configuration:set store.under_construction &quot;0&quot;
-    $ php app/console elcodi:configuration:set store.name &quot;\&quot;My bamboo store\&quot;&quot;
+<pre><code class="bash">$ php app/console elcodi:configuration:set store.under_construction &quot;0&quot;
+$ php app/console elcodi:configuration:set store.name &quot;\&quot;My bamboo store\&quot;&quot;
 </code></pre>
 
 <blockquote>
@@ -436,7 +436,7 @@ awesome store.</p>
 </blockquote>
 <h3 id="6-run-the-server">6. Run the server</h3>
 <p>Finally our store is ready to run :)</p>
-<pre><code class="bash">   php app/console server:run
+<pre><code class="bash">$ php app/console server:run
 </code></pre>
 
 <blockquote>
@@ -468,8 +468,8 @@ Any collaboration is welcome! We look forward to hearing from you!</p>
 yourself that all the cases we've been working on are actually green. We are
 using Behat and PHPUnit, so you only need to execute all suites by using this
 piece of code.</p>
-<pre><code class="bash">php bin/behat
-php bin/phpunit -c app
+<pre><code class="bash">$ php bin/behat
+$ php bin/phpunit -c app
 </code></pre>
 
 <blockquote>
@@ -500,7 +500,7 @@ We will be glad to help you, just ask for help.</p></div>
 
         <!--
         MkDocs version  : 0.12.1
-        Docs Build Date : 2015-05-14 15:45:55.488040
+        Docs Build Date : 2015-05-21 16:35:28.326936
         -->
     </body>
 </html>
