@@ -64,7 +64,7 @@ on [http://getcomposer.org/](http://getcomposer.org/) or just run the following
 command:
 
 ``` bash
-    $ curl -s http://getcomposer.org/installer | php
+$ curl -s http://getcomposer.org/installer | php
 ```
 
 ## Installation
@@ -77,7 +77,7 @@ errors, and building our first release, so be sure you are not using master, but
 a closed version of the package.
 
 ``` bash
-    $ php composer.phar create-project elcodi/bamboo path/to/your/store/ 0.5.*
+$ php composer.phar create-project elcodi/bamboo path/to/your/store/ 0.5.*
 ```
 
 > The installation process will ask you for some parameters like the database
@@ -86,7 +86,7 @@ a closed version of the package.
 Enter your directory to start the configuration step
 
 ``` bash
-    $ cd path/
+$ cd path/
 ```
 
 ### 2. Init your database
@@ -95,8 +95,8 @@ Now we should create the database and all the application schema. Symfony
 provides you an easy way for doing that.
 
 ``` bash
-    $ php app/console doctrine:database:create
-    $ php app/console doctrine:schema:create
+$ php app/console doctrine:database:create
+$ php app/console doctrine:schema:create
 ```
 
 We also load some fixtures to show on our store. This fixtures will set your
@@ -104,7 +104,7 @@ store in a testing mode, with some categories, some manufacturers and a bunch of
 t-shirts. Only for testing purposes :)
 
 ``` bash
-    $ php app/console doctrine:fixtures:load --fixtures="src/Elcodi/Fixtures" --no-interaction
+$ php app/console doctrine:fixtures:load --fixtures="src/Elcodi/Fixtures" --no-interaction
 ```
 
 You can also add the geo information for any country. Just find the two letters
@@ -113,19 +113,10 @@ country you want to load and launch the following command changing ES with your
 code.
 
 ``` bash
-    $ php app/console elcodi:locations:populate ES
+$ php app/console elcodi:locations:populate ES
 ```
 
 > This could take several minutes per country, be patient
-
-### 3. Load and enable the template
-
-Hey, we have some templates for you! Be sure to load 'em all!
-
-``` bash
-    $ php app/console elcodi:templates:load
-    $ php app/console elcodi:templates:enable StoreTemplateBundle
-```
 
 ### 4. Load the plugins
 
@@ -137,7 +128,16 @@ folder.
 To install load these plugins, use this command
 
 ``` bash
-    $ php app/console elcodi:plugins:load
+$ php app/console elcodi:plugins:load
+```
+
+### 3. Load and enable the template
+
+We have some templates for you. In fact, they are already loaded because they 
+are plugins, but you need to configure your used template.
+
+``` bash
+$ php app/console elcodi:configuration:set store.template "\"StoreTemplateBundle\""
 ```
 
 ### 5. Configure the store
@@ -147,8 +147,8 @@ mode from the command line. Otherwise, you will not be able to view your new
 awesome store.
 
 ``` bash
-    $ php app/console elcodi:configuration:set store.under_construction "0"
-    $ php app/console elcodi:configuration:set store.name "\"My bamboo store\""
+$ php app/console elcodi:configuration:set store.under_construction "0"
+$ php app/console elcodi:configuration:set store.name "\"My bamboo store\""
 ```
 
 > All configurations can be modified from the Admin settings panel
@@ -158,7 +158,7 @@ awesome store.
 Finally our store is ready to run :)
 
 ``` bash
-   php app/console server:run
+$ php app/console server:run
 ```
 
 > You can also [configure a Web server] like Apache or Nginx to run the app like
@@ -200,8 +200,8 @@ using Behat and PHPUnit, so you only need to execute all suites by using this
 piece of code.
 
 ``` bash
-php bin/behat
-php bin/phpunit -c app
+$ php bin/behat
+$ php bin/phpunit -c app
 ```
 
 > Check
