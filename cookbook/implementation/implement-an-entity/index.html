@@ -304,6 +304,8 @@
         
             <li><a href="#interfaces">Interfaces</a></li>
         
+            <li><a href="#new-entities">New entities</a></li>
+        
     
     </ul>
 </div></div>
@@ -370,7 +372,19 @@ class Product implements ProductInterface
 {
     // ...
 }
-</code></pre></div>
+</code></pre>
+
+<h3 id="new-entities">New entities</h3>
+<p>Usually, final projects need to implement more entities inside their projects.
+Since now, this has been so easy but so magical, and once again, we really think
+that this stuff should never be magic at all. Is your model, your business.</p>
+<p>In our actual implementation, we are using an Open Source project called 
+<a href="https://github.com/mmoreram/SimpleDoctrineMapping">Simple Doctrine Mapping</a>. 
+You should read carefully the documentation, indeed we strongly recommend it.</p>
+<p>Yes, we need to say that, we'll need to disable the <code>auto_mapping</code> configuration 
+item inside DoctrineBundle. This flag allow this magic we really want to avoid.</p>
+<p>Instead of that, we will specifically define how our entities should be defined
+and treated inside our project.</p></div>
             
         </div>
 
@@ -389,7 +403,7 @@ class Product implements ProductInterface
 
         <!--
         MkDocs version  : 0.12.1
-        Docs Build Date : 2015-05-26 10:57:53.670802
+        Docs Build Date : 2015-05-26 14:27:05.663317
         -->
     </body>
 </html>
