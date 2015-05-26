@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>stateTransitionMachine - Elcodi Documentation</title>
+	<title>Entity translator - Elcodi Documentation</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -118,8 +118,8 @@
                                 <a href="../attribute/">Attribute</a>
                             </li>
                         
-                            <li >
-                                <a href="../entityTranslator/">entityTranslator</a>
+                            <li class="active">
+                                <a href="./">Entity translator</a>
                             </li>
                         
                             <li >
@@ -130,8 +130,8 @@
                                 <a href="../menu/">Menu</a>
                             </li>
                         
-                            <li class="active">
-                                <a href="./">stateTransitionMachine</a>
+                            <li >
+                                <a href="../state-transition-machine/">State transition machine</a>
                             </li>
                         
                         </ul>
@@ -148,7 +148,7 @@
                             </li>
                         
                             <li >
-                                <a href="../../bundles/entityTranslator/">entityTranslator</a>
+                                <a href="../../bundles/entity-translator/">Entity translator</a>
                             </li>
                         
                             <li >
@@ -226,43 +226,43 @@
                             </li>
                         
                             <li >
-                                <a href="../../cookbook/caveats/test-suite/">Test suite</a>
+                                <a href="../../cookbook/caveats/running-test-suite/">Running test suite</a>
                             </li>
                         
                             <li >
-                                <a href="../../cookbook/installation/dependent-bundles/">Dependent bundles</a>
+                                <a href="../../cookbook/installation/install-dependent-bundles/">Install dependent bundles</a>
                             </li>
                         
                             <li >
-                                <a href="../../cookbook/overwrite/entity/">Entity</a>
+                                <a href="../../cookbook/overwrite/overwrite-a-entity/">Overwrite a entity</a>
                             </li>
                         
                             <li >
-                                <a href="../../cookbook/overwrite/parameter/">Parameter</a>
+                                <a href="../../cookbook/overwrite/overwrite-a-parameter/">Overwrite a parameter</a>
                             </li>
                         
                             <li >
-                                <a href="../../cookbook/overwrite/service/">Service</a>
+                                <a href="../../cookbook/overwrite/overwrite-a-service/">Overwrite a service</a>
                             </li>
                         
                             <li >
-                                <a href="../../cookbook/implementation/controller-command/">Controller command</a>
+                                <a href="../../cookbook/implementation/implement-a-controller-and-a-command/">Implement a controller and a command</a>
                             </li>
                         
                             <li >
-                                <a href="../../cookbook/implementation/entity/">Entity</a>
+                                <a href="../../cookbook/implementation/implement-a-factory/">Implement a factory</a>
                             </li>
                         
                             <li >
-                                <a href="../../cookbook/implementation/factory/">Factory</a>
+                                <a href="../../cookbook/implementation/implement-a-form-type/">Implement a form type</a>
                             </li>
                         
                             <li >
-                                <a href="../../cookbook/implementation/form-type/">Form type</a>
+                                <a href="../../cookbook/implementation/implement-a-repository/">Implement a repository</a>
                             </li>
                         
                             <li >
-                                <a href="../../cookbook/implementation/repository/">Repository</a>
+                                <a href="../../cookbook/implementation/implement-an-entity/">Implement an entity</a>
                             </li>
                         
                         </ul>
@@ -278,12 +278,12 @@
                 
                 
                 <li >
-                    <a rel="next" href="../menu/">
+                    <a rel="next" href="../attribute/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../../bundles/attribute/">
+                    <a rel="prev" href="../">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -300,231 +300,301 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#statetransitionmachine">StateTransitionMachine</a></li>
+        <li class="main active"><a href="#entitytranslator">EntityTranslator</a></li>
         
             <li><a href="#usage">Usage</a></li>
         
-            <li><a href="#statetransitionmachine-bundle">StateTransitionMachine Bundle</a></li>
+            <li><a href="#entitytranslationprovider">EntityTranslationProvider</a></li>
+        
+            <li><a href="#entitytranslatorbuilder">EntityTranslatorBuilder</a></li>
+        
+            <li><a href="#entitytranslator_1">EntityTranslator</a></li>
         
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="statetransitionmachine">StateTransitionMachine</h1>
-<p>Can your entity change its states? This component will help you to implement 
-this in a very decoupled way, providing you a very simple way for definition of
-these states and a very easy way of managing them.</p>
+<h1 id="entitytranslator">EntityTranslator</h1>
 <h2 id="usage">Usage</h2>
-<p>This component provides you a State Transition Machine for your entities. To
-understand what is a State Transition Machine, let's see an example about a use
-case.</p>
-<p>Let's figure out we are working with a Order object. We want to give some states
-to this Order, like "new", "paid" and "shipped". Well, this is the perfect
-scenario for this component. The only thing you must define is the set of states
-and how you should jump from one to another.</p>
-<p>Let's see an example.</p>
-<pre><code class="php">$configuration = [
-    'new', 'pay', 'paid',
-    'paid', 'ship', 'shipped',
-    'shipped', 'receive', 'received',
-];
+<p>The model is the most important part of a project, right? We strongly believe
+that, so we think that coupling the entities with the translation infrastructure
+is a bad practice.</p>
+<p>This component provides an external translation engine with some nice services
+to make an entity translation something really easy and enjoyable.</p>
+<p>Let's figure out we are working with a Product object. Our model clean, with two
+fields: name and description. All this documentation assumes the usage of this
+class.</p>
+<pre><code class="php">/**
+ * Class Product
+ */
+class Product
+{
+    /**
+     * @var string
+     *
+     * id
+     */
+    protected $id;
+
+    /**
+     * @var string
+     *
+     * Name
+     */
+    protected $name;
+
+    /**
+     * @var string
+     *
+     * Description
+     */
+    protected $description;
+
+    /**
+     * Get Id
+     *
+     * @return string Id
+     */
+    public function getId()
+    {
+        return $this-&gt;id;
+    }
+
+    /**
+     * Sets Id
+     *
+     * @param string $id Id
+     *
+     * @return $this Self object
+     */
+    public function setId($id)
+    {
+        $this-&gt;id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get Name
+     *
+     * @return mixed Name
+     */
+    public function getName()
+    {
+        return $this-&gt;name;
+    }
+
+    /**
+     * Sets Name
+     *
+     * @param mixed $name Name
+     *
+     * @return $this Self object
+     */
+    public function setName($name)
+    {
+        $this-&gt;name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get Description
+     *
+     * @return string Description
+     */
+    public function getDescription()
+    {
+        return $this-&gt;description;
+    }
+
+    /**
+     * Sets Description
+     *
+     * @param string $description Description
+     *
+     * @return $this Self object
+     */
+    public function setDescription($description)
+    {
+        $this-&gt;description = $description;
+
+        return $this;
+    }
+}
 </code></pre>
 
-<p>You have four states here.
-<em> new: First state or point of entry
-</em> paid: The order is paid
-<em> shipped: The order is shipped but is not received yet
-</em> received: The order is received</p>
-<p>And we have three transitions between these states.
-<em> pay: We pay an order
-</em> ship: We ship an order
-* receive: A ship is being received</p>
-<h3 id="machine-builder">Machine Builder</h3>
-<p>So, this component provides a way to play with all this information in a very
-single way, providing as well one machine for each configuration, identified by
-a string. Let's see an example of how to build a useful Machine for our project.</p>
-<pre><code class="php">&lt;?php
+<p>We want to manage the translations of both properties. Important, each project
+needs to define what fields must be translatable, this is not related to the
+component itself.</p>
+<h2 id="entitytranslationprovider">EntityTranslationProvider</h2>
+<p>The translation provider is responsible to connect with the persistent layer and
+provide the results, using an specific format, to the managers and services.</p>
+<pre><code class="php">/**
+ * Interface EntityTranslationProviderInterface
+ */
+interface EntityTranslationProviderInterface
+{
+    /**
+     * Get translation
+     *
+     * @param string $entityType  Type of entity
+     * @param string $entityId    Id of entity
+     * @param string $entityField Field of entity
+     * @param string $locale      Locale
+     *
+     * @return string Value fetched
+     */
+    public function getTranslation(
+        $entityType,
+        $entityId,
+        $entityField,
+        $locale
+    );
 
-use Elcodi\Component\StateTransitionMachine\Factory\MachineFactor;
+    /**
+     * Set translation
+     *
+     * @param string $entityType       Type of entity
+     * @param string $entityId         Id of entity
+     * @param string $entityField      Field of entity
+     * @param string $translationValue Translated value
+     * @param string $locale           Locale
+     *
+     * @return string Value fetched
+     */
+    public function setTranslation(
+        $entityType,
+        $entityId,
+        $entityField,
+        $translationValue,
+        $locale
+    );
 
-$machineIdentifier = 'order_states';
-$pointOfEntry = 'new';
-$machineFactory = new MachineFactory;
+    /**
+     * Flush all previously set translations.
+     *
+     * @return $this self Object
+     */
+    public function flushTranslations();
+}
+</code></pre>
+
+<p>There is the possibility of using specific providers for some specific
+decorations, for example, the <code>CachedEntityTranslationProvider</code> implementation,
+that decorates the main provider by adding an extra cache layer.</p>
+<h2 id="entitytranslatorbuilder">EntityTranslatorBuilder</h2>
+<p>Translation configuration is not set on the fly. It means that a Translator
+needs to know what entities and what fields must take in account for
+translations.</p>
+<p>For that reason we need to build the translator using a TranslatorBuilder.</p>
+<pre><code class="php">$entityTranslationProvider;
+$entityTranslatorFactory = new TranslatorFactory();
+$entityTranslator = $this-&gt;getMock(
+    'Elcodi\Component\EntityTranslator\Services\EntityTranslator', 
+    [], 
+    [], 
+    '', 
+    false
+);
+
 $configuration = [
-    'new', 'pay', 'paid',
-    'paid', 'ship', 'shipped',
-    'shipped', 'receive', 'received',
+    'Elcodi\Component\EntityTranslator\Tests\Fixtures\TranslatableProduct' =&gt; [
+        'alias'  =&gt; 'product',
+        'idGetter' =&gt; 'getId',
+        'fields' =&gt; [
+            'name' =&gt; [
+                'setter' =&gt; 'setName',
+                'getter' =&gt; 'getName',
+            ]
+        ]
+    ],
 ];
 
-$machineBuilder = new MachineBuilder(
-    $machineFactory,
-    $machineIdentifier,
-    $configuration,
-    $pointOfEntry
+$entityTranslatorBuilder = new EntityTranslatorBuilder(
+    $entityTranslationProvider,
+    $translatorFactory,
+    $configuration
 );
-$machine = $machineBuilder-&gt;compile();
+$entityTranslator = $translatorBuilder-&gt;compile();
 </code></pre>
 
-<p>To build a MachineCompiler we need this information:
-<em> Machine Factory: The factory that the MachineBuilder will use to build a new
-Machine instance
-</em> Machine identifier: The identifier of the machine. This value must be unique
-<em> Configuration: The states definition. This parameter must be an array of
-edges, and each edge must be an array with this elements: <code>from state</code>,
-<code>transition name</code> and <code>to state</code>.
-</em> Point of Entry: The first state to add once the object is initialized</p>
-<h3 id="machine">Machine</h3>
-<p>Once the MachineBuilder is compiled, this method returns us a MachineInterface
-implementation, with the possibility of using 4 methods.</p>
-<pre><code class="php">    /**
-     * Get machine id
+<p>A compiled translator is, somehow, an immutable object. This means that,
+internally, can change because of new instances, but externally can only be
+accessed by getters.</p>
+<h2 id="entitytranslator_1">EntityTranslator</h2>
+<p>The translator itself. This implementation enables you to work with entities
+instead of translations.</p>
+<pre><code class="php">/**
+ * Interface EntityTranslatorInterface
+ */
+interface EntityTranslatorInterface
+{
+    /**
+     * Translate object
      *
-     * @return string Machine identifier
+     * @param Object $object Object
+     * @param string $locale Locale to be translated
      */
-    public function getId();
+    public function translate($object, $locale);
 
     /**
-     * Get point of entry
+     * Saves object translations
      *
-     * @return string Point of entry
+     * @param Object $object       Object
+     * @param array  $translations Translations
      */
-    public function getPointOfEntry();
-
-    /**
-     * Applies a transition from a state
-     *
-     * @param string $startStateName Start state name
-     * @param string $transitionName Transition name
-     *
-     * @return Transition Transition created
-     *
-     * @throws TransitionNotAccessibleException Transition not accessible
-     * @throws TransitionNotValidException      Invalid transition name
-     */
-    public function transition(
-        $startStateName,
-        $transitionName
-    );
-
-    /**
-     * Reaches a state given a start state
-     *
-     * @param string $startStateName Start state name
-     * @param string $finalStateName Final state name
-     *
-     * @return Transition Transition created
-     *
-     * @throws StateNotReachableException State is not reachable
-     */
-    public function reachState(
-        $startStateName,
-        $finalStateName
-    );
+    public function save($object, array $translations);
+}
 </code></pre>
 
-<p>Given the last example with the last configuration, lets try to do apply the
-<code>pay</code> transition from the <code>new</code> state using the <code>transition</code> method.</p>
-<pre><code class="php">echo $machine-&gt;getId();
-// = order_states
+<p>Using the same configuration than before, lets see an example about how we can
+manage our entity translations using this service.</p>
+<pre><code class="php">$product = new TranslatableProduct();
+$product
+    -&gt;setId(1)
+    -&gt;setName('productName');
 
-echo $machine-&gt;getPointOfEntry();
-// = new
+$entityTranslator-&gt;save($product, [
+    'es' =&gt; [
+        'name' =&gt; 'el nombre',
+        'description' =&gt; 'la descripción',
+    ],
+    'en' =&gt; [
+        'name' =&gt; 'the name',
+        'description' =&gt; 'the description',
+        'anotherfield' =&gt; 'some value',
+    ],
+]);
 
-$transition = $machine-&gt;transition('unpaid', 'pay');
-echo get_class($transition);
-// = \Elcodi\Component\StateTransitionMachine\Definition\Transition
+/**
+ * At this point, all the data have been persisted to database and cached.
+ * As you can see, the `translate` method returns the translated object, but
+ * both objects are the same
+ */
 
-echo $transition-&gt;getName();
-// = pay
+$translatedProduct = $translator-&gt;translate($product, 'en');
 
-echo $transition-&gt;getStart()-&gt;getName();
-// = new
+$translatedName = $translatedProduct-&gt;getName();
+echo $translatedName;
+// = &quot;the name&quot;
 
-echo $transition-&gt;getFinal()-&gt;getName();
-// = paid
+/**
+ * So because both object are the same, you can just apply the translation
+ * without using the returned object
+ */
+
+$translator-&gt;translate($product, 'es');
+
+$translatedName = $product-&gt;getName();
+echo $translatedName;
+// = &quot;el nombre&quot;
+
 </code></pre>
 
-<p>We can use the <code>reachState</code> method as well, to reach an specific state no matter
-the name of the transition. The result should be the same as the last example.</p>
-<pre><code class="php">$transition = $machine-&gt;reachState('new', 'paid');
-</code></pre>
-
-<p>Because using a machine is a transactional action, all errors will be notified
-with Exceptions. In that case, because we can not <code>ship</code> an <code>new</code> order, we
-would receive a <code>TransitionNotAccessibleException</code> exception.</p>
-<pre><code class="php">$transition = $machine-&gt;transition('new', 'ship');
-</code></pre>
-
-<h3 id="machinemanager">MachineManager</h3>
-<p>To make things easier and to provide a nice interface for the final user, a
-<code>MachineManager</code> object is created. This object provide as well a nice interface
-to dispatch events using the Symfony Event Dispatcher Component.</p>
-<p>Let's see how it works using the previous Machine object. To make it happen, we
-must work with implementations of the interface
-<code>\Elcodi\Component\StateTransitionMachine\Entity\Interfaces\StatefulInterface</code>,
-so our <code>Order</code> instance is one of these.</p>
-<p>Every entity implementing this interface, in order to be able to work with an
-specific machine, must be initialized once to make sure that the first state is
-already injected. Once this object is initialized, this action is not required
-anymore.</p>
-<pre><code class="php">$stateLineFactory = new StateLineFactory();
-$eventDispatcher = new EventDispatcher();
-$machineManager = new MachineManager(
-    $machine,
-    $eventDispatcher,
-    $stateLineFactory,
-);
-
-$order = new Order();
-$machineManager-&gt;initialize($order, 'First state');
-$transition = $machineManager-&gt;reachState($order, 'paid', 'The order have been
-paid');
-</code></pre>
-
-<p>Because the point of entry state is <code>new</code> and we can reach the State <code>paid</code>,
-this transition will be valid.
-In this action, several events will be dispatched from the $eventDispatched
-instance.</p>
-<h3 id="events">Events</h3>
-<ul>
-<li>Initialization:<ul>
-<li>An object has been initialized in a specific Machine.</li>
-<li>The event name is <code>state_machine.{machine_id}.initialization</code>, overriding
-the <strong>{machine_id}</strong> with the machine identifier
-Dispatches a <code>\Elcodi\Component\StateTransitionMachine\Event\InitializationEvent</code>
-event.</li>
-</ul>
-</li>
-<li>Transition from a state:<ul>
-<li>An object have had a transition from a state.</li>
-<li>The event name is <code>state_machine.{machine_id}.transition_from_{state_name}</code>,
-overriding <strong>{machine_id}</strong> with the machine identifier and <strong>{state_name}</strong>
-with the state name</li>
-<li>Dispatches a <code>\Elcodi\Component\StateTransitionMachine\Event\TransitionEvent</code>
-event.</li>
-</ul>
-</li>
-<li>Transition:<ul>
-<li>An object have had a transition.
-The event name is <code>state_machine.{machine_id}.{transition_name}</code>, overriding
-<strong>{machine_id}</strong> with the machine identifier and <strong>{transition_name}</strong> with
-the transition name</li>
-<li>Dispatches a <code>\Elcodi\Component\StateTransitionMachine\Event\TransitionEvent</code>
-event.</li>
-</ul>
-</li>
-<li>Transition to a state:<ul>
-<li>An object have had a transition to a state.</li>
-<li>The event name is <code>state_machine.{machine_id}.transition_to_{state_name}</code>,
-overriding <strong>{machine_id}</strong> with the machine identifier and <strong>{state_name}</strong>
-with the state name</li>
-<li>Dispatches a <code>\Elcodi\Component\StateTransitionMachine\Event\TransitionEvent</code>
-event.</li>
-</ul>
-</li>
-</ul>
-<h2 id="statetransitionmachine-bundle">StateTransitionMachine Bundle</h2></div>
+<p>To when you save all the translations of an entity, the <code>EntityTranslator</code> will
+make a unique flush to the persistence layer, in order to improve this action.</p></div>
             
         </div>
 
@@ -543,7 +613,7 @@ event.</li>
 
         <!--
         MkDocs version  : 0.12.1
-        Docs Build Date : 2015-05-21 16:37:11.168378
+        Docs Build Date : 2015-05-26 10:57:53.515986
         -->
     </body>
 </html>
