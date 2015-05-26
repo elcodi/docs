@@ -71,3 +71,18 @@ class Product implements ProductInterface
 }
 ```
 
+### New entities
+
+Usually, final projects need to implement more entities inside their projects.
+Since now, this has been so easy but so magical, and once again, we really think
+that this stuff should never be magic at all. Is your model, your business.
+
+In our actual implementation, we are using an Open Source project called 
+[Simple Doctrine Mapping](https://github.com/mmoreram/SimpleDoctrineMapping). 
+You should read carefully the documentation, indeed we strongly recommend it.
+
+Yes, we need to say that, we'll need to disable the `auto_mapping` configuration 
+item inside DoctrineBundle. This flag allow this magic we really want to avoid.
+
+Instead of that, we will specifically define how our entities should be defined
+and treated inside our project.
