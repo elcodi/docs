@@ -4,7 +4,30 @@ Menu
 This component provides a way of creating, managing and modifying menus and
 menu nodes.
 
-## Building a new Menu
+The main goal of this component is the decoupling between how a menu must be 
+created by a project, and the way all leafs are generated, filtered and 
+modified, in order to give this responsibility to the actor who really has to
+do it.
+
+## Structure
+
+Let's see a simple view of how Menu is modeled
+
+```
+Menu
+  |
+  |- Node1
+  |   |
+  |   |- Node2
+  |   |   |
+  |   |   |- Node3
+  |   |
+  |   |- Node4
+  |
+  |- Node5
+```  
+
+## Creating a new Menu
 
 You can create a new Menu with their MenuNodes just using their factories. Let's
 see an example of how to build a structure.
@@ -78,6 +101,9 @@ You can filter existing menus. It means that, considering any node, one by one,
 you can decide if this node (and all subnodes) must continue being inside the 
 menu.
 
+If a node is considered as invalid, then all subnodes will, automatically, 
+treated as invalids.
+
 Let's see an example of a MenuFilter that removed a node if this one is not 
 enabled.
 
@@ -105,7 +131,9 @@ class MenuDisabledFilter implements MenuFilterInterface
 ```
 
 Then you must add this changer once your manager is instanced in order to use it
-in Menu building time.
+in Menu building time. In this example we will add a filter that will check 
+when a menu is disabled in database. Then this menu node should be removed from
+the tree.
 
 ``` php
 use Elcodi\Component\Menu\Services\MenuFilterer;
@@ -124,6 +152,32 @@ $menuManager
     ->addMenuChanger($menuFilterer)
     
 $adminMenu = $menuManager->loadMenuByCode('admin');
+```
+
+If we check the menu tree, then we could draw something like that
+
+```
+Menu
+  |
+  |- Node1 <enabled>
+  |   |
+  |   |- Node2 <disabled>
+  |   |   |
+  |   |   |- Node3 <enabled>
+  |   |
+  |   |- Node4 <enabled>
+  |
+  |- Node5 <disabled>
+```
+
+So after applying this filters, we will have this menu
+
+```
+Menu
+  |
+  |- Node1 <enabled>
+      |
+      |- Node4 <enabled>
 ```
 
 ## Building menus
