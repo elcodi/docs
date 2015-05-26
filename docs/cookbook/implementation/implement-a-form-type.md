@@ -7,9 +7,9 @@ with the project flexibility.
 ### Using Factories
 
 Remember that every single entity must be created via its factory in Elcodi
-Bundles. For more information, please see [Factories](factory.md). In order to
-use this feature in Symfony Form Types, we must inject always the related 
-entity factory.
+Bundles. For more information, please see [Factories](implement-a-factory.md). 
+In order to use this feature in Symfony Form Types, we must inject always the 
+related entity factory.
 
 ``` php
 use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;

@@ -2,5 +2,5 @@ The Bundles
 ===========
 
 * [Sitemap](sitemap.md)
-* [EntityTranslator](entityTranslator.md)
+* [Entity Translator](entity-translator.md)
 * [Menu](menu.md)
