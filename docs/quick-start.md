@@ -82,7 +82,7 @@ errors, and building our first release, so be sure you are not using master, but
 a closed version of the package.
 
 ``` bash
-$ php composer.phar create-project elcodi/bamboo path/to/your/store/ 0.5.*
+$ php composer.phar create-project elcodi/bamboo path/to/your/store/ "v1.0.0-beta2"
 ```
 
 > The installation process will ask you for some parameters like the database
