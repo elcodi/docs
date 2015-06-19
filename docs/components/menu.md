@@ -1,8 +1,10 @@
 Menu
 ====
 
-This component provides a way of creating, managing and modifying menus and
-menu nodes.
+Create, manage and modify menus and nodes in a very simple and intuitive way.
+
+* [Bundle Documentation](http://elcodi.io/docs/bundles/menu/)
+* [Github Repository](https://github.com/elcodi/Menu)
 
 The main goal of this component is the decoupling between how a menu must be 
 created by a project, and the way all leafs are generated, filtered and 
@@ -91,9 +93,91 @@ $adminMenu = $menuManager->loadMenuByCode('admin');
 
 Each menu, once loaded from database, is detached in a cascade mode. It means
 that you cannot modify a menu using any kind of event and save it into database.
-All modifications will live as long as built menu is cached in any way.
 
 Lets see how a menu can be changed on the fly.
+
+> Since now, when we refer to a Changer element, we are referring to Filters,
+> Modifiers or Builders
+
+## Cache
+
+Of course this component is built on top of a simple cache layer, so each time 
+a new menu is loaded from database, there are two different stages: before the 
+menu is cached `ElcodiMenuStages::BEFORE_CACHE` and after the menu is cached 
+`ElcodiMenuStages::AFTER_CACHE`.
+
+The difference is that when you apply a changer before the result is cached, 
+those changes will be reused until the menu is removed from the cache and 
+rebuilt again.
+
+``` php
+use Elcodi\Component\Menu\Services\MenuFilterer;
+use Elcodi\Component\Menu\ElcodiMenuStages;
+
+$menuFilterer = new MenuFilterer();
+$menuFilterer
+    ->addMenuFilter(
+        new MenuDisabledFilter(),
+        [],
+        ElcodiMenuStages::BEFORE_CACHE,
+        0
+    );
+```
+
+So, if one specific filter, a builder or a modifier must be executed in every
+request, then must be defined as the after-cache stage.
+
+## Specific menus
+
+When we add a changer element, we can specify a set of menu elements where we
+want this changes to be applied to. You can as well apply them to all menus, so
+this parameter should be an empty array.
+
+``` php
+use Elcodi\Component\Menu\Services\MenuFilterer;
+use Elcodi\Component\Menu\ElcodiMenuStages;
+
+$menuFilterer = new MenuFilterer();
+$menuFilterer
+    ->addMenuFilter(
+        new MenuDisabledFilter(),
+        ['admin', 'store'],
+        ElcodiMenuStages::BEFORE_CACHE,
+        0
+    );
+```
+
+In that case, we are setting that our filter should only be applied to menus 
+called `admin` and `store`.
+
+## Priority
+
+Once we have several changers, then we can prioritize them by using priority
+parameter.
+
+``` php
+use Elcodi\Component\Menu\Services\MenuFilterer;
+use Elcodi\Component\Menu\ElcodiMenuStages;
+
+$menuFilterer = new MenuFilterer();
+$menuFilterer
+    ->addMenuFilter(
+        new MenuDisabledFilter(),
+        ['admin'],
+        ElcodiMenuStages::BEFORE_CACHE,
+        0
+    );
+$menuFilterer
+    ->addMenuFilter(
+        new AnotherMenuFilter(),
+        ['admin'],
+        ElcodiMenuStages::BEFORE_CACHE,
+        10
+    );
+```
+
+In that case, and because more priority means earlier execution, filter
+`AnotherMenuFilter` will be executed before than filter `MenuDisabledFilter`.
 
 ## Filtering menus
 
@@ -139,7 +223,13 @@ the tree.
 use Elcodi\Component\Menu\Services\MenuFilterer;
 
 $menuFilterer = new MenuFilterer();
-$menuFilterer->addMenuFilter(new MenuDisabledFilter());
+$menuFilterer
+    ->addMenuFilter(
+        new MenuDisabledFilter(),
+        [],
+        ElcodiMenuStages::BEFORE_CACHE,
+        0
+    );
 
 $menuManager = new MenuManager(
     $menuRepository,
@@ -232,7 +322,13 @@ in Menu building time.
 use Elcodi\Component\Menu\Services\MenuBuilder;
 
 $menuBuilder = new MenuBuilder();
-$menuBuilder->addMenuFilter(new MenuBuilderUser());
+$menuBuilder
+    ->addMenuBuilder(
+        new MenuBuilderUser(),
+        [],
+        ElcodiMenuStages::BEFORE_CACHE,
+        0
+    );
 
 $menuManager = new MenuManager(
     $menuRepository,
@@ -291,7 +387,13 @@ in Menu building time.
 use Elcodi\Component\Menu\Services\MenuModifier;
 
 $menuModifier = new MenuModifier();
-$menuModifier->addMenuFilter(new MenuActiveModifier());
+$menuModifier
+    ->addMenuModifier(
+        new MenuActiveModifier(),
+        [],
+        ElcodiMenuStages::BEFORE_CACHE,
+        0
+    );
 
 $menuManager = new MenuManager(
     $menuRepository,
