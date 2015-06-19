@@ -1,11 +1,10 @@
 Menu
 ====
 
-This bundle is intended to build menus in a very simple way for your 
-administrators or websites.
+Use and configure the Menu component in your Symfony project.
 
-> Please, check the Sitemap Component documentation, in order to understand the
-> types of modificators or changers that you can use for this
+* [Component Documentation](http://elcodi.io/docs/components/menu/)
+* [Github Repository](https://github.com/elcodi/MenuBundle)
 
 ## Using the DIC
 
@@ -73,23 +72,68 @@ of all and then execute the modifiers, or applying the other way.
 
 This bundle define all changers in this order
 
+* Builders
+* Filters
+* Modifiers
+
+## Cache
+
+Each changer can be used before or after cache by setting its stage. Please, 
+read the [component documentation](http://elcodi.io/docs/components/menu/) to 
+understand what means this configuration and what is indended for.
+
 ``` yaml
 services:
-    elcodi.menu_builder:
-        class: Elcodi\Component\Menu\Services\MenuBuilder
-        tags:
-            - { name: menu.changer }
 
-    elcodi.menu_filterer:
-        class: Elcodi\Component\Menu\Services\MenuFilterer
+    #
+    # Menu builders
+    #
+    store.plugin.menu_builder.some_builder:
+        class: Namespace\Of\Menu\Builder
         tags:
-            - { name: menu.changer }
-
-    elcodi.menu_modifier:
-        class: Elcodi\Component\Menu\Services\MenuModifier
-        tags:
-            - { name: menu.changer }
+            - { name: menu.builder, stage: before_cache }
+            - { name: menu.builder, stage: after_cache }
 ```
 
-So it means that, first of all, all Builders are executed. Then, all Filters are
-applied, and finally, all Modifiers are applied.
+By default, `before_cache` will be used.
+
+## Specific menus
+
+Each changer can be assigned to a set of menus by using the menus property in 
+the tag definition.
+
+``` yaml
+services:
+
+    #
+    # Menu builders
+    #
+    store.plugin.menu_builder.some_builder:
+        class: Namespace\Of\Menu\Builder
+        tags:
+            - { name: menu.builder, menus: ['admin', 'store'] }
+```
+
+By default, all menus will be assigned.
+
+## Priority
+
+Each group will prioritize all its instances by using priority. You can set a 
+priority using the tag.
+
+``` yaml
+services:
+
+    #
+    # Menu builders
+    #
+    store.plugin.menu_builder.some_builder:
+        class: Namespace\Of\Menu\Builder
+        tags:
+            - { name: menu.builder, priority: 10 }
+```
+
+By default, priority 0 will be used.
+
+> The more priority, the before this changer is applied. Negative values are
+> kindly allowed here.

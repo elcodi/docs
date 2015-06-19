@@ -1,8 +1,10 @@
-EntityTranslator
-================
+Entity Translator
+=================
 
-This Bundle provides a Entity Translation layer to your project, in order to
-make your entities translatable respecting the integrity of your domain.
+Use and configure the EntityTranslator component in your Symfony project.
+
+* [Component Documentation](http://elcodi.io/docs/components/entity-translator/)
+* [Github Repository](https://github.com/elcodi/EntityTranslatorBundle)
 
 For that, this implementation hides all the translation model behind a soft
 layer, so your business model is never modified because of the translation

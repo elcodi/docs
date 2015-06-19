@@ -1,9 +1,10 @@
 Sitemap
 =======
 
-This bundle is intended to provide an easy way to create sitemaps from your
-e-commerce implementation by using and integrating to Symfony the sitemap
-component.
+Use and configure the Sitemap component in your Symfony project.
+
+* [Component Documentation](http://elcodi.io/docs/components/sitemap/)
+* [Github Repository](https://github.com/elcodi/SitemapBundle)
 
 The bundle is built in different layers, going from the real seed of any kind
 of sitemap implementation (each element), to the final profiling.

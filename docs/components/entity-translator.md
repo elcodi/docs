@@ -1,5 +1,10 @@
-EntityTranslator
-================
+Entity Translator
+=================
+
+Translate your entities in a very decoupled way.
+
+* [Bundle Documentation](http://elcodi.io/docs/bundles/entity-translator/)
+* [Github Repository](https://github.com/elcodi/EntityTranslator)
 
 ## Usage
 

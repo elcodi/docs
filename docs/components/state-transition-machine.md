@@ -1,5 +1,10 @@
-StateTransitionMachine
-======================
+State Transition Machine
+========================
+
+Add states in your entities.
+
+* [Bundle Documentation](http://elcodi.io/docs/bundles/state-transition-machine/)
+* [Github Repository](https://github.com/elcodi/StateTransitionMachine)
 
 Can your entity change its states? This component will help you to implement 
 this in a very decoupled way, providing you a very simple way for definition of
