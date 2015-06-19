@@ -461,6 +461,12 @@
         
             <li><a href="#managing-menus">Managing menus</a></li>
         
+            <li><a href="#cache">Cache</a></li>
+        
+            <li><a href="#specific-menus">Specific menus</a></li>
+        
+            <li><a href="#priority">Priority</a></li>
+        
             <li><a href="#filtering-menus">Filtering menus</a></li>
         
             <li><a href="#building-menus">Building menus</a></li>
@@ -473,8 +479,11 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="menu">Menu</h1>
-<p>This component provides a way of creating, managing and modifying menus and
-menu nodes.</p>
+<p>Create, manage and modify menus and nodes in a very simple and intuitive way.</p>
+<ul>
+<li><a href="http://elcodi.io/docs/bundles/menu/">Bundle Documentation</a></li>
+<li><a href="https://github.com/elcodi/Menu">Github Repository</a></li>
+</ul>
 <p>The main goal of this component is the decoupling between how a menu must be 
 created by a project, and the way all leafs are generated, filtered and 
 modified, in order to give this responsibility to the actor who really has to
@@ -551,9 +560,79 @@ $adminMenu = $menuManager-&gt;loadMenuByCode('admin');
 </code></pre>
 
 <p>Each menu, once loaded from database, is detached in a cascade mode. It means
-that you cannot modify a menu using any kind of event and save it into database.
-All modifications will live as long as built menu is cached in any way.</p>
+that you cannot modify a menu using any kind of event and save it into database.</p>
 <p>Lets see how a menu can be changed on the fly.</p>
+<blockquote>
+<p>Since now, when we refer to a Changer element, we are referring to Filters,
+Modifiers or Builders</p>
+</blockquote>
+<h2 id="cache">Cache</h2>
+<p>Of course this component is built on top of a simple cache layer, so each time 
+a new menu is loaded from database, there are two different stages: before the 
+menu is cached <code>ElcodiMenuStages::BEFORE_CACHE</code> and after the menu is cached 
+<code>ElcodiMenuStages::AFTER_CACHE</code>.</p>
+<p>The difference is that when you apply a changer before the result is cached, 
+those changes will be reused until the menu is removed from the cache and 
+rebuilt again.</p>
+<pre><code class="php">use Elcodi\Component\Menu\Services\MenuFilterer;
+use Elcodi\Component\Menu\ElcodiMenuStages;
+
+$menuFilterer = new MenuFilterer();
+$menuFilterer
+    -&gt;addMenuFilter(
+        new MenuDisabledFilter(),
+        [],
+        ElcodiMenuStages::BEFORE_CACHE,
+        0
+    );
+</code></pre>
+
+<p>So, if one specific filter, a builder or a modifier must be executed in every
+request, then must be defined as the after-cache stage.</p>
+<h2 id="specific-menus">Specific menus</h2>
+<p>When we add a changer element, we can specify a set of menu elements where we
+want this changes to be applied to. You can as well apply them to all menus, so
+this parameter should be an empty array.</p>
+<pre><code class="php">use Elcodi\Component\Menu\Services\MenuFilterer;
+use Elcodi\Component\Menu\ElcodiMenuStages;
+
+$menuFilterer = new MenuFilterer();
+$menuFilterer
+    -&gt;addMenuFilter(
+        new MenuDisabledFilter(),
+        ['admin', 'store'],
+        ElcodiMenuStages::BEFORE_CACHE,
+        0
+    );
+</code></pre>
+
+<p>In that case, we are setting that our filter should only be applied to menus 
+called <code>admin</code> and <code>store</code>.</p>
+<h2 id="priority">Priority</h2>
+<p>Once we have several changers, then we can prioritize them by using priority
+parameter.</p>
+<pre><code class="php">use Elcodi\Component\Menu\Services\MenuFilterer;
+use Elcodi\Component\Menu\ElcodiMenuStages;
+
+$menuFilterer = new MenuFilterer();
+$menuFilterer
+    -&gt;addMenuFilter(
+        new MenuDisabledFilter(),
+        ['admin'],
+        ElcodiMenuStages::BEFORE_CACHE,
+        0
+    );
+$menuFilterer
+    -&gt;addMenuFilter(
+        new AnotherMenuFilter(),
+        ['admin'],
+        ElcodiMenuStages::BEFORE_CACHE,
+        10
+    );
+</code></pre>
+
+<p>In that case, and because more priority means earlier execution, filter
+<code>AnotherMenuFilter</code> will be executed before than filter <code>MenuDisabledFilter</code>.</p>
 <h2 id="filtering-menus">Filtering menus</h2>
 <p>You can filter existing menus. It means that, considering any node, one by one,
 you can decide if this node (and all subnodes) must continue being inside the 
@@ -591,7 +670,13 @@ the tree.</p>
 <pre><code class="php">use Elcodi\Component\Menu\Services\MenuFilterer;
 
 $menuFilterer = new MenuFilterer();
-$menuFilterer-&gt;addMenuFilter(new MenuDisabledFilter());
+$menuFilterer
+    -&gt;addMenuFilter(
+        new MenuDisabledFilter(),
+        [],
+        ElcodiMenuStages::BEFORE_CACHE,
+        0
+    );
 
 $menuManager = new MenuManager(
     $menuRepository,
@@ -674,7 +759,13 @@ in Menu building time.</p>
 <pre><code class="php">use Elcodi\Component\Menu\Services\MenuBuilder;
 
 $menuBuilder = new MenuBuilder();
-$menuBuilder-&gt;addMenuFilter(new MenuBuilderUser());
+$menuBuilder
+    -&gt;addMenuBuilder(
+        new MenuBuilderUser(),
+        [],
+        ElcodiMenuStages::BEFORE_CACHE,
+        0
+    );
 
 $menuManager = new MenuManager(
     $menuRepository,
@@ -727,7 +818,13 @@ in Menu building time.</p>
 <pre><code class="php">use Elcodi\Component\Menu\Services\MenuModifier;
 
 $menuModifier = new MenuModifier();
-$menuModifier-&gt;addMenuFilter(new MenuActiveModifier());
+$menuModifier
+    -&gt;addMenuModifier(
+        new MenuActiveModifier(),
+        [],
+        ElcodiMenuStages::BEFORE_CACHE,
+        0
+    );
 
 $menuManager = new MenuManager(
     $menuRepository,

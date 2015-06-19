@@ -453,7 +453,7 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#entitytranslator">EntityTranslator</a></li>
+        <li class="main active"><a href="#entity-translator">Entity Translator</a></li>
         
             <li><a href="#usage">Usage</a></li>
         
@@ -461,14 +461,19 @@
         
             <li><a href="#entitytranslatorbuilder">EntityTranslatorBuilder</a></li>
         
-            <li><a href="#entitytranslator_1">EntityTranslator</a></li>
+            <li><a href="#entitytranslator">EntityTranslator</a></li>
         
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="entitytranslator">EntityTranslator</h1>
+<h1 id="entity-translator">Entity Translator</h1>
+<p>Translate your entities in a very decoupled way.</p>
+<ul>
+<li><a href="http://elcodi.io/docs/bundles/entity-translator/">Bundle Documentation</a></li>
+<li><a href="https://github.com/elcodi/EntityTranslator">Github Repository</a></li>
+</ul>
 <h2 id="usage">Usage</h2>
 <p>The model is the most important part of a project, right? We strongly believe
 that, so we think that coupling the entities with the translation infrastructure
@@ -676,7 +681,7 @@ $entityTranslator = $translatorBuilder-&gt;compile();
 <p>A compiled translator is, somehow, an immutable object. This means that,
 internally, can change because of new instances, but externally can only be
 accessed by getters.</p>
-<h2 id="entitytranslator_1">EntityTranslator</h2>
+<h2 id="entitytranslator">EntityTranslator</h2>
 <p>The translator itself. This implementation enables you to work with entities
 instead of translations.</p>
 <pre><code class="php">/**

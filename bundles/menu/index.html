@@ -459,18 +459,23 @@
         
             <li><a href="#workflow">Workflow</a></li>
         
+            <li><a href="#cache">Cache</a></li>
+        
+            <li><a href="#specific-menus">Specific menus</a></li>
+        
+            <li><a href="#priority">Priority</a></li>
+        
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
 <h1 id="menu">Menu</h1>
-<p>This bundle is intended to build menus in a very simple way for your 
-administrators or websites.</p>
-<blockquote>
-<p>Please, check the Sitemap Component documentation, in order to understand the
-types of modificators or changers that you can use for this</p>
-</blockquote>
+<p>Use and configure the Menu component in your Symfony project.</p>
+<ul>
+<li><a href="http://elcodi.io/docs/components/menu/">Component Documentation</a></li>
+<li><a href="https://github.com/elcodi/MenuBundle">Github Repository</a></li>
+</ul>
 <h2 id="using-the-dic">Using the DIC</h2>
 <p>Exposing your Menu changers (Filters, Builders and Modifiers) is so simple using
 the Symfony Dependency Injection definitions. For this purpose, this bundle is
@@ -527,25 +532,62 @@ Builder definition.</p>
 <p>The order matters. It means that is not the same to apply all the filters first
 of all and then execute the modifiers, or applying the other way.</p>
 <p>This bundle define all changers in this order</p>
+<ul>
+<li>Builders</li>
+<li>Filters</li>
+<li>Modifiers</li>
+</ul>
+<h2 id="cache">Cache</h2>
+<p>Each changer can be used before or after cache by setting its stage. Please, 
+read the <a href="http://elcodi.io/docs/components/menu/">component documentation</a> to 
+understand what means this configuration and what is indended for.</p>
 <pre><code class="yaml">services:
-    elcodi.menu_builder:
-        class: Elcodi\Component\Menu\Services\MenuBuilder
-        tags:
-            - { name: menu.changer }
 
-    elcodi.menu_filterer:
-        class: Elcodi\Component\Menu\Services\MenuFilterer
+    #
+    # Menu builders
+    #
+    store.plugin.menu_builder.some_builder:
+        class: Namespace\Of\Menu\Builder
         tags:
-            - { name: menu.changer }
-
-    elcodi.menu_modifier:
-        class: Elcodi\Component\Menu\Services\MenuModifier
-        tags:
-            - { name: menu.changer }
+            - { name: menu.builder, stage: before_cache }
+            - { name: menu.builder, stage: after_cache }
 </code></pre>
 
-<p>So it means that, first of all, all Builders are executed. Then, all Filters are
-applied, and finally, all Modifiers are applied.</p></div>
+<p>By default, <code>before_cache</code> will be used.</p>
+<h2 id="specific-menus">Specific menus</h2>
+<p>Each changer can be assigned to a set of menus by using the menus property in 
+the tag definition.</p>
+<pre><code class="yaml">services:
+
+    #
+    # Menu builders
+    #
+    store.plugin.menu_builder.some_builder:
+        class: Namespace\Of\Menu\Builder
+        tags:
+            - { name: menu.builder, menus: ['admin', 'store'] }
+</code></pre>
+
+<p>By default, all menus will be assigned.</p>
+<h2 id="priority">Priority</h2>
+<p>Each group will prioritize all its instances by using priority. You can set a 
+priority using the tag.</p>
+<pre><code class="yaml">services:
+
+    #
+    # Menu builders
+    #
+    store.plugin.menu_builder.some_builder:
+        class: Namespace\Of\Menu\Builder
+        tags:
+            - { name: menu.builder, priority: 10 }
+</code></pre>
+
+<p>By default, priority 0 will be used.</p>
+<blockquote>
+<p>The more priority, the before this changer is applied. Negative values are
+kindly allowed here.</p>
+</blockquote></div>
             
         </div>
 
