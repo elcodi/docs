@@ -86,19 +86,7 @@ You can define these items:
 
 Each field can be defined as follows:
 
-* type: Type of the field. One of these values
-    * integer
-    * text
-    * textarea
-    * boolean
-    * checkbox
-    * radio
-    * email
-    * password
-    * url
-    * date
-    * datetime
-    * time
+* type: Type of the field. This value will be used as field type in form
 * required: This field must be configured in order to use this plugin
 * data: The value of the field
 * label: Label of the field (You can use translations)
