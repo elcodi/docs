@@ -3,24 +3,24 @@ Bamboo e-commerce
 
 [![Build Status](https://travis-ci.org/elcodi/bamboo.svg?branch=master)](https://travis-ci.org/elcodi/bamboo)
 
-> Warning. This project is not tagged as stable yet. It means that we don't
-> promise BC between minor versions or patch versions. During the first quart of
-> June we will release our first Beta version for developers. Stay Tuned and 
-> enjoy Elcodi.
+> Warning. This project is not tagged as stable yet. During this Beta stage, we
+> aim to find and resolve all bugs, empower testing layer and build even a 
+> better and bigger project documentation.
 
 Welcome to Bamboo e-commerce - a fully-functional e-commerce application built
-using [Elcodi] components on top of the
-[Symfony] framework.
+using [Elcodi] components on top of the [Symfony] framework.
 
 Yes, you got it right! Bamboo uses the Symfony framework but our components are
-framework agnostic, that is, they only depend on the Symfony components as opposed to the whole framework or any of its distributions.
+framework agnostic, that is, they only depend on the Symfony components as 
+opposed to the whole framework or any of its distributions.
 
-Why should I use Bamboo?
-That's simple, to sell your products. We provide you with an interface to sell your products and manage
-your store. You only have to focus on offering a good product, we take care of
-the rest.
+Why should I use Bamboo? That's simple, to sell your products. We provide you 
+with an interface to sell your products and manage your store. You only have to 
+focus on offering a good product, we take care of the rest.
 
 ## Requirements
+
+We're trying to build this project with a light default dependencies.
 
 ### PHP
 
@@ -29,28 +29,19 @@ To use Bamboo and Elcodi you need a PHP version not less than **5.4**
 For more info just visit their
 [installation page](http://php.net/manual/en/install.php)
 
-### Redis
+### PHP GD
 
-Bamboo uses redis to make the app lighter and to minimize the response time.
-
-For more info just visit their
-[installation page](http://redis.io/topics/quickstart)
-
-In order to use the last Redis features, like the `HyperLogLog` commands, be
-sure your Redis version is at least `v2.8.9`.
-
-Also, don't forget to install the php extension for redis.
-
-### Imagick
-
-Images are a really important part of an store. Bamboo uses Imagick to
+Images are a really important part of an store. Bamboo uses PHP GD to
 resize and optimize all product images
 
 For more info just visit their
-[installation page](http://php.net/manual/en/imagick.setup.php)
+[installation page](http://php.net/manual/en/image.installation.php)
 
-> On the installation step you will be asked to provide the Imagick installation
-> path. Ensure to configure the parameter **imagick_convert_bin_path** right
+> This PHP extension is used to being already installed when you add PHP in your
+> distribution
+
+After that, you will be able to change the adapter and use other 
+implementations.
 
 ### MySQL
 
@@ -72,17 +63,31 @@ command:
 $ curl -s http://getcomposer.org/installer | php
 ```
 
+### Redis
+
+Bamboo uses redis to make the app lighter and to minimize the response time.
+
+For more info just visit their
+[installation page](http://redis.io/topics/quickstart)
+
+In order to use the last Redis features, like the `HyperLogLog` commands, be
+sure your Redis version is at least `v2.8.9`.
+
+Also, don't forget to install the php extension for redis.
+
 ## Installation
+
+If you're used to working with LAMP environment, then you will have Bamboo 
+running in your computer in less than 5 minutes.
 
 ### 1. Install the project
 
 After installing composer you can create your new bamboo project. Feel free to
 use any version, but we're still creating new features, fixing some issues and
-errors, and building our first release, so be sure you are not using master, but
-a closed version of the package.
+errors, and building our first release, so feel free to use them
 
 ``` bash
-$ php composer.phar create-project elcodi/bamboo path/to/your/store/ "v1.0.0-beta2"
+$ php composer.phar create-project elcodi/bamboo bamboo -sdev
 ```
 
 > The installation process will ask you for some parameters like the database
@@ -91,7 +96,7 @@ $ php composer.phar create-project elcodi/bamboo path/to/your/store/ "v1.0.0-bet
 Enter your directory to start the configuration step
 
 ``` bash
-$ cd path/
+$ cd bamboo/
 ```
 
 ### 2. Init your database
@@ -109,18 +114,23 @@ store in a testing mode, with some categories, some manufacturers and a bunch of
 t-shirts. Only for testing purposes :)
 
 ``` bash
-$ php app/console doctrine:fixtures:load --fixtures="src/Elcodi/Fixtures" --no-interaction
+$ php app/console doctrine:fixtures:load \
+      --fixtures="src/Elcodi/Fixtures" \
+      --fixtures="src/Elcodi/Plugin" \
+      --no-interaction
 ```
 
 These fixtures will not install you any location data, but don't worry, we 
 provide you several ways for your location population.
 
-> At the moment, only for Spain and France
-
 We provide you some files with some countries dumped. You will find these files
 inside `elcodi/geo-bundle` package, inside the `DataFixtures/ORM/Dumps` folder.
 Because location tables are not using foreign keys, you can play with them as
 much as you need.
+
+``` bash
+$ mysql -uroot -proot bamboo < vendor/elcodi/elcodi/src/Elcodi/Bundle/GeoBundle/DataFixtures/ORM/Dumps/spain.sql
+```
 
 You can also add the geo information for any country. Just find the two letters
 [ISO code](http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes) for the
@@ -131,7 +141,8 @@ code.
 $ php app/console elcodi:locations:populate ES
 ```
 
-> This could take several minutes per country, be patient
+This could take several minutes per country, be patient and provide PHP as much
+memory as possible.
 
 ### 3. Load the plugins
 
@@ -157,8 +168,8 @@ Finally our store is ready to run :)
 $ php app/console server:run
 ```
 
-> You can also [configure a Web server] like Apache or Nginx to run the app like
-> all the Symfony apps.
+You can also [configure a Web server] like Apache or Nginx to run the app like
+all the Symfony apps.
 
 ### 5. Visit your store
 
