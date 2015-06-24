@@ -473,41 +473,35 @@
 <h1 id="bamboo-e-commerce">Bamboo e-commerce</h1>
 <p><a href="https://travis-ci.org/elcodi/bamboo"><img alt="Build Status" src="https://travis-ci.org/elcodi/bamboo.svg?branch=master" /></a></p>
 <blockquote>
-<p>Warning. This project is not tagged as stable yet. It means that we don't
-promise BC between minor versions or patch versions. During the first quart of
-June we will release our first Beta version for developers. Stay Tuned and 
-enjoy Elcodi.</p>
+<p>Warning. This project is not tagged as stable yet. During this Beta stage, we
+aim to find and resolve all bugs, empower testing layer and build even a 
+better and bigger project documentation.</p>
 </blockquote>
 <p>Welcome to Bamboo e-commerce - a fully-functional e-commerce application built
-using <a href="https://github.com/elcodi/elcodi">Elcodi</a> components on top of the
-<a href="http://symfony.com">Symfony</a> framework.</p>
+using <a href="https://github.com/elcodi/elcodi">Elcodi</a> components on top of the <a href="http://symfony.com">Symfony</a> framework.</p>
 <p>Yes, you got it right! Bamboo uses the Symfony framework but our components are
-framework agnostic, that is, they only depend on the Symfony components as opposed to the whole framework or any of its distributions.</p>
-<p>Why should I use Bamboo?
-That's simple, to sell your products. We provide you with an interface to sell your products and manage
-your store. You only have to focus on offering a good product, we take care of
-the rest.</p>
+framework agnostic, that is, they only depend on the Symfony components as 
+opposed to the whole framework or any of its distributions.</p>
+<p>Why should I use Bamboo? That's simple, to sell your products. We provide you 
+with an interface to sell your products and manage your store. You only have to 
+focus on offering a good product, we take care of the rest.</p>
 <h2 id="requirements">Requirements</h2>
+<p>We're trying to build this project with a light default dependencies.</p>
 <h3 id="php">PHP</h3>
 <p>To use Bamboo and Elcodi you need a PHP version not less than <strong>5.4</strong></p>
 <p>For more info just visit their
 <a href="http://php.net/manual/en/install.php">installation page</a></p>
-<h3 id="redis">Redis</h3>
-<p>Bamboo uses redis to make the app lighter and to minimize the response time.</p>
-<p>For more info just visit their
-<a href="http://redis.io/topics/quickstart">installation page</a></p>
-<p>In order to use the last Redis features, like the <code>HyperLogLog</code> commands, be
-sure your Redis version is at least <code>v2.8.9</code>.</p>
-<p>Also, don't forget to install the php extension for redis.</p>
-<h3 id="imagick">Imagick</h3>
-<p>Images are a really important part of an store. Bamboo uses Imagick to
+<h3 id="php-gd">PHP GD</h3>
+<p>Images are a really important part of an store. Bamboo uses PHP GD to
 resize and optimize all product images</p>
 <p>For more info just visit their
-<a href="http://php.net/manual/en/imagick.setup.php">installation page</a></p>
+<a href="http://php.net/manual/en/image.installation.php">installation page</a></p>
 <blockquote>
-<p>On the installation step you will be asked to provide the Imagick installation
-path. Ensure to configure the parameter <strong>imagick_convert_bin_path</strong> right</p>
+<p>This PHP extension is used to being already installed when you add PHP in your
+distribution</p>
 </blockquote>
+<p>After that, you will be able to change the adapter and use other 
+implementations.</p>
 <h3 id="mysql">MySQL</h3>
 <p>And, where do you save your data? By default we use MySQL, remember to install
 it as well as its extension for PHP</p>
@@ -521,13 +515,21 @@ command:</p>
 <pre><code class="bash">$ curl -s http://getcomposer.org/installer | php
 </code></pre>
 
+<h3 id="redis">Redis</h3>
+<p>Bamboo uses redis to make the app lighter and to minimize the response time.</p>
+<p>For more info just visit their
+<a href="http://redis.io/topics/quickstart">installation page</a></p>
+<p>In order to use the last Redis features, like the <code>HyperLogLog</code> commands, be
+sure your Redis version is at least <code>v2.8.9</code>.</p>
+<p>Also, don't forget to install the php extension for redis.</p>
 <h2 id="installation">Installation</h2>
+<p>If you're used to working with LAMP environment, then you will have Bamboo 
+running in your computer in less than 5 minutes.</p>
 <h3 id="1-install-the-project">1. Install the project</h3>
 <p>After installing composer you can create your new bamboo project. Feel free to
 use any version, but we're still creating new features, fixing some issues and
-errors, and building our first release, so be sure you are not using master, but
-a closed version of the package.</p>
-<pre><code class="bash">$ php composer.phar create-project elcodi/bamboo path/to/your/store/ &quot;v1.0.0-beta2&quot;
+errors, and building our first release, so feel free to use them</p>
+<pre><code class="bash">$ php composer.phar create-project elcodi/bamboo bamboo -sdev
 </code></pre>
 
 <blockquote>
@@ -535,7 +537,7 @@ a closed version of the package.</p>
 driver, username, password, database name, etc</p>
 </blockquote>
 <p>Enter your directory to start the configuration step</p>
-<pre><code class="bash">$ cd path/
+<pre><code class="bash">$ cd bamboo/
 </code></pre>
 
 <h3 id="2-init-your-database">2. Init your database</h3>
@@ -548,18 +550,21 @@ $ php app/console doctrine:schema:create
 <p>We also load some fixtures to show on our store. This fixtures will set your
 store in a testing mode, with some categories, some manufacturers and a bunch of
 t-shirts. Only for testing purposes :)</p>
-<pre><code class="bash">$ php app/console doctrine:fixtures:load --fixtures=&quot;src/Elcodi/Fixtures&quot; --no-interaction
+<pre><code class="bash">$ php app/console doctrine:fixtures:load \
+      --fixtures=&quot;src/Elcodi/Fixtures&quot; \
+      --fixtures=&quot;src/Elcodi/Plugin&quot; \
+      --no-interaction
 </code></pre>
 
 <p>These fixtures will not install you any location data, but don't worry, we 
 provide you several ways for your location population.</p>
-<blockquote>
-<p>At the moment, only for Spain and France</p>
-</blockquote>
 <p>We provide you some files with some countries dumped. You will find these files
 inside <code>elcodi/geo-bundle</code> package, inside the <code>DataFixtures/ORM/Dumps</code> folder.
 Because location tables are not using foreign keys, you can play with them as
 much as you need.</p>
+<pre><code class="bash">$ mysql -uroot -proot bamboo &lt; vendor/elcodi/elcodi/src/Elcodi/Bundle/GeoBundle/DataFixtures/ORM/Dumps/spain.sql
+</code></pre>
+
 <p>You can also add the geo information for any country. Just find the two letters
 <a href="http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes">ISO code</a> for the
 country you want to load and launch the following command changing ES with your
@@ -567,9 +572,8 @@ code.</p>
 <pre><code class="bash">$ php app/console elcodi:locations:populate ES
 </code></pre>
 
-<blockquote>
-<p>This could take several minutes per country, be patient</p>
-</blockquote>
+<p>This could take several minutes per country, be patient and provide PHP as much
+memory as possible.</p>
 <h3 id="3-load-the-plugins">3. Load the plugins</h3>
 <p>Bamboo offers a bunch of plugins to customize your store. In the ecosystem of
 Bamboo, a Plugin is just a Bundle, so first of all, check that all the plugins
@@ -586,10 +590,8 @@ this command.</p>
 <pre><code class="bash">$ php app/console server:run
 </code></pre>
 
-<blockquote>
 <p>You can also <a href="http://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html">configure a Web server</a> like Apache or Nginx to run the app like
 all the Symfony apps.</p>
-</blockquote>
 <h3 id="5-visit-your-store">5. Visit your store</h3>
 <p>Yehaaa! You're done! You're about to see what Elcodi can do for you. A complete
 store interface for your customers and some nice features for administrating it.</p>
