@@ -29,4 +29,5 @@ scenario.
 
 ### Common Caveats
 
+* [How to create a Pull Request](caveats/pull-request.md)
 * [Running the Test Suite](caveats/running-test-suite.md)
