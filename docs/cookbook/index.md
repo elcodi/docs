@@ -25,7 +25,8 @@ scenario.
 
 ### Adapters
 
-* [How to add a new Currency Rates Populator adapter](adapters/currency-rates-populator)
+* [How to add a new Currency Rates Populator adapter](adapters/currency-rates-populator.md)
+* [How to add a new Image Resize adapter](adapters/image-resize.md)
 
 ### Common Caveats
 
