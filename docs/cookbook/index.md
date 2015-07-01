@@ -23,6 +23,10 @@ scenario.
 * [How to Overwrite an Entity](overwrite/overwrite-a-entity.md)
 * [How to Overwrite a Service](overwrite/overwrite-a-service.md)
 
+### Adapters
+
+* [How to add a new Currency Rates Populator adapter](adapters/currency-rates-populator)
+
 ### Common Caveats
 
 * [Running the Test Suite](caveats/running-test-suite.md)
