@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-	<title>Implement an entity - Elcodi Documentation</title>
+	<title>Pull request - Elcodi Documentation</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -327,14 +327,14 @@
     <ul class="dropdown-menu">
         
             
-<li >
-    <a href="../../caveats/pull-request/">Pull request</a>
+<li class="active">
+    <a href="./">Pull request</a>
 </li>
 
         
             
 <li >
-    <a href="../../caveats/running-test-suite/">Running test suite</a>
+    <a href="../running-test-suite/">Running test suite</a>
 </li>
 
         
@@ -406,31 +406,31 @@
         
             
 <li >
-    <a href="../implement-a-controller-and-a-command/">Implement a controller and a command</a>
+    <a href="../../implementation/implement-a-controller-and-a-command/">Implement a controller and a command</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-a-factory/">Implement a factory</a>
+    <a href="../../implementation/implement-a-factory/">Implement a factory</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-a-form-type/">Implement a form type</a>
+    <a href="../../implementation/implement-a-form-type/">Implement a form type</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-a-repository/">Implement a repository</a>
+    <a href="../../implementation/implement-a-repository/">Implement a repository</a>
 </li>
 
         
             
-<li class="active">
-    <a href="./">Implement an entity</a>
+<li >
+    <a href="../../implementation/implement-an-entity/">Implement an entity</a>
 </li>
 
         
@@ -453,12 +453,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../implement-a-repository/">
+                        <a rel="next" href="../../">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li class="disabled">
-                        <a rel="prev" >
+                    <li >
+                        <a rel="prev" href="../running-test-suite/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -474,91 +474,68 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#how-to-implement-an-entity">How to Implement an Entity</a></li>
+        <li class="main active"><a href="#how-to-create-a-pull-request">How to create a Pull Request</a></li>
         
-            <li><a href="#interfaces">Interfaces</a></li>
+            <li><a href="#branch">Branch</a></li>
         
-            <li><a href="#new-entities">New entities</a></li>
+            <li><a href="#commits">Commits</a></li>
+        
+            <li><a href="#commit-description">Commit description</a></li>
         
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="how-to-implement-an-entity">How to Implement an Entity</h1>
-<p>In Elcodi we use an extremely thin model. It means that our entities are just
-parameters, getters and setters.</p>
-<p>Creating an entity is as easy as defining what an actor should own (parameters),
-forgetting about the behavior of this one. This logic will be placed then in the 
-service layer.</p>
-<p>Let's see a basic implementation of an entity.</p>
-<pre><code class="php">class Product
-{
-    /**
-     * @var name
-     *
-     * Product name
-     */
-    protected $name;
-
-    /**
-     * Get name
-     *
-     * @return string Product name
-     */
-    public function getName()
-    {
-        return $this-&gt;name;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name Product name
-     *
-     * @return $this Self object
-     */
-    public function setName($name)
-    {
-        $this-&gt;name = $name;
-
-        return $this;
-    }
-}
+<h1 id="how-to-create-a-pull-request">How to create a Pull Request</h1>
+<p>Elcodi is an Open Source project. This means that the community is a very
+important part of the development (in fact, maybe the most important), and 
+because of that each feature must be properly documented in order to make each
+addition easy to understand and integrate.</p>
+<p>You will find some information about how to create a pull request using github
+in their 
+<a href="https://help.github.com/articles/creating-a-pull-request/">help article</a>.</p>
+<h3 id="branch">Branch</h3>
+<p>The name of the branch should be explicative enough for everyone interested in
+reviewing. Github is used to propose names like <code>patch-1</code>, so please, check the
+name before any Pull Request.</p>
+<p>You can use as well our format, that will help us to catalog more quickly your
+work.</p>
+<pre><code>feature/this-is-my-new-feature
+fix/fixes-this-thing
+typo/fixes-this-typo
 </code></pre>
 
-<p>As you can see all properties are defined as protected. This is because Doctrine
-will need to extend the class using <a href="http://doctrine-orm.readthedocs.org/en/latest/reference/advanced-configuration.html#proxy-objects">transparent Proxy Objects</a>
-to implement lazy-loading.</p>
-<h3 id="interfaces">Interfaces</h3>
-<p>All Elcodi entities are an implementation of a <a href="http://martinfowler.com/bliki/HeaderInterface.html">
-Header Interface</a>.
-We use some 
-<a href="http://martinfowler.com/bliki/RoleInterface.html">Role Interfaces</a> in
-our code, but we are more focused in the first one because is more 
-understandable for everyone when overriding default implementations.</p>
-<pre><code class="php">use Elcodi\Component\Product\Entity\Interfaces\ProductInterface;
-
-/**
- * Class ProductInterface
- */
-class Product implements ProductInterface
-{
-    // ...
-}
+<h3 id="commits">Commits</h3>
+<p>Each branch can have as much commits as desired. But the question here is... how
+many commits do I need in order to create an acceptable Pull Request? The answer
+is as many as you need, but taking into account the possible usage of the git
+rebase interactive tool.</p>
+<p>Developers are used to creating partial commits named <code>WIP</code> and pushing them to
+temporary branches. That's a good strategy if you want to ensure your daily 
+work, but can be a bad idea if you use these commits for your Pull Request.</p>
+<pre><code>6d78a7b WIP
+7843838 WIP
+d78dbaa tmp
+d7aa7df Some additions
 </code></pre>
 
-<h3 id="new-entities">New entities</h3>
-<p>Usually, final projects need to implement more entities inside their projects.
-Since now, this has been so easy but so magical, and once again, we really think
-that this stuff should never be magic at all. Is your model, your business.</p>
-<p>In our actual implementation, we are using an Open Source project called 
-<a href="https://github.com/mmoreram/SimpleDoctrineMapping">Simple Doctrine Mapping</a>. 
-You should read carefully the documentation, indeed we strongly recommend it.</p>
-<p>Yes, we need to say that, we'll need to disable the <code>auto_mapping</code> configuration 
-item inside DoctrineBundle. This flag allow this magic we really want to avoid.</p>
-<p>Instead of that, we will specifically define how our entities should be defined
-and treated inside our project.</p></div>
+<p>As you can see here, these messages do not explain absolutely nothing about your
+work, so please check your branches before any Pull Request.</p>
+<h3 id="commit-description">Commit description</h3>
+<p>How should a commit description describe our changes? Well, you can follow this
+structure to follow good practices.</p>
+<pre><code>This is a short description
+
+Closes #123
+
+Then, We can add a larger description, focused on showing the world what is this
+commit about. Don't hesitate to add as much information as needed.
+
+* Finally, you can add some extra information using bullets
+* And more bullets
+* Related to this commit
+</code></pre></div>
             
         </div>
 
