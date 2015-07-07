@@ -555,9 +555,7 @@ sure your Redis version is at least <code>v2.8.9</code>.</p>
 <p>If you're used to working with LAMP environment, then you will have Bamboo 
 running in your computer in less than 5 minutes.</p>
 <h3 id="1-install-the-project">1. Install the project</h3>
-<p>After installing composer you can create your new bamboo project. Feel free to
-use any version, but we're still creating new features, fixing some issues and
-errors, and building our first release, so feel free to use them</p>
+<p>After installing composer you can create your new Bamboo project.</p>
 <pre><code class="bash">$ php composer.phar create-project elcodi/bamboo bamboo -sdev
 </code></pre>
 
@@ -565,85 +563,40 @@ errors, and building our first release, so feel free to use them</p>
 <p>The installation process will ask you for some parameters like the database
 driver, username, password, database name, etc</p>
 </blockquote>
-<p>Enter your directory to start the configuration step</p>
+<p>Enter your directory to start the configuration step and use our magic command
+to create a complete development environment. Just one single line to rule them
+all</p>
 <pre><code class="bash">$ cd bamboo/
+$ php app/console elcodi:install
 </code></pre>
 
-<h3 id="2-init-your-database">2. Init your database</h3>
-<p>Now we should create the database and all the application schema. Symfony
-provides you an easy way for doing that.</p>
-<pre><code class="bash">$ php app/console doctrine:database:create
-$ php app/console doctrine:schema:create
+<p>By default only Spain will be installed. We have focused this step to run as 
+fast as possible, so then, you'll be able to install more countries. You can add
+some countries in addition by using the <code>--country</code> command option.</p>
+<pre><code class="bash">$ php app/console elcodi:install --country=france --country=italy
 </code></pre>
 
-<p>We also load some fixtures to show on our store. This fixtures will set your
-store in a testing mode, with some categories, some manufacturers and a bunch of
-t-shirts. Only for testing purposes :)</p>
-<pre><code class="bash">$ php app/console doctrine:fixtures:load \
-      --fixtures=&quot;src/Elcodi/Fixtures&quot; \
-      --fixtures=&quot;src/Elcodi/Plugin&quot; \
-      --no-interaction
-</code></pre>
-
-<p>These fixtures will not install you any location data, but don't worry, we 
-provide you several ways for your location population.</p>
-<p>We provide you some files with some countries dumped. You will find these files
-inside <code>elcodi/geo-bundle</code> package, inside the <code>DataFixtures/ORM/Dumps</code> folder.
-Because location tables are not using foreign keys, you can play with them as
-much as you need.</p>
-<pre><code class="bash">$ mysql -uroot -proot bamboo &lt; vendor/elcodi/elcodi/src/Elcodi/Bundle/GeoBundle/DataFixtures/ORM/Dumps/spain.sql
-</code></pre>
-
-<p>You can also add the geo information for any country. Just find the two letters
-<a href="http://en.wikipedia.org/wiki/ISO_3166-1#Current_codes">ISO code</a> for the
-country you want to load and launch the following command changing ES with your
-code.</p>
-<pre><code class="bash">$ php app/console elcodi:locations:populate ES
-</code></pre>
-
-<p>This could take several minutes per country, be patient and provide PHP as much
-memory as possible.</p>
-<h3 id="3-load-the-plugins">3. Load the plugins</h3>
-<p>Bamboo offers a bunch of plugins to customize your store. In the ecosystem of
-Bamboo, a Plugin is just a Bundle, so first of all, check that all the plugins
-you want to use are actually instantiated in you <code>AppKernel</code> class, under <code>app/</code>
-folder.</p>
-<p>To install load these plugins, use this command</p>
-<pre><code class="bash">$ php app/console elcodi:plugins:load
-</code></pre>
-
-<p>The default template is a plugin as well, so you will install it as well with
-this command.</p>
-<h3 id="4-run-the-server">4. Run the server</h3>
-<p>Finally our store is ready to run :)</p>
+<h3 id="2-run-the-server">2. Run the server</h3>
+<p>Our store is ready to run. Use the built-in server to take a look at the 
+project.</p>
 <pre><code class="bash">$ php app/console server:run
 </code></pre>
 
-<p>You can also <a href="http://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html">configure a Web server</a> like Apache or Nginx to run the app like
-all the Symfony apps.</p>
-<h3 id="5-visit-your-store">5. Visit your store</h3>
-<p>Yehaaa! You're done! You're about to see what Elcodi can do for you. A complete
-store interface for your customers and some nice features for administrating it.</p>
-<p>You can start using these credentials we've already created for you. For the
-admin panel use. Remember to remove them properly when your store is on 
-production.</p>
-<pre><code class="text">Admin username: admin@admin.com
-Admin password: 1234
-</code></pre>
-
-<p>And for the store, use this Customer credentials.</p>
+<h3 id="3-visit-your-store">3. Visit your store</h3>
+<p>You're done! Visit <code>http://localhost:8000</code> in your browser and take a look at
+what we have for you :) Use these Customer credentials in the store</p>
 <pre><code class="text">Customer username: customer@customer.com
 Customer password: 1234
 </code></pre>
 
-<h3 id="6-play">6. Play!</h3>
-<p>You can now play with the bamboo :)
-Don't forget to <strong>create an issue</strong> on
-<a href="https://github.com/elcodi/bamboo/issues">Bamboo</a> or
-<a href="https://github.com/elcodi/elcodi/issues">Elcodi</a> if you found any bug.
-Any collaboration is welcome! We look forward to hearing from you!</p>
+<p>And for the admin panel, use this Admin credentials.</p>
+<pre><code class="text">Admin username: admin@admin.com
+Admin password: 1234
+</code></pre>
+
+<p>Remember to remove these users properly as soon as you're in production.</p>
 <h2 id="tests">Tests</h2>
-<p>Yes, we are doing some tests, and this will be <strong>in cresciendo</strong>. You can ensure
+<p>We are doing some tests, and this will be <strong>in cresciendo</strong>. You can ensure
 yourself that all the cases we've been working on are actually green. We are
 using Behat and PHPUnit, so you only need to execute all suites by using this
 piece of code.</p>
