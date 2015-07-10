@@ -136,5 +136,19 @@ These are our adapters included in the Core of the application. If you have
 implemented another adapter and you think that can be interesting to share it,
 then you can create a pull request with your work. We will appreciate it.
 
-* GD Extension - `elcodi.media_resize.gd`
-* ImageMagick - `elcodi.media_resize.imagemagick`
+#### GD Extension Adapter
+
+* Namespace - Elcodi\Component\Media\Adapter\Resizer\GDResizeAdapter
+* DI name - `elcodi.media_resize_adapter.gd`
+
+This extension doesn't need any extra installation
+
+#### Imagemagick Adapter
+
+* Namespace - Elcodi\Component\Media\Adapter\Resizer\ImageMagickResizeAdapter
+* DI name - `elcodi.media_resize_adapter.imagemagick`
+
+For more info just visit their [installation page](http://php.net/manual/en/imagick.setup.php)
+
+> On the installation step you will be asked to provide the Imagick installation
+> path. Ensure to configure the parameter imagick_convert_bin_path right
