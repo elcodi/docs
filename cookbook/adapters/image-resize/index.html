@@ -614,10 +614,22 @@ measures.</p>
 <p>These are our adapters included in the Core of the application. If you have
 implemented another adapter and you think that can be interesting to share it,
 then you can create a pull request with your work. We will appreciate it.</p>
+<h4 id="gd-extension-adapter">GD Extension Adapter</h4>
 <ul>
-<li>GD Extension - <code>elcodi.media_resize.gd</code></li>
-<li>ImageMagick - <code>elcodi.media_resize.imagemagick</code></li>
-</ul></div>
+<li>Namespace - Elcodi\Component\Media\Adapter\Resizer\GDResizeAdapter</li>
+<li>DI name - <code>elcodi.media_resize_adapter.gd</code></li>
+</ul>
+<p>This extension doesn't need any extra installation</p>
+<h4 id="imagemagick-adapter">Imagemagick Adapter</h4>
+<ul>
+<li>Namespace - Elcodi\Component\Media\Adapter\Resizer\ImageMagickResizeAdapter</li>
+<li>DI name - <code>elcodi.media_resize_adapter.imagemagick</code></li>
+</ul>
+<p>For more info just visit their <a href="http://php.net/manual/en/imagick.setup.php">installation page</a></p>
+<blockquote>
+<p>On the installation step you will be asked to provide the Imagick installation
+path. Ensure to configure the parameter imagick_convert_bin_path right</p>
+</blockquote></div>
             
         </div>
 
