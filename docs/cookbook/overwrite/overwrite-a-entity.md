@@ -62,6 +62,13 @@ through each Bundle configuration. Let's see how CartBundle allows the user to
 define this information by exposing its configuration.
 
 ``` yaml
+# app/config/config_local.yml
+#
+# Per project config file
+#
+# You can add here your specific configuration. It is recomended
+# to add configurations here instead of changing config.yml
+#
 elcodi_cart:
     
     mapping:
@@ -81,6 +88,13 @@ configuration values in CartBundle, so this is the way of overwriting the
 definition to start using our new Cart implementation.
 
 ``` yaml
+# app/config/config_local.yml
+#
+# Per project config file
+#
+# You can add here your specific configuration. It is recomended
+# to add configurations here instead of changing config.yml
+#
 elcodi_cart:
     
     mapping:
@@ -98,6 +112,13 @@ implementation, maybe you want to change the way the entity is mapped in your
 database.
 
 ``` yaml
+# app/config/config_local.yml
+#
+# Per project config file
+#
+# You can add here your specific configuration. It is recomended
+# to add configurations here instead of changing config.yml
+#
 elcodi_cart:
     
     mapping:
@@ -110,6 +131,13 @@ In Elcodi we are actually using `yml` files for such definition, but you can use
 both `yml` and `xml` files.
 
 ``` yaml
+# app/config/config_local.yml
+#
+# Per project config file
+#
+# You can add here your specific configuration. It is recomended
+# to add configurations here instead of changing config.yml
+#
 elcodi_cart:
     
     mapping:
@@ -127,6 +155,13 @@ change this behavior just overwriting this configuration value. The selected ent
 manager must exist in your Doctrine ORM definition.
 
 ``` yaml
+# app/config/config_local.yml
+#
+# Per project config file
+#
+# You can add here your specific configuration. It is recomended
+# to add configurations here instead of changing config.yml
+#
 elcodi_cart:
     
     mapping:
@@ -148,6 +183,13 @@ your model must be considered an essential part of your implementation, so you
 can disable an entity with a single line.
 
 ``` yaml
+# app/config/config_local.yml
+#
+# Per project config file
+#
+# You can add here your specific configuration. It is recomended
+# to add configurations here instead of changing config.yml
+#
 elcodi_cart:
     
     mapping:
