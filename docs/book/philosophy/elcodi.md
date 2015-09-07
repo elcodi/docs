@@ -1,2 +1,0 @@
-Elcodi Philosophy
-=================

@@ -1,5 +1,4 @@
-How to add a new Currency Rates Populator adapter
-=================================================
+# How to add a new Currency Rates Populator adapter
 
 You can create a new adapter for Currency Rates populator. By default, Elcodi
 implementation works with the Yahoo Finance provider. This adapter can be easily
