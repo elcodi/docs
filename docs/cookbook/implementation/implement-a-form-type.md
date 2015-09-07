@@ -1,8 +1,36 @@
-How to Implement a Form Type
-============================
+# How to Implement a Form Type
 
 A FormType object in Elcodi ecosystem must follow some rules in order to comply
 with the project flexibility.
+
+## Scenario
+
+We need to manage one of our own new entities. We have created the entity, the
+form and the repository, so we need to create some extra pages in our admin
+panel in order to create, modify and delete them.
+
+In order to create these new pages, we need some mechanism to create these 
+forms, being able to do it properly and extensible, following the best Symfony 
+and Elcodi standards.
+
+## Solution
+
+As you may know, whenever we want to work with forms in Symfony, best practices 
+say that we should use FormType classes. These classes are meant to be a PHP 
+representation of how a form should be treated and defined.
+
+So let's use them.
+
+### Symfony Forms
+
+Symfony Forms is not a Elcodi-related implementation, so first of all you should
+know as much as possible about how Symfony Forms works.
+
+We strongly encourage you to learn about them in their documentation before 
+proceeding with our specific documentation.
+
+[Symfony Book - Forms](http://symfony.com/doc/current/book/forms.html)
+[Symfony Best Practices - Forms](http://symfony.com/doc/current/best_practices/forms.html)
 
 ### Using Factories
 

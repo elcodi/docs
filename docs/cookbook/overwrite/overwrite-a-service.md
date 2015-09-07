@@ -1,5 +1,20 @@
-How to overwrite a service
-==========================
+# How to overwrite a service
+
+The Elcodi's default service layer is kindly proposed by the project in order to
+provide you a simple business logic, documented, and with all capabilities to be
+modified, overwritten and changed as much as needed.
+
+## Scenario
+
+Imagine your E-commerce needs have evolved a lot, and your business needs grow
+day by day. Your Cart is not Elcodi's cart anymore and you need to change a 
+little bit
+
+Your Product needs an extra flag called `promoted`, in order to assign an extra
+promotional value from 0 to 1, and used when products are required for 
+pagination. Your Product, based on Elcodi's one, should have this new field.
+
+## Solution
 
 To overwrite a service you must create a new class in your project, extend the 
 main service and overwrite the methods you need to overwrite.
@@ -49,5 +64,5 @@ services:
             ...
 ```
 
-Having done that, all the project will use your `elcodi.manager.cart` implementation 
-instead of the default one.
+Having done that, all the project will use your `elcodi.manager.cart` 
+implementation instead of the default one.

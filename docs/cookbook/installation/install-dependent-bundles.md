@@ -1,5 +1,4 @@
-How to Install dependent Bundles
-================================
+# How to Install dependent Bundles
 
 This chapter is not only to show how to install a Dependent Bundle in Elcodi 
 environment, but to show how to do it properly.

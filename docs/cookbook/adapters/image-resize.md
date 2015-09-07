@@ -1,5 +1,18 @@
-How to add a new Image Resize adapter
-=====================================
+# How to add a new Image Resize adapter
+
+Elcodi is served with a simple but very useful built-in image server. One of
+the most important actions this server is intended for is resizing images.
+
+## Scenario
+
+You need your application to be deployed to a server with PHP GD, but you want
+to use another image resize engine, for example an external API.
+
+Elcodi provides you a set of limited adapters for image resizing, so we should
+implement this new adapter. Elcodi provides you a simple, fast and amazing way
+to do it without many pain
+
+## Solution
 
 You can create your own image resize engine by adding a new adapter. By default,
 Elcodi is built with an implementation using the PHP GD Extension (you will

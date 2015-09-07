@@ -1,10 +1,26 @@
-How to Implement a Controller or a Command
-==========================================
+# How to Implement a Controller or a Command
 
 Controllers and Commands in Elcodi are exactly the same than Controllers and 
 Commands in Symfony. No difference between them. But in Elcodi we have a strong
 philosophy about how to create them in order to be valid or usable in the Open
 Source environment.
+
+## Scenario
+
+We have a Bamboo-based application in our server and we need to create a new 
+entry-point for our application, for example a new Controller to manage orders
+from specific users, in order to create special newsletters and increase the
+number of orders per customer.
+
+Controllers and Commands are designed and implemented following a simple but
+specific way. We need to know how both classes are created in Elcodi in order to
+follow the same philosophy in all places.
+
+## Solution
+
+Following this specific way, we need to know the differences between creating
+Controllers and Commands as services, or simply rely to the framework the way
+these classes are auto-discovered.
 
 ### Services in Elcodi
 
@@ -151,3 +167,8 @@ You can find some documentation of both annotation packages
 Please, before using annotations in your project make sure that you know how
 they work and how to use them. Read the documentation of both packages and try
 to understand their meaning.
+
+## Related links
+
+* [Symfony docs - How to define controllers as services](http://symfony.com/doc/current/cookbook/controller/service.html)
+* [Symfony docs - How to define commands as services](http://symfony.com/doc/current/cookbook/console/commands_as_services.html)

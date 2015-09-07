@@ -1,17 +1,38 @@
-Book
-====
+# Elcodi Book
 
-Prepared by Elcodi core team and contributors, this is the Elcodi bible. It is the reference for 
-any user of the platform, who will typically want to keep it close at hand.
+Welcome to the Elcodi Book, specially designed for all Elcodi developers with
+the single purpose of providing a solid base to start coding.
 
-### Table of contents
+First of all, some tips about the real meaning of Elcodi. Take your time in
+these chapters. The more you understand our philosophy, the better you will code
+your projects based on Elcodi.
 
-* [Elcodi Philosophy](philosophy/elcodi.md)
-* [Dependency Injection Standards](standards/dependency-injection.md)
-* [Classes Standards](standards/classes.md)
-* [Coding Standards](standards/code.md)
-* [Packages Structure](standards/packages-structure.md)
-* [Bundle Extensions](bundles/extensions.md)
-* [Plugins](bundles/plugins.md)
-* [Templates](bundles/plugins.md)
-* [Using the Cart](workflows/cart.md)
+* [What is Elcodi](what-is-elcodi.md)
+* [Why Elcodi](why-elcodi.md)
+* [Philosophy](philosophy.md)
+* [Standards](standards.md)
+
+Then, some interesting topics about implementation and configuration. In this 
+chapters you will understand how we have resolved some approaches and you can be
+part of it by adding your own business logic.
+
+* [Quick Start](../quick-start.md)
+* [Processes](processes.md)
+* [Emails](emails.md)
+* [Dictionary](dictionary.md)
+* [Events](events.md)
+* [Product Architecture](product-architecture.md)
+* [Cart Architecture](cart-architecture.md)
+* [Plugins](plugins.md)
+* [Payments](payments.md)
+* [Shipping](shipping.md)
+* [Components list](../component/index.md)
+* [Cookbook list](../cookbook/index.md)
+
+Finally, these chapters will help you about some extra elements related to the
+project. Interesting if you want to, not only use Elcodi as an open source
+project, but as a personal project, with the possibility of helping us growing
+and becoming better day by day
+
+* [Running tests suite](running-test-suite.md)
+* [Pull Requests](pull-requests.md)
