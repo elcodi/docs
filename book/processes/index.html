@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>Processes - Elcodi Documentation</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Elcodi Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../quick-start/">Quick start</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../cart-architecture/">Cart architecture</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../dictionary/">Dictionary</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../emails/">Emails</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../events/">Events</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../">Home</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../payments/">Payments</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../philosophy/">Philosophy</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../plugins/">Plugins</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Processes</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../product-architecture/">Product architecture</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../pull-requests/">Pull requests</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../running-test-suite/">Running test suite</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../shipping/">Shipping</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../standards/">Standards</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../what-is-elcodi/">What is elcodi</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../why-elcodi/">Why elcodi</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../cookbook/">Home</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Installation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/installation/install-a-plugin/">Install a plugin</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/installation/install-dependent-bundles/">Install dependent bundles</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Overwrite</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-a-parameter/">Overwrite a parameter</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-a-service/">Overwrite a service</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-an-entity/">Overwrite an entity</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Adapters</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/adapters/currency-rates-populator/">Currency rates populator</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/adapters/image-resize/">Image resize</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/adapters/location-provider/">Location provider</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Implementation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-collector/">Implement a collector</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-controller-and-a-command/">Implement a controller and a command</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-factory/">Implement a factory</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-form-type/">Implement a form type</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-repository/">Implement a repository</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-an-entity/">Implement an entity</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-an-event-listener/">Implement an event listener</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Component <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../component/entity-translator/">Entity translator</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/">Home</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/media/">Media</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/menu/">Menu</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/sitemap/">Sitemap</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/state-transition-machine/">State transition machine</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/template/">Template</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../plugins/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../product-architecture/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#processes">Processes</a></li>
+        
+            <li><a href="#load-any-page">Load any page</a></li>
+        
+            <li><a href="#load-the-home-page">Load the home page</a></li>
+        
+            <li><a href="#load-the-product-page">Load the product page</a></li>
+        
+            <li><a href="#load-the-variants-page">Load the variants page</a></li>
+        
+            <li><a href="#load-the-category-page">Load the category page</a></li>
+        
+            <li><a href="#register">Register</a></li>
+        
+            <li><a href="#login">Login</a></li>
+        
+            <li><a href="#logout">Logout</a></li>
+        
+            <li><a href="#add-a-product-in-our-cart">Add a Product in our Cart</a></li>
+        
+            <li><a href="#remove-a-product-from-our-cart">Remove a Product from our Cart</a></li>
+        
+            <li><a href="#add-a-coupon-in-our-cart">Add a Coupon in our Cart</a></li>
+        
+            <li><a href="#remove-a-coupon-from-our-cart">Remove a Coupon from our Cart</a></li>
+        
+            <li><a href="#make-a-buy-step-by-step">Make a buy, step by step</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="processes">Processes</h1>
+<p>In this chapter you will find a set of Bamboo processes. A process is just a
+page loaded or a specific action from an already loaded page.</p>
+<p>Each entry of this chapter has the same predefined format, taking in account
+that all links work having a clean Bamboo installation listening to
+http://localhost:8000</p>
+<p><strong>Given</strong> - Initial environment and requirements<br />
+<strong>When</strong> - Our elemental action<br />
+<strong>Then</strong> - Actions ocurred because of that previous actions. Sent emails and 
+important dispatched events are described here as well.</p>
+<p>In each scenario, we'll provide as well some nice sections for you to know a
+little bit more about it.</p>
+<ul>
+<li>Events dispatched - Events dispatched by the symfony component or any Elcodi
+components</li>
+<li>Email sent - Emails sent by the application during this action</li>
+<li>Related links - Interesting links to know a little bit more about the scenario</li>
+<li>Nice improvements - Small tips about how to improve the scenario.</li>
+</ul>
+<h2 id="load-any-page">Load any page</h2>
+<p>All pages have a common set of elements described as follows. All elements
+belong to the application, so they are applicable to all web requests.</p>
+<p><strong>Given</strong> - As a user, no matter the credentials<br />
+<strong>When</strong> - We want to visit any application page<br />
+<strong>Then</strong> - These actions happen  </p>
+<ul>
+<li>Request is handled by the Bamboo application, on top of the Symfony Framework,
+Symfony components and Elcodi components.</li>
+<li>The user is loaded by using the session information</li>
+<li>The user credentials are checked and analyzed in order to find authentication
+and authorization information.</li>
+<li>If the user can visit the page, then the response is created and served to the
+user.</li>
+<li>Otherwise, you'll receive a redirection to login page</li>
+<li>Some user related information is loaded from database</li>
+<li>Some language related information is loaded from database, taking in account
+the user or using stored-in-session data</li>
+<li>Some currency information is loaded the same way than language</li>
+<li>The request is processed</li>
+</ul>
+<p><img alt="Top bar" src="../../image/top-bar.png" /></p>
+<p>Related links</p>
+<ul>
+<li><a href="http://symfony.com/doc/current/book/http_fundamentals.html">HTTP Fundamentals</a></li>
+<li><a href="http://symfony.com/doc/current/book/security.html">Symfony Security</a></li>
+<li><a href="http://symfony.com/doc/current/components/http_foundation/sessions.html">Session Management</a></li>
+</ul>
+<h2 id="load-the-home-page">Load the home page</h2>
+<p>The main page, or home page, is always treated as a simple category page, having
+that the way of retrieving the products is by filtering by the field <code>inHome</code>.</p>
+<p><strong>Given</strong> - As a user, no matter the credentials<br />
+<strong>When</strong> - We visit the home page, http://localhost:8000<br />
+<strong>Then</strong> - We can see the N first products  </p>
+<p><img alt="Homepage" src="../../image/homepage.png" /></p>
+<h2 id="load-the-product-page">Load the product page</h2>
+<p>The product page is one of the most important landing pages in the whole
+e-commerce project. You will find all product related information and all the
+needed buttons for adding the product in your Cart.</p>
+<p><strong>Given</strong> - As a user, no matter the credentials<br />
+<strong>When</strong> - We visit a product without variants page
+<strong>Then</strong> - All the product information is reached from the database and shown in
+a single page. Because the product has no variants, you can add this product in
+your cart by pushing the <em>add to cart</em> button.</p>
+<p><img alt="Homepage" src="../../image/product.png" /></p>
+<p>Related links</p>
+<ul>
+<li><a href="../product-architecture/">Product Architecture</a></li>
+</ul>
+<p>Improvements</p>
+<ul>
+<li>As soon as your website has any search service (Like elasticsearch or Solr),
+all product-related data should be required from there instead of using
+database. To do that, you should save all needed information in the search
+server in order to avoid sql connection</li>
+</ul>
+<h2 id="load-the-variants-page">Load the variants page</h2>
+<p>In this case, the product we're loading has variants, so the product itself is
+only the master of different product variations (see related links). The meaning
+of this page is the same than the product one, but in this case, we will load as
+well all the variants information.</p>
+<p>Of course, each variant</p>
+<p><strong>Given</strong> - As a user, no matter the credentials<br />
+<strong>When</strong> - We visit a product with variants page
+<strong>Then</strong> - All the product information is reached from the database and shown in
+a single page. Each variant will provide you the information about adding it
+into cart, considering each variant as a product with some defined values.</p>
+<p><img alt="Variant" src="../../image/variant.png" /></p>
+<p>Related links</p>
+<ul>
+<li><a href="../product-architecture/">Product Architecture</a></li>
+</ul>
+<h2 id="load-the-category-page">Load the category page</h2>
+<p>Just a search page, filtering by categories</p>
+<p><strong>Given</strong> - As a user, no matter the credentials<br />
+<strong>When</strong> - We want to see all products from a category, http://localhost:8000/category/women-shirts/1<br />
+<strong>Then</strong> - This page has the same behavior than the home page, but filtering by
+category.</p>
+<p><img alt="Category" src="../../image/category.png" /></p>
+<p>Related links</p>
+<ul>
+<li><a href="../product-architecture/">Product Architecture</a></li>
+</ul>
+<h2 id="register">Register</h2>
+<p>Register a new user in the application.</p>
+<p><strong>Given</strong> - As a not logged non registered user<br />
+<strong>When</strong> - We want to register, http://localhost:8000/register<br />
+<strong>Then</strong> - once added our basic and needed information, and pressed the 
+<em>register</em> button, a new user is added into the database. Is important to know
+that our stored password is never saved plain and decrypted. We use BCrypt for
+that reason.</p>
+<p><img alt="Register" src="../../image/register.png" /></p>
+<p>Events dispatched</p>
+<ul>
+<li><a href="../events#userregister">user.register</a></li>
+<li><a href="../events#customerregister">customer.register</a></li>
+</ul>
+<p>Sent emails</p>
+<ul>
+<li><a href="">Customer registered</a></li>
+</ul>
+<p>Related links</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Bcrypt">Bcrypt in Wikipedia</a></li>
+<li><a href="http://symfony.com/doc/current/reference/configuration/security.html">Security Bundle Configuration</a></li>
+</ul>
+<h2 id="login">Login</h2>
+<p>Login in the application</p>
+<p><strong>Given</strong> - As a not logged non registered user<br />
+<strong>When</strong> - We want to log in, http://localhost:8000/login<br />
+<strong>Then</strong> - once added our basic and needed information, and pressed the 
+<em>login</em> button, the system checks that given user exists in database and that
+given password and stored one is the same. If they are, then the user is
+authenticated in current session and allowed to access into the private zone.
+Otherwise, the user is redirected to the same page with relevant errors.</p>
+<p><img alt="Login" src="../../image/login.png" /></p>
+<p>Related links</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Bcrypt">Bcrypt in Wikipedia</a></li>
+<li><a href="http://symfony.com/doc/current/reference/configuration/security.html">Security Bundle Configuration</a></li>
+</ul>
+<h2 id="logout">Logout</h2>
+<p>Logout from the application</p>
+<p><strong>Given</strong> - As a logged user
+<strong>When</strong> - We want to log out from the website, http://localhost:8000/logout
+<strong>Then</strong> - Once we decide to logout, we only need to remove the session
+credentials and the Symfony Security Component will do the rest.</p>
+<p>Related links</p>
+<ul>
+<li><a href="http://symfony.com/doc/current/reference/configuration/security.html">Security Bundle Configuration</a></li>
+</ul>
+<h2 id="add-a-product-in-our-cart">Add a Product in our Cart</h2>
+<h2 id="remove-a-product-from-our-cart">Remove a Product from our Cart</h2>
+<h2 id="add-a-coupon-in-our-cart">Add a Coupon in our Cart</h2>
+<h2 id="remove-a-coupon-from-our-cart">Remove a Coupon from our Cart</h2>
+<h2 id="make-a-buy-step-by-step">Make a buy, step by step</h2></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

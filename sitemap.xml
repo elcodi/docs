@@ -4,7 +4,7 @@
     
     <url>
      <loc>None/</loc>
-     <lastmod>2015-07-10</lastmod>
+     <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,7 +12,7 @@
     
     <url>
      <loc>None/quick-start/</loc>
-     <lastmod>2015-07-10</lastmod>
+     <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,158 +20,98 @@
     
         
     <url>
-     <loc>None/reference/attribute/</loc>
-     <lastmod>2015-07-10</lastmod>
+     <loc>None/book/cart-architecture/</loc>
+     <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/reference/banner/</loc>
-     <lastmod>2015-07-10</lastmod>
+     <loc>None/book/dictionary/</loc>
+     <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/reference/cart-coupon/</loc>
-     <lastmod>2015-07-10</lastmod>
+     <loc>None/book/emails/</loc>
+     <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/reference/cart/</loc>
-     <lastmod>2015-07-10</lastmod>
+     <loc>None/book/events/</loc>
+     <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    <url>
-     <loc>None/reference/comment/</loc>
-     <lastmod>2015-07-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/reference/configuration/</loc>
-     <lastmod>2015-07-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/reference/coupon/</loc>
-     <lastmod>2015-07-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/reference/</loc>
-     <lastmod>2015-07-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/reference/sitemap/</loc>
-     <lastmod>2015-07-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>None/components/attribute/</loc>
-     <lastmod>2015-07-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/components/entity-translator/</loc>
-     <lastmod>2015-07-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/components/</loc>
-     <lastmod>2015-07-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/components/menu/</loc>
-     <lastmod>2015-07-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/components/state-transition-machine/</loc>
-     <lastmod>2015-07-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>None/bundles/attribute/</loc>
-     <lastmod>2015-07-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/bundles/entity-translator/</loc>
-     <lastmod>2015-07-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/bundles/</loc>
-     <lastmod>2015-07-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/bundles/menu/</loc>
-     <lastmod>2015-07-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None/bundles/sitemap/</loc>
-     <lastmod>2015-07-10</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
         
     <url>
      <loc>None/book/</loc>
-     <lastmod>2015-07-10</lastmod>
+     <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None</loc>
-     <lastmod></lastmod>
+     <loc>None/book/payments/</loc>
+     <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None</loc>
-     <lastmod></lastmod>
+     <loc>None/book/philosophy/</loc>
+     <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None</loc>
-     <lastmod></lastmod>
+     <loc>None/book/plugins/</loc>
+     <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None</loc>
-     <lastmod></lastmod>
+     <loc>None/book/processes/</loc>
+     <lastmod>2015-09-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/book/product-architecture/</loc>
+     <lastmod>2015-09-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/book/pull-requests/</loc>
+     <lastmod>2015-09-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/book/running-test-suite/</loc>
+     <lastmod>2015-09-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/book/shipping/</loc>
+     <lastmod>2015-09-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/book/standards/</loc>
+     <lastmod>2015-09-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/book/what-is-elcodi/</loc>
+     <lastmod>2015-09-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/book/why-elcodi/</loc>
+     <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -181,7 +121,7 @@
         
     <url>
      <loc>None/cookbook/</loc>
-     <lastmod>2015-07-10</lastmod>
+     <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -209,9 +149,49 @@
      <changefreq>daily</changefreq>
     </url>
         
+    
+
+    
+        
     <url>
-     <loc>None</loc>
-     <lastmod></lastmod>
+     <loc>None/component/entity-translator/</loc>
+     <lastmod>2015-09-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/component/</loc>
+     <lastmod>2015-09-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/component/media/</loc>
+     <lastmod>2015-09-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/component/menu/</loc>
+     <lastmod>2015-09-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/component/sitemap/</loc>
+     <lastmod>2015-09-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/component/state-transition-machine/</loc>
+     <lastmod>2015-09-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/component/template/</loc>
+     <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         

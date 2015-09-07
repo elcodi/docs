@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>Events - Elcodi Documentation</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Elcodi Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../quick-start/">Quick start</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../cart-architecture/">Cart architecture</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../dictionary/">Dictionary</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../emails/">Emails</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Events</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../">Home</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../payments/">Payments</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../philosophy/">Philosophy</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../plugins/">Plugins</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../processes/">Processes</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../product-architecture/">Product architecture</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../pull-requests/">Pull requests</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../running-test-suite/">Running test suite</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../shipping/">Shipping</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../standards/">Standards</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../what-is-elcodi/">What is elcodi</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../why-elcodi/">Why elcodi</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../cookbook/">Home</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Installation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/installation/install-a-plugin/">Install a plugin</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/installation/install-dependent-bundles/">Install dependent bundles</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Overwrite</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-a-parameter/">Overwrite a parameter</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-a-service/">Overwrite a service</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-an-entity/">Overwrite an entity</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Adapters</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/adapters/currency-rates-populator/">Currency rates populator</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/adapters/image-resize/">Image resize</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/adapters/location-provider/">Location provider</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Implementation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-collector/">Implement a collector</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-controller-and-a-command/">Implement a controller and a command</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-factory/">Implement a factory</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-form-type/">Implement a form type</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-repository/">Implement a repository</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-an-entity/">Implement an entity</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-an-event-listener/">Implement an event listener</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Component <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../component/entity-translator/">Entity translator</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/">Home</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/media/">Media</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/menu/">Menu</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/sitemap/">Sitemap</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/state-transition-machine/">State transition machine</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/template/">Template</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../emails/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#elcodi-events">Elcodi Events</a></li>
+        
+            <li><a href="#priorities">Priorities</a></li>
+        
+            <li><a href="#cartpreload">cart.preload</a></li>
+        
+            <li><a href="#cartonload">cart.onload</a></li>
+        
+            <li><a href="#cartonempty">cart.onempty</a></li>
+        
+            <li><a href="#cartinconsistent">cart.inconsistent</a></li>
+        
+            <li><a href="#cart_lineonadd">cart_line.onadd</a></li>
+        
+            <li><a href="#cart_lineonedit">cart_line.onedit</a></li>
+        
+            <li><a href="#cart_lineonremove">cart_line.onremove</a></li>
+        
+            <li><a href="#orderprecreated">order.precreated</a></li>
+        
+            <li><a href="#orderoncreated">order.oncreated</a></li>
+        
+            <li><a href="#order_lineoncreated">order_line.oncreated</a></li>
+        
+            <li><a href="#cart_coupononcheck">cart_coupon.oncheck</a></li>
+        
+            <li><a href="#cart_coupononapply">cart_coupon.onapply</a></li>
+        
+            <li><a href="#cart_coupononremove">cart_coupon.onremove</a></li>
+        
+            <li><a href="#cart_coupononrejected">cart_coupon.onrejected</a></li>
+        
+            <li><a href="#order_coupononapply">order_coupon.onapply</a></li>
+        
+            <li><a href="#commentonadd">comment.onadd</a></li>
+        
+            <li><a href="#commentonedit">comment.onedit</a></li>
+        
+            <li><a href="#commentpreremove">comment.preremove</a></li>
+        
+            <li><a href="#commentonremove">comment.onremove</a></li>
+        
+            <li><a href="#commentonvoted">comment.onvoted</a></li>
+        
+            <li><a href="#coupononused">coupon.onused</a></li>
+        
+            <li><a href="#addressonclone">address.onclone</a></li>
+        
+            <li><a href="#imagepreupload">image.preupload</a></li>
+        
+            <li><a href="#imageonupload">image.onupload</a></li>
+        
+            <li><a href="#newsletteronsubscribe">newsletter.onsubscribe</a></li>
+        
+            <li><a href="#newsletteronunsubscribe">newsletter.onunsubscribe</a></li>
+        
+            <li><a href="#paymentcollect">payment.collect</a></li>
+        
+            <li><a href="#shippingcollect">shipping.collect</a></li>
+        
+            <li><a href="#state_machinemachine_idinitialization">state_machine.{machine_id}.initialization</a></li>
+        
+            <li><a href="#state_machinemachine_idtransition_from_state_name">state_machine.{machine_id}.transition_from_{state_name}</a></li>
+        
+            <li><a href="#state_machinemachine_idtransition_transition_name">state_machine.{machine_id}.transition_{transition_name}</a></li>
+        
+            <li><a href="#state_machinemachine_idtransition_to_state_name">state_machine.{machine_id}.transition_to_{state_name}</a></li>
+        
+            <li><a href="#state_machinetransition">state_machine.transition</a></li>
+        
+            <li><a href="#passwordremember">password.remember</a></li>
+        
+            <li><a href="#passwordrecover">password.recover</a></li>
+        
+            <li><a href="#userregister">user.register</a></li>
+        
+            <li><a href="#customerregister">customer.register</a></li>
+        
+            <li><a href="#adminuserregister">adminuser.register</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="elcodi-events">Elcodi Events</h1>
+<p>Full Elcodi Events documentation. Each entry describes what the event is 
+created for, where is thrown and how can be used.</p>
+<h3 id="priorities">Priorities</h3>
+<p>Each time an event is dispatched, a bunch of subscribers are ready to be 
+executed. But who says which one must be executed first, and which one must be
+executed the last one?</p>
+<p>Well, each event listener can have a priority value, and once all these 
+listeners must be executed, one by one, they are previously sorted by this 
+value, from 128 to -127. The more high, the before is executed.</p>
+<pre><code class="yaml">services:
+
+    elcodi.event_listener.some:
+        class: My\Bundle\EventListener\SomeEventListener
+        tags:
+            - { name: kernel.event_listener, event: order.oncreated, method: some, priority: 16 }
+</code></pre>
+
+<p>This parameter is not required, and by default is 0. When several listeners 
+have the same priority, then the <em>first found, first executed</em> solution is 
+wisely applied.</p>
+<h3 id="cartpreload">cart.preload</h3>
+<p>This event is dispatched by the <code>CartManager</code> and is intended for one single 
+reason: check anything related to a Cart before loading it. Once the cart is 
+fetched from the database, and because most of the values must be computed on 
+real time (stock must be checked, for example), must be loaded somehow. Loading 
+a cart means checking its correctness and computing all prices.</p>
+<p>Well, if you need to do some checks after this computation is done, then use 
+this event.</p>
+<pre><code class="php">use Elcodi\Component\Cart\Event\CartPreLoadEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(CartPreLoadEvent $event)
+{
+    $cart = $event-&gt;getCart();
+}
+</code></pre>
+
+<h3 id="cartonload">cart.onload</h3>
+<p>Once the cart has been checked, this one can be loaded. This event is thrown 
+only when the cart is valid and, after it, cart instance must be complete and
+ready to be used by the application.</p>
+<pre><code class="php">use Elcodi\Component\Cart\Event\CartOnLoadEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(CartOnLoadEvent $event)
+{
+    $cart = $event-&gt;getCart();
+}
+</code></pre>
+
+<h3 id="cartonempty">cart.onempty</h3>
+<p>You can subscribe as well when the cart is emptied, so you can add some checks
+or actions related to this action.</p>
+<pre><code class="php">use Elcodi\Component\Cart\Event\CartOnEmptyEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(CartOnEmptyEvent $event)
+{
+    $cart = $event-&gt;getCart();
+}
+</code></pre>
+
+<h3 id="cartinconsistent">cart.inconsistent</h3>
+<p>Once the cart is being checked, one of the possibilities is that any cart line
+is invalid, for example because there is no stock anymore of the product 
+related, or because the product has been disabled meanwhile.</p>
+<p>By default, these lines are removed from the cart, but you can add some extra
+behavior by subscribing to this event.</p>
+<pre><code class="php">use Elcodi\Component\Cart\Event\CartInconsistentEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(CartInconsistentEvent $event)
+{
+    $cart = $event-&gt;getCart();
+    $cartLine = $event-&gt;getCartLine();
+}
+</code></pre>
+
+<h3 id="cart_lineonadd">cart_line.onadd</h3>
+<p>Each time a new cart line is created and added into a cart, this event is 
+dispatched.</p>
+<pre><code class="php">use Elcodi\Component\Cart\Event\CartLineOnAddEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(CartLineOnAddEvent $event)
+{
+    $cart = $event-&gt;getCart();
+    $cartLine = $event-&gt;getCartLine();
+}
+</code></pre>
+
+<h3 id="cart_lineonedit">cart_line.onedit</h3>
+<p>Each time an existing cart line is edited, this event is dispatched. To edit a
+cart line means changing its quantity, for example.</p>
+<pre><code class="php">use Elcodi\Component\Cart\Event\CartLineOnEditEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(CartLineOnEditEvent $event)
+{
+    $cart = $event-&gt;getCart();
+    $cartLine = $event-&gt;getCartLine();
+}
+</code></pre>
+
+<h3 id="cart_lineonremove">cart_line.onremove</h3>
+<p>Each time an existing cart line is removed, this event is dispatched.</p>
+<pre><code class="php">use Elcodi\Component\Cart\Event\CartLineOnEditEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(CartLineOnEditEvent $event)
+{
+    $cart = $event-&gt;getCart();
+    $cartLine = $event-&gt;getCartLine();
+}
+</code></pre>
+
+<h3 id="orderprecreated">order.precreated</h3>
+<p>Once a cart is purchased, a new Order instance must be created from it. This 
+event is dispatched before this order is created, so the instance is not a 
+reality yet.</p>
+<p>Indeed, this event is more related to the cart that is going to be converted, so
+any business logic related to "This cart is going to be transformed into an 
+Order", should be placed here, no matter how the Order is.</p>
+<pre><code class="php">use Elcodi\Component\Cart\Event\OrderPreCreatedEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(OrderPreCreatedEvent $event)
+{
+    $cart = $event-&gt;getCart();
+}
+</code></pre>
+
+<h3 id="orderoncreated">order.oncreated</h3>
+<p>The Order is now being created, so any kind of business logic related to the 
+Cart that is being transformed, or the new Order, you can subscribe to this
+event.</p>
+<pre><code class="php">use Elcodi\Component\Cart\Event\OrderOnCreatedEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(OrderOnCreatedEvent $event)
+{
+    $cart = $event-&gt;getCart();
+    $order = $event-&gt;getOrder();
+}
+</code></pre>
+
+<h3 id="order_lineoncreated">order_line.oncreated</h3>
+<p>When creating the order given a cart, for each cart line found, a new order line
+is created as well. Each time this happens, a new event of this type is 
+dispatched.</p>
+<p>This is used, for example, when the stock must be updated from each cart line.</p>
+<pre><code class="php">use Elcodi\Component\Cart\Event\OrderLineOnCreatedEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(OrderLineOnCreatedEvent $event)
+{
+    $cart = $event-&gt;getCart();
+    $order = $event-&gt;getOrder();
+    $orderLine = $event-&gt;getOrderLine();
+}
+</code></pre>
+
+<h3 id="cart_coupononcheck">cart_coupon.oncheck</h3>
+<p>Each time a cart is loaded, all coupons are checked one by one. You can access
+to the checked coupon and to the full cart object.</p>
+<pre><code class="php">use Elcodi\Component\CartCoupon\Event\CartCouponOnCheckEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(CartCouponOnCheckEvent $event)
+{
+    $cart = $event-&gt;getCart();
+    $coupon = $event-&gt;getCoupon();
+    $cartCoupon = $event-&gt;getCartCoupon();
+}
+</code></pre>
+
+<h3 id="cart_coupononapply">cart_coupon.onapply</h3>
+<p>Each time a new coupon is applied to an existing cart, this event is dispatched.</p>
+<p>The association itself is done by an Event Listener as well with priority 0, so
+before that, the association object will not be available.</p>
+<pre><code class="php">use Elcodi\Component\CartCoupon\Event\CartCouponOnApplyEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(CartCouponOnApplyEvent $event)
+{
+    $cart = $event-&gt;getCart();
+    $coupon = $event-&gt;getCoupon();
+    $cartCoupon = $event-&gt;getCartCoupon();
+}
+</code></pre>
+
+<h3 id="cart_coupononremove">cart_coupon.onremove</h3>
+<p>Each time a coupon is removed from a cart, this event is dispatched. </p>
+<p>Take in account that the coupon is really removed from the cart (only the 
+association is removed, not the coupon itself) by an Event Listener with 
+priority 0.</p>
+<pre><code class="php">use Elcodi\Component\CartCoupon\Event\CartCouponOnRemoveEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(CartCouponOnRemoveEvent $event)
+{
+    $cart = $event-&gt;getCart();
+    $coupon = $event-&gt;getCoupon();
+    $cartCoupon = $event-&gt;getCartCoupon();
+}
+</code></pre>
+
+<h3 id="cart_coupononrejected">cart_coupon.onrejected</h3>
+<p>Each time a coupon is intended to be applied to a cart, some kind of checks are
+performed in order to know if this coupon is really applicable. If it is, great
+then, otherwise, this event is dispatched.</p>
+<p>One useful case for that event is notifying the administrator how many times a
+coupon has been rejected by the application.</p>
+<pre><code class="php">use Elcodi\Component\CartCoupon\Event\CartCouponOnRejectedEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(CartCouponOnRejectedEvent $event)
+{
+    $cart = $event-&gt;getCart();
+    $coupon = $event-&gt;getCoupon();
+}
+</code></pre>
+
+<h3 id="order_coupononapply">order_coupon.onapply</h3>
+<p>Once the cart is processed and a new order is created from it, for each 
+available coupon used and accepted a new association between the coupon and the
+order is created. Then, this event is dispatched.</p>
+<p>The association itself is done by an Event Listener as well with priority 0, so
+before that, the association object will not be available.</p>
+<pre><code class="php">use Elcodi\Component\CartCoupon\Event\CartCouponOnRejectedEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(CartCouponOnRejectedEvent $event)
+{
+    $order = $event-&gt;getCart();
+    $coupon = $event-&gt;getCoupon();
+    $orderCoupon = $event-&gt;getOrderCoupon();
+}
+</code></pre>
+
+<h3 id="commentonadd">comment.onadd</h3>
+<p>A new comment has been added.</p>
+<pre><code class="php">use Elcodi\Component\Comment\Event\CommentOnAddEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(CommentOnAddEvent $event)
+{
+    $comment = $event-&gt;getComment();
+}
+</code></pre>
+
+<h3 id="commentonedit">comment.onedit</h3>
+<p>An existing comment is being edited.</p>
+<pre><code class="php">use Elcodi\Component\Comment\Event\CommentOnEditEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(CommentOnEditEvent $event)
+{
+    $comment = $event-&gt;getComment();
+}
+</code></pre>
+
+<h3 id="commentpreremove">comment.preremove</h3>
+<h3 id="commentonremove">comment.onremove</h3>
+<h3 id="commentonvoted">comment.onvoted</h3>
+<h3 id="coupononused">coupon.onused</h3>
+<p>Each time a certain coupon is used, this coupon is dispatched. Commonly used to
+increase the coupon usages.</p>
+<pre><code class="php">use Elcodi\Component\Coupon\Event\CouponOnUsedEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(CouponOnUsedEvent $event)
+{
+    $order = $event-&gt;getCart();
+    $coupon = $event-&gt;getCoupon();
+    $orderCoupon = $event-&gt;getOrderCoupon();
+}
+</code></pre>
+
+<h3 id="addressonclone">address.onclone</h3>
+<p>Because an address can be changed after has been used in an order, for example,
+each time an address is edited, should be cloned. When this happens, this event
+is dispatched in order to some extra actions.</p>
+<pre><code class="php">use Elcodi\Component\Geo\Event\AddressOnCloneEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(AddressOnCloneEvent $event)
+{
+    $originalAddress = $event-&gt;getOriginalAddress();
+    $clonedAddress = $event-&gt;getClonedAddress();
+}
+</code></pre>
+
+<h3 id="imagepreupload">image.preupload</h3>
+<p>An image is going to be uploaded and saved. Useful for some image manipulation
+before being uploaded.</p>
+<pre><code class="php">use Elcodi\Component\Media\Event\ImageUploadedEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(ImageUploadedEvent $event)
+{
+    $image = $event-&gt;getImage();
+}
+</code></pre>
+
+<h3 id="imageonupload">image.onupload</h3>
+<p>Image has been uploaded and saved into database</p>
+<pre><code class="php">use Elcodi\Component\Media\Event\ImageUploadedEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(ImageUploadedEvent $event)
+{
+    $image = $event-&gt;getImage();
+}
+</code></pre>
+
+<h3 id="newsletteronsubscribe">newsletter.onsubscribe</h3>
+<p>A user has been subscribed to the newsletter.</p>
+<pre><code class="php">use Elcodi\Component\Newsletter\Event\NewsletterSubscriptionEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(NewsletterSubscriptionEvent $event)
+{
+    $newsletterSubscription = $event-&gt;getNewsletterSubscription();
+}
+</code></pre>
+
+<h3 id="newsletteronunsubscribe">newsletter.onunsubscribe</h3>
+<p>A user has been unsubscribed from the newsletter.</p>
+<pre><code class="php">use Elcodi\Component\Newsletter\Event\NewsletterUnsubscriptionEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(NewsletterUnsubscriptionEvent $event)
+{
+    $newsletterSubscription = $event-&gt;getNewsletterSubscription();
+}
+</code></pre>
+
+<h3 id="paymentcollect">payment.collect</h3>
+<p>This event is used by the core when all available payment methods are collected.
+Each bundle will inject itself as a payment method.</p>
+<p>This event is not passive, but active. This means that is not just an event, but
+a collector (implemented the same way in Symfony, but theoretically different).</p>
+<pre><code class="php">use Elcodi\Component\Payment\Entity\PaymentMethod;
+use Elcodi\Component\Payment\Event\PaymentCollectionEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(PaymentCollectionEvent $event)
+{
+    $paymentMethod = new PaymentMethod(
+        'my-payment-method-24872378942',
+        'payment name',
+        'payment description',
+        $this
+            -&gt;router
+            -&gt;generate('payment_route')
+    );
+
+    $event-&gt;addPaymentMethod($paymentMethod);
+}
+</code></pre>
+
+<h3 id="shippingcollect">shipping.collect</h3>
+<p>This event is used by the core when all available shipping methods are 
+collected. Of course, each shipping method should check if is valid given the
+cart, the user information or any other related parameter.</p>
+<p>This event is not passive, but active. This means that is not just an event, but
+a collector (implemented the same way in Symfony, but theoretically different).</p>
+<pre><code class="php">use Elcodi\Component\Shipping\Entity\ShippingMethod;
+use Elcodi\Component\Shipping\Event\ShippingCollectionEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(ShippingCollectionEvent $event)
+{
+    $euro = // Currency instance
+    $cart = $event-&gt;getCart();
+
+    /**
+     * Only available with Carts that ...
+     */
+    if ($cart-&gt;getPrice() &lt; //) {
+
+        return;
+    }
+
+
+    $shippingMethod = new ShippingMethod(
+        'custom-shipping-method-437829',
+        'UPS',
+        'Super fast shipping!',
+        '4 days shipping, worldwide',
+        Money::create(10, $euro);
+    );
+
+    $event-&gt;addShippingMethod($paymentMethod);
+}
+</code></pre>
+
+<h3 id="state_machinemachine_idinitialization">state_machine.{machine_id}.initialization</h3>
+<p>Given a machine id, and once this initialized for any transition, this event is
+dispatched. Useful for machine configuration.</p>
+<pre><code class="php">use Elcodi\Component\StateTransitionMachine\Event\InitializationEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(InitializationEvent $event)
+{
+    $object = $event-&gt;getObject();
+    $stateLineStack = $event-&gt;getStateLineStack();
+}
+</code></pre>
+
+<h3 id="state_machinemachine_idtransition_from_state_name">state_machine.{machine_id}.transition_from_{state_name}</h3>
+<p>State transition done by a machine with id {machine_id} that goes from a state
+called {state_name} to any state</p>
+<pre><code class="php">use Elcodi\Component\StateTransitionMachine\Event\TransitionEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(TransitionEvent $event)
+{
+    $object = $event-&gt;getObject();
+    $stateLineStack = $event-&gt;getStateLineStack();
+    $transition = $event-&gt;getTransition();
+}
+</code></pre>
+
+<h3 id="state_machinemachine_idtransition_transition_name">state_machine.{machine_id}.transition_{transition_name}</h3>
+<p>State transition with name {transition_name} done by a machine with id 
+{machine_id}.</p>
+<pre><code class="php">use Elcodi\Component\StateTransitionMachine\Event\TransitionEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(TransitionEvent $event)
+{
+    $object = $event-&gt;getObject();
+    $stateLineStack = $event-&gt;getStateLineStack();
+    $transition = $event-&gt;getTransition();
+}
+</code></pre>
+
+<h3 id="state_machinemachine_idtransition_to_state_name">state_machine.{machine_id}.transition_to_{state_name}</h3>
+<p>State transition done by a machine with id {machine_id} that goes from any state
+to a state called {state_name}</p>
+<pre><code class="php">use Elcodi\Component\StateTransitionMachine\Event\TransitionEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(TransitionEvent $event)
+{
+    $object = $event-&gt;getObject();
+    $stateLineStack = $event-&gt;getStateLineStack();
+    $transition = $event-&gt;getTransition();
+}
+</code></pre>
+
+<h3 id="state_machinetransition">state_machine.transition</h3>
+<p>Any state transition done by any state machine</p>
+<pre><code class="php">use Elcodi\Component\StateTransitionMachine\Event\TransitionEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(TransitionEvent $event)
+{
+    $object = $event-&gt;getObject();
+    $stateLineStack = $event-&gt;getStateLineStack();
+    $transition = $event-&gt;getTransition();
+}
+</code></pre>
+
+<h3 id="passwordremember">password.remember</h3>
+<p>Some user have used the password remember feature. This means that a new url has
+been created for that user in order to give her the possibility to create a new
+password in a very secured way.</p>
+<pre><code class="php">use Elcodi\Component\User\Event\PasswordRememberEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(PasswordRememberEvent $event)
+{
+    $user = $event-&gt;getUser();
+    $rememberUrl = $event-&gt;getRememberUrl();
+}
+</code></pre>
+
+<h3 id="passwordrecover">password.recover</h3>
+<p>A user has changed the password by using the remember url. Once this password
+changes, this event is dispatched.</p>
+<pre><code class="php">use Elcodi\Component\User\Event\PasswordRecoverEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(PasswordRecoverEvent $event)
+{
+    $user = $event-&gt;getUser();
+}
+</code></pre>
+
+<h3 id="userregister">user.register</h3>
+<p>A new user object has been registered. Many type of users can coexist, but all
+will dispatch the same event. You can check the type of user inside your service
+by using <code>instanceof</code>.</p>
+<pre><code class="php">use Elcodi\Component\User\Event\UserRegisterEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(UserRegisterEvent $event)
+{
+    $user = $event-&gt;getUser();
+
+    if ($user instanceof CustomerInterface) {
+
+        // ...
+    } else {
+        // ...
+    }
+}
+</code></pre>
+
+<h3 id="customerregister">customer.register</h3>
+<p>A new customer object has been registered. Use this event if you want to listen
+only when a customer is registered, instead of any kind of user.</p>
+<pre><code class="php">use Elcodi\Component\User\Event\UserRegisterEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(UserRegisterEvent $event)
+{
+    $customer = $event-&gt;getUser();
+}
+</code></pre>
+
+<h3 id="adminuserregister">adminuser.register</h3>
+<p>A new adminuser object has been registered. Use this event if you want to listen
+only when a admin user is registered, instead of any kind of user.</p>
+<pre><code class="php">use Elcodi\Component\User\Event\UserRegisterEvent;
+
+/**
+ * Method subscribed to the event
+ */
+public function doSomething(UserRegisterEvent $event)
+{
+    $customer = $event-&gt;getUser();
+}
+</code></pre></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

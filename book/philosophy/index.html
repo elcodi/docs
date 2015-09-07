@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>Philosophy - Elcodi Documentation</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Elcodi Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../quick-start/">Quick start</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../cart-architecture/">Cart architecture</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../dictionary/">Dictionary</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../emails/">Emails</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../events/">Events</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../">Home</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../payments/">Payments</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Philosophy</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../plugins/">Plugins</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../processes/">Processes</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../product-architecture/">Product architecture</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../pull-requests/">Pull requests</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../running-test-suite/">Running test suite</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../shipping/">Shipping</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../standards/">Standards</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../what-is-elcodi/">What is elcodi</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../why-elcodi/">Why elcodi</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../cookbook/">Home</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Installation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/installation/install-a-plugin/">Install a plugin</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/installation/install-dependent-bundles/">Install dependent bundles</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Overwrite</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-a-parameter/">Overwrite a parameter</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-a-service/">Overwrite a service</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-an-entity/">Overwrite an entity</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Adapters</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/adapters/currency-rates-populator/">Currency rates populator</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/adapters/image-resize/">Image resize</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/adapters/location-provider/">Location provider</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Implementation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-collector/">Implement a collector</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-controller-and-a-command/">Implement a controller and a command</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-factory/">Implement a factory</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-form-type/">Implement a form type</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-repository/">Implement a repository</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-an-entity/">Implement an entity</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-an-event-listener/">Implement an event listener</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Component <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../component/entity-translator/">Entity translator</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/">Home</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/media/">Media</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/menu/">Menu</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/sitemap/">Sitemap</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/state-transition-machine/">State transition machine</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/template/">Template</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../payments/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../plugins/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#elcodi-philosophy">Elcodi Philosophy</a></li>
+        
+            <li><a href="#clean-code">Clean Code</a></li>
+        
+    
+        <li class="main "><a href="#real-pragmatism">Real pragmatism</a></li>
+        
+    
+        <li class="main "><a href="#community-first">Community first</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="elcodi-philosophy">Elcodi Philosophy</h1>
+<p>One of the questions we are very used to responding is... why Elcodi and not any
+other possible options?</p>
+<p>This question is indeed bad formulated, so we've never based our philosophy in
+being different from the others in a very explicit way, so the project just was
+born thanks that, some years ago, none of the existing options filfilled our 
+needs as a company and as a client. So, because of that, we decided to create a
+new way of coding an E-commerce product.</p>
+<p>We named it Elcodi.</p>
+<p>For starting this chapter is fair enough to say that Elcodi goes a little futher
+than a simple technological solution, so the basic needs of any technical
+department are not covered only with a repository full of PHP code lines.
+In Elcodi we aim to create a small foundation of thoughts and reflections
+related completely with the code quality, with the software architecture and
+with the open source, on top of pragmatism.</p>
+<p>We bring you here some small topics.</p>
+<h2 id="clean-code">Clean Code</h2>
+<p>Yes. Clean Code. How super cool is saying <em>clean code</em>, right? As developers 
+we've heard this expression hundreds of times, and seems that we never give it 
+enough importance to what really means Clean Code on open source. The real 
+meaning is the base of our principles, and for that reason all our code (at 
+least that's our goal) must be enough clean, neat, organized and documented to
+make it understandable by every single developer working on Elcodi.</p>
+<ul>
+<li>But the code should be self-explained!</li>
+<li>Indeed. That makes reference to the code quality. Variables well named, code
+well structured (not everything in the same line, for example), well designed
+blocks and classes and methods well named as well. Have you ever heard speak on
+the context change problem? Clean Code should cover this topic as well.</li>
+</ul>
+<p>Imagine that a developer is working with Elcodi as a dependency in his vendor
+folder. As a developer, he should focus only in what is really important for
+him, his business logic. The other code related to his work should be enough
+clear, easy and fast to comprehend in order to focus as less as possible the
+developer.</p>
+<p>And you know what? People is intended to understand better the human language
+than the code itself. This means that if you can provide an easy comprehension
+layer for anyone that only what to know something about a class or a method,
+then why not? You're reducing this annoying cost of focus change.</p>
+<ul>
+<li>With PHPDoc documentation, both in terms of class responsibility and method
+definition</li>
+<li>With a great definition of method input and output</li>
+<li>With an even better nomenclature of methods</li>
+<li>Using normalization as much as possible</li>
+<li>Using PSR standards</li>
+</ul>
+<p>Of course, all non-code-related must be removed in order to no create visual
+noise and to not introduce ambiguity.</p>
+<h1 id="real-pragmatism">Real pragmatism</h1>
+<p>We assume that to reach a goal there are always many ways. Some of them are can
+be considered as good ways and could be treated as such. That's because each
+possible implementation is the combination of a theoretical base and a set of
+external realities far from being idyllic, for example, time, requirements and 
+resources.</p>
+<p>In Elcodi we think that these unfavorable conditions are always present around
+us, so we have been working so far by simplifying and improving the user
+experience, without forgetting about the complexity and the completeness of the
+final project.</p>
+<p>What does it really means?</p>
+<ul>
+<li>We want our code to be as much readable and understandable as possible</li>
+<li>We fled from complex architectures, forgetting about these structures that can
+be too difficult for most part of the developers</li>
+<li>We are mainly focused on providing a grateful and kind experience. We want,
+and is one of our most important points, reduce and mitigate the pain when
+working with E-commerce.</li>
+<li>We are a Community-first project. This means that we are aware of how
+difficult is starting with a new technology. We will there with you.</li>
+</ul>
+<p>We work so hard to bring to the community the possibility to have a big voice.
+We listen them everyday to concrete our roadmap, so they can actively
+participate to the progress of the project</p>
+<h1 id="community-first">Community first</h1>
+<p>One of our virtues is that the project was born from the community, we exist
+because of the community and we strongly think that the community will be, at
+the end, what will make Elcodi a successful project</p>
+<p>Each developer interested in our project is (and will always be) a great
+opportunity for us to improve our work, so it worth spending some time helping
+people with the project, evangelizing our point of view, our way of doing and
+sharing lot of knowledge and fun.</p>
+<p>We spend part of our effort in creating new projects based in Elcodi, feeding
+the community with new use cases, with new motivated developers on growing with
+our philosophy and bringing people new and stronger reasons to share this path
+with us.</p></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

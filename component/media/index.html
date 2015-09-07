@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>Media - Elcodi Documentation</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Elcodi Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../quick-start/">Quick start</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../book/cart-architecture/">Cart architecture</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../book/dictionary/">Dictionary</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../book/emails/">Emails</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../book/events/">Events</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../book/">Home</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../book/payments/">Payments</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../book/philosophy/">Philosophy</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../book/plugins/">Plugins</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../book/processes/">Processes</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../book/product-architecture/">Product architecture</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../book/pull-requests/">Pull requests</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../book/running-test-suite/">Running test suite</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../book/shipping/">Shipping</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../book/standards/">Standards</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../book/what-is-elcodi/">What is elcodi</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../book/why-elcodi/">Why elcodi</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../cookbook/">Home</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Installation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/installation/install-a-plugin/">Install a plugin</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/installation/install-dependent-bundles/">Install dependent bundles</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Overwrite</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-a-parameter/">Overwrite a parameter</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-a-service/">Overwrite a service</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-an-entity/">Overwrite an entity</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Adapters</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/adapters/currency-rates-populator/">Currency rates populator</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/adapters/image-resize/">Image resize</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/adapters/location-provider/">Location provider</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Implementation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-collector/">Implement a collector</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-controller-and-a-command/">Implement a controller and a command</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-factory/">Implement a factory</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-form-type/">Implement a form type</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-repository/">Implement a repository</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-an-entity/">Implement an entity</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-an-event-listener/">Implement an event listener</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Component <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../entity-translator/">Entity translator</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../">Home</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Media</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../menu/">Menu</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../sitemap/">Sitemap</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../state-transition-machine/">State transition machine</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../template/">Template</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../menu/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#media">Media</a></li>
+        
+            <li><a href="#what-offers">What offers</a></li>
+        
+            <li><a href="#upload-an-image-route">Upload an image: Route</a></li>
+        
+            <li><a href="#upload-an-image-response">Upload an image: Response</a></li>
+        
+            <li><a href="#view-an-image">View an image</a></li>
+        
+            <li><a href="#resize-an-image">Resize an image</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="media">Media</h1>
+<p>Manage your media entities.</p>
+<ul>
+<li><a href="https://github.com/elcodi/Media">Component Repository</a></li>
+<li><a href="https://github.com/elcodi/MediaBundle">Bundle Repository</a></li>
+</ul>
+<p>Of course, what is an E-commerce without images management. We are not focused 
+on that, but we have created a tiny and simple image manager, that will provide
+you an easy way of image upload and resize.</p>
+<h2 id="what-offers">What offers</h2>
+<p>This component mainly contains routes as public resources. You will be able as
+well to modify the way images are resized by using adapters, and a set of events
+for image manipulation.</p>
+<p>You will find as well the minimum implementation of Image and File entity needed
+to make it work.</p>
+<h2 id="upload-an-image-route">Upload an image: Route</h2>
+<p>First step for managing images is the uploading process. At the end, it is only
+a controller proposed by the framework with an specific route defined.</p>
+<p>If we take a look at Bamboo we will discover that we really have this route 
+defined in file <code>routing_admin.yml</code>.</p>
+<pre><code class="yaml">admin_media:
+    resource: &quot;@AdminMediaBundle/Resources/config/routing.yml&quot;
+</code></pre>
+
+<p>of course, this piece of code is just an inclusion of an external <code>yaml</code> file,
+provided by the bundle <code>MediaBundle</code>. Such file contains this code.</p>
+<pre><code class="yaml">#
+# Routing
+#
+
+elcodi.route.image_upload:
+    path: /images/upload
+    methods: POST
+    defaults:
+        _controller: elcodi.controller.image_upload:uploadAction
+
+elcodi.route.image_resize:
+    path: /images/{id}/resize/{height}/{width}/{type}.{_format}
+    methods: GET
+    defaults:
+        _controller: elcodi.controller.image_resize:resizeAction
+
+elcodi.route.image_view:
+    path: /images/{id}/render.{_format}
+    methods: GET
+    defaults:
+        _controller: elcodi.controller.image_resize:resizeAction
+        height: 0
+        width: 0
+        type: 0
+
+</code></pre>
+
+<p>Let's focus only in the first route. Take in account that this route is defined
+only as <code>POST</code>.</p>
+<p>By default, this controller will check a field called <code>file</code>, but you can change
+this value by overwriting the bundle configuration value</p>
+<pre><code class="yaml">elcodi_media:
+    images:
+        upload:
+            field_name: file
+</code></pre>
+
+<p>This value will be available in your container as a parameter with name
+<code>elcodi.image_upload_field_name</code>.</p>
+<h2 id="upload-an-image-response">Upload an image: Response</h2>
+<p>Once you have uploaded your image, you will receive a response depending on the
+action result.</p>
+<p>If the upload process has been success, you will receive this response</p>
+<pre><code class="json">{  
+   &quot;status&quot;:&quot;ok&quot;,
+   &quot;response&quot;:{  
+      &quot;id&quot;:19,
+      &quot;extension&quot;:&quot;jpg&quot;,
+      &quot;routes&quot;:{  
+         &quot;view&quot;:&quot;\/images\/{id}\/render.{_format}&quot;,
+         &quot;resize&quot;:&quot;\/images\/{id}\/resize\/{height}\/{width}\/{type}.{_format}&quot;,
+         &quot;delete&quot;:&quot;\/admin\/media\/image\/{id}\/delete&quot;
+      }
+   }
+}
+</code></pre>
+
+<p>Otherwise, you will have a fail response</p>
+<pre><code class="json">{  
+   &quot;status&quot;:&quot;ko&quot;,
+   &quot;response&quot;:{  
+      &quot;id&quot;:19,
+      &quot;extension&quot;:&quot;jpg&quot;,
+      &quot;routes&quot;:{  
+         &quot;view&quot;:&quot;\/images\/{id}\/render.{_format}&quot;,
+         &quot;resize&quot;:&quot;\/images\/{id}\/resize\/{height}\/{width}\/{type}.{_format}&quot;,
+         &quot;delete&quot;:&quot;\/admin\/media\/image\/{id}\/delete&quot;
+      }
+   }
+}
+</code></pre>
+
+<h2 id="view-an-image">View an image</h2>
+<p>Once your image, you can access to it using an already built in route.</p>
+<h2 id="resize-an-image">Resize an image</h2></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

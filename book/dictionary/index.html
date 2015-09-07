@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>Dictionary - Elcodi Documentation</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Elcodi Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../quick-start/">Quick start</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../cart-architecture/">Cart architecture</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Dictionary</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../emails/">Emails</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../events/">Events</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../">Home</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../payments/">Payments</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../philosophy/">Philosophy</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../plugins/">Plugins</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../processes/">Processes</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../product-architecture/">Product architecture</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../pull-requests/">Pull requests</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../running-test-suite/">Running test suite</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../shipping/">Shipping</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../standards/">Standards</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../what-is-elcodi/">What is elcodi</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../why-elcodi/">Why elcodi</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../cookbook/">Home</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Installation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/installation/install-a-plugin/">Install a plugin</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/installation/install-dependent-bundles/">Install dependent bundles</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Overwrite</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-a-parameter/">Overwrite a parameter</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-a-service/">Overwrite a service</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-an-entity/">Overwrite an entity</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Adapters</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/adapters/currency-rates-populator/">Currency rates populator</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/adapters/image-resize/">Image resize</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/adapters/location-provider/">Location provider</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Implementation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-collector/">Implement a collector</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-controller-and-a-command/">Implement a controller and a command</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-factory/">Implement a factory</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-form-type/">Implement a form type</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-repository/">Implement a repository</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-an-entity/">Implement an entity</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-an-event-listener/">Implement an event listener</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Component <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../component/entity-translator/">Entity translator</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/">Home</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/media/">Media</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/menu/">Menu</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/sitemap/">Sitemap</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/state-transition-machine/">State transition machine</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/template/">Template</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../cart-architecture/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../emails/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#dictionary">Dictionary</a></li>
+        
+            <li><a href="#attribute">Attribute</a></li>
+        
+            <li><a href="#bamboo">Bamboo</a></li>
+        
+            <li><a href="#cartline">CartLine</a></li>
+        
+            <li><a href="#component">Component</a></li>
+        
+            <li><a href="#factory">Factory</a></li>
+        
+            <li><a href="#plugin">Plugin</a></li>
+        
+            <li><a href="#variant">Variant</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="dictionary">Dictionary</h1>
+<p>In this dictionary you will find some nice descriptions about how some words
+mean in the Elcodi ecosystem.</p>
+<h3 id="attribute">Attribute</h3>
+<h3 id="bamboo">Bamboo</h3>
+<p>Bamboo is a simple and basic E-commerce application based on Symfony, that uses
+all Elcodi components for it's own business logic. All Elcodi related best 
+practices are applied and used in this project.</p>
+<h3 id="cartline">CartLine</h3>
+<p>Everytime a product or a variant is added into your cart, some information
+related to this specific action must be stored. For example, if you add a
+Variant and some extra information must be stored, where do you do it? Or where
+do you store how many units of a product you want to buy?</p>
+<p>If the relation between a Product and a Cart is persisted without any kind of
+middle class, then you cannot store this information.</p>
+<p>So, a CartLine is an object in the middle between any purchasable and a cart to
+store information about this purchasable instance and the cart.</p>
+<p><img alt="Cart Cartline model" src="../../image/model/cart-cartline.png" /></p>
+<h3 id="component">Component</h3>
+<p>A component is a simple PHP Library. Only PHP Classes are placed inside this 
+package and must be framework agnostic. Because this project is a Symfony
+project, each component has it's own Bundle, where all libraries are exposed to
+the Symfony Dependency Injection and where are bundles are created and
+configured.</p>
+<h3 id="factory">Factory</h3>
+<p>PHP Class with one single responsibility: create a new entity instance. This
+class should know as well how this entity instance must be initialized given
+an specific environment</p>
+<ul>
+<li>My CustomerFactory initializes all my Customer new instances as females 
+  because my project is focused on women.</li>
+<li>Other projects can overwrite this class by defining how a Customer should be
+  initialized</li>
+<li>Because of that, the customer itself should never know about it's own
+  initialization</li>
+</ul>
+<h3 id="plugin">Plugin</h3>
+<p>Because Bamboo must be a project with a well-designed extension point. For such
+reason, and taking advantage of how Symfony Bundles work, we have created a 
+plugin engine in order to allow people overwriting and extending Bamboo in a
+very simple and intuitive way.</p>
+<p>When we refer to a Plugin then, we refer to these Bundles that are thought as 
+Plugins, following their specification.</p>
+<p><a href="../plugins/">Elcodi Plugins</a></p>
+<h3 id="variant">Variant</h3>
+<p>Sometimes a Product is not enough when we need to define something we want to 
+sell. Let's see an example.</p>
+<ul>
+<li>In our store we sell a T-shirt</li>
+<li>If your T-Shirt is only sold only in red color and you only have one size, 
+  then that's good enough for you</li>
+<li>But what happens when your T-shirt is available in many colors or many sizes?</li>
+<li>Your product will still be the same T-shirt, but you need a new entity to say
+  that people can buy this T-shirt in red, blue and grey, and in several sizes,
+  like small, medium or large.</li>
+<li>When we talk about Variant, we talk about each available combination, 
+  containing the original product, the color and the size.</li>
+<li>Of course, if your have several Variants of a specific Product, people will be
+  able to add these variants to their carts, instead of the Product.</li>
+</ul></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

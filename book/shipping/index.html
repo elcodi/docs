@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>Shipping - Elcodi Documentation</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="../..">Elcodi Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../quick-start/">Quick start</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../cart-architecture/">Cart architecture</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../dictionary/">Dictionary</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../emails/">Emails</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../events/">Events</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../">Home</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../payments/">Payments</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../philosophy/">Philosophy</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../plugins/">Plugins</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../processes/">Processes</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../product-architecture/">Product architecture</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../pull-requests/">Pull requests</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../running-test-suite/">Running test suite</a>
+</li>
+
+                        
+                            
+<li class="active">
+    <a href="./">Shipping</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../standards/">Standards</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../what-is-elcodi/">What is elcodi</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../why-elcodi/">Why elcodi</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../cookbook/">Home</a>
+</li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Installation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/installation/install-a-plugin/">Install a plugin</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/installation/install-dependent-bundles/">Install dependent bundles</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Overwrite</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-a-parameter/">Overwrite a parameter</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-a-service/">Overwrite a service</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/overwrite/overwrite-an-entity/">Overwrite an entity</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Adapters</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/adapters/currency-rates-populator/">Currency rates populator</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/adapters/image-resize/">Image resize</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/adapters/location-provider/">Location provider</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Implementation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-collector/">Implement a collector</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-controller-and-a-command/">Implement a controller and a command</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-factory/">Implement a factory</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-form-type/">Implement a form type</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-a-repository/">Implement a repository</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-an-entity/">Implement an entity</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../cookbook/implementation/implement-an-event-listener/">Implement an event listener</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Component <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+<li >
+    <a href="../../component/entity-translator/">Entity translator</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/">Home</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/media/">Media</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/menu/">Menu</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/sitemap/">Sitemap</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/state-transition-machine/">State transition machine</a>
+</li>
+
+                        
+                            
+<li >
+    <a href="../../component/template/">Template</a>
+</li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+            
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                
+                    <li >
+                        <a rel="next" href="../running-test-suite/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../standards/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#shipping">Shipping</a></li>
+        
+            <li><a href="#requisites">Requisites</a></li>
+        
+            <li><a href="#example">Example</a></li>
+        
+            <li><a href="#calling-for-shipping-methods">Calling for Shipping methods</a></li>
+        
+            <li><a href="#adding-new-shipping-methods">Adding new Shipping Methods</a></li>
+        
+            <li><a href="#accessing-collected-methods">Accessing collected methods</a></li>
+        
+            <li><a href="#selecting-a-shipping-method">Selecting a shipping method</a></li>
+        
+            <li><a href="#reloading-cart-prices">Reloading Cart prices</a></li>
+        
+            <li><a href="#order-shipping-information">Order shipping information</a></li>
+        
+            <li><a href="#shipping-state-machine">Shipping State Machine</a></li>
+        
+            <li><a href="#updating-the-shipping-state">Updating the Shipping state</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="shipping">Shipping</h1>
+<p>Bueno, ahora toca implementar un sistema de Shipping.
+Si has llegado a este punto significa que has podido trabajar en algunos de los
+puntos más interesantes de Elcodi, especialmente los relacionados con Cart y 
+Product.</p>
+<p>En este apartado explicaremos todo lo relacionado con el Shipping en Elcodi. 
+Como añadir nuevos métodos de envío de forma desacoplada o como cambiar los 
+estados de envío de un Order ya creado.</p>
+<h2 id="requisites">Requisites</h2>
+<p>Para entender este apartado es importante tener una serie de puntos bien
+asimilados, todos ellos referentes a algunos componentes de Symfony, así como
+ciertas prácticas de arquitectura.</p>
+<p>A continuación te ofrecemos una serie de enlaces donde puedes informarte un poco
+más.</p>
+<ul>
+<li><a href="../plugins/">Plugins</a></li>
+<li><a href="http://symfony.com/doc/current/components/dependency_injection/introduction.html">Dependency Injection Symfony Component</a></li>
+<li><a href="http://symfony.com/doc/current/components/event_dispatcher/introduction.html">Event Dispatcher Symfony Component</a></li>
+<li><a href="../../component/state-transition-machine/">Elcodi State Transition Machine Component</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Finite-state_machine">Finite State Machine</a></li>
+</ul>
+<h2 id="example">Example</h2>
+<p>Imaginemos que queremos añadir un sistema de shipping, cuyo único método se
+llama <em>envío gratis</em> y es añadido solo cuando el valor del Cart es superior a
+los 30 euros y el usuario pertenece o a Barcelona o a Madrid. Esta lógica de 
+negocio puede ser tan compleja como sea necesario, por lo que la vamos a 
+esconder tras un método llamado <code>isCartSatisfied()</code>.</p>
+<p>Lo más normal es que se utilizen librerías externas de PHP para dichas 
+integraciones, por lo que toda la documentación al respecto será relativa a como
+implementar utilizar dichas integraciones.</p>
+<h2 id="calling-for-shipping-methods">Calling for Shipping methods</h2>
+<p>Uno de los componentes de Elcodi es el de Shipping. Dicho componente tiene un
+solo objetivo, y es proporcionar al proyecto una forma limpia y desacoplada de
+añadir opciones de envío al comprador.</p>
+<p>Para esto debemos tener acceso al Cart del comprador, pues este será el objeto
+con el que podremos determinar cuales de los métodos de envío son accesibles.</p>
+<p>En el momento en que nuestro sistema acepta que no habrá más cambios de Cart (no
+da opción a añadir más productos o coupones), y para recopilar todos los métodos
+de envío accesibles, vamos a tener este trozo de código.</p>
+<pre><code class="php">$cart = $this
+    -&gt;container
+    -&gt;get(&quot;elcodi.wrapper.cart&quot;)
+    -&gt;get();
+
+$shippingMethods = $this
+    -&gt;get('elcodi.wrapper.shipping_methods')
+    -&gt;get($cart);
+</code></pre>
+
+<p>Internamente, este trozo de código lanza un evento llamado 
+<em><a href="../events/#shipping.collect">"shipping.collect"</a></em>, encargado exclusivamente de
+recolectar todos estos métodos de envío.</p>
+<p>Es necesario decir que en este punto, el componente Event Dispatcher de Symfony
+no se está utilizando de forma estricta a su definición, pues sé utiliza como 
+colector y no como evento. La diferencia es que un evento debería ser inmutable
+(un evento pasa y no hay mucho que hacer, solo reaccionar con los event 
+listeners), pero en este caso, el objeto evento tiene un método <code>add</code>, por lo
+que, aún no importando realmente el orden de ejecución de los listeners, se está
+modificando el propio evento. Un evento que cambia... esto es raro, verdad?</p>
+<ul>
+<li><a href="../../cookbook/implementation/implement-a-collector/">Implement a collector</a></li>
+</ul>
+<p>Pero bueno, el evento de recolección es lanzado, y todos los Plugins que están
+escuchados son llamados a añadir sus métodos a partir del Cart proporcionado
+por el evento</p>
+<h2 id="adding-new-shipping-methods">Adding new Shipping Methods</h2>
+<p>Para tí, programador, que quieres añadir un método de envío, este es tu sitio.
+Recuerdas el evento <em><a href="../events/#shipping.collect">"shipping.collect"</a></em>? Pues 
+bien, debemos escucharlo para añadir nuestras formas de envío.</p>
+<p>Para nuestro ejemplo, debemos considerar si nuestro Cart cumple las espectativas
+que nosotros queremos, y de ser así, añadir un nuevo sistema de envío gratuito.</p>
+<p>Veamos primero como podemos suscribirnos a este evento utilizando la misma forma
+en que nos suscribimos a cualquier otro evento.</p>
+<pre><code class="yml">services:
+
+    #
+    # Event Listeners
+    #
+    elcodi_plugin.easy_free_shipping.event_listener.shipping_collect:
+        class: Elcodi\Plugin\EasyFreeShipping\EventListener\ShippingCollectEventListener
+        tags:
+            - { name: kernel.event_listener, event: shipping.collect, method: addCustomShippingMethods }
+</code></pre>
+
+<p>Bien. En este Event Listener deberemos poner toda nuestra lógica de negocio.
+Veamos un simple ejemplo de como podemos hacer dicha implementación.</p>
+<pre><code class="php">
+use Elcodi\Component\Cart\Entity\Interfaces\CartInterface;
+use Elcodi\Component\Currency\Entity\Money;
+use Elcodi\Component\Shipping\Entity\ShippingMethod;
+use Elcodi\Component\Shipping\Event\ShippingCollectionEvent;
+
+/**
+ * Class ShippingCollectEventListener
+ */
+class ShippingCollectEventListener
+{
+    /**
+     * Look for available shipping methods, by checking given event's cart
+     *
+     * @param ShippingCollectionEvent $event Event
+     *
+     * @return $this Self object
+     */
+    public function addCustomShippingMethods(ShippingCollectionEvent $event)
+    {
+        $defaultCurrency = // Default currency object
+        $cart = $event-&gt;getCart();
+        if (!$this-&gt;isCartSatisfied($cart)) {
+
+            return;
+        }
+
+        $event
+            -&gt;addShippingMethod(new ShippingMethod(
+                'easy-free-shipping',
+                'Easy free shipping',
+                'Exclusive Free shipping',
+                'Send your order for free because yes!',
+                Money::create(0, $currency)
+            ));
+    }
+
+    /**
+     * Given Cart satisfies this Bundle needs
+     *
+     * @param CartInterface $cart Cart
+     *
+     * @return boolean Cart satisfies needs
+     */
+    private function isCartSatisfied(CartInterface $cart)
+    {
+        /**
+         * Place all your logic here
+         */
+
+        return $cartSatisfied;
+    }
+}
+</code></pre>
+
+<p>Dentro del método <code>isCartSatisfied()</code> deberíamos poner nuestra lógica, pero 
+recordemos que no debemos poner nuestro foco en dicha implementación.</p>
+<blockquote>
+<p>This example is an abstract implementation. If such implementation comes from
+a plugin, after adding all methods you should check the plugin availability.
+Check the plugin documentation.</p>
+</blockquote>
+<h2 id="accessing-collected-methods">Accessing collected methods</h2>
+<p>Una vez hemos recolectado todos nuestros métodos de envío, podemos acceder a 
+ellos en nuestra página para que el cliente pueda seleccionar cual de ellos es
+el que quiere utilizar. Veamos un ejemplo, partiendo con la premisa de que en 
+nuestro controlador hemos devuelto todos los métodos de envío en un array con
+nombre <code>shippingMethods</code>.</p>
+<pre><code class="jinja">{% if shippingMethods|length &gt; 0 %}
+&lt;div class=&quot;form form-checkout&quot;&gt;
+    {% set actualShippingMethod = cart.shippingMethod %}
+    &lt;div class=&quot;grid grid-pad&quot;&gt;
+        &lt;h2&gt;Shipping methods&lt;/h2&gt;
+        {% for shippingMethod in shippingMethods %}
+            {% if shippingMethod.id == actualShippingMethod %}
+                &lt;div&gt;{{ shippingMethod.carrierName }} - {{ shippingMethod.price|print_convert_money }}&lt;/div&gt;
+            {% else %}
+                &lt;a href=&quot;{{ url(&quot;store_checkout_shipping_method_apply&quot;, {
+                        'shippingMethod': shippingMethod.id
+                    }) }}&quot;&gt;
+                        {{ shippingMethod.carrierName }} - {{ shippingMethod.price|print_convert_money }}
+                    &lt;/a&gt;&lt;/div&gt;
+            {% endif %}
+        {% endfor %}
+    &lt;/div&gt;
+&lt;/div&gt;
+{% endif %}
+</code></pre>
+
+<p>Como podéis ver, en todo momento se tiene en cuenta el valor que hay en 
+<code>cart.shippingMethod</code>. En él, siempre tenemos referencia al id del método de
+envío que se haya seleccionado. En caso de que aún no se haya seleccionado 
+ningún método de envío, cosa que pasará siempre al principio del proceso, todos
+los tipos estarán seleccionables. En caso contrario, se podrá cambiar de método
+seleccionando cualquier otro.</p>
+<p>Otra forma de acceder a los métodos de envío directamente desde el template es
+utilizando la función de twig</p>
+<pre><code class="jinja">{% set shippingMethods = elcodi_shipping_methods() %}
+</code></pre>
+
+<p>Para seleccionar un método de envío, podemos ver que tenemos disponible una url
+cuyo único parámetro, requerido, es el id del método de pago que queremos 
+seleccionar.</p>
+<h2 id="selecting-a-shipping-method">Selecting a shipping method</h2>
+<p>Veamos la implementación que utiliza Elcodi para seleccionar un método de envío
+específico.</p>
+<pre><code class="php">$shippingMethodId = $request
+    -&gt;query
+    -&gt;get('shippingMethod');
+
+$cart = $this
+    -&gt;container
+    -&gt;get(&quot;elcodi.wrapper.cart&quot;)
+    -&gt;get();
+
+$shippingMethods = $this
+    -&gt;get('elcodi.wrapper.shipping_methods')
+    -&gt;getOneById($cart, $shippingMethodId);
+
+if ($shippingMethodObject instanceof ShippingMethod) {
+    $cart-&gt;setShippingMethod($shippingMethod);
+    $this
+        -&gt;get('elcodi.object_manager.cart')
+        -&gt;flush($cart);
+}
+
+return $this-&gt;redirect(
+    $this-&gt;generateUrl('store_checkout_payment')
+);
+</code></pre>
+
+<p>Sencillo, conciso y rápido. Como podemos ver, volvemos a utilizar el mismo 
+método para recolectar todos los métodos de envío, pues en este caso, en lugar
+de devolverlos todos, solo devolvemos aquel con el id deseado.</p>
+<p>Si lo recibimos, quiere decir que existe y es válido para el cart utilizado. En
+este caso, sobreescribiremos la propiedad <code>shippingMethod</code> de cart y guardaremos
+el valor en base de datos. En caso contrario, básicamente, no hacemos nada.</p>
+<p>En ambos casos, volvemos a la página de pago, ejecutando otra vez el código de
+vista anterior, aunque, posiblemente, con un resultado un poco distinto</p>
+<h2 id="reloading-cart-prices">Reloading Cart prices</h2>
+<p>Dado que Elcodi tiene una forma de funcionar bastante desacoplada, no debemos 
+hacer nada más para recalcular los precios. En el caso de que seleccione un
+método de envío que añada un precio extra al precio final del Cart, éste se 
+calculará solo durante los eventos de load del mismo, pues este proceso es 
+completamente transparente para cualquier plugin que quiera añadir métodos de
+envío.</p>
+<h2 id="order-shipping-information">Order shipping information</h2>
+<p>Una vez nuestro Order se ha transformado correctamente en un Order, deberíamos
+ser capaces de saber qué tipo de envío se utilizó y que precio tuvo en su 
+momento.</p>
+<pre><code class="php">$orderShippingMethod = $order-&gt;getShippingMethod();
+$orderShippingAmount = $order-&gt;getShippingAmount();
+</code></pre>
+
+<h2 id="shipping-state-machine">Shipping State Machine</h2>
+<p>At this point, the order is ready to be shipped. Once starting these last steps
+on this documentation, please take a look at the State Transition Machine 
+documentation.</p>
+<ul>
+<li><a href="../../component/state-transition-machine/">State Transition Machine</a></li>
+</ul>
+<p>Bamboo por defecto propone un diagrama de estados de envío como el que podemos
+ver aqui.</p>
+<table>
+<thead>
+<tr>
+<th>From</th>
+<th>Action</th>
+<th>To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>preparing</td>
+<td>order ready</td>
+<td>processed</td>
+</tr>
+<tr>
+<td>processed</td>
+<td>picked up by carrier</td>
+<td>in delivery</td>
+</tr>
+<tr>
+<td>processed</td>
+<td>picked up on store</td>
+<td>delivered</td>
+</tr>
+<tr>
+<td>in delivery</td>
+<td>delivered</td>
+<td>delivered</td>
+</tr>
+<tr>
+<td>preparing</td>
+<td>cancel</td>
+<td>cancelled</td>
+</tr>
+<tr>
+<td>processed</td>
+<td>cancel</td>
+<td>cancelled</td>
+</tr>
+<tr>
+<td>in delivery</td>
+<td>cancel</td>
+<td>cancelled</td>
+</tr>
+<tr>
+<td>in delivery</td>
+<td>return</td>
+<td>returned</td>
+</tr>
+<tr>
+<td>delivered</td>
+<td>return</td>
+<td>returned</td>
+</tr>
+</tbody>
+</table>
+<p>y mediante el Container de Symfony tenemos acceso a algunos objetos específicos
+de la máquina de estados de Shipping.</p>
+<pre><code class="yaml">#
+# Order state machine for Shipping
+#
+elcodi.order_shipping_states_machine_builder:
+    class: Elcodi\Component\StateTransitionMachine\Machine\MachineBuilder
+    arguments:
+        - @elcodi.factory.state_transition_machine
+        - %elcodi.order_shipping_states_machine_identifier%
+        - %elcodi.order_shipping_states_machine_states%
+        - %elcodi.order_shipping_states_machine_point_of_entry%
+
+elcodi.order.shipping_states_machine:
+    class: Elcodi\Component\StateTransitionMachine\Machine\Machine
+    factory:
+        - @elcodi.order_shipping_states_machine_builder
+        - compile
+
+elcodi.order_shipping_states_machine_manager:
+    class: Elcodi\Component\StateTransitionMachine\Machine\MachineManager
+    arguments:
+        - @elcodi.order.shipping_states_machine
+        - @event_dispatcher
+        - @elcodi.factory.state_transition_machine_state_line
+</code></pre>
+
+<h2 id="updating-the-shipping-state">Updating the Shipping state</h2>
+<p>Con dicho acceso a la máquina de estados de envío, podemos cambiar el order de
+estados utilizando el servicio <code>elcodi.order_shipping_states_machine</code>.</p>
+<p>Veamos un ejemplo de como avanzar a un estado <code>delivered</code> teniendo en cuenta que
+nuestro Order está actualmente en el estado <code>processed</code>.</p>
+<pre><code class="php">$order = // Order instance;
+
+$stateLineStack = $this
+    -&gt;get('elcodi.order_shipping_states_machine_manager')
+    -&gt;transition(
+        $order,
+        $order-&gt;getShippingStateLineStack(),
+        'picked up on store',
+        'Order picked up on store'
+    );
+$order-&gt;setShippingStateLineStack($stateLineStack);
+$this
+    -&gt;get('elcodi.object_manager.order')
+    -&gt;flush($order);
+</code></pre>
+
+<p>Solo si dicha transición es posible todo funcionará debidamente. En caso 
+contrario las excepciones pertinentes saltarán.</p></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>
