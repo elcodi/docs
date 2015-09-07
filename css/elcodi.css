@@ -1,0 +1,78 @@
+/**
+ * Elcodi documentation theme
+ *
+ * @author Mickaël Andrieu <andrieu.travail@gmail.com>
+ */
+
+/**
+ * Global rules
+ */
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Open Sans",sans-serif !important;
+}
+
+body a {
+    color: #3cc8c0;
+}
+
+body a:focus, body a:hover{
+    color: #3cc8c0;
+    text-decoration: underline;
+}
+
+/**
+* Header top bar
+*/
+.navbar-default, .navbar {
+    background-color: #3cc8c0 !important;
+    color: #fff;
+}
+
+.navbar-default .navbar-brand {
+  color: #fff;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color:#404040;
+  background-color: transparent;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+  color: #404040;
+  background-color: transparent;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+    color: #fff;
+    background-color: transparent;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav>.disabled>a, .navbar-default .navbar-nav>.disabled>a:hover, .navbar-default .navbar-nav>.disabled>a:focus {
+  color: rgb(114, 114, 114);
+  background-color: transparent;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+  color: rgb(114, 114, 114);
+  background-color: #fff;
+}
+
+/**
+ * Table of content
+ */
+.bs-sidebar .nav > .active > a, .bs-sidebar .nav > .active:hover > a, .bs-sidebar .nav > .active:focus > a {
+  color: ;
+}
+
+/**
+ * Tablet / smartphone rendering
+ */
+@media (max-width: 767px){
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+    color: #fff;
+  }
+}

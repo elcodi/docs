@@ -6,15 +6,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        
+        <link rel="canonical" href="http://www.elcodi.io/cookbook/implementation/implement-an-entity/">
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-	<title>Implement an entity - Elcodi Documentation</title>
+        <title>Implement an entity - Elcodi Documentation</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="../../../css/highlight.css">
+
+        <link href="../../../css/elcodi.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -43,7 +45,7 @@
             
 
             <!-- Main title -->
-            <a class="navbar-brand" href="../../..">Elcodi Documentation</a>
+            <a class="navbar-brand" href="../../.."><img src="../../../img/elcodi.png" height="30" /></a>
         </div>
 
         <!-- Expanded navigation -->
@@ -53,134 +55,136 @@
                 <ul class="nav navbar-nav">
                 
                 
-                    <li >
-                        <a href="../../..">Home</a>
-                    </li>
                 
                 
                 
-                    <li >
-                        <a href="../../../quick-start/">Quick start</a>
-                    </li>
+                    
+                        <li >
+                            <a href="../../../quick-start/">Quick start</a>
+                        </li>
+                    
                 
                 
                 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
+                    
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
                             
+                                
 <li >
     <a href="../../../book/cart-architecture/">Cart architecture</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/dictionary/">Dictionary</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/emails/">Emails</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/events/">Events</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/">Home</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/payments/">Payments</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/philosophy/">Philosophy</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/plugins/">Plugins</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/processes/">Processes</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/product-architecture/">Product architecture</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/pull-requests/">Pull requests</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/running-test-suite/">Running test suite</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/shipping/">Shipping</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/standards/">Standards</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/what-is-elcodi/">What is elcodi</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/why-elcodi/">Why elcodi</a>
 </li>
 
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                    <li class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
                             
+                            </ul>
+                        </li>
+                    
+                
+                
+                
+                    
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            
+                                
 <li >
     <a href="../../">Home</a>
 </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Installation</a>
     <ul class="dropdown-menu">
@@ -200,8 +204,8 @@
     </ul>
   </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Overwrite</a>
     <ul class="dropdown-menu">
@@ -227,8 +231,8 @@
     </ul>
   </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Adapters</a>
     <ul class="dropdown-menu">
@@ -254,8 +258,8 @@
     </ul>
   </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Implementation</a>
     <ul class="dropdown-menu">
@@ -305,60 +309,63 @@
     </ul>
   </li>
 
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Component <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
                             
+                            </ul>
+                        </li>
+                    
+                
+                
+                
+                    
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Component <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            
+                                
 <li >
     <a href="../../../component/entity-translator/">Entity translator</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/">Home</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/media/">Media</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/menu/">Menu</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/sitemap/">Sitemap</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/state-transition-machine/">State transition machine</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/template/">Template</a>
 </li>
 
-                        
-                        </ul>
-                    </li>
+                            
+                            </ul>
+                        </li>
+                    
                 
                 
                 </ul>
@@ -383,6 +390,15 @@
                     </li>
                 
                 
+                    <li>
+                        <a href="https://github.com/elcodi/docs">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
             </ul>
         </div>
     </div>
@@ -406,16 +422,16 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="how-to-implement-an-entity">How to Implement an Entity</h1>
+<h1 id="how-to-implement-an-entity">How to Implement an Entity<a class="headerlink" href="#how-to-implement-an-entity" title="Permanent link"> #</a></h1>
 <p>In Elcodi we use an extremely thin model. It means that our entities are just
 parameters, getters and setters.</p>
-<h2 id="scenario">Scenario</h2>
+<h2 id="scenario">Scenario<a class="headerlink" href="#scenario" title="Permanent link"> #</a></h2>
 <p>Our website must start managing warehouses. We must be able to create new
 warehouses, edit them and deleting them, as well as create new associations 
 between warehouses and locations, in order to locate them.</p>
 <p>Our model needs to change, so our application should be enough robust to be 
 changed without many pain.</p>
-<h2 id="solution">Solution</h2>
+<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link"> #</a></h2>
 <p>In order to change our model, we need to create a new entity following the 
 standards of Elcodi.</p>
 <p>Creating an entity is as easy as defining what an actor should own (parameters),
@@ -460,7 +476,7 @@ service layer.</p>
 <p>As you can see all properties are defined as protected. This is because Doctrine
 will need to extend the class using <a href="http://doctrine-orm.readthedocs.org/en/latest/reference/advanced-configuration.html#proxy-objects">transparent Proxy Objects</a>
 to implement lazy-loading.</p>
-<h3 id="using-interfaces">Using Interfaces</h3>
+<h3 id="using-interfaces">Using Interfaces<a class="headerlink" href="#using-interfaces" title="Permanent link"> #</a></h3>
 <p>All Elcodi entities are an implementation of a <a href="http://martinfowler.com/bliki/HeaderInterface.html">
 Header Interface</a>.
 We use some 
@@ -478,7 +494,7 @@ class Warehouse implements WarehouseInterface
 }
 </code></pre>
 
-<h3 id="using-simpledoctrinemapping">Using SimpleDoctrineMapping</h3>
+<h3 id="using-simpledoctrinemapping">Using SimpleDoctrineMapping<a class="headerlink" href="#using-simpledoctrinemapping" title="Permanent link"> #</a></h3>
 <p>Usually, final projects need to implement more entities inside their projects.
 Since now, this has been so easy but so magical, and once again, we really think
 that this stuff should never be magic at all. Is your model, your business.</p>
@@ -489,7 +505,7 @@ You should read carefully the documentation, indeed we strongly recommend it.</p
 item inside DoctrineBundle. This flag allow this magic we really want to avoid.</p>
 <p>Instead of that, we will specifically define how our entities should be defined
 and treated inside our project.</p>
-<h2 id="related-links">Related links</h2>
+<h2 id="related-links">Related links<a class="headerlink" href="#related-links" title="Permanent link"> #</a></h2>
 <ul>
 <li><a href="https://github.com/mmoreram/SimpleDoctrineMapping">SimpleDoctrineMapping Docs</a></li>
 </ul></div>
@@ -499,7 +515,8 @@ and treated inside our project.</p>
         <footer class="col-md-12">
             <hr>
             
-            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+                <p>Copyright © 2014/2015 <a href="http://www.elcodi.io">Elcodi</a>. All rights reserved.</p>
+            
         </footer>
 
         <script src="../../../js/jquery-1.10.2.min.js"></script>

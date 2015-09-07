@@ -6,15 +6,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        
+        <link rel="canonical" href="http://www.elcodi.io/cookbook/implementation/implement-a-factory/">
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-	<title>Implement a factory - Elcodi Documentation</title>
+        <title>Implement a factory - Elcodi Documentation</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="../../../css/highlight.css">
+
+        <link href="../../../css/elcodi.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -43,7 +45,7 @@
             
 
             <!-- Main title -->
-            <a class="navbar-brand" href="../../..">Elcodi Documentation</a>
+            <a class="navbar-brand" href="../../.."><img src="../../../img/elcodi.png" height="30" /></a>
         </div>
 
         <!-- Expanded navigation -->
@@ -53,134 +55,136 @@
                 <ul class="nav navbar-nav">
                 
                 
-                    <li >
-                        <a href="../../..">Home</a>
-                    </li>
                 
                 
                 
-                    <li >
-                        <a href="../../../quick-start/">Quick start</a>
-                    </li>
+                    
+                        <li >
+                            <a href="../../../quick-start/">Quick start</a>
+                        </li>
+                    
                 
                 
                 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
+                    
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
                             
+                                
 <li >
     <a href="../../../book/cart-architecture/">Cart architecture</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/dictionary/">Dictionary</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/emails/">Emails</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/events/">Events</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/">Home</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/payments/">Payments</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/philosophy/">Philosophy</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/plugins/">Plugins</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/processes/">Processes</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/product-architecture/">Product architecture</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/pull-requests/">Pull requests</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/running-test-suite/">Running test suite</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/shipping/">Shipping</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/standards/">Standards</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/what-is-elcodi/">What is elcodi</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/why-elcodi/">Why elcodi</a>
 </li>
 
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                    <li class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
                             
+                            </ul>
+                        </li>
+                    
+                
+                
+                
+                    
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            
+                                
 <li >
     <a href="../../">Home</a>
 </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Installation</a>
     <ul class="dropdown-menu">
@@ -200,8 +204,8 @@
     </ul>
   </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Overwrite</a>
     <ul class="dropdown-menu">
@@ -227,8 +231,8 @@
     </ul>
   </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Adapters</a>
     <ul class="dropdown-menu">
@@ -254,8 +258,8 @@
     </ul>
   </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Implementation</a>
     <ul class="dropdown-menu">
@@ -305,60 +309,63 @@
     </ul>
   </li>
 
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Component <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
                             
+                            </ul>
+                        </li>
+                    
+                
+                
+                
+                    
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Component <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            
+                                
 <li >
     <a href="../../../component/entity-translator/">Entity translator</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/">Home</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/media/">Media</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/menu/">Menu</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/sitemap/">Sitemap</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/state-transition-machine/">State transition machine</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/template/">Template</a>
 </li>
 
-                        
-                        </ul>
-                    </li>
+                            
+                            </ul>
+                        </li>
+                    
                 
                 
                 </ul>
@@ -383,6 +390,15 @@
                     </li>
                 
                 
+                    <li>
+                        <a href="https://github.com/elcodi/docs">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
             </ul>
         </div>
     </div>
@@ -404,11 +420,11 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="how-to-implement-a-factory">How to Implement a Factory</h1>
+<h1 id="how-to-implement-a-factory">How to Implement a Factory<a class="headerlink" href="#how-to-implement-a-factory" title="Permanent link"> #</a></h1>
 <p>Factories usage is one of the most distinctive things in Elcodi architecture
 style. Every single entity in Elcodi ecosystem is created using its own Factory,
 so by default, an entity should never define its own construction state.</p>
-<h2 id="scenario">Scenario</h2>
+<h2 id="scenario">Scenario<a class="headerlink" href="#scenario" title="Permanent link"> #</a></h2>
 <p>Our project have grown and we have some extra needs. We have created new 
 entities, and because we strongly believe that an entity is not responsible of 
 how it should be created, the factory should holds this responsibility. 
@@ -418,7 +434,7 @@ it should never initialize any variable.</p>
 creating this entity by using <code>new()</code>, right? But then, this piece of code is
 not testable anymore, so we should be able to mock this new entity.</p>
 <p>Let's create a new factory for that new entity!</p>
-<h2 id="solution">Solution</h2>
+<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link"> #</a></h2>
 <p>A factory is a simple class that, returns a new entity instance once it knows
 how to build it. Because in Elcodi all entity namespaces are defined by a 
 parameter, any factory must use these parameters to create an instance.</p>
@@ -509,7 +525,7 @@ class LanguageFactory extends AbstractFactory
 }
 </code></pre>
 
-<h3 id="factory-as-a-service">Factory as a service</h3>
+<h3 id="factory-as-a-service">Factory as a service<a class="headerlink" href="#factory-as-a-service" title="Permanent link"> #</a></h3>
 <p>Because the factory dependencies need to be resolved, we must define the factory
 as a service.</p>
 <pre><code class="yaml">services:
@@ -531,7 +547,8 @@ your service in order to using them when new entity instance is required.</p></d
         <footer class="col-md-12">
             <hr>
             
-            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+                <p>Copyright © 2014/2015 <a href="http://www.elcodi.io">Elcodi</a>. All rights reserved.</p>
+            
         </footer>
 
         <script src="../../../js/jquery-1.10.2.min.js"></script>

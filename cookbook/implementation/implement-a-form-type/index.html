@@ -6,15 +6,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        
+        <link rel="canonical" href="http://www.elcodi.io/cookbook/implementation/implement-a-form-type/">
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-	<title>Implement a form type - Elcodi Documentation</title>
+        <title>Implement a form type - Elcodi Documentation</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="../../../css/highlight.css">
+
+        <link href="../../../css/elcodi.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -43,7 +45,7 @@
             
 
             <!-- Main title -->
-            <a class="navbar-brand" href="../../..">Elcodi Documentation</a>
+            <a class="navbar-brand" href="../../.."><img src="../../../img/elcodi.png" height="30" /></a>
         </div>
 
         <!-- Expanded navigation -->
@@ -53,134 +55,136 @@
                 <ul class="nav navbar-nav">
                 
                 
-                    <li >
-                        <a href="../../..">Home</a>
-                    </li>
                 
                 
                 
-                    <li >
-                        <a href="../../../quick-start/">Quick start</a>
-                    </li>
+                    
+                        <li >
+                            <a href="../../../quick-start/">Quick start</a>
+                        </li>
+                    
                 
                 
                 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
+                    
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
                             
+                                
 <li >
     <a href="../../../book/cart-architecture/">Cart architecture</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/dictionary/">Dictionary</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/emails/">Emails</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/events/">Events</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/">Home</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/payments/">Payments</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/philosophy/">Philosophy</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/plugins/">Plugins</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/processes/">Processes</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/product-architecture/">Product architecture</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/pull-requests/">Pull requests</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/running-test-suite/">Running test suite</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/shipping/">Shipping</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/standards/">Standards</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/what-is-elcodi/">What is elcodi</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/why-elcodi/">Why elcodi</a>
 </li>
 
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                    <li class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
                             
+                            </ul>
+                        </li>
+                    
+                
+                
+                
+                    
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            
+                                
 <li >
     <a href="../../">Home</a>
 </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Installation</a>
     <ul class="dropdown-menu">
@@ -200,8 +204,8 @@
     </ul>
   </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Overwrite</a>
     <ul class="dropdown-menu">
@@ -227,8 +231,8 @@
     </ul>
   </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Adapters</a>
     <ul class="dropdown-menu">
@@ -254,8 +258,8 @@
     </ul>
   </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Implementation</a>
     <ul class="dropdown-menu">
@@ -305,60 +309,63 @@
     </ul>
   </li>
 
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Component <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
                             
+                            </ul>
+                        </li>
+                    
+                
+                
+                
+                    
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Component <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            
+                                
 <li >
     <a href="../../../component/entity-translator/">Entity translator</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/">Home</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/media/">Media</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/menu/">Menu</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/sitemap/">Sitemap</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/state-transition-machine/">State transition machine</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/template/">Template</a>
 </li>
 
-                        
-                        </ul>
-                    </li>
+                            
+                            </ul>
+                        </li>
+                    
                 
                 
                 </ul>
@@ -383,6 +390,15 @@
                     </li>
                 
                 
+                    <li>
+                        <a href="https://github.com/elcodi/docs">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
             </ul>
         </div>
     </div>
@@ -404,29 +420,29 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="how-to-implement-a-form-type">How to Implement a Form Type</h1>
+<h1 id="how-to-implement-a-form-type">How to Implement a Form Type<a class="headerlink" href="#how-to-implement-a-form-type" title="Permanent link"> #</a></h1>
 <p>A FormType object in Elcodi ecosystem must follow some rules in order to comply
 with the project flexibility.</p>
-<h2 id="scenario">Scenario</h2>
+<h2 id="scenario">Scenario<a class="headerlink" href="#scenario" title="Permanent link"> #</a></h2>
 <p>We need to manage one of our own new entities. We have created the entity, the
 form and the repository, so we need to create some extra pages in our admin
 panel in order to create, modify and delete them.</p>
 <p>In order to create these new pages, we need some mechanism to create these 
 forms, being able to do it properly and extensible, following the best Symfony 
 and Elcodi standards.</p>
-<h2 id="solution">Solution</h2>
+<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link"> #</a></h2>
 <p>As you may know, whenever we want to work with forms in Symfony, best practices 
 say that we should use FormType classes. These classes are meant to be a PHP 
 representation of how a form should be treated and defined.</p>
 <p>So let's use them.</p>
-<h3 id="symfony-forms">Symfony Forms</h3>
+<h3 id="symfony-forms">Symfony Forms<a class="headerlink" href="#symfony-forms" title="Permanent link"> #</a></h3>
 <p>Symfony Forms is not a Elcodi-related implementation, so first of all you should
 know as much as possible about how Symfony Forms works.</p>
 <p>We strongly encourage you to learn about them in their documentation before 
 proceeding with our specific documentation.</p>
 <p><a href="http://symfony.com/doc/current/book/forms.html">Symfony Book - Forms</a>
 <a href="http://symfony.com/doc/current/best_practices/forms.html">Symfony Best Practices - Forms</a></p>
-<h3 id="using-factories">Using Factories</h3>
+<h3 id="using-factories">Using Factories<a class="headerlink" href="#using-factories" title="Permanent link"> #</a></h3>
 <p>Remember that every single entity must be created via its factory in Elcodi
 Bundles. For more information, please see <a href="../implement-a-factory/">Factories</a>. 
 In order to use this feature in Symfony Form Types, we must inject always the 
@@ -514,7 +530,7 @@ class BannerType extends AbstractType
 }
 </code></pre>
 
-<h3 id="using-namespaces">Using namespaces</h3>
+<h3 id="using-namespaces">Using namespaces<a class="headerlink" href="#using-namespaces" title="Permanent link"> #</a></h3>
 <p>If your FormType has any kind of relation with another entity, you will need to
 define this relation using a namespace. In order to comply again with the
 flexibility, we need to inject all namespaces using the entity manager 
@@ -563,7 +579,7 @@ class BannerType extends AbstractType
 }
 </code></pre>
 
-<h3 id="formtype-as-a-service">FormType as a service</h3>
+<h3 id="formtype-as-a-service">FormType as a service<a class="headerlink" href="#formtype-as-a-service" title="Permanent link"> #</a></h3>
 <p>We are using dependencies in our FormTypes, so remember that we need to define 
 our classes as services.</p>
 <pre><code class="yaml">services:
@@ -599,7 +615,8 @@ public function getName()
         <footer class="col-md-12">
             <hr>
             
-            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+                <p>Copyright © 2014/2015 <a href="http://www.elcodi.io">Elcodi</a>. All rights reserved.</p>
+            
         </footer>
 
         <script src="../../../js/jquery-1.10.2.min.js"></script>

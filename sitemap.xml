@@ -3,7 +3,7 @@
 
     
     <url>
-     <loc>None/</loc>
+     <loc>http://www.elcodi.io//</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -11,7 +11,7 @@
 
     
     <url>
-     <loc>None/quick-start/</loc>
+     <loc>http://www.elcodi.io//quick-start/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -20,132 +20,98 @@
     
         
     <url>
-     <loc>None/book/cart-architecture/</loc>
+     <loc>http://www.elcodi.io//book/cart-architecture/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/book/dictionary/</loc>
+     <loc>http://www.elcodi.io//book/dictionary/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/book/emails/</loc>
+     <loc>http://www.elcodi.io//book/emails/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/book/events/</loc>
+     <loc>http://www.elcodi.io//book/events/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/book/</loc>
+     <loc>http://www.elcodi.io//book/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/book/payments/</loc>
+     <loc>http://www.elcodi.io//book/payments/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/book/philosophy/</loc>
+     <loc>http://www.elcodi.io//book/philosophy/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/book/plugins/</loc>
+     <loc>http://www.elcodi.io//book/plugins/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/book/processes/</loc>
+     <loc>http://www.elcodi.io//book/processes/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/book/product-architecture/</loc>
+     <loc>http://www.elcodi.io//book/product-architecture/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/book/pull-requests/</loc>
+     <loc>http://www.elcodi.io//book/pull-requests/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/book/running-test-suite/</loc>
+     <loc>http://www.elcodi.io//book/running-test-suite/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/book/shipping/</loc>
+     <loc>http://www.elcodi.io//book/shipping/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/book/standards/</loc>
+     <loc>http://www.elcodi.io//book/standards/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/book/what-is-elcodi/</loc>
+     <loc>http://www.elcodi.io//book/what-is-elcodi/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/book/why-elcodi/</loc>
+     <loc>http://www.elcodi.io//book/why-elcodi/</loc>
      <lastmod>2015-09-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    
-
-    
-        
-    <url>
-     <loc>None/cookbook/</loc>
-     <lastmod>2015-09-07</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None</loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None</loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None</loc>
-     <lastmod></lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-        
-    <url>
-     <loc>None</loc>
-     <lastmod></lastmod>
      <changefreq>daily</changefreq>
     </url>
         
@@ -154,43 +120,77 @@
     
         
     <url>
-     <loc>None/component/entity-translator/</loc>
+     <loc>http://www.elcodi.io//cookbook/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/component/</loc>
+     <loc>http://www.elcodi.io/</loc>
+     <lastmod></lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://www.elcodi.io/</loc>
+     <lastmod></lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://www.elcodi.io/</loc>
+     <lastmod></lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://www.elcodi.io/</loc>
+     <lastmod></lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    
+
+    
+        
+    <url>
+     <loc>http://www.elcodi.io//component/entity-translator/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/component/media/</loc>
+     <loc>http://www.elcodi.io//component/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/component/menu/</loc>
+     <loc>http://www.elcodi.io//component/media/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/component/sitemap/</loc>
+     <loc>http://www.elcodi.io//component/menu/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/component/state-transition-machine/</loc>
+     <loc>http://www.elcodi.io//component/sitemap/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/component/template/</loc>
+     <loc>http://www.elcodi.io//component/state-transition-machine/</loc>
+     <lastmod>2015-09-07</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>http://www.elcodi.io//component/template/</loc>
      <lastmod>2015-09-07</lastmod>
      <changefreq>daily</changefreq>
     </url>

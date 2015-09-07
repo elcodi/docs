@@ -6,15 +6,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        
+        <link rel="canonical" href="http://www.elcodi.io/cookbook/adapters/currency-rates-populator/">
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-	<title>Currency rates populator - Elcodi Documentation</title>
+        <title>Currency rates populator - Elcodi Documentation</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="../../../css/highlight.css">
+
+        <link href="../../../css/elcodi.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -43,7 +45,7 @@
             
 
             <!-- Main title -->
-            <a class="navbar-brand" href="../../..">Elcodi Documentation</a>
+            <a class="navbar-brand" href="../../.."><img src="../../../img/elcodi.png" height="30" /></a>
         </div>
 
         <!-- Expanded navigation -->
@@ -53,134 +55,136 @@
                 <ul class="nav navbar-nav">
                 
                 
-                    <li >
-                        <a href="../../..">Home</a>
-                    </li>
                 
                 
                 
-                    <li >
-                        <a href="../../../quick-start/">Quick start</a>
-                    </li>
+                    
+                        <li >
+                            <a href="../../../quick-start/">Quick start</a>
+                        </li>
+                    
                 
                 
                 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
+                    
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
                             
+                                
 <li >
     <a href="../../../book/cart-architecture/">Cart architecture</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/dictionary/">Dictionary</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/emails/">Emails</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/events/">Events</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/">Home</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/payments/">Payments</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/philosophy/">Philosophy</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/plugins/">Plugins</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/processes/">Processes</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/product-architecture/">Product architecture</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/pull-requests/">Pull requests</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/running-test-suite/">Running test suite</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/shipping/">Shipping</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/standards/">Standards</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/what-is-elcodi/">What is elcodi</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/why-elcodi/">Why elcodi</a>
 </li>
 
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                    <li class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
                             
+                            </ul>
+                        </li>
+                    
+                
+                
+                
+                    
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            
+                                
 <li >
     <a href="../../">Home</a>
 </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Installation</a>
     <ul class="dropdown-menu">
@@ -200,8 +204,8 @@
     </ul>
   </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Overwrite</a>
     <ul class="dropdown-menu">
@@ -227,8 +231,8 @@
     </ul>
   </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Adapters</a>
     <ul class="dropdown-menu">
@@ -254,8 +258,8 @@
     </ul>
   </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Implementation</a>
     <ul class="dropdown-menu">
@@ -305,60 +309,63 @@
     </ul>
   </li>
 
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Component <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
                             
+                            </ul>
+                        </li>
+                    
+                
+                
+                
+                    
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Component <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            
+                                
 <li >
     <a href="../../../component/entity-translator/">Entity translator</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/">Home</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/media/">Media</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/menu/">Menu</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/sitemap/">Sitemap</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/state-transition-machine/">State transition machine</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/template/">Template</a>
 </li>
 
-                        
-                        </ul>
-                    </li>
+                            
+                            </ul>
+                        </li>
+                    
                 
                 
                 </ul>
@@ -383,6 +390,15 @@
                     </li>
                 
                 
+                    <li>
+                        <a href="https://github.com/elcodi/docs">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
             </ul>
         </div>
     </div>
@@ -402,7 +418,7 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="how-to-add-a-new-currency-rates-populator-adapter">How to add a new Currency Rates Populator adapter</h1>
+<h1 id="how-to-add-a-new-currency-rates-populator-adapter">How to add a new Currency Rates Populator adapter<a class="headerlink" href="#how-to-add-a-new-currency-rates-populator-adapter" title="Permanent link"> #</a></h1>
 <p>You can create a new adapter for Currency Rates populator. By default, Elcodi
 implementation works with the Yahoo Finance provider. This adapter can be easily
 replaced by creating a new class implementing 
@@ -457,11 +473,11 @@ the command line.</p>
 <pre><code class="bash">$ php app/console elcodi:exchangerates:populate
 </code></pre>
 
-<h3 id="adapters">Adapters</h3>
+<h3 id="adapters">Adapters<a class="headerlink" href="#adapters" title="Permanent link"> #</a></h3>
 <p>These are our adapters included in the Core of the application. If you have 
 implemented another adapter and you think that can be interesting to share it,
 then you can create a pull request with your work. We will appreciate it.</p>
-<h4 id="yahoo-finances-adapter">Yahoo Finances Adapter</h4>
+<h4 id="yahoo-finances-adapter">Yahoo Finances Adapter<a class="headerlink" href="#yahoo-finances-adapter" title="Permanent link"> #</a></h4>
 <ul>
 <li>Namespace - Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\YahooFinanceProviderAdapter</li>
 <li>DI name - <code>elcodi.currency_exchange_rate_adapter.yahoo_finances</code></li>
@@ -473,7 +489,8 @@ then you can create a pull request with your work. We will appreciate it.</p>
         <footer class="col-md-12">
             <hr>
             
-            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+                <p>Copyright © 2014/2015 <a href="http://www.elcodi.io">Elcodi</a>. All rights reserved.</p>
+            
         </footer>
 
         <script src="../../../js/jquery-1.10.2.min.js"></script>

@@ -6,15 +6,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        
+        <link rel="canonical" href="http://www.elcodi.io/cookbook/implementation/implement-a-controller-and-a-command/">
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-	<title>Implement a controller and a command - Elcodi Documentation</title>
+        <title>Implement a controller and a command - Elcodi Documentation</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="../../../css/highlight.css">
+
+        <link href="../../../css/elcodi.css" rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -43,7 +45,7 @@
             
 
             <!-- Main title -->
-            <a class="navbar-brand" href="../../..">Elcodi Documentation</a>
+            <a class="navbar-brand" href="../../.."><img src="../../../img/elcodi.png" height="30" /></a>
         </div>
 
         <!-- Expanded navigation -->
@@ -53,134 +55,136 @@
                 <ul class="nav navbar-nav">
                 
                 
-                    <li >
-                        <a href="../../..">Home</a>
-                    </li>
                 
                 
                 
-                    <li >
-                        <a href="../../../quick-start/">Quick start</a>
-                    </li>
+                    
+                        <li >
+                            <a href="../../../quick-start/">Quick start</a>
+                        </li>
+                    
                 
                 
                 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
+                    
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
                             
+                                
 <li >
     <a href="../../../book/cart-architecture/">Cart architecture</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/dictionary/">Dictionary</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/emails/">Emails</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/events/">Events</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/">Home</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/payments/">Payments</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/philosophy/">Philosophy</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/plugins/">Plugins</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/processes/">Processes</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/product-architecture/">Product architecture</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/pull-requests/">Pull requests</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/running-test-suite/">Running test suite</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/shipping/">Shipping</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/standards/">Standards</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/what-is-elcodi/">What is elcodi</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../book/why-elcodi/">Why elcodi</a>
 </li>
 
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                    <li class="dropdown active">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
                             
+                            </ul>
+                        </li>
+                    
+                
+                
+                
+                    
+                        <li class="dropdown active">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cookbook <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            
+                                
 <li >
     <a href="../../">Home</a>
 </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Installation</a>
     <ul class="dropdown-menu">
@@ -200,8 +204,8 @@
     </ul>
   </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Overwrite</a>
     <ul class="dropdown-menu">
@@ -227,8 +231,8 @@
     </ul>
   </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Adapters</a>
     <ul class="dropdown-menu">
@@ -254,8 +258,8 @@
     </ul>
   </li>
 
-                        
                             
+                                
   <li class="dropdown-submenu">
     <a tabindex="-1" href="">Implementation</a>
     <ul class="dropdown-menu">
@@ -305,60 +309,63 @@
     </ul>
   </li>
 
-                        
-                        </ul>
-                    </li>
-                
-                
-                
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Component <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                        
                             
+                            </ul>
+                        </li>
+                    
+                
+                
+                
+                    
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Component <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            
+                                
 <li >
     <a href="../../../component/entity-translator/">Entity translator</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/">Home</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/media/">Media</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/menu/">Menu</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/sitemap/">Sitemap</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/state-transition-machine/">State transition machine</a>
 </li>
 
-                        
                             
+                                
 <li >
     <a href="../../../component/template/">Template</a>
 </li>
 
-                        
-                        </ul>
-                    </li>
+                            
+                            </ul>
+                        </li>
+                    
                 
                 
                 </ul>
@@ -383,6 +390,15 @@
                     </li>
                 
                 
+                    <li>
+                        <a href="https://github.com/elcodi/docs">
+                            
+                                <i class="fa fa-github"></i>
+                            
+                            GitHub
+                        </a>
+                    </li>
+                
             </ul>
         </div>
     </div>
@@ -406,12 +422,12 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="how-to-implement-a-controller-or-a-command">How to Implement a Controller or a Command</h1>
+<h1 id="how-to-implement-a-controller-or-a-command">How to Implement a Controller or a Command<a class="headerlink" href="#how-to-implement-a-controller-or-a-command" title="Permanent link"> #</a></h1>
 <p>Controllers and Commands in Elcodi are exactly the same than Controllers and 
 Commands in Symfony. No difference between them. But in Elcodi we have a strong
 philosophy about how to create them in order to be valid or usable in the Open
 Source environment.</p>
-<h2 id="scenario">Scenario</h2>
+<h2 id="scenario">Scenario<a class="headerlink" href="#scenario" title="Permanent link"> #</a></h2>
 <p>We have a Bamboo-based application in our server and we need to create a new 
 entry-point for our application, for example a new Controller to manage orders
 from specific users, in order to create special newsletters and increase the
@@ -419,11 +435,11 @@ number of orders per customer.</p>
 <p>Controllers and Commands are designed and implemented following a simple but
 specific way. We need to know how both classes are created in Elcodi in order to
 follow the same philosophy in all places.</p>
-<h2 id="solution">Solution</h2>
+<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link"> #</a></h2>
 <p>Following this specific way, we need to know the differences between creating
 Controllers and Commands as services, or simply rely to the framework the way
 these classes are auto-discovered.</p>
-<h3 id="services-in-elcodi">Services in Elcodi</h3>
+<h3 id="services-in-elcodi">Services in Elcodi<a class="headerlink" href="#services-in-elcodi" title="Permanent link"> #</a></h3>
 <p>All Elcodi Controllers and Commands are defined as services. This is because we
 are <em>Overwriting Oriented Programming</em> and we have in mind that every single
 implementation sensible to be changed between projects must be easily 
@@ -440,7 +456,7 @@ elcodi.command.populate_currency_rates
 <p>Of course, and because it should only depend on the Symfony Components, but never
 the Symfony Framework nor the FrameworkBundle, both implementations must not extend
 Framework classes.</p>
-<h3 id="framework-controllers-in-bamboo">Framework Controllers in Bamboo</h3>
+<h3 id="framework-controllers-in-bamboo">Framework Controllers in Bamboo<a class="headerlink" href="#framework-controllers-in-bamboo" title="Permanent link"> #</a></h3>
 <p>When you work in Bamboo (or in your project on top of Elcodi Components and 
 Bundles) we don't recommend the usage of Controllers and Commands as services.
 We think that both implementations are Entry Points and should be Framework
@@ -460,7 +476,7 @@ class CartController extends Controller
 }
 </code></pre>
 
-<h3 id="framework-commands-in-bamboo">Framework Commands in Bamboo</h3>
+<h3 id="framework-commands-in-bamboo">Framework Commands in Bamboo<a class="headerlink" href="#framework-commands-in-bamboo" title="Permanent link"> #</a></h3>
 <p>We have the same opinion for Commands and Controllers.</p>
 <pre><code class="php">use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 
@@ -472,7 +488,7 @@ class MyCommand extends ContainerAwareCommand
 }
 </code></pre>
 
-<h3 id="annotations-in-bamboo-controllers">Annotations in Bamboo Controllers</h3>
+<h3 id="annotations-in-bamboo-controllers">Annotations in Bamboo Controllers<a class="headerlink" href="#annotations-in-bamboo-controllers" title="Permanent link"> #</a></h3>
 <p>In Bamboo, we use annotations in all our controllers in order to make the code more
 understandable and to focus only on business logic. Annotations solve
 repetitive things and should be perfectly documented.</p>
@@ -550,7 +566,7 @@ class CartController extends Controller
 <p>Please, before using annotations in your project make sure that you know how
 they work and how to use them. Read the documentation of both packages and try
 to understand their meaning.</p>
-<h2 id="related-links">Related links</h2>
+<h2 id="related-links">Related links<a class="headerlink" href="#related-links" title="Permanent link"> #</a></h2>
 <ul>
 <li><a href="http://symfony.com/doc/current/cookbook/controller/service.html">Symfony docs - How to define controllers as services</a></li>
 <li><a href="http://symfony.com/doc/current/cookbook/console/commands_as_services.html">Symfony docs - How to define commands as services</a></li>
@@ -561,7 +577,8 @@ to understand their meaning.</p>
         <footer class="col-md-12">
             <hr>
             
-            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+                <p>Copyright © 2014/2015 <a href="http://www.elcodi.io">Elcodi</a>. All rights reserved.</p>
+            
         </footer>
 
         <script src="../../../js/jquery-1.10.2.min.js"></script>
