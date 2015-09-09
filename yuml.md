@@ -9,19 +9,19 @@ To build each image, append the value of the definition after
 
 * image/model/cart-component.png
 
-[CartLine|cart;orderLine;purchasable]-1>[note: Purchasable{bg:cornsilk],
-[OrderLine|order;cartLine;purchasable]-1>[note: Purchasable{bg:cornsilk],
-[Cart|order;cartLines]1++-0..*>[CartLine],
-[Order|cart;orderLines]<1-0..*>[OrderLine],
-[Cart]<1-0..1>[Order],
+[CartLine|cart;orderLine;purchasable]-1>[note: Purchasable{bg:cornsilk],  
+[OrderLine|order;cartLine;purchasable]-1>[note: Purchasable{bg:cornsilk],  
+[Cart|order;cartLines]1++-0..*>[CartLine],  
+[Order|cart;orderLines]<1-0..*>[OrderLine],  
+[Cart]<1-0..1>[Order],  
 [CartLine]<1-0..1>[OrderLine]
 
 * image/model/cart-cartline.png
 
-[CartLine|cart;orderLine;purchasable]-1>[note: Purchasable{bg:cornsilk],
+[CartLine|cart;orderLine;purchasable]-1>[note: Purchasable{bg:cornsilk],  
 [Cart|order;cartLines]1++-0..*>[CartLine]
 
 * image/model/order-orderline.png
 
-[OrderLine|order;cartLine;purchasable]-1>[note: Purchasable{bg:cornsilk],
+[OrderLine|order;cartLine;purchasable]-1>[note: Purchasable{bg:cornsilk],  
 [Order|cart;orderLines]<1-0..*>[OrderLine]
