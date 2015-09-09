@@ -413,6 +413,18 @@
         
             <li><a href="#introduction">Introduction</a></li>
         
+            <li><a href="#cart">Cart</a></li>
+        
+            <li><a href="#cart-line">Cart Line</a></li>
+        
+            <li><a href="#loading-the-cart">Loading the cart</a></li>
+        
+            <li><a href="#cart-transformation">Cart transformation</a></li>
+        
+            <li><a href="#order">Order</a></li>
+        
+            <li><a href="#order-states">Order states</a></li>
+        
     
     </ul>
 </div></div>
@@ -430,14 +442,143 @@ much customized as you need.</p>
 not difficult at all, so we are working in an E-commerce. The component itself
 takes care about all related to the Cart and the Order. The component provides
 you a complete service layer for you application, so knowing and understanding
-this layer will help you a lot :)</p>
+this layer will help you a lot in your own implementation.</p>
 <p>We will split all the model in two parts, the Cart path and the Order part. Both
-parts are connected but can  (and should) be treated in a very isolated way.</p>
-<p><img alt="Cart model" src="../../image/model/cart.png" /></p>
+parts are connected but they can (and should) be treated in a very isolated way.</p>
+<p><img alt="Cart component model" src="../../image/model/cart-component.png" /></p>
 <p>First of all, forget about the Purchasable instance. This is just the way we
 will refer to the concept of Product (please, read the 
 <a href="../product-architecture/">Product Architecture</a> chapter in order to know more
-about it. Let's focus on how the Cart and Order are built.</p></div>
+about it. Let's focus on how the Cart and Order are built.</p>
+<h2 id="cart">Cart<a class="headerlink" href="#cart" title="Permanent link"> #</a></h2>
+<p>The bucket itself. Every customer has it's own cart, and it's life is connected
+to the session and to the customer as well. This means that even if you change
+the device, and as long as you're logged in, then you will be able to retrieve
+the cart from the database.</p>
+<p>Some parts of the cart are not stored in database, like the prices. Because of
+some products from your cart can be disabled between page views, or because
+their prices can be modified as well, every time you request your cart, prices
+are reloaded and saved locally, in your object life. Of course, this means two
+things:</p>
+<ul>
+<li>Your cart loading consumes some resources in each request</li>
+<li>You cannot lookup in your database by these values</li>
+</ul>
+<p>Anyway, this strategy helps a lot in your stored carts status. This means that
+you will not store invalid prices.</p>
+<p>The Cart model introduces a new object called Cart Line.</p>
+<h2 id="cart-line">Cart Line<a class="headerlink" href="#cart-line" title="Permanent link"> #</a></h2>
+<p>Everytime a new purchasable object is added into a Cart, you must save, at
+least, one extra information about this relation (cart and purchasable): the
+quantity. Because of this, you cannot relate directly both elements. Of course,
+if the purchasable object needs more information about the relation, for example
+color, size or any single text, you should save them all as well.</p>
+<p>For this, we will work with an extra man-in-the-middle class called CartLine. In
+this class we'll save the Cart, the purchasable object and all this information.
+CartLine is designed using
+<a href="https://en.wikipedia.org/wiki/Object_composition">Object Composition</a>. It means
+that the life of all CartLine instances are coupled to the life of the Cart
+instance.</p>
+<p><img alt="Cart model" src="../../image/model/cart-cartline.png" /></p>
+<h2 id="loading-the-cart">Loading the cart<a class="headerlink" href="#loading-the-cart" title="Permanent link"> #</a></h2>
+<p>As we said, the cart is loaded each time, but, who loads it? In fact, and
+because of our service layer, you will find that loading cart is as easy as
+using an event dispatcher called <code>elcodi.event_dispatcher.cart</code>.</p>
+<pre><code class="php">$cart = $this
+    -&gt;cartRepository
+    -&gt;find(1);
+
+$this
+    -&gt;cartEventDispatcher
+    -&gt;dispatchCartLoadEvents($cart);
+</code></pre>
+
+<p>Let's check as well how to inject the event listener. In that case we are
+injecting both the event dispatcher and the cart repository, for cart
+retrieving.</p>
+<pre><code class="yaml">services:
+    my_cart_loader:
+        class: My\Cart\Loader\Class
+        arguments:
+            - @elcodi.repository.cart
+            - @elcodi.event_dispatcher.cart
+</code></pre>
+
+<p>After that call, your cart will be completely loaded, including prices and
+checks, and invalid cart lines will be safely removed. Of course, and because
+the project uses a strong event layer, some events will be dispatched during the
+process.</p>
+<ul>
+<li><a href="../events/#cartpreload">cart.preload</a></li>
+<li><a href="../events/#cartonload">cart.onload</a></li>
+<li><a href="../events/#cartinconsistent">cart.inconsistent</a></li>
+</ul>
+<p>The question then is... how can I know that a cart has been loaded? Well, easy
+indeed.</p>
+<pre><code class="php">$cart = $this
+    -&gt;cartRepository
+    -&gt;find(1);
+
+$isLoaded = $cart-&gt;isLoaded();
+// $isLoaded === false
+
+$this
+    -&gt;cartEventDispatcher
+    -&gt;dispatchCartLoadEvents($cart);
+
+$isLoaded = $cart-&gt;isLoaded();
+// $isLoaded === true
+</code></pre>
+
+<h2 id="cart-transformation">Cart transformation<a class="headerlink" href="#cart-transformation" title="Permanent link"> #</a></h2>
+<p>Once the cart must be converted to an order, there is a nice transformer for
+that occasion. Let's see an example of that transformation. In that occasion, we
+assume that <code>getLoadedCart()</code> returns an already loaded cart.</p>
+<pre><code class="php">$cart = $this-&gt;getLoadedCart();
+
+$order = $this
+    -&gt;cartOrderTransformer
+    -&gt;createOrderFromCart($cart);
+</code></pre>
+
+<p>This action produces as well some new events.</p>
+<ul>
+<li><a href="../events/#orderprecreated">order.precreated</a></li>
+<li><a href="../events/#orderoncreated">order.oncreated</a></li>
+<li><a href="../events/#orderlineoncreated">order_line.oncreated</a></li>
+</ul>
+<p>After this action, the cart becomes ordered</p>
+<pre><code class="php">$cart = $this-&gt;getLoadedCart();
+
+$order = $this
+    -&gt;cartOrderTransformer
+    -&gt;createOrderFromCart($cart);
+
+$cartIsOrdered = $cart-&gt;isOrdered();
+// $cartIsOrdered === true
+</code></pre>
+
+<h2 id="order">Order<a class="headerlink" href="#order" title="Permanent link"> #</a></h2>
+<p>The order should always be a plain copy of a cart. Of course, and because the
+object's behaviour should be as immutable as possible, all prices are calculated
+and saved in database.</p>
+<p><img alt="Order model" src="../../image/model/order-orderline.png" /></p>
+<p>Inside the entity, you will find this information:</p>
+<ul>
+<li>Cart where the order belongs</li>
+<li>Dimensions of the order (only physical orders)</li>
+<li>OrderLines, each one as a mirror of each CartLine</li>
+<li>Quantity of the order, total number of elements</li>
+<li>Prices from products, coupons, shipping and total.</li>
+<li>Addresses from delivering and billing</li>
+<li>Order States</li>
+</ul>
+<h2 id="order-states">Order states<a class="headerlink" href="#order-states" title="Permanent link"> #</a></h2>
+<p>When an order is created, each instance can travel through an amount of
+predefined states.</p>
+<p>With the basic implementation, you will find defined state machines for payment
+and shipping. To know more about this, please, read the <a href="../payments/">Payments</a>
+and the <a href="../shipping/">Shipping</a> chapters</p></div>
             
         </div>
 
