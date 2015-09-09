@@ -1,11 +1,16 @@
 # Dictionary
 
-In this dictionary you will find some nice descriptions about how some words
-mean in the Elcodi ecosystem.
+In this dictionary you will find some meanings of some of our most used words.
+If there is one word you don't know what is about, please ask us in out
+[Gitter channel](http://gitter.im/elcodi/elcodi) and we will create the entry
+as soon as possible.
+
+We will very happy to help you :)
 
 ### Attribute
 
-
+Refers to a feature of a Variant.  
+Please, check [Variant](#variant)
 
 ### Bamboo
 
@@ -36,6 +41,24 @@ project, each component has it's own Bundle, where all libraries are exposed to
 the Symfony Dependency Injection and where are bundles are created and
 configured.
 
+Elcodi has splitted its business logic in several components, each one 
+containing specific parts of the model, and grouped semantically. CHeckout some
+of them:
+
+* [Cart Component](http://github.com/elcodi/Cart)
+* [Product Component](http://github.com/elcodi/Product)
+* [Core Component](http://github.com/elcodi/Core)
+
+Some of our components are detailed and documented in this documentation.
+
+* [Elcodi Components](../components)
+
+And some other components are described as book chapters, describing a little
+bit more its architecture and workflow.
+
+* [Cart Architecture](cart-architecture.md)
+* [Product Architecture](product-architecture.md)
+
 ### Factory
 
 PHP Class with one single responsibility: create a new entity instance. This
@@ -48,6 +71,11 @@ an specific environment
   initialized
 - Because of that, the customer itself should never know about it's own
   initialization
+  
+To know a little bit more about factories, please follow this interesting links:
+
+* [How to implement a factory](../cookbook/implementation/implement-a-factory.md)
+* [Factory pattern in Symfony2](http://mmoreram.com/blog/2013/12/23/factory-pattern-in-symfony2/)
 
 ### Plugin
 
@@ -59,7 +87,29 @@ very simple and intuitive way.
 When we refer to a Plugin then, we refer to these Bundles that are thought as 
 Plugins, following their specification.
 
+There is a full book chapter about Elcodi plugins, and this part is going to be
+improved day by day with new ideas, with new developments and with new
+specifications.
+
 [Elcodi Plugins](plugins.md)
+
+### Repository
+
+Each entity has it's own repository. When we refer to a repository, we are
+automatically referring to the Doctrine Repositories.
+
+Each repository is created by default and defined inside the Dependency
+Injection service map using the structure `elcodi.repository.{entity_name}`.
+
+To know more about Repositories in Elcodi, please check these links.
+
+[How to implement a Repository](../cookbook/implementation/implement-a-repository.md)
+[Doctrine Repositories](http://doctrine-orm.readthedocs.org/en/latest/reference/working-with-objects.html)
+
+### Value
+
+Refers to a value of an attribute and assigned to a Variant.  
+Please, check [Variant](#variant)
 
 ### Variant
 
@@ -77,3 +127,24 @@ sell. Let's see an example.
   containing the original product, the color and the size.
 * Of course, if your have several Variants of a specific Product, people will be
   able to add these variants to their carts, instead of the Product.
+
+This is the main definition of what a Variant is, but in this case we will
+introduce you as well the common terms *Attribute* and *Value*. Each variant
+instance is a Product element combined to an Attribute and a Color.
+
+Let's continue with the same example, but specifying a little bit.
+
+* We have our T-shirt Product
+* We have created a new Attribute called Size
+* We have created three new values related to this Attribute, called Small,
+Medium and Large. All three have Size as Attribute.
+* We have created one new Variant, having our the T-shirt as product, and having
+Small as Value. Because this Value has Size as Attribute, then we can say that:
+
+We have a new Variant called "Small T-shirt"
+* Product: T-shirt
+* Attribute: Size
+* Value: Small
+
+Of course, a Variant is a *Purchasable* like Product, so you can add it into
+your Cart.
