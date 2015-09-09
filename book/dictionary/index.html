@@ -423,6 +423,10 @@
         
             <li><a href="#plugin">Plugin</a></li>
         
+            <li><a href="#repository">Repository</a></li>
+        
+            <li><a href="#value">Value</a></li>
+        
             <li><a href="#variant">Variant</a></li>
         
     
@@ -431,9 +435,14 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="dictionary">Dictionary<a class="headerlink" href="#dictionary" title="Permanent link"> #</a></h1>
-<p>In this dictionary you will find some nice descriptions about how some words
-mean in the Elcodi ecosystem.</p>
+<p>In this dictionary you will find some meanings of some of our most used words.
+If there is one word you don't know what is about, please ask us in out
+<a href="http://gitter.im/elcodi/elcodi">Gitter channel</a> and we will create the entry
+as soon as possible.</p>
+<p>We will very happy to help you :)</p>
 <h3 id="attribute">Attribute<a class="headerlink" href="#attribute" title="Permanent link"> #</a></h3>
+<p>Refers to a feature of a Variant.<br />
+Please, check <a href="#variant">Variant</a></p>
 <h3 id="bamboo">Bamboo<a class="headerlink" href="#bamboo" title="Permanent link"> #</a></h3>
 <p>Bamboo is a simple and basic E-commerce application based on Symfony, that uses
 all Elcodi components for it's own business logic. All Elcodi related best 
@@ -454,6 +463,24 @@ package and must be framework agnostic. Because this project is a Symfony
 project, each component has it's own Bundle, where all libraries are exposed to
 the Symfony Dependency Injection and where are bundles are created and
 configured.</p>
+<p>Elcodi has splitted its business logic in several components, each one 
+containing specific parts of the model, and grouped semantically. CHeckout some
+of them:</p>
+<ul>
+<li><a href="http://github.com/elcodi/Cart">Cart Component</a></li>
+<li><a href="http://github.com/elcodi/Product">Product Component</a></li>
+<li><a href="http://github.com/elcodi/Core">Core Component</a></li>
+</ul>
+<p>Some of our components are detailed and documented in this documentation.</p>
+<ul>
+<li><a href="../../components">Elcodi Components</a></li>
+</ul>
+<p>And some other components are described as book chapters, describing a little
+bit more its architecture and workflow.</p>
+<ul>
+<li><a href="../cart-architecture/">Cart Architecture</a></li>
+<li><a href="../product-architecture/">Product Architecture</a></li>
+</ul>
 <h3 id="factory">Factory<a class="headerlink" href="#factory" title="Permanent link"> #</a></h3>
 <p>PHP Class with one single responsibility: create a new entity instance. This
 class should know as well how this entity instance must be initialized given
@@ -466,6 +493,11 @@ an specific environment</p>
 <li>Because of that, the customer itself should never know about it's own
   initialization</li>
 </ul>
+<p>To know a little bit more about factories, please follow this interesting links:</p>
+<ul>
+<li><a href="../../cookbook/implementation/implement-a-factory/">How to implement a factory</a></li>
+<li><a href="http://mmoreram.com/blog/2013/12/23/factory-pattern-in-symfony2/">Factory pattern in Symfony2</a></li>
+</ul>
 <h3 id="plugin">Plugin<a class="headerlink" href="#plugin" title="Permanent link"> #</a></h3>
 <p>Because Bamboo must be a project with a well-designed extension point. For such
 reason, and taking advantage of how Symfony Bundles work, we have created a 
@@ -473,7 +505,21 @@ plugin engine in order to allow people overwriting and extending Bamboo in a
 very simple and intuitive way.</p>
 <p>When we refer to a Plugin then, we refer to these Bundles that are thought as 
 Plugins, following their specification.</p>
+<p>There is a full book chapter about Elcodi plugins, and this part is going to be
+improved day by day with new ideas, with new developments and with new
+specifications.</p>
 <p><a href="../plugins/">Elcodi Plugins</a></p>
+<h3 id="repository">Repository<a class="headerlink" href="#repository" title="Permanent link"> #</a></h3>
+<p>Each entity has it's own repository. When we refer to a repository, we are
+automatically referring to the Doctrine Repositories.</p>
+<p>Each repository is created by default and defined inside the Dependency
+Injection service map using the structure <code>elcodi.repository.{entity_name}</code>.</p>
+<p>To know more about Repositories in Elcodi, please check these links.</p>
+<p><a href="../../cookbook/implementation/implement-a-repository/">How to implement a Repository</a>
+<a href="http://doctrine-orm.readthedocs.org/en/latest/reference/working-with-objects.html">Doctrine Repositories</a></p>
+<h3 id="value">Value<a class="headerlink" href="#value" title="Permanent link"> #</a></h3>
+<p>Refers to a value of an attribute and assigned to a Variant.<br />
+Please, check <a href="#variant">Variant</a></p>
 <h3 id="variant">Variant<a class="headerlink" href="#variant" title="Permanent link"> #</a></h3>
 <p>Sometimes a Product is not enough when we need to define something we want to 
 sell. Let's see an example.</p>
@@ -489,7 +535,25 @@ sell. Let's see an example.</p>
   containing the original product, the color and the size.</li>
 <li>Of course, if your have several Variants of a specific Product, people will be
   able to add these variants to their carts, instead of the Product.</li>
-</ul></div>
+</ul>
+<p>This is the main definition of what a Variant is, but in this case we will
+introduce you as well the common terms <em>Attribute</em> and <em>Value</em>. Each variant
+instance is a Product element combined to an Attribute and a Color.</p>
+<p>Let's continue with the same example, but specifying a little bit.</p>
+<ul>
+<li>We have our T-shirt Product</li>
+<li>We have created a new Attribute called Size</li>
+<li>We have created three new values related to this Attribute, called Small,
+Medium and Large. All three have Size as Attribute.</li>
+<li>We have created one new Variant, having our the T-shirt as product, and having
+Small as Value. Because this Value has Size as Attribute, then we can say that:</li>
+</ul>
+<p>We have a new Variant called "Small T-shirt"
+<em> Product: T-shirt
+</em> Attribute: Size
+* Value: Small</p>
+<p>Of course, a Variant is a <em>Purchasable</em> like Product, so you can add it into
+your Cart.</p></div>
             
         </div>
 
