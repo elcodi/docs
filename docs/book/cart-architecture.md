@@ -121,6 +121,210 @@ $isLoaded = $cart->isLoaded();
 // $isLoaded === true
 ```
 
+## Adding Purchasables
+
+The main action of a cart is to add a new Product, right? Well, as you will see
+in the [Product architecture](product-architecture.md) chapter, we are not
+working with products, but with Purchasable instances.
+
+Each purchasable must be added into the cart by using the CartManager, a service
+that is intended for managing Purchasables and Lines in a very intuitive way.
+
+Let's see a small example of how to use the service.
+
+``` php
+$cart;
+$purchasable = $this
+    ->productFactory()
+    ->create();
+    
+$this
+    ->cartManager
+    ->addPurchasable(
+        $cart,
+        $purchasable,
+        3
+    );
+```
+
+In this example we have used the Product factory and the cart manager. Let's see
+the dependency injection definition of the fictitious service.
+
+``` yaml
+services:
+    my_service:
+        class: My\Service\Namespace
+        arguments:
+            - @elcodi.factory.product
+            - @elcodi.manager.cart
+```
+
+Of course, and because `Purchasable` is not a real class but an interface, we 
+must add any Purchasable implementation. Product and Variant are our 
+implementations, so in this example we use Product.
+
+After calling method `addPurchasable`, your cart will have 3 units of this 
+product only if they are really available to be purchased. Otherwise, you will
+get some exceptions. Of course, the cart is automatically reloaded as well, and
+all prices are rebuilt again.
+
+This method dispatches these events:
+* [cart_line.onadd](events#cart_lineonadd)
+
+## Removing Purchasables
+
+You can remove purchasables as well, by using another method in the service
+CartManager. Let's see an example using the same service and construction
+definition than before.
+
+``` php
+$cart;
+$purchasable = $this
+    ->productFactory()
+    ->create();
+    
+$this
+    ->cartManager
+    ->removePurchasable(
+        $cart,
+        $purchasable,
+        3
+    );
+```
+
+After calling the method, your product units will be decreased as many times as
+the last value of the call defines. If the value is higher or equal than the
+quantity of the purchasable in the cart, then this line is removed from the
+cart.
+
+After that, the cart is automatically reloaded as well, and all prices are
+rebuilt again.
+
+This method dispatches these events:
+* [cart_line.onadd](events#cart_lineonremove) only if the purchasable is removed
+from the cart
+
+## Adding a coupon
+
+You can add some coupons as well in your cart. Because we think that both
+concepts are not the same and shouldn't be coupled at all, we decided to
+separate them in two components.
+
+Both components have their own events, so all logic regarding how to add coupons
+into the cart is placed in a third component called CartCoupon. To know a little
+bit more about coupons, please read
+[Coupon Architecture](coupon-architecture.md) chapter.
+
+For adding a new coupon into the cart, you need to use the service
+`CartCouponManager`. This service has some interesting methods for the
+management of all coupons in your cart.
+
+Let's see an example.
+
+``` php
+$cart;
+$couponCode = 'coupon5%';
+
+$this
+    ->cartCouponManager
+    ->addCouponByCode(
+        $cart,
+        $couponCode
+    );
+```
+
+Assuming that your service depends only on the cart coupon manager, then this
+should be the dependency injection definition.
+
+``` yaml
+services:
+    my_service:
+        class: My\Service\Namespace
+        arguments:
+            - @elcodi.manager.cart_coupon
+```
+
+After this action, the coupon is inserted into the cart and the values of the
+cart are recomputed. Of course, during the association of both elements, some
+problems can occur, for example, when two incompatible coupons are inserted in
+the same cart. Then, you have to expect specific exceptions.
+
+You can add a coupon as well with the Coupon instance as well, using the same
+CartCouponManager.
+
+``` php
+$cart;
+$couponCode = 'coupon5%';
+$coupon = $this
+    ->couponRepository
+    ->findOneByCode('coupon5%');
+
+$this
+    ->cartCouponManager
+    ->addCoupon(
+        $cart,
+        $coupon
+    );
+```
+
+The definition of that example is not the same than the last one, so this one
+depends on the `CouponRepository` service as well.
+
+This method dispatches these events:
+* [cart_coupon.onapply](events#cartcoupononapply)
+
+## Removing a coupon
+
+You can remove a coupon from a cart, of course, using the same service than the
+last example.
+
+``` php
+$cart;
+$couponCode = 'coupon5%';
+
+$this
+    ->cartCouponManager
+    ->removeCouponByCode(
+        $cart,
+        $couponCode
+    );
+```
+
+You can remove as well the coupon with the Coupon instance.
+
+``` php
+$cart;
+$couponCode = 'coupon5%';
+$coupon = $this
+    ->couponRepository
+    ->findOneByCode('coupon5%');
+
+$this
+    ->cartCouponManager
+    ->removeCoupon(
+        $cart,
+        $coupon
+    );
+```
+
+After these actions, the cart is completely reloaded, like other actions.
+
+This method dispatches these events:
+* [cart_coupon.onremove](events#cartcoupononremove)
+
+## Getting Cart coupons
+
+Of course, given a cart, you should be able to get all coupons applied. We'll
+use the same manager again.
+
+``` php
+$cart;
+
+$cartCoupons = $this
+    ->cartCouponManager
+    ->getCoupons();
+```
+
 ## Cart transformation
 
 Once the cart must be converted to an order, there is a nice transformer for
@@ -171,6 +375,22 @@ Inside the entity, you will find this information:
 * Prices from products, coupons, shipping and total.
 * Addresses from delivering and billing
 * Order States
+
+## Getting Order coupons
+
+Because both components are decoupled (cart and coupon), you need some
+middleware for the order coupons retrieval. Fur this reason, the project 
+provides a service called `OrderCouponManager` for the management of all order
+coupons. Let's see a simple example about how we can retrieve all coupons from 
+an Order instance.
+
+``` php
+$order;
+
+$orderCoupons = $this
+    ->orderCouponManager
+    ->getCoupons($order);
+```
 
 ## Order states
 

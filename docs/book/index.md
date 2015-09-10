@@ -23,6 +23,7 @@ part of it by adding your own business logic.
 * [Events](events.md)
 * [Product Architecture](product-architecture.md)
 * [Cart Architecture](cart-architecture.md)
+* [Coupon Architecture](coupon-architecture.md)
 * [Plugins](plugins.md)
 * [Payments](payments.md)
 * [Shipping](shipping.md)
