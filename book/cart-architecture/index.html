@@ -79,6 +79,12 @@
                             
                                 
 <li >
+    <a href="../coupon-architecture/">Coupon architecture</a>
+</li>
+
+                            
+                                
+<li >
     <a href="../dictionary/">Dictionary</a>
 </li>
 
@@ -234,6 +240,21 @@
                             
                                 
   <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Deprecation</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/deprecation/deprecate-a-method/">Deprecate a method</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                            
+                                
+  <li class="dropdown-submenu">
     <a tabindex="-1" href="">Adapters</a>
     <ul class="dropdown-menu">
         
@@ -252,6 +273,21 @@
             
 <li >
     <a href="../../cookbook/adapters/location-provider/">Location provider</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                            
+                                
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Workflow</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../cookbook/workflow/create-automatic-coupon/">Create automatic coupon</a>
 </li>
 
         
@@ -384,7 +420,7 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../dictionary/">
+                        <a rel="prev" href="../coupon-architecture/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -419,9 +455,21 @@
         
             <li><a href="#loading-the-cart">Loading the cart</a></li>
         
+            <li><a href="#adding-purchasables">Adding Purchasables</a></li>
+        
+            <li><a href="#removing-purchasables">Removing Purchasables</a></li>
+        
+            <li><a href="#adding-a-coupon">Adding a coupon</a></li>
+        
+            <li><a href="#removing-a-coupon">Removing a coupon</a></li>
+        
+            <li><a href="#getting-cart-coupons">Getting Cart coupons</a></li>
+        
             <li><a href="#cart-transformation">Cart transformation</a></li>
         
             <li><a href="#order">Order</a></li>
+        
+            <li><a href="#getting-order-coupons">Getting Order coupons</a></li>
         
             <li><a href="#order-states">Order states</a></li>
         
@@ -530,6 +578,171 @@ $isLoaded = $cart-&gt;isLoaded();
 // $isLoaded === true
 </code></pre>
 
+<h2 id="adding-purchasables">Adding Purchasables<a class="headerlink" href="#adding-purchasables" title="Permanent link"> #</a></h2>
+<p>The main action of a cart is to add a new Product, right? Well, as you will see
+in the <a href="../product-architecture/">Product architecture</a> chapter, we are not
+working with products, but with Purchasable instances.</p>
+<p>Each purchasable must be added into the cart by using the CartManager, a service
+that is intended for managing Purchasables and Lines in a very intuitive way.</p>
+<p>Let's see a small example of how to use the service.</p>
+<pre><code class="php">$cart;
+$purchasable = $this
+    -&gt;productFactory()
+    -&gt;create();
+
+$this
+    -&gt;cartManager
+    -&gt;addPurchasable(
+        $cart,
+        $purchasable,
+        3
+    );
+</code></pre>
+
+<p>In this example we have used the Product factory and the cart manager. Let's see
+the dependency injection definition of the fictitious service.</p>
+<pre><code class="yaml">services:
+    my_service:
+        class: My\Service\Namespace
+        arguments:
+            - @elcodi.factory.product
+            - @elcodi.manager.cart
+</code></pre>
+
+<p>Of course, and because <code>Purchasable</code> is not a real class but an interface, we 
+must add any Purchasable implementation. Product and Variant are our 
+implementations, so in this example we use Product.</p>
+<p>After calling method <code>addPurchasable</code>, your cart will have 3 units of this 
+product only if they are really available to be purchased. Otherwise, you will
+get some exceptions. Of course, the cart is automatically reloaded as well, and
+all prices are rebuilt again.</p>
+<p>This method dispatches these events:
+* <a href="../events#cart_lineonadd">cart_line.onadd</a></p>
+<h2 id="removing-purchasables">Removing Purchasables<a class="headerlink" href="#removing-purchasables" title="Permanent link"> #</a></h2>
+<p>You can remove purchasables as well, by using another method in the service
+CartManager. Let's see an example using the same service and construction
+definition than before.</p>
+<pre><code class="php">$cart;
+$purchasable = $this
+    -&gt;productFactory()
+    -&gt;create();
+
+$this
+    -&gt;cartManager
+    -&gt;removePurchasable(
+        $cart,
+        $purchasable,
+        3
+    );
+</code></pre>
+
+<p>After calling the method, your product units will be decreased as many times as
+the last value of the call defines. If the value is higher or equal than the
+quantity of the purchasable in the cart, then this line is removed from the
+cart.</p>
+<p>After that, the cart is automatically reloaded as well, and all prices are
+rebuilt again.</p>
+<p>This method dispatches these events:
+* <a href="../events#cart_lineonremove">cart_line.onadd</a> only if the purchasable is removed
+from the cart</p>
+<h2 id="adding-a-coupon">Adding a coupon<a class="headerlink" href="#adding-a-coupon" title="Permanent link"> #</a></h2>
+<p>You can add some coupons as well in your cart. Because we think that both
+concepts are not the same and shouldn't be coupled at all, we decided to
+separate them in two components.</p>
+<p>Both components have their own events, so all logic regarding how to add coupons
+into the cart is placed in a third component called CartCoupon. To know a little
+bit more about coupons, please read
+<a href="../coupon-architecture/">Coupon Architecture</a> chapter.</p>
+<p>For adding a new coupon into the cart, you need to use the service
+<code>CartCouponManager</code>. This service has some interesting methods for the
+management of all coupons in your cart.</p>
+<p>Let's see an example.</p>
+<pre><code class="php">$cart;
+$couponCode = 'coupon5%';
+
+$this
+    -&gt;cartCouponManager
+    -&gt;addCouponByCode(
+        $cart,
+        $couponCode
+    );
+</code></pre>
+
+<p>Assuming that your service depends only on the cart coupon manager, then this
+should be the dependency injection definition.</p>
+<pre><code class="yaml">services:
+    my_service:
+        class: My\Service\Namespace
+        arguments:
+            - @elcodi.manager.cart_coupon
+</code></pre>
+
+<p>After this action, the coupon is inserted into the cart and the values of the
+cart are recomputed. Of course, during the association of both elements, some
+problems can occur, for example, when two incompatible coupons are inserted in
+the same cart. Then, you have to expect specific exceptions.</p>
+<p>You can add a coupon as well with the Coupon instance as well, using the same
+CartCouponManager.</p>
+<pre><code class="php">$cart;
+$couponCode = 'coupon5%';
+$coupon = $this
+    -&gt;couponRepository
+    -&gt;findOneByCode('coupon5%');
+
+$this
+    -&gt;cartCouponManager
+    -&gt;addCoupon(
+        $cart,
+        $coupon
+    );
+</code></pre>
+
+<p>The definition of that example is not the same than the last one, so this one
+depends on the <code>CouponRepository</code> service as well.</p>
+<p>This method dispatches these events:
+* <a href="../events#cartcoupononapply">cart_coupon.onapply</a></p>
+<h2 id="removing-a-coupon">Removing a coupon<a class="headerlink" href="#removing-a-coupon" title="Permanent link"> #</a></h2>
+<p>You can remove a coupon from a cart, of course, using the same service than the
+last example.</p>
+<pre><code class="php">$cart;
+$couponCode = 'coupon5%';
+
+$this
+    -&gt;cartCouponManager
+    -&gt;removeCouponByCode(
+        $cart,
+        $couponCode
+    );
+</code></pre>
+
+<p>You can remove as well the coupon with the Coupon instance.</p>
+<pre><code class="php">$cart;
+$couponCode = 'coupon5%';
+$coupon = $this
+    -&gt;couponRepository
+    -&gt;findOneByCode('coupon5%');
+
+$this
+    -&gt;cartCouponManager
+    -&gt;removeCoupon(
+        $cart,
+        $coupon
+    );
+</code></pre>
+
+<p>After these actions, the cart is completely reloaded, like other actions.</p>
+<p>This method dispatches these events:
+* <a href="../events#cartcoupononremove">cart_coupon.onremove</a></p>
+<h2 id="getting-cart-coupons">Getting Cart coupons<a class="headerlink" href="#getting-cart-coupons" title="Permanent link"> #</a></h2>
+<p>Of course, given a cart, you should be able to get all coupons applied. We'll
+use the same manager again.</p>
+<pre><code class="php">$cart;
+
+$cartCoupons = $this
+    -&gt;cartCouponManager
+    -&gt;getCoupons();
+</code></pre>
+
 <h2 id="cart-transformation">Cart transformation<a class="headerlink" href="#cart-transformation" title="Permanent link"> #</a></h2>
 <p>Once the cart must be converted to an order, there is a nice transformer for
 that occasion. Let's see an example of that transformation. In that occasion, we
@@ -573,6 +786,19 @@ and saved in database.</p>
 <li>Addresses from delivering and billing</li>
 <li>Order States</li>
 </ul>
+<h2 id="getting-order-coupons">Getting Order coupons<a class="headerlink" href="#getting-order-coupons" title="Permanent link"> #</a></h2>
+<p>Because both components are decoupled (cart and coupon), you need some
+middleware for the order coupons retrieval. Fur this reason, the project 
+provides a service called <code>OrderCouponManager</code> for the management of all order
+coupons. Let's see a simple example about how we can retrieve all coupons from 
+an Order instance.</p>
+<pre><code class="php">$order;
+
+$orderCoupons = $this
+    -&gt;orderCouponManager
+    -&gt;getCoupons($order);
+</code></pre>
+
 <h2 id="order-states">Order states<a class="headerlink" href="#order-states" title="Permanent link"> #</a></h2>
 <p>When an order is created, each instance can travel through an amount of
 predefined states.</p>

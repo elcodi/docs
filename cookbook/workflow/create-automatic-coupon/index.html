@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="http://www.elcodi.io/cookbook/implementation/implement-a-repository/">
+        <link rel="canonical" href="http://www.elcodi.io/cookbook/workflow/create-automatic-coupon/">
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-        <title>Implement a repository - Elcodi Documentation</title>
+        <title>Create automatic coupon - Elcodi Documentation</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -286,8 +286,8 @@
     <ul class="dropdown-menu">
         
             
-<li >
-    <a href="../../workflow/create-automatic-coupon/">Create automatic coupon</a>
+<li class="active">
+    <a href="./">Create automatic coupon</a>
 </li>
 
         
@@ -302,43 +302,43 @@
         
             
 <li >
-    <a href="../implement-a-collector/">Implement a collector</a>
+    <a href="../../implementation/implement-a-collector/">Implement a collector</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-a-controller-and-a-command/">Implement a controller and a command</a>
+    <a href="../../implementation/implement-a-controller-and-a-command/">Implement a controller and a command</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-a-factory/">Implement a factory</a>
+    <a href="../../implementation/implement-a-factory/">Implement a factory</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-a-form-type/">Implement a form type</a>
-</li>
-
-        
-            
-<li class="active">
-    <a href="./">Implement a repository</a>
+    <a href="../../implementation/implement-a-form-type/">Implement a form type</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-an-entity/">Implement an entity</a>
+    <a href="../../implementation/implement-a-repository/">Implement a repository</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-an-event-listener/">Implement an event listener</a>
+    <a href="../../implementation/implement-an-entity/">Implement an entity</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../implementation/implement-an-event-listener/">Implement an event listener</a>
 </li>
 
         
@@ -415,12 +415,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../implement-a-form-type/">
+                        <a rel="next" href="../../adapters/location-provider/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../implement-an-entity/">
+                        <a rel="prev" href="../../implementation/implement-a-collector/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -445,41 +445,11 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#how-to-implement-a-repository">How to Implement a Repository</a></li>
-        
-            <li><a href="#scenario">Scenario</a></li>
-        
-            <li><a href="#solution">Solution</a></li>
-        
-            <li><a href="#related-links">Related Links</a></li>
-        
-    
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="how-to-implement-a-repository">How to Implement a Repository<a class="headerlink" href="#how-to-implement-a-repository" title="Permanent link"> #</a></h1>
-<p>Creating a repository in Elcodi is easy. Elcodi type repositories are used in the same
-way Symfony uses its repository classes.</p>
-<h2 id="scenario">Scenario<a class="headerlink" href="#scenario" title="Permanent link"> #</a></h2>
-<p>We have created a new entity properly, and we are happy about that. We have a 
-new service that must create a specific search against this new entity, and we
-need some nice class to place this logic</p>
-<p>What people need to create complicated search queries, they are used to placing
-all this logic inside their services using the repository. Great, this can be a
-good decision if you're not planning to test your application. If you want, then
-you should use your repositories as are meant to be used: one repository per 
-entity with all specific query logic.</p>
-<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link"> #</a></h2>
-<p>Each entity has its own Repository. You will find all entities related 
-repositories inside the Components, hosted in <code>Repository/</code> folders.</p>
-<p>All of them are mostly empty, because they extend <code>AbstractRepository</code> and, thereby
-default, have a set of accessible public methods. However some of them have custom
-methods in order to build specific and complex queries.</p>
-<h2 id="related-links">Related Links<a class="headerlink" href="#related-links" title="Permanent link"> #</a></h2>
-<ul>
-<li>[Symfony docs - Custom repository classes]http://symfony.com/doc/current/book/doctrine.html#custom-repository-classes)</li>
-</ul></div>
+</div>
             
         </div>
 
