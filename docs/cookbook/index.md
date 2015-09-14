@@ -34,3 +34,29 @@ Related links - Set of internal and external related links
 
 * [How to add a new Currency Rates Populator adapter](adapters/currency-rates-populator.md)
 * [How to add a new Image Resize adapter](adapters/image-resize.md)
+
+## Ask your cookbook
+
+Of course, we cannot think about all problems a project can produce. And this is
+because there are a lot of possible scenarios you fill find yourself lost and
+with some helping needs.
+
+Don't worry. Do you need how to do something that is not documented yet? Ask us
+and we will take care of all these things:
+
+* Helping you with that problem on Gitter. Please, join us at
+[elcodi/elcodi room](http://gitter.im/elcodi/elcodi) and ask us whatever you
+need.
+* Adding the cookbook entry with the "How to..." text
+* If the problem is common, we will create a new blog post explaining the
+solution
+
+## Add your cookbook entry
+
+Have you solved something interesting? Then, we are interested in knowing what
+did you solve and how did you do that.
+
+You can propose your new material by following the
+[Pull Request Book chapter](../book/pull-requests.md). If you need some help
+about how to do that, we can improve as well this chapter in order to make it
+more clear and easy.
