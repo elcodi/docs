@@ -111,3 +111,43 @@ final class ElcodiCouponTypes
 With the first one you are creating a coupon that will be applied automatically
 in all carts. This doesn't mean that will be really applied to all of them, but
 just tried.
+
+## Minimum purchase
+
+You can define that a coupon is only applicable when a cart price is above a 
+certain price. The way to do that is by using the property called
+`$minimumPurchase`. This property is a Money.
+
+``` php
+/**
+ * Set minimum purchase
+ *
+ * @param MoneyInterface $amount Absolute Price
+ *
+ * @return $this Self object
+ */
+public function setMinimumPurchase(MoneyInterface $amount)
+{
+    $this->minimumPurchaseAmount = $amount->getAmount();
+    $this->minimumPurchaseCurrency = $amount->getCurrency();
+    return $this;
+}
+/**
+ * Get minimum purchase
+ *
+ * @return MoneyInterface Absolute Price
+ */
+public function getMinimumPurchase()
+{
+    return Money::create(
+        $this->minimumPurchaseAmount,
+        $this->minimumPurchaseCurrency
+    );
+}
+```
+
+## Adding some Rules
+
+When a Coupon is intended to be applied in a Cart and the field `$rule` is not
+null, then this rules is applied. Of course, if the rule execution result is
+false, the coupon is refused.
