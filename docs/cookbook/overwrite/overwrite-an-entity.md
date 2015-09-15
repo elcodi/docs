@@ -42,7 +42,7 @@ class NewProduct implements ProductInterface
 This is useful when you really want to implement another Product completely 
 different than the old one, but with same specification.
 
-You can also create a new entity extending the default Cart implementation (at 
+You can also create a new entity extending the default Product implementation (at 
 this point your new entity will be implementing this interface by default). The 
 advantage is that you don't need to implement all the methods of the interface, 
 but just overwrite those that you want to change.
@@ -105,7 +105,7 @@ the Symfony installation, instead of letting Doctrine decide this stuff using
 `auto_mapping=true`.
 
 Each Elcodi Bundle uses this library, so you can overwrite this information 
-through each Bundle configuration. Let's see how CartBundle allows the user to
+through each Bundle configuration. Let's see how ProductBundle allows the user to
 define this information by exposing its configuration.
 
 ``` yaml
