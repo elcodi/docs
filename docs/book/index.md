@@ -22,6 +22,7 @@ part of it by adding your own business logic.
 * [Dictionary](dictionary.md)
 * [Events](events.md)
 * [Product Architecture](product-architecture.md)
+* [Category Architecture](category-architecture.md)
 * [Cart Architecture](cart-architecture.md)
 * [Coupon Architecture](coupon-architecture.md)
 * [Plugins](plugins.md)

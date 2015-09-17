@@ -9,8 +9,8 @@ To build each image, append the value of the definition after
 
 ### docs/image/model/cart-component.png
 
-[CartLine|cart;orderLine;purchasable]-1>[note: Purchasable{bg:cornsilk],  
-[OrderLine|order;cartLine;purchasable]-1>[note: Purchasable{bg:cornsilk],  
+[CartLine|cart;orderLine;purchasable]-1>[note: Purchasable Model{bg:cornsilk],  
+[OrderLine|order;cartLine;purchasable]-1>[note: Purchasable Model{bg:cornsilk],  
 [Cart|order;cartLines]1++-0..*>[CartLine],  
 [Order|cart;orderLines]<1-0..*>[OrderLine],  
 [Cart]<1-0..1>[Order],  
@@ -20,14 +20,14 @@ To build each image, append the value of the definition after
 
 ### docs/image/model/cart-cartline.png
 
-[CartLine|cart;orderLine;purchasable]-1>[note: Purchasable{bg:cornsilk],  
+[CartLine|cart;orderLine;purchasable]-1>[note: Purchasable Model{bg:cornsilk],  
 [Cart|order;cartLines]1++-0..*>[CartLine]
 
 ![Cart Cartline model](docs/image/model/cart-cartline.png)
 
 ### docs/image/model/order-orderline.png
 
-[OrderLine|order;cartLine;purchasable]-1>[note: Purchasable{bg:cornsilk],  
+[OrderLine|order;cartLine;purchasable]-1>[note: Purchasable Model{bg:cornsilk],  
 [Order|cart;orderLines]<1-0..*>[OrderLine]
 
 ![Order Orderline model](docs/image/model/order-orderline.png)
@@ -43,3 +43,11 @@ To build each image, append the value of the definition after
 [Attribute]<1-*>[Value]
 
 ![Product component model](docs/image/model/product-component.png)
+
+### docs/image/model/category.png
+
+[Category|subCategories;parent;products],
+[Category]<1-*>[Category],
+[Category]<*-*>[Product]
+
+![Category model](docs/image/model/category.png)

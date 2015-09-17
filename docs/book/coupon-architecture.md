@@ -151,3 +151,8 @@ public function getMinimumPurchase()
 When a Coupon is intended to be applied in a Cart and the field `$rule` is not
 null, then this rules is applied. Of course, if the rule execution result is
 false, the coupon is refused.
+
+you can read some information about rules by following these links
+
+* [New in Symfony 2.4: The ExpressionLanguage Component](http://symfony.com/blog/new-in-symfony-2-4-the-expressionlanguage-component)
+* [ExpressionLanguage Symfony Component](http://symfony.com/doc/current/components/expression_language/index.html)

@@ -183,9 +183,3 @@ credentials and the Symfony Security Component will do the rest.
 Related links
 
 * [Security Bundle Configuration](http://symfony.com/doc/current/reference/configuration/security.html)
-
-## Add a Product in our Cart
-## Remove a Product from our Cart
-## Add a Coupon in our Cart
-## Remove a Coupon from our Cart
-## Make a buy, step by step
