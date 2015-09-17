@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="http://www.elcodi.io/book/dictionary/">
+        <link rel="canonical" href="http://www.elcodi.io/book/category-architecture/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-        <title>Dictionary - Elcodi Documentation</title>
+        <title>Category architecture - Elcodi Documentation</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -78,8 +78,8 @@
 
                             
                                 
-<li >
-    <a href="../category-architecture/">Category architecture</a>
+<li class="active">
+    <a href="./">Category architecture</a>
 </li>
 
                             
@@ -90,8 +90,8 @@
 
                             
                                 
-<li class="active">
-    <a href="./">Dictionary</a>
+<li >
+    <a href="../dictionary/">Dictionary</a>
 </li>
 
                             
@@ -421,12 +421,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../coupon-architecture/">
+                        <a rel="next" href="../cart-architecture/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../emails/">
+                        <a rel="prev" href="../coupon-architecture/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -451,151 +451,61 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#dictionary">Dictionary</a></li>
+        <li class="main active"><a href="#category-architecture">Category Architecture</a></li>
         
-            <li><a href="#attribute">Attribute</a></li>
+            <li><a href="#category-tree">Category tree</a></li>
         
-            <li><a href="#bamboo">Bamboo</a></li>
+            <li><a href="#flushing">Flushing</a></li>
         
-            <li><a href="#cartline">CartLine</a></li>
-        
-            <li><a href="#component">Component</a></li>
-        
-            <li><a href="#factory">Factory</a></li>
-        
-            <li><a href="#plugin">Plugin</a></li>
-        
-            <li><a href="#repository">Repository</a></li>
-        
-            <li><a href="#value">Value</a></li>
-        
-            <li><a href="#variant">Variant</a></li>
+            <li><a href="#overwrite-the-service">Overwrite the service</a></li>
         
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="dictionary">Dictionary<a class="headerlink" href="#dictionary" title="Permanent link"> #</a></h1>
-<p>In this dictionary you will find some meanings of some of our most used words.
-If there is one word you don't know what is about, please ask us in out
-<a href="http://gitter.im/elcodi/elcodi">Gitter channel</a> and we will create the entry
-as soon as possible.</p>
-<p>We will very happy to help you :)</p>
-<h3 id="attribute">Attribute<a class="headerlink" href="#attribute" title="Permanent link"> #</a></h3>
-<p>Refers to a feature of a Variant.<br />
-Please, check <a href="#variant">Variant</a></p>
-<h3 id="bamboo">Bamboo<a class="headerlink" href="#bamboo" title="Permanent link"> #</a></h3>
-<p>Bamboo is a simple and basic E-commerce application based on Symfony, that uses
-all Elcodi components for it's own business logic. All Elcodi related best 
-practices are applied and used in this project.</p>
-<h3 id="cartline">CartLine<a class="headerlink" href="#cartline" title="Permanent link"> #</a></h3>
-<p>Everytime a product or a variant is added into your cart, some information
-related to this specific action must be stored. For example, if you add a
-Variant and some extra information must be stored, where do you do it? Or where
-do you store how many units of a product you want to buy?</p>
-<p>If the relation between a Product and a Cart is persisted without any kind of
-middle class, then you cannot store this information.</p>
-<p>So, a CartLine is an object in the middle between any purchasable and a cart to
-store information about this purchasable instance and the cart.</p>
-<p><img alt="Cart Cartline model" src="../../image/model/cart-cartline.png" /></p>
-<h3 id="component">Component<a class="headerlink" href="#component" title="Permanent link"> #</a></h3>
-<p>A component is a simple PHP Library. Only PHP Classes are placed inside this 
-package and must be framework agnostic. Because this project is a Symfony
-project, each component has it's own Bundle, where all libraries are exposed to
-the Symfony Dependency Injection and where are bundles are created and
-configured.</p>
-<p>Elcodi has splitted its business logic in several components, each one 
-containing specific parts of the model, and grouped semantically. CHeckout some
-of them:</p>
+<h1 id="category-architecture">Category Architecture<a class="headerlink" href="#category-architecture" title="Permanent link"> #</a></h1>
+<p>Elcodi brings you a small and simple category structure. Small and simple
+doesn't mean bad and useless, but with sufficient quality to be useful and 
+scalable for any E-commerce.</p>
+<p><img alt="Category model" src="../../image/model/category.png" /></p>
+<h2 id="category-tree">Category tree<a class="headerlink" href="#category-tree" title="Permanent link"> #</a></h2>
+<p>The main service of the component, and given that you have your categories built
+properly, is the service Category Tree. This service is only intended to create
+a basic structure of categories, ready to be saved in a plain way.</p>
+<p>Imagine all steps in each Request without using this service.</p>
 <ul>
-<li><a href="http://github.com/elcodi/Cart">Cart Component</a></li>
-<li><a href="http://github.com/elcodi/Product">Product Component</a></li>
-<li><a href="http://github.com/elcodi/Core">Core Component</a></li>
+<li>I want all categories</li>
+<li>I need to get them all from Database using Doctrine</li>
+<li>I need to sort them</li>
+<li>I need to filter them</li>
+<li>I need to organize them using the proper hierarchy</li>
 </ul>
-<p>Some of our components are detailed and documented in this documentation.</p>
+<p>While there are no changes in your database, these bunch of actions produce the
+same result, so why we do it once and again? That's senseless.</p>
+<p>This service will do this action only once and will save it in your cache
+system in a very reduced and simplified way. Of course the service will not save
+entities in cache but an array.</p>
+<p>After that, each request will only require that structure saved in cache,
+reducing this way the resources spend by the system.</p>
+<h2 id="flushing">Flushing<a class="headerlink" href="#flushing" title="Permanent link"> #</a></h2>
+<p>As soon as your model changes, then you must flush your cache layer. At the
+moment this happens only when category or product table changes.</p>
 <ul>
-<li><a href="../../components">Elcodi Components</a></li>
+<li>Of course, if category changes, then the cached item should be flushed in 
+order to be rebuilt again.</li>
+<li>Because some categories may not appear because of no products are attached to
+it, if the table products changes then the cached tree should be flushed as
+well. There is a flag that allow categories to appear even if they don't have
+products, so tree will be flushed only when this flag is disabled.</li>
 </ul>
-<p>And some other components are described as book chapters, describing a little
-bit more its architecture and workflow.</p>
+<h2 id="overwrite-the-service">Overwrite the service<a class="headerlink" href="#overwrite-the-service" title="Permanent link"> #</a></h2>
+<p>Each project may add their own login about how categories should be stored.
+That's a fact indeed. So, overwriting this service is as easier as overwriting
+any other service. Please, follow these cookbooks.</p>
 <ul>
-<li><a href="../cart-architecture/">Cart Architecture</a></li>
-<li><a href="../product-architecture/">Product Architecture</a></li>
-</ul>
-<h3 id="factory">Factory<a class="headerlink" href="#factory" title="Permanent link"> #</a></h3>
-<p>PHP Class with one single responsibility: create a new entity instance. This
-class should know as well how this entity instance must be initialized given
-an specific environment</p>
-<ul>
-<li>My CustomerFactory initializes all my Customer new instances as females 
-  because my project is focused on women.</li>
-<li>Other projects can overwrite this class by defining how a Customer should be
-  initialized</li>
-<li>Because of that, the customer itself should never know about it's own
-  initialization</li>
-</ul>
-<p>To know a little bit more about factories, please follow this interesting links:</p>
-<ul>
-<li><a href="../../cookbook/implementation/implement-a-factory/">How to implement a factory</a></li>
-<li><a href="http://mmoreram.com/blog/2013/12/23/factory-pattern-in-symfony2/">Factory pattern in Symfony2</a></li>
-</ul>
-<h3 id="plugin">Plugin<a class="headerlink" href="#plugin" title="Permanent link"> #</a></h3>
-<p>Because Bamboo must be a project with a well-designed extension point. For such
-reason, and taking advantage of how Symfony Bundles work, we have created a 
-plugin engine in order to allow people overwriting and extending Bamboo in a
-very simple and intuitive way.</p>
-<p>When we refer to a Plugin then, we refer to these Bundles that are thought as 
-Plugins, following their specification.</p>
-<p>There is a full book chapter about Elcodi plugins, and this part is going to be
-improved day by day with new ideas, with new developments and with new
-specifications.</p>
-<p><a href="../plugins/">Elcodi Plugins</a></p>
-<h3 id="repository">Repository<a class="headerlink" href="#repository" title="Permanent link"> #</a></h3>
-<p>Each entity has it's own repository. When we refer to a repository, we are
-automatically referring to the Doctrine Repositories.</p>
-<p>Each repository is created by default and defined inside the Dependency
-Injection service map using the structure <code>elcodi.repository.{entity_name}</code>.</p>
-<p>To know more about Repositories in Elcodi, please check these links.</p>
-<p><a href="../../cookbook/implementation/implement-a-repository/">How to implement a Repository</a>
-<a href="http://doctrine-orm.readthedocs.org/en/latest/reference/working-with-objects.html">Doctrine Repositories</a></p>
-<h3 id="value">Value<a class="headerlink" href="#value" title="Permanent link"> #</a></h3>
-<p>Refers to a value of an attribute and assigned to a Variant.<br />
-Please, check <a href="#variant">Variant</a></p>
-<h3 id="variant">Variant<a class="headerlink" href="#variant" title="Permanent link"> #</a></h3>
-<p>Sometimes a Product is not enough when we need to define something we want to 
-sell. Let's see an example.</p>
-<ul>
-<li>In our store we sell a T-shirt</li>
-<li>If your T-Shirt is only sold only in red color and you only have one size, 
-  then that's good enough for you</li>
-<li>But what happens when your T-shirt is available in many colors or many sizes?</li>
-<li>Your product will still be the same T-shirt, but you need a new entity to say
-  that people can buy this T-shirt in red, blue and grey, and in several sizes,
-  like small, medium or large.</li>
-<li>When we talk about Variant, we talk about each available combination, 
-  containing the original product, the color and the size.</li>
-<li>Of course, if your have several Variants of a specific Product, people will be
-  able to add these variants to their carts, instead of the Product.</li>
-</ul>
-<p>This is the main definition of what a Variant is, but in this case we will
-introduce you as well the common terms <em>Attribute</em> and <em>Value</em>. Each variant
-instance is a Product element combined to an Attribute and a Color.</p>
-<p>Let's continue with the same example, but specifying a little bit.</p>
-<ul>
-<li>We have our T-shirt Product</li>
-<li>We have created a new Attribute called Size</li>
-<li>We have created three new values related to this Attribute, called Small,
-Medium and Large. All three have Size as Attribute.</li>
-<li>We have created one new Variant, having our the T-shirt as product, and having
-Small as Value. Because this Value has Size as Attribute, then we can say that:</li>
-</ul>
-<p>We have a new Variant called "Small T-shirt"
-<em> Product: T-shirt
-</em> Attribute: Size
-* Value: Small</p>
-<p>Of course, a Variant is a <em>Purchasable</em> like Product, so you can add it into
-your Cart.</p></div>
+<li><a href="../../cookbook/overwrite/overwrite-a-service/">Overwrite a service</a></li>
+</ul></div>
             
         </div>
 

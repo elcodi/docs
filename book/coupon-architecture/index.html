@@ -78,6 +78,12 @@
 
                             
                                 
+<li >
+    <a href="../category-architecture/">Category architecture</a>
+</li>
+
+                            
+                                
 <li class="active">
     <a href="./">Coupon architecture</a>
 </li>
@@ -415,7 +421,7 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../cart-architecture/">
+                        <a rel="next" href="../category-architecture/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
@@ -452,6 +458,10 @@
             <li><a href="#coupon-types">Coupon types</a></li>
         
             <li><a href="#coupon-enforcement">Coupon enforcement</a></li>
+        
+            <li><a href="#minimum-purchase">Minimum purchase</a></li>
+        
+            <li><a href="#adding-some-rules">Adding some Rules</a></li>
         
     
     </ul>
@@ -552,7 +562,47 @@ final class ElcodiCouponTypes
 
 <p>With the first one you are creating a coupon that will be applied automatically
 in all carts. This doesn't mean that will be really applied to all of them, but
-just tried.</p></div>
+just tried.</p>
+<h2 id="minimum-purchase">Minimum purchase<a class="headerlink" href="#minimum-purchase" title="Permanent link"> #</a></h2>
+<p>You can define that a coupon is only applicable when a cart price is above a 
+certain price. The way to do that is by using the property called
+<code>$minimumPurchase</code>. This property is a Money.</p>
+<pre><code class="php">/**
+ * Set minimum purchase
+ *
+ * @param MoneyInterface $amount Absolute Price
+ *
+ * @return $this Self object
+ */
+public function setMinimumPurchase(MoneyInterface $amount)
+{
+    $this-&gt;minimumPurchaseAmount = $amount-&gt;getAmount();
+    $this-&gt;minimumPurchaseCurrency = $amount-&gt;getCurrency();
+    return $this;
+}
+/**
+ * Get minimum purchase
+ *
+ * @return MoneyInterface Absolute Price
+ */
+public function getMinimumPurchase()
+{
+    return Money::create(
+        $this-&gt;minimumPurchaseAmount,
+        $this-&gt;minimumPurchaseCurrency
+    );
+}
+</code></pre>
+
+<h2 id="adding-some-rules">Adding some Rules<a class="headerlink" href="#adding-some-rules" title="Permanent link"> #</a></h2>
+<p>When a Coupon is intended to be applied in a Cart and the field <code>$rule</code> is not
+null, then this rules is applied. Of course, if the rule execution result is
+false, the coupon is refused.</p>
+<p>you can read some information about rules by following these links</p>
+<ul>
+<li><a href="http://symfony.com/blog/new-in-symfony-2-4-the-expressionlanguage-component">New in Symfony 2.4: The ExpressionLanguage Component</a></li>
+<li><a href="http://symfony.com/doc/current/components/expression_language/index.html">ExpressionLanguage Symfony Component</a></li>
+</ul></div>
             
         </div>
 

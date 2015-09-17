@@ -79,6 +79,12 @@
                             
                                 
 <li >
+    <a href="../category-architecture/">Category architecture</a>
+</li>
+
+                            
+                                
+<li >
     <a href="../coupon-architecture/">Coupon architecture</a>
 </li>
 
@@ -449,9 +455,15 @@
         
             <li><a href="#purchasable">Purchasable</a></li>
         
+            <li><a href="#product">Product</a></li>
+        
             <li><a href="#variant">Variant</a></li>
         
-            <li><a href="#attributes-and-values">Attributes and Values</a></li>
+            <li><a href="#attributes">Attributes</a></li>
+        
+            <li><a href="#manufacturer">Manufacturer</a></li>
+        
+            <li><a href="#categories">Categories</a></li>
         
     
     </ul>
@@ -465,9 +477,168 @@ propose a single one, based on the most basic scenario and with an architecture
 where you will be able to modify the model as much as you need.</p>
 <p><img alt="Product component model" src="../../image/model/product-component.png" /></p>
 <h2 id="purchasable">Purchasable<a class="headerlink" href="#purchasable" title="Permanent link"> #</a></h2>
+<p>Because you should be able to add anything both a product or a variant in your
+cart, we created the interface <code>Purchasable</code>. A purchasable is an object (any)
+you can add into your cart.</p>
+<p>In Elcodi we have implemented two completed classes implementing this interface:
+Product and Variant. Both implementations are part of the Product component, and
+composes all the needed structure to maintain all kind of products and
+variations of this.</p>
+<h2 id="product">Product<a class="headerlink" href="#product" title="Permanent link"> #</a></h2>
+<p>The main entity of this component. A product is what you are going to sell, no
+matter what it is and not taking in account variations of this. For example, our
+product could be a simple T-shirt. No color, no size, just a simple T-shirt.</p>
+<p>Each product contains all information related to that element, like price, some
+dimensions (all of them optional, of course), a description and a name, a SKU,
+the stock of that object, and some extra properties. All you need to make this 
+element unique enough.</p>
+<p>You can create a new Product like this.</p>
+<pre><code class="php">use Elcodi\Component\Product\Entity\Product;
+
+$product = new Product();
+$product
+    -&gt;setSku('123456789')
+    -&gt;setStock(4)
+    -&gt;setName('Strawberry cake')
+    -&gt;setDescription('This is a strawberry cake');
+</code></pre>
+
+<p>Of course, the right way in Elcodi is always using factories instead of creating
+new instances by hand.</p>
+<pre><code class="php">$product = $this
+    -&gt;productFactory
+    -&gt;create()
+    -&gt;setName('Strawberry cake')
+    -&gt;setDescription('This is a strawberry cake');
+</code></pre>
+
+<p>This service should have this dependency injection definition</p>
+<pre><code class="yaml">services:
+    my_service:
+        class: My\Service\Namespace
+        arguments:
+            - @elcodi.factory.product
+</code></pre>
+
+<p>Some times our E-commerce implementation only requires this infrastructure. If
+you sell for example single cakes, then each cake is a product, and that should
+be enough. Don't over-engineer your domain and project too much.</p>
+<p>In other cases, for example if your e-commerce is selling some retail, then each
+Product will have some variations. Let's see what a variation is and how we can
+implement it in Elcodi.</p>
 <h2 id="variant">Variant<a class="headerlink" href="#variant" title="Permanent link"> #</a></h2>
-<h2 id="attributes-and-values">Attributes and Values<a class="headerlink" href="#attributes-and-values" title="Permanent link"> #</a></h2>
-<h2 id="_1"><a class="headerlink" href="#_1" title="Permanent link"> #</a></h2></div>
+<p>A Variant is a simple variation of a Product. Returning to the example of
+T-shirts, maybe you want to sell the same T-shirt in several colors, several
+sizes and several logos behind it.</p>
+<p>One option is having one single product per each combination, and that would be
+a good approach indeed, but then you have no way of controlling all products
+that belong to the same family. For example, if all variations have the same
+price then you should add it several times in several instances. As soon as this
+price changes, then you need to change it all around.</p>
+<p>Bad choice, right?</p>
+<p>If you have only one Product called T-shirt and you create the right structure
+for maintaining some Attributes and some Values, then you can create several
+Variants, each one containing one or more Values. Because a Variant is a
+Purchasable as well, then you can add them as well in your Cart.</p>
+<p>First of all, let's see how to create a variant, assuming we have the previous
+product created.</p>
+<pre><code class="php">use Elcodi\Component\Product\Entity\Product;
+use Elcodi\Component\Product\Entity\Variant;
+
+$product = new Product();
+$product
+    -&gt;setName('T-shirt, Dora the explorer')
+    -&gt;setDescription('T-shirt of Dora');
+
+$variant = new Variant
+$variant
+    -&gt;setSku('12341234')
+    -&gt;setStock(10)
+    -&gt;setName('Blue XL T-shirt with the logo')
+    -&gt;setProduct($product);
+</code></pre>
+
+<p>Of course, the right way in Elcodi is always using factories instead of creating
+new instances by hand.</p>
+<pre><code class="php">$product = $this
+    -&gt;productFactory
+    -&gt;create()
+    -&gt;setName('T-shirt, Dora the explorer')
+    -&gt;setDescription('T-shirt of Dora');
+
+$variant = $this
+    -&gt;variantFactory
+    -&gt;create()
+    -&gt;setSku('12341234')
+    -&gt;setStock(10)
+    -&gt;setName('Blue XL T-shirt with the logo')
+    -&gt;setProduct($product);
+</code></pre>
+
+<p>This service should have this dependency injection definition</p>
+<pre><code class="yaml">services:
+    my_service:
+        class: My\Service\Namespace
+        arguments:
+            - @elcodi.factory.product
+            - @elcodi.factory.variant
+</code></pre>
+
+<p>In fact, that code is not useful at all, so none of these variants have
+attributes. Next step, creating a map of configurations for these Variants.</p>
+<h2 id="attributes">Attributes<a class="headerlink" href="#attributes" title="Permanent link"> #</a></h2>
+<p>A variant is composed by different attribute values. Let's check it out by using
+the last example. T-shirt of Dora the explorer is available in colors blue, red
+and green. Each one can be purchased in several sizes: S, M and L.</p>
+<p>Each Variant is a Product and one of each attribute, called Value. So, there is
+one Variant that will have internally the Value blue of the Attribute color, and
+the Value S of the Attribute Size.</p>
+<p>Assuming the piece of code we did before about product and variant...</p>
+<pre><code class="php">$product = //;
+$variant = //;
+
+$attribute = $this
+    -&gt;attributeFactory
+    -&gt;create()
+    -&gt;setName('size');
+
+$value = $this
+    -&gt;valueFactory
+    -&gt;create()
+    -&gt;setValue('S')
+    -&gt;setAttribute($attribute);
+
+$variant-&gt;setValue($value);
+</code></pre>
+
+<p>As you can see, the relation is done between the Attribute and the Value, but
+because one Value can only have one Attribute, then the relation is done as well
+between the Variant and the Attribute.</p>
+<pre><code class="php">$attribute = $variant
+    -&gt;getValue()
+    -&gt;getAttribute();
+</code></pre>
+
+<h2 id="manufacturer">Manufacturer<a class="headerlink" href="#manufacturer" title="Permanent link"> #</a></h2>
+<p>A product (and because a Product is always the master piece of any purchasable)
+can have a manufacturer. The relation is easy and simple indeed, so there is no
+much need of explaining how to work with this entity.</p>
+<pre><code class="php">$product = //;
+
+$manufacturer = $this
+    -&gt;manufacturerFactory
+    -&gt;create()
+    -&gt;setName('Levis');
+
+$product-&gt;setManufacturer($manufacturer);
+</code></pre>
+
+<h2 id="categories">Categories<a class="headerlink" href="#categories" title="Permanent link"> #</a></h2>
+<p>There is an entire chapter for that in Elcodi's book. Please, read it carefully
+in order to be able to work properly with categories in your project</p>
+<ul>
+<li><a href="../category-architecture/">Category Architecture</a></li>
+</ul></div>
             
         </div>
 
