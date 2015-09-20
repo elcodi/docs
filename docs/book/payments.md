@@ -1,15 +1,15 @@
 # Payments
 
-Todo E-commerce, claro, debe tener una plataforma de pago para que los clientes
-puedan terminar satisfactoriamente su proceso de compra.
+All e-commerce, for sure, need to have a payment platform for completing the
+shopping workflow successfully.
 
-Normalmente, para dicha implementación se tienen en cuenta librerías externas de
-PHP, por lo que en este caso vamos a trabajar con un simple sistema de pago, en
-este caso gratuito, dado que solo lo vamos a utilizar para ver como Elcodi
-propone sus servicios y eventos para recolectar y utilizar los sistemas de pago
-disponibles en todo momento.
+For this integration or implementation, all kind of projects are used to working
+with external PHP libraries, so in our case we are not going to be different at
+all (and because we believe in third party projects as well). In this example we
+will work using a simple and free payment example, so the real meaning of these
+lines is showing you how to build your own payment library.
 
-## Requisites
+## Requirements
 
 This chapter is a little bit complex, so let's focus on some interesting topics
 related with Payments and this implementation. Some extra information will be
@@ -23,27 +23,28 @@ enough to have a base before starting this read.
 
 ## Example
 
-Imaginemos que queremos añadir un sistema de pago gratuito. Dicho sistema de 
-pago tiene como nombre de referencia `free_payment`, que aunque no sea realmente
-importante dada la circumstancia, nos será útil para identifcar nombres de 
-servicios pertenecientes a nuestro Bundle.
+Let's figure out that we want to add a new free payment module. This payment
+method will have a reference name called `free_payment`, and even is not
+important at all what's the name, we will use it to detect how we should use the
+name, whatever it is, in our services and bundle implementation.
 
-Nuestro método de pago estará siempre disponible.
+Our payment method will be always available.
 
 ## Calling for Shipping methods
 
-Imaginemos que nuestro cart está terminado y queremos agarlo. La plataforma de
-Elcodi tan solo ofrece una sola forma de recolectar dichos métodos.
+Imagine that your cart is already completed and finished. Then it's time to pay
+it. Elcodi platform only provides you one single and easy way of collecting all
+these methods.
 
-Es importante entender que Elcodi en ningún momento tratará de lanzar ningún 
-evento relacionado con el pago de un Order, pues será cada una de las 
-plataformas y sus adaptaciones al proyecto los que se encargarán de lanzar sus
-propios eventos.
+It is important to understand that Elcodi will never consider throwing any kind
+of event related to any specific payment method neither any order paid related
+one, so each integration should have their own events for that.
 
-En otras palabras, Elcodi solo propone un entry point al sistema de pago.
+In other words, Elcodi only will provide a simple point of entry to the payment
+engine.
 
-En el momento que queramos recolectar todos los métodos de pago, vamos a 
-utilizar el servicio creado específicamente para ello.
+At the point we need to  want to collect all payment methods, we are going to
+use the service created specifically for that.
 
 ``` php
 $paymentMethods = $this
@@ -51,35 +52,36 @@ $paymentMethods = $this
     ->get();
 ```
 
-Internamente, este trozo de código lanza un evento llamado 
-*["payment.collect"](events.md#payment.collect)*, encargado exclusivamente de
-recolectar todos estos métodos de pago.
+Internally, this piece of code dispatches an event called 
+*["payment.collect"](events.md#payment.collect)*, responsible exclusively for
+collecting all these payment methods.
 
-Es necesario decir que en este punto, el componente Event Dispatcher de Symfony
-no se está utilizando de forma estricta a su definición, pues sé utiliza como 
-colector y no como evento. La diferencia es que un evento debería ser inmutable
-(un evento pasa y no hay mucho que hacer, solo reaccionar con los event 
-listeners), pero en este caso, el objeto evento tiene un método `add`, por lo
-que, aún no importando realmente el orden de ejecución de los listeners, se está
-modificando el propio evento. Un evento que cambia... esto es raro, verdad?
+It is necessary to say that at this point, the Event Dispatcher component is not
+working in a very strict way it should work, so it's being used as a collector
+manager instead of an event dispatcher. The difference between both is that an
+event should be inmutable (an event just happends, and there's no much to be
+done then... just add some reactions using event listeners), but in that case,
+the object Event has a `hasXXX` method, so, even not being imortant the order
+of the listeners execution, the event is being modified on the fly. A changer
+event... weird, right?
 
 * [Implement a collector](../cookbook/implementation/implement-a-collector.md)
 
-Pero bueno, el evento de recolección es lanzado, y todos los Plugins que están
-escuchados son llamados a añadir sus métodos de pago.
+Anyway, the recollection event is dispatched and all installed and initialized
+Plugins (in Kernel) are called to add some payment methods there.
 
 ## Adding new Payment Method
 
-Para tí, programador, que quieres añadir un método de envío, este es tu sitio.
-Recuerdas el evento *["shipping.collect"](events.md#shipping.collect)*? Pues 
-bien, debemos escucharlo para añadir nuestras formas de envío.
+For you, developer, that you want to add a payment method, that's your chapter.
+Remember the event *["shipping.collect"](events.md#shipping.collect)*? Well, we
+must listen it in order to add new payment methods.
 
-Por ahora, ningún objeto se tiene en cuenta para decidir si un método de pago
-está disponible o no, por lo que en principio solo se debería tener en cuenta
-el estado del propio Plugin.
+Since now, none object is passed though the event in order to decide if a
+payment method is available or not, so only the plugin statement should be
+checked.
 
-Veamos primero como podemos suscribirnos a este evento utilizando la misma forma
-en que nos suscribimos a cualquier otro evento.
+Let's take a look firstly how can we subscribe to this event using the same
+methodology of subscribing any event.
 
 ``` yml
 services:
@@ -93,8 +95,9 @@ services:
             - { name: kernel.event_listener, event: payment.collect, method: addCustomPaymentMethods }
 ```
 
-Bien. En este Event Listener deberemos poner toda nuestra lógica de negocio.
-Veamos un simple ejemplo de como podemos hacer dicha implementación.
+Great. In this Event Listener we should add all our business logic (of course,
+is much better to place all your business logic inside a service, but it depends
+on your strategy). We'll doing like this in this example. Let's take a look.
 
 ``` php
 use Elcodi\Component\Currency\Entity\Money;
@@ -128,8 +131,8 @@ class PaymentCollectEventListener
 }
 ```
 
-Como puedes observar, a la hora de crear la nueva instancia de `PaymentMethod`
-puedes añaidr distintos elementos como `url`, `imageUrl` y `script`.
+As you can see, when we create a new instance of the object `PaymentMethod` you
+can add some properties like `url`, `imageUrl` and `script`.
 
 ``` php
 namespace Elcodi\Component\Payment\Entity;
@@ -167,24 +170,23 @@ class PaymentMethod
 }
 ```
 
-Esto es porque, en la gran mayoría de casos, una plataforma de pagos, o en su
-defecto cualquiera de sus integraciones, proporciona uno de estos dos 
-escenarios
+This is because, in most cases, a payment platform, or in all middleware
+integrations, we are used to working with one of these scenarios:
 
-* Proporciona una url de salto con una imágen asociada. En este caso, suele ser
-habitual cuando trabajamos con pagos donde el usuario salta de dominio para
-realizar el pago. En este caso deberíamos utilizar `url` y `imageUrl`.
-* Proporciona un script para el pago. Caso habitual para pagos internos sin 
-salto de página con llamadas asíncronas mediante Javascript. En este caso
-deberíamos utilizar `script` y `imageUrl` en caso que fuera necesario.
+* The platform proposes us an external url with an associated image. It is
+common to see this when our user must jump to another domain for the payment
+action. In that case, we should use both `url` and `imageUrl`.
+* The platform provides us an script with HTML and some JS. This is used for
+internal payment with some callable urls managed by the script itself. In that
+case you should use `script` and `imageUrl`.
 
 ## Payment scripts
 
-Para trabajar con plataformas que requieren trozos grandes de javascript, o 
-simples trozos de html, es una buena práctica utilizar platillas de Twig.
+To work with platforms that require some HTML or JS to be used, then it is
+common and healthy to use Twig templating, instead of PHP variables.
 
-Veamos un ejemplo un poco más complejo, utilizando scripts específicos y la 
-utilización del router para crear rutas.
+Let's see a little bit more complex example of how to use speciic scripts and
+the router for the creation of routes.
 
 ``` php
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
@@ -302,9 +304,11 @@ services:
 
 ## Accessing collected methods
 
-Una vez hemos añadido todos nuestros métodos de pago, deberíamos poder acceder a
-toda la información para poder ofrecer las distintas formas de pago al usuario.
-Vemos un trozo de código de nuestro template.
+Once we have added all our payment methods, then we should be able to access all
+the information in order to be able to offer all payment methods to the final
+user.
+
+This is a piece of code of our template.
 
 ``` jinja
 <div class="form-checkout">
@@ -327,12 +331,12 @@ Vemos un trozo de código de nuestro template.
 </div>
 ```
 
-Como puedes ver se tratan ambos casos (con script o sin él). Cada uno de los
-elementos en el array con nombre `paymentMethods` es cada uno de los objetos que
-las plataformas de pago han añadido previamente.
+As you can see in both cases (with and without script), each element of the
+array named `paymentMethods` is a payment method instance inserted by each
+Payment integration plugin previously.
 
-Otra forma de acceder a los métodos de pago directamente desde el template es
-utilizando la función de twig
+Another way to access the payment methods directly from the templating layer is
+using the Twig function.
 
 ``` jinja
 {% set paymentMethods = elcodi_payment_methods() %}
@@ -366,16 +370,15 @@ documentation.
 
 * [State Transition Machine](../component/state-transition-machine.md)
 
-Bamboo por defecto propone un diagrama de estados de pago como el que podemos
-ver aqui.
+Bamboo. by default, proposes a payment state diagram like we can see here.
 
 | From    | Action | To       |
 |---------|--------|----------|
 | unpaid  | pay    | paid     |
 | paid    | refund | refunded |
 
-y mediante el Container de Symfony tenemos acceso a algunos objetos específicos
-de la máquina de estados de Pago.
+and through the Symfony Container we have access to some specific objects of the
+Payment State Machine.
 
 ``` yaml
 #
@@ -405,11 +408,11 @@ elcodi.order_payment_states_machine_manager:
 
 ## Updating the Payment state
 
-Con dicho acceso a la máquina de estados de pago, podemos cambiar el order de
-estados utilizando el servicio `elcodi.order_payment_states_machine`.
+With this access to the Payment State Machine, we can change the state of an
+Order by using the service `elcodi.order_payment_states_machine`.
 
-Veamos un ejemplo de como avanzar a un estado `paid` teniendo en cuenta que
-nuestro Order está actualmente en el estado `unpaconfid`.
+Let's see an example of how to go to the state called `paid`, taking in account
+that our actual state is called `unpaid`.
 
 ``` php
 $order = // Order instance;
@@ -429,5 +432,5 @@ $this
     ->flush($order);
 ```
 
-Solo si dicha transición es posible todo funcionará debidamente. En caso 
-contrario las excepciones pertinentes saltarán.
+Only if given transition is possible all is going to work properly. Otherwise
+some Exceptions will be thrown.
