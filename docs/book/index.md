@@ -36,5 +36,6 @@ project. Interesting if you want to, not only use Elcodi as an open source
 project, but as a personal project, with the possibility of helping us growing
 and becoming better day by day
 
+* [Roadmap](roadmap.md)
 * [Running tests suite](running-test-suite.md)
 * [Pull Requests](pull-requests.md)
