@@ -5,6 +5,6 @@ This documentation is rendered online at
 
 * [Quick Start](http://elcodi.io/docs/quick-start/)
 * [The Book](http://elcodi.io/docs/book/index.html)
-* [The Components](http://elcodi.io/docs/components/index.html)
+* [The Components](http://elcodi.io/docs/component/index.html)
 * [The Cookbook](http://elcodi.io/docs/cookbook/index.html)
 
