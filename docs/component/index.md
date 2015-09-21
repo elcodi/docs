@@ -13,7 +13,7 @@ content.
 
 * [Entity Translator](/component/entity-translator/)
 * [Media](/component/media/)
-* [Menu](/component/plugin/)
+* [Menu](/component/menu/)
 * [Sitemap](/component/sitemap/)
 * [State Transition Machine](/component/state-transition-machine/)
 * [Template](/component/template/)
