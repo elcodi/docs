@@ -463,6 +463,10 @@
         
             <li><a href="#installation">Installation</a></li>
         
+            <li><a href="#metrics">Metrics</a></li>
+        
+            <li><a href="#cache">Cache</a></li>
+        
             <li><a href="#tests">Tests</a></li>
         
             <li><a href="#issues">Issues</a></li>
@@ -476,11 +480,6 @@
 
 <h1 id="bamboo-e-commerce">Bamboo e-commerce<a class="headerlink" href="#bamboo-e-commerce" title="Permanent link"> #</a></h1>
 <p><a href="https://travis-ci.org/elcodi/bamboo"><img alt="Build Status" src="https://travis-ci.org/elcodi/bamboo.svg?branch=master" /></a></p>
-<blockquote>
-<p>Warning. This project is not tagged as stable yet. During this Beta stage, we
-aim to find and resolve all bugs, empower testing layer and build even a 
-better and bigger project documentation.</p>
-</blockquote>
 <p>Welcome to Bamboo e-commerce - a fully-functional e-commerce application built
 using <a href="https://github.com/elcodi/elcodi">Elcodi</a> components on top of the <a href="http://symfony.com">Symfony</a> framework.</p>
 <p>Yes, you got it right! Bamboo uses the Symfony framework but our components are
@@ -490,26 +489,24 @@ opposed to the whole framework or any of its distributions.</p>
 with an interface to sell your products and manage your store. You only have to 
 focus on offering a good product, we take care of the rest.</p>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link"> #</a></h2>
-<p>We're trying to build this project with a light default dependencies.</p>
+<p>We're trying to build this project with a light default dependencies. These are
+ours.</p>
 <h3 id="php">PHP<a class="headerlink" href="#php" title="Permanent link"> #</a></h3>
-<p>To use Bamboo and Elcodi you need a PHP version not less than <strong>5.4</strong></p>
-<p>For more info just visit their
-<a href="http://php.net/manual/en/install.php">installation page</a></p>
+<p>To use Bamboo and Elcodi you need a PHP version not lower than <strong>5.4</strong>. For more 
+info just visit their <a href="http://php.net/manual/en/install.php">installation page</a></p>
 <h3 id="php-gd">PHP GD<a class="headerlink" href="#php-gd" title="Permanent link"> #</a></h3>
-<p>Images are a really important part of an store. Bamboo uses PHP GD to
-resize and optimize all product images</p>
-<p>For more info just visit their
-<a href="http://php.net/manual/en/image.installation.php">installation page</a></p>
 <blockquote>
 <p>This PHP extension is used to being already installed when you add PHP in your
 distribution</p>
 </blockquote>
+<p>Images are a really important part of an store. Bamboo uses PHP GD to
+resize and optimize all product images. For more info just visit their
+<a href="http://php.net/manual/en/image.installation.php">installation page</a></p>
 <p>After that, you will be able to change the adapter and use other 
 implementations.</p>
 <h3 id="mysql">MySQL<a class="headerlink" href="#mysql" title="Permanent link"> #</a></h3>
 <p>And, where do you save your data? By default we use MySQL, remember to install
-it as well as its extension for PHP</p>
-<p>For more info just visit their
+it as well as its extension for PHP. For more info just visit their
 <a href="http://dev.mysql.com/doc/refman/5.1/en/installing.html">installation page</a></p>
 <h3 id="composer">Composer<a class="headerlink" href="#composer" title="Permanent link"> #</a></h3>
 <p><a href="http://getcomposer.org/">Composer</a> is required to manage dependencies.</p>
@@ -519,15 +516,6 @@ command:</p>
 <pre><code class="bash">$ curl -s http://getcomposer.org/installer | php
 </code></pre>
 
-<h3 id="redis">Redis<a class="headerlink" href="#redis" title="Permanent link"> #</a></h3>
-<p>Bamboo uses redis to make the app lighter and to minimize the response time.</p>
-<p>For more info just visit their
-<a href="http://redis.io/topics/quickstart">installation page</a></p>
-<p>In order to use the last Redis features, like the <code>HyperLogLog</code> commands, be
-sure your Redis version is at least <code>v2.8.9</code>.</p>
-<blockquote>
-<p>Make sure to have Redis PHP extension installed.</p>
-</blockquote>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link"> #</a></h2>
 <p>If you're used to working with LAMP environment, then you will have Bamboo 
 running in your computer in less than 5 minutes.</p>
@@ -550,7 +538,7 @@ $ php app/console elcodi:install
 <p>By default only Spain will be installed. We have focused this step to run as 
 fast as possible, so then, you'll be able to install more countries. You can add
 some countries in addition by using the <code>--country</code> command option.</p>
-<pre><code class="bash">$ php app/console elcodi:install --country=france --country=italy
+<pre><code class="bash">$ php app/console elcodi:install --country=FR --country=IT
 </code></pre>
 
 <h3 id="2-run-the-server">2. Run the server<a class="headerlink" href="#2-run-the-server" title="Permanent link"> #</a></h3>
@@ -572,6 +560,21 @@ Admin password: 1234
 </code></pre>
 
 <p>Remember to remove these users properly as soon as you're in production.</p>
+<h2 id="metrics">Metrics<a class="headerlink" href="#metrics" title="Permanent link"> #</a></h2>
+<p>Metrics are not enabled by default. If you want to enable them, then you need to
+install Redis. For more info just visit their
+<a href="http://redis.io/topics/quickstart">installation page</a></p>
+<p>In order to use the last Redis features, like the <code>HyperLogLog</code> commands, be
+sure your Redis version is at least <code>v2.8.9</code>.</p>
+<h2 id="cache">Cache<a class="headerlink" href="#cache" title="Permanent link"> #</a></h2>
+<p>By default, Bamboo is installed without any doctrine cache. You can change this
+settings by changing the file <code>app/cache/config/common/cache.yml</code> and by
+changing the value <code>array</code> for another one.</p>
+<p>You can check some documentation about different types of cache in the
+<a href="https://github.com/doctrine/DoctrineCacheBundle">Doctrine Cache Bundle</a>
+repository page.</p>
+<p>The most used cache type in Bamboo is <code>redis</code>. Make sure then that you have the
+php redis extension installed properly.</p>
 <h2 id="tests">Tests<a class="headerlink" href="#tests" title="Permanent link"> #</a></h2>
 <p>We are doing some tests, and this will be <strong>in cresciendo</strong>. You can ensure
 yourself that all the cases we've been working on are actually green. We are
