@@ -477,38 +477,13 @@
         }, 
         {
             "location": "/book/roadmap/", 
-            "text": "Roadmap\n #\n\n\nIn Elcodi we've defined a very strict Roadmap definition. We will evolve as much\nas possible next years, but we will never forget old Elcodi and Bamboo\ninstallations, so our progress will be supplemented with tons of help and\nsupport for all our customers.\n\n\nDuring the minor versions, we encourage all installations to follow all updates\nin order to get new features, but all issues will be merged in the lowest branch\npossible.\n\n\nEach new tag will be properly documented and comunicated.\n\n\nv1.0 [22nd of September, 2015]\n #\n\n\n\n\nFirst stable version of Elcodi, from all Beta versions\n\n\nNew website of Elcodi\n\n\nNew documentation with basics of Elcodi\n\n\n\n\nv1.1 [1st of January, 2016]\n #\n\n\n\n\nProduct of products (Multiproduct) will be introduced and implemented.\n\n\nNew shop template will be added as the default one.\n\n\nTemplate documentation will be added.\n\n\nDocumentation Metrics book chapter will be added.\n\n\n\n\nv1.2 [1st of April, 2016]\n #\n\n\n\n\nSearch engine using ElasticSearch will be introduced here\n\n\nProduct API will be added\n\n\nUser API will be added\n\n\nCart API will be added\n\n\nNew shop template will be added\n\n\nBack panel documentation\n\n\n\n\nv1.3 [1st of July, 2016]\n #\n\n\n\n\nMultistore\n\n\nShop API will be added\n\n\nNew shop template will be added\n\n\nNew tempates and plugins website with tons of cool new stuff for all Elcodi\nand Bamboo implementations\n\n\n\n\nv2.0 [1st of October, 2016]\n #\n\n\n\n\nWe will remove all deprecated code\n\n\nBamboo will use Symfony3 and maybe new version of Doctrine\n\n\nUpdated all dependencies\n\n\nElcodi community site will be created.\n\n\nUnknown bunch of new and cool stuff", 
+            "text": "Roadmap\n #\n\n\nIn Elcodi we've defined a very strict Roadmap definition. We will evolve as much\nas possible next years, but we will never forget old Elcodi and Bamboo\ninstallations, so our progress will be supplemented with tons of help and\nsupport for all our customers.\n\n\nDuring the minor versions, we encourage all installations to follow all updates\nin order to get new features, but all issues will be merged in the lowest branch\npossible.\n\n\nEach new tag will be properly documented and comunicated.\n\n\nv1.0\n #\n\n\n\n\nReleased the 22nd of September, 2015\n\n\nFirst stable version of Elcodi, from all previousBeta versions\n\n\nFIrst stable version of Bamboo\n\n\nNew website of Elcodi\n\n\nNew documentation with basics of Elcodi\n\n\n\n\nv1.1\n #\n\n\n\n\nReleased the 1st of January, 2016\n\n\nProduct of products (Multiproduct) will be introduced and implemented.\n\n\nNew shop template will be added as the default one.\n\n\nTemplate documentation will be added.\n\n\nDocumentation Metrics book chapter will be added.\n\n\n\n\nv1.2\n #\n\n\n\n\nReleased the 1st of April, 2016\n\n\nSearch engine using ElasticSearch will be introduced here\n\n\nProduct API will be added\n\n\nUser API will be added\n\n\nCart API will be added\n\n\nNew shop template will be added\n\n\nBack panel documentation\n\n\n\n\nv1.3\n #\n\n\n\n\nReleased the 1st of July, 2016\n\n\nMultistore. Switch between stores in the same installation\n\n\nShop API will be added\n\n\nNew shop template will be added\n\n\nNew tempates and plugins website with tons of cool new stuff for all Elcodi\nand Bamboo implementations\n\n\n\n\nv2.0\n #\n\n\n\n\nReleased the 1st of October, 2016\n\n\nWe will remove all deprecated code\n\n\nBamboo will use Symfony3 and maybe new version of Doctrine\n\n\nUpdated all dependencies\n\n\nMarketplace\n\n\nElcodi community site will be created.\n\n\nUnknown bunch of new and cool stuff", 
             "title": "Roadmap"
         }, 
         {
             "location": "/book/roadmap/#roadmap", 
-            "text": "In Elcodi we've defined a very strict Roadmap definition. We will evolve as much\nas possible next years, but we will never forget old Elcodi and Bamboo\ninstallations, so our progress will be supplemented with tons of help and\nsupport for all our customers.  During the minor versions, we encourage all installations to follow all updates\nin order to get new features, but all issues will be merged in the lowest branch\npossible.  Each new tag will be properly documented and comunicated.", 
+            "text": "In Elcodi we've defined a very strict Roadmap definition. We will evolve as much\nas possible next years, but we will never forget old Elcodi and Bamboo\ninstallations, so our progress will be supplemented with tons of help and\nsupport for all our customers.  During the minor versions, we encourage all installations to follow all updates\nin order to get new features, but all issues will be merged in the lowest branch\npossible.  Each new tag will be properly documented and comunicated.  v1.0  #   Released the 22nd of September, 2015  First stable version of Elcodi, from all previousBeta versions  FIrst stable version of Bamboo  New website of Elcodi  New documentation with basics of Elcodi   v1.1  #   Released the 1st of January, 2016  Product of products (Multiproduct) will be introduced and implemented.  New shop template will be added as the default one.  Template documentation will be added.  Documentation Metrics book chapter will be added.   v1.2  #   Released the 1st of April, 2016  Search engine using ElasticSearch will be introduced here  Product API will be added  User API will be added  Cart API will be added  New shop template will be added  Back panel documentation   v1.3  #   Released the 1st of July, 2016  Multistore. Switch between stores in the same installation  Shop API will be added  New shop template will be added  New tempates and plugins website with tons of cool new stuff for all Elcodi\nand Bamboo implementations   v2.0  #   Released the 1st of October, 2016  We will remove all deprecated code  Bamboo will use Symfony3 and maybe new version of Doctrine  Updated all dependencies  Marketplace  Elcodi community site will be created.  Unknown bunch of new and cool stuff", 
             "title": "Roadmap"
-        }, 
-        {
-            "location": "/book/roadmap/#v10-22nd-of-september-2015", 
-            "text": "First stable version of Elcodi, from all Beta versions  New website of Elcodi  New documentation with basics of Elcodi", 
-            "title": "v1.0 [22nd of September, 2015]"
-        }, 
-        {
-            "location": "/book/roadmap/#v11-1st-of-january-2016", 
-            "text": "Product of products (Multiproduct) will be introduced and implemented.  New shop template will be added as the default one.  Template documentation will be added.  Documentation Metrics book chapter will be added.", 
-            "title": "v1.1 [1st of January, 2016]"
-        }, 
-        {
-            "location": "/book/roadmap/#v12-1st-of-april-2016", 
-            "text": "Search engine using ElasticSearch will be introduced here  Product API will be added  User API will be added  Cart API will be added  New shop template will be added  Back panel documentation", 
-            "title": "v1.2 [1st of April, 2016]"
-        }, 
-        {
-            "location": "/book/roadmap/#v13-1st-of-july-2016", 
-            "text": "Multistore  Shop API will be added  New shop template will be added  New tempates and plugins website with tons of cool new stuff for all Elcodi\nand Bamboo implementations", 
-            "title": "v1.3 [1st of July, 2016]"
-        }, 
-        {
-            "location": "/book/roadmap/#v20-1st-of-october-2016", 
-            "text": "We will remove all deprecated code  Bamboo will use Symfony3 and maybe new version of Doctrine  Updated all dependencies  Elcodi community site will be created.  Unknown bunch of new and cool stuff", 
-            "title": "v2.0 [1st of October, 2016]"
         }, 
         {
             "location": "/book/running-test-suite/", 
