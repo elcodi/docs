@@ -29,7 +29,7 @@ $coupon = $this
     ->create()
 ```
 
-Some factory related links
+Please, follow this cookbook if you need more information about elcodi factories.
 
 * [How to implement a factory](../cookbook/implementation/implement-a-factory.md)
 
@@ -71,8 +71,8 @@ $coupon = new Coupon();
 $coupon->setType(ElcodiCouponTypes::TYPE_AMOUNT);
 ```
 
-If you use the default Coupon factory, then any new coupon uses type
-`TYPE_AMOUNT` by default.
+By default, any coupon created from the Coupon factory uses 
+`TYPE_AMOUNT` type.
 
 When the coupon type is the amount one, you can use the method `setPrice()` to
 define the total value of the coupon, while if the coupon type is the percent
@@ -116,7 +116,7 @@ just tried.
 
 You can define that a coupon is only applicable when a cart price is above a 
 certain price. The way to do that is by using the property called
-`$minimumPurchase`. This property is a Money.
+`$minimumPurchase`. This property may be an instance of `Elcodi\Component\Currency\Entity\Money`.
 
 ``` php
 /**
@@ -149,7 +149,7 @@ public function getMinimumPurchase()
 ## Adding some Rules
 
 When a Coupon is intended to be applied in a Cart and the field `$rule` is not
-null, then this rules is applied. Of course, if the rule execution result is
+null, then this rule is applied. Of course, if the rule execution result is
 false, the coupon is refused.
 
 you can read some information about rules by following these links
