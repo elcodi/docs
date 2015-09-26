@@ -5,18 +5,18 @@ works? How it's been designed? And how can I deal with it?
 
 We will show you how we have designed all the model and why have we decided this
 architecture. It is important for you to understand the design in order to
-detect all possible entry and modification points, to make the Cart component as
+detect all possible entries and modification points, to make the Cart component as
 much customized as you need.
 
 ## Introduction
 
 Let's start by determining what the Cart Component should take care about. Well,
-not difficult at all, so we are working in an E-commerce. The component itself
+it's not difficult at all, so we are working in an E-commerce. The component itself
 takes care about all related to the Cart and the Order. The component provides
-you a complete service layer for you application, so knowing and understanding
+you a complete service layer for your application, so knowing and understanding
 this layer will help you a lot in your own implementation.
 
-We will split all the model in two parts, the Cart path and the Order part. Both
+We will split all the model in two parts, the Cart part and the Order part. Both
 parts are connected but they can (and should) be treated in a very isolated way.
 
 ![Cart component model](../image/model/cart-component.png)
@@ -165,7 +165,7 @@ implementations, so in this example we use Product.
 
 After calling method `addPurchasable`, your cart will have 3 units of this 
 product only if they are really available to be purchased. Otherwise, you will
-get some exceptions. Of course, the cart is automatically reloaded as well, and
+get some exceptions. The cart is automatically reloaded as well, and
 all prices are rebuilt again.
 
 This method dispatches these events:
@@ -245,7 +245,7 @@ services:
 ```
 
 After this action, the coupon is inserted into the cart and the values of the
-cart are recomputed. Of course, during the association of both elements, some
+cart are recomputed. During the association of both elements, some
 problems can occur, for example, when two incompatible coupons are inserted in
 the same cart. Then, you have to expect specific exceptions.
 
@@ -275,7 +275,7 @@ This method dispatches these events:
 
 ## Removing a coupon
 
-You can remove a coupon from a cart, of course, using the same service than the
+You can remove a coupon from a cart using the same service than the
 last example.
 
 ``` php
@@ -314,7 +314,7 @@ This method dispatches these events:
 
 ## Getting Cart coupons
 
-Of course, given a cart, you should be able to get all coupons applied. We'll
+Given a cart, you should be able to get all coupons applied. We'll
 use the same manager again.
 
 ``` php
@@ -360,7 +360,7 @@ $cartIsOrdered = $cart->isOrdered();
 
 ## Order
 
-The order should always be a plain copy of a cart. Of course, and because the
+The order should always be a plain copy of a cart. Because the
 object's behaviour should be as immutable as possible, all prices are calculated
 and saved in database.
 
@@ -379,7 +379,7 @@ Inside the entity, you will find this information:
 ## Getting Order coupons
 
 Because both components are decoupled (cart and coupon), you need some
-middleware for the order coupons retrieval. Fur this reason, the project 
+middleware for the order coupons retrieval. For this reason, the project 
 provides a service called `OrderCouponManager` for the management of all order
 coupons. Let's see a simple example about how we can retrieve all coupons from 
 an Order instance.
