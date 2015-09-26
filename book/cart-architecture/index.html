@@ -495,15 +495,15 @@
 works? How it's been designed? And how can I deal with it?</p>
 <p>We will show you how we have designed all the model and why have we decided this
 architecture. It is important for you to understand the design in order to
-detect all possible entry and modification points, to make the Cart component as
+detect all possible entries and modification points, to make the Cart component as
 much customized as you need.</p>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link"> #</a></h2>
 <p>Let's start by determining what the Cart Component should take care about. Well,
-not difficult at all, so we are working in an E-commerce. The component itself
+it's not difficult at all, so we are working in an E-commerce. The component itself
 takes care about all related to the Cart and the Order. The component provides
-you a complete service layer for you application, so knowing and understanding
+you a complete service layer for your application, so knowing and understanding
 this layer will help you a lot in your own implementation.</p>
-<p>We will split all the model in two parts, the Cart path and the Order part. Both
+<p>We will split all the model in two parts, the Cart part and the Order part. Both
 parts are connected but they can (and should) be treated in a very isolated way.</p>
 <p><img alt="Cart component model" src="../../image/model/cart-component.png" /></p>
 <p>First of all, forget about the Purchasable instance. This is just the way we
@@ -626,7 +626,7 @@ must add any Purchasable implementation. Product and Variant are our
 implementations, so in this example we use Product.</p>
 <p>After calling method <code>addPurchasable</code>, your cart will have 3 units of this 
 product only if they are really available to be purchased. Otherwise, you will
-get some exceptions. Of course, the cart is automatically reloaded as well, and
+get some exceptions. The cart is automatically reloaded as well, and
 all prices are rebuilt again.</p>
 <p>This method dispatches these events:
 * <a href="../events#cart_lineonadd">cart_line.onadd</a></p>
@@ -690,7 +690,7 @@ should be the dependency injection definition.</p>
 </code></pre>
 
 <p>After this action, the coupon is inserted into the cart and the values of the
-cart are recomputed. Of course, during the association of both elements, some
+cart are recomputed. During the association of both elements, some
 problems can occur, for example, when two incompatible coupons are inserted in
 the same cart. Then, you have to expect specific exceptions.</p>
 <p>You can add a coupon as well with the Coupon instance as well, using the same
@@ -714,7 +714,7 @@ depends on the <code>CouponRepository</code> service as well.</p>
 <p>This method dispatches these events:
 * <a href="../events#cartcoupononapply">cart_coupon.onapply</a></p>
 <h2 id="removing-a-coupon">Removing a coupon<a class="headerlink" href="#removing-a-coupon" title="Permanent link"> #</a></h2>
-<p>You can remove a coupon from a cart, of course, using the same service than the
+<p>You can remove a coupon from a cart using the same service than the
 last example.</p>
 <pre><code class="php">$cart;
 $couponCode = 'coupon5%';
@@ -746,7 +746,7 @@ $this
 <p>This method dispatches these events:
 * <a href="../events#cartcoupononremove">cart_coupon.onremove</a></p>
 <h2 id="getting-cart-coupons">Getting Cart coupons<a class="headerlink" href="#getting-cart-coupons" title="Permanent link"> #</a></h2>
-<p>Of course, given a cart, you should be able to get all coupons applied. We'll
+<p>Given a cart, you should be able to get all coupons applied. We'll
 use the same manager again.</p>
 <pre><code class="php">$cart;
 
@@ -784,7 +784,7 @@ $cartIsOrdered = $cart-&gt;isOrdered();
 </code></pre>
 
 <h2 id="order">Order<a class="headerlink" href="#order" title="Permanent link"> #</a></h2>
-<p>The order should always be a plain copy of a cart. Of course, and because the
+<p>The order should always be a plain copy of a cart. Because the
 object's behaviour should be as immutable as possible, all prices are calculated
 and saved in database.</p>
 <p><img alt="Order model" src="../../image/model/order-orderline.png" /></p>
@@ -800,7 +800,7 @@ and saved in database.</p>
 </ul>
 <h2 id="getting-order-coupons">Getting Order coupons<a class="headerlink" href="#getting-order-coupons" title="Permanent link"> #</a></h2>
 <p>Because both components are decoupled (cart and coupon), you need some
-middleware for the order coupons retrieval. Fur this reason, the project 
+middleware for the order coupons retrieval. For this reason, the project 
 provides a service called <code>OrderCouponManager</code> for the management of all order
 coupons. Let's see a simple example about how we can retrieve all coupons from 
 an Order instance.</p>

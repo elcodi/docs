@@ -497,7 +497,7 @@ the name <code>elcodi.factory.coupon</code> and is available for injection as fo
     -&gt;create()
 </code></pre>
 
-<p>Some factory related links</p>
+<p>Please, follow this cookbook if you need more information about elcodi factories.</p>
 <ul>
 <li><a href="../../cookbook/implementation/implement-a-factory/">How to implement a factory</a></li>
 </ul>
@@ -534,8 +534,8 @@ $coupon = new Coupon();
 $coupon-&gt;setType(ElcodiCouponTypes::TYPE_AMOUNT);
 </code></pre>
 
-<p>If you use the default Coupon factory, then any new coupon uses type
-<code>TYPE_AMOUNT</code> by default.</p>
+<p>By default, any coupon created from the Coupon factory uses 
+<code>TYPE_AMOUNT</code> type.</p>
 <p>When the coupon type is the amount one, you can use the method <code>setPrice()</code> to
 define the total value of the coupon, while if the coupon type is the percent
 one, then you must use the method <code>setDiscount</code> in order to allow the system
@@ -572,7 +572,7 @@ just tried.</p>
 <h2 id="minimum-purchase">Minimum purchase<a class="headerlink" href="#minimum-purchase" title="Permanent link"> #</a></h2>
 <p>You can define that a coupon is only applicable when a cart price is above a 
 certain price. The way to do that is by using the property called
-<code>$minimumPurchase</code>. This property is a Money.</p>
+<code>$minimumPurchase</code>. This property may be an instance of <code>Elcodi\Component\Currency\Entity\Money</code>.</p>
 <pre><code class="php">/**
  * Set minimum purchase
  *
@@ -602,7 +602,7 @@ public function getMinimumPurchase()
 
 <h2 id="adding-some-rules">Adding some Rules<a class="headerlink" href="#adding-some-rules" title="Permanent link"> #</a></h2>
 <p>When a Coupon is intended to be applied in a Cart and the field <code>$rule</code> is not
-null, then this rules is applied. Of course, if the rule execution result is
+null, then this rule is applied. Of course, if the rule execution result is
 false, the coupon is refused.</p>
 <p>you can read some information about rules by following these links</p>
 <ul>
