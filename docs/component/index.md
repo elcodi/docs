@@ -11,9 +11,10 @@ content.
 
 # Components documentation
 
-* [Entity Translator](/component/entity-translator/)
-* [Media](/component/media/)
-* [Menu](/component/menu/)
-* [Sitemap](/component/sitemap/)
-* [State Transition Machine](/component/state-transition-machine/)
-* [Template](/component/template/)
+* [Entity Translator](entity-translator.md)
+* [Media](media.md)
+* [Menu](menu.md)
+* [Sitemap](sitemap.md)
+* [State Transition Machine](state-transition-machine.md)
+* [Metrics](metrics.md)
+* [Template](template.md)

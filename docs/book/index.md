@@ -28,14 +28,24 @@ part of it by adding your own business logic.
 * [Plugins](plugins.md)
 * [Payments](payments.md)
 * [Shipping](shipping.md)
-* [Components list](../component/index.md)
-* [Cookbook list](../cookbook/index.md)
+
+Some of our components can be used out of the box. They don't have specific
+E-commerce related business logic, so they can be described in an isolated way.
+
+* [Entity Translator](../component/entity-translator.md)
+* [Media](../component/media.md)
+* [Menu](../component/menu.md)
+* [Sitemap](../component/sitemap.md)
+* [State Transition Machine](../component/state-transition-machine.md)
+* [Metrics](../component/metrics.md)
+* [Template](../component/template.md)
 
 Finally, these chapters will help you about some extra elements related to the
 project. Interesting if you want to, not only use Elcodi as an open source
 project, but as a personal project, with the possibility of helping us growing
 and becoming better day by day
 
+* [Cookbook list](../cookbook/index.md)
 * [Roadmap](roadmap.md)
 * [Running tests suite](running-test-suite.md)
 * [Pull Requests](pull-requests.md)
