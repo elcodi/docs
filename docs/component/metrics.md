@@ -99,7 +99,7 @@ total page requests. Each entry represents only one increment.
 In this example, we want to do the same as before but no matter what user the
 visit comes from.
 
-`` php
+``` php
 use Elcodi\Component\Metric\ElcodiMetricTypes;
 
 $user = ...;
