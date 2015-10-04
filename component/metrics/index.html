@@ -590,9 +590,9 @@ the user where this beacon comes from, each one means a new entry. Useful for
 total page requests. Each entry represents only one increment.</p>
 <p>In this example, we want to do the same as before but no matter what user the
 visit comes from.</p>
-<p>`` php
-use Elcodi\Component\Metric\ElcodiMetricTypes;</p>
-<p>$user = ...;
+<pre><code class="php">use Elcodi\Component\Metric\ElcodiMetricTypes;
+
+$user = ...;
 $storeTracker = ...;
 $this
     -&gt;metricManager
@@ -602,13 +602,11 @@ $this
         '',
         ElcodiMetricTypes::TYPE_BEACON_TOTAL,
         new DateTime()
-    );</p>
-<pre><code>
-If you want the same behavior but in your twig layer
+    );
+</code></pre>
 
-
-``` jinja
-_etc.push([&quot;123456789&quot;, 'homepage', '', '2']);
+<p>If you want the same behavior but in your twig layer</p>
+<pre><code class="jinja">_etc.push([&quot;123456789&quot;, 'homepage', '', '2']);
 </code></pre>
 
 <h2 id="mixed-unique-and-total-beacon">Mixed (Unique and Total) beacon<a class="headerlink" href="#mixed-unique-and-total-beacon" title="Permanent link"> #</a></h2>
