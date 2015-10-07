@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="http://www.elcodi.io/cookbook/implementation/implement-a-form-type/">
+        <link rel="canonical" href="http://www.elcodi.io/cookbook/usage/elcodi-watermark/">
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-        <title>Implement a form type - Elcodi Documentation</title>
+        <title>Elcodi watermark - Elcodi Documentation</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -319,14 +319,14 @@
     <ul class="dropdown-menu">
         
             
-<li >
-    <a href="../../usage/elcodi-watermark/">Elcodi watermark</a>
+<li class="active">
+    <a href="./">Elcodi watermark</a>
 </li>
 
         
             
 <li >
-    <a href="../../usage/referrer-domain/">Referrer domain</a>
+    <a href="../referrer-domain/">Referrer domain</a>
 </li>
 
         
@@ -341,43 +341,43 @@
         
             
 <li >
-    <a href="../implement-a-collector/">Implement a collector</a>
+    <a href="../../implementation/implement-a-collector/">Implement a collector</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-a-controller-and-a-command/">Implement a controller and a command</a>
+    <a href="../../implementation/implement-a-controller-and-a-command/">Implement a controller and a command</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-a-factory/">Implement a factory</a>
-</li>
-
-        
-            
-<li class="active">
-    <a href="./">Implement a form type</a>
+    <a href="../../implementation/implement-a-factory/">Implement a factory</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-a-repository/">Implement a repository</a>
+    <a href="../../implementation/implement-a-form-type/">Implement a form type</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-an-entity/">Implement an entity</a>
+    <a href="../../implementation/implement-a-repository/">Implement a repository</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-an-event-listener/">Implement an event listener</a>
+    <a href="../../implementation/implement-an-entity/">Implement an entity</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../implementation/implement-an-event-listener/">Implement an event listener</a>
 </li>
 
         
@@ -460,12 +460,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../implement-a-factory/">
+                        <a rel="next" href="../../workflow/create-automatic-coupon/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../implement-a-repository/">
+                        <a rel="prev" href="../referrer-domain/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -490,206 +490,43 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#how-to-implement-a-form-type">How to Implement a Form Type</a></li>
+        <li class="main active"><a href="#elcodi-watermark">Elcodi Watermark</a></li>
         
-            <li><a href="#scenario">Scenario</a></li>
-        
-            <li><a href="#solution">Solution</a></li>
+            <li><a href="#x-elcodi">X-Elcodi</a></li>
         
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="how-to-implement-a-form-type">How to Implement a Form Type<a class="headerlink" href="#how-to-implement-a-form-type" title="Permanent link"> #</a></h1>
-<p>A FormType object in Elcodi ecosystem must follow some rules in order to comply
-with the project flexibility.</p>
-<h2 id="scenario">Scenario<a class="headerlink" href="#scenario" title="Permanent link"> #</a></h2>
-<p>We need to manage one of our own new entities. We have created the entity, the
-form and the repository, so we need to create some extra pages in our admin
-panel in order to create, modify and delete them.</p>
-<p>In order to create these new pages, we need some mechanism to create these 
-forms, being able to do it properly and extensible, following the best Symfony 
-and Elcodi standards.</p>
-<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link"> #</a></h2>
-<p>As you may know, whenever we want to work with forms in Symfony, best practices 
-say that we should use FormType classes. These classes are meant to be a PHP 
-representation of how a form should be treated and defined.</p>
-<p>So let's use them.</p>
-<h3 id="symfony-forms">Symfony Forms<a class="headerlink" href="#symfony-forms" title="Permanent link"> #</a></h3>
-<p>Symfony Forms is not a Elcodi-related implementation, so first of all you should
-know as much as possible about how Symfony Forms works.</p>
-<p>We strongly encourage you to learn about them in their documentation before 
-proceeding with our specific documentation.</p>
-<p><a href="http://symfony.com/doc/current/book/forms.html">Symfony Book - Forms</a>
-<a href="http://symfony.com/doc/current/best_practices/forms.html">Symfony Best Practices - Forms</a></p>
-<h3 id="using-factories">Using Factories<a class="headerlink" href="#using-factories" title="Permanent link"> #</a></h3>
-<p>Remember that every single entity must be created via its factory in Elcodi
-Bundles. For more information, please see <a href="../implement-a-factory/">Factories</a>. 
-In order to use this feature in Symfony Form Types, we must inject always the 
-related entity factory.</p>
-<pre><code class="php">use Elcodi\Component\Core\Factory\Abstracts\AbstractFactory;
-
-/**
- * @var AbstractFactory
- *
- * Factory
- */
-protected $factory;
-
-/**
- * Sets Factory
- *
- * @param AbstractFactory $factory Factory
- *
- * @return $this Self object
- */
-public function setFactory(AbstractFactory $factory)
-{
-    $this-&gt;factory = $factory;
-
-    return $this;
-}
+<h1 id="elcodi-watermark">Elcodi Watermark<a class="headerlink" href="#elcodi-watermark" title="Permanent link"> #</a></h1>
+<p>We need a small watermark for all Elcodi E-commerce implementation. This
+watermark should be very soft, small and imperceptible by the human eye, only
+accessible by developers and robots.</p>
+<p>We want to introduce you a Symfony Bundle called
+<a href="https://github.com/mmoreram/HTTPHeadersBundle">HTTPHeadersBundle</a>. This bundle
+is very basic, only 2 PHP classes indeed. You can read there the documentation,
+and we will explain how we are using this project.</p>
+<h2 id="x-elcodi">X-Elcodi<a class="headerlink" href="#x-elcodi" title="Permanent link"> #</a></h2>
+<p>This is the Response HTTP Header for Elcodi. As you can see in the <code>config.yml</code>
+file in Bamboo, the HTTPHeadersBundle configuration sets this header for all
+site pages</p>
+<pre><code class="yaml">#
+# HTTP Headers
+# Fill this data to ensure your ecommerce is unique and belongs to developers
+# Checkout the configuration in https://github.com/mmoreram/HTTPHeadersBundle
+#
+http_headers:
+    response:
+        x_elcodi:
+            name: X-Elcodi
+            values:
+                - This E-commerce is built using Elcodi and Symfony
 </code></pre>
 
-<p>After the factory is injected, we can use it in our FormType specification for
-defining the <code>empty_data</code> value and the <code>data_class</code>.</p>
-<pre><code class="php">/**
- * Default form options
- *
- * @param OptionsResolverInterface $resolver
- *
- * @return array With the options
- */
-public function setDefaultOptions(OptionsResolverInterface $resolver)
-{
-    $resolver-&gt;setDefaults([
-        'empty_data' =&gt; function () {
-            $this
-                -&gt;factory
-                -&gt;create();
-        },
-        'data_class' =&gt; $this
-            -&gt;factory
-            -&gt;getEntityNamespace(),
-    ]);
-}
-</code></pre>
-
-<p>In order to make things easier, there is a Trait in the package <code>elcodi/core</code>, 
-designed as a Factory container. To use it, just add it in your class, like any
-other trait, and you will be able to use the <code>$this-&gt;factory</code> in your class.</p>
-<pre><code class="php">use Elcodi\Component\Core\Factory\Traits\FactoryTrait;
-
-/**
- * Class BannerType
- */
-class BannerType extends AbstractType
-{
-    use FactoryTrait;
-
-    /**
-     * Default form options
-     *
-     * @param OptionsResolverInterface $resolver
-     *
-     * @return array With the options
-     */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
-    {
-        $resolver-&gt;setDefaults([
-            'empty_data' =&gt; function () {
-                $this
-                    -&gt;factory
-                    -&gt;create();
-            },
-            'data_class' =&gt; $this
-                -&gt;factory
-                -&gt;getEntityNamespace(),
-        ]);
-    }
-}
-</code></pre>
-
-<h3 id="using-namespaces">Using namespaces<a class="headerlink" href="#using-namespaces" title="Permanent link"> #</a></h3>
-<p>If your FormType has any kind of relation with another entity, you will need to
-define this relation using a namespace. In order to comply again with the
-flexibility, we need to inject all namespaces using the entity manager 
-parameter.</p>
-<p>These namespaces in Elcodi must be injected through the class constructor.</p>
-<pre><code class="php">/**
- * Class BannerType
- */
-class BannerType extends AbstractType
-{
-    use FactoryTrait;
-
-    /**
-     * @var string
-     *
-     * Image namespace
-     */
-    protected $imageNamespace;
-
-    /**
-     * Construct
-     *
-     * @param string $imageNamespace Image namespace
-     */
-    public function __construct($imageNamespace)
-    {
-        $this-&gt;imageNamespace = $imageNamespace;
-    }
-
-    /**
-     * buildForm function
-     *
-     * @param FormBuilderInterface $builder the formBuilder
-     * @param array                $options the options for this form
-     */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            -&gt;add('image', 'entity', [
-                'class'    =&gt; $this-&gt;imageNamespace,
-                'required' =&gt; false,
-                'label'    =&gt; 'image',
-                'multiple' =&gt; false,
-            ]);
-    }
-}
-</code></pre>
-
-<h3 id="formtype-as-a-service">FormType as a service<a class="headerlink" href="#formtype-as-a-service" title="Permanent link"> #</a></h3>
-<p>We are using dependencies in our FormTypes, so remember that we need to define 
-our classes as services.</p>
-<pre><code class="yaml">services:
-
-    #
-    # Form Types
-    #
-    elcodi.admin.banner.form_type.banner:
-        class: Elcodi\Admin\BannerBundle\Form\Type\BannerType
-        arguments:
-            - %elcodi.entity.image.class%
-        calls:
-            - [setFactory, [@elcodi.factory.banner]]
-        tags:
-            - { name: form.type, alias: elcodi_admin_banner_form_type_banner }
-</code></pre>
-
-<p>The alias of the FormType must be the same as the value returned by the method
-<code>getName()</code> of the class</p>
-<pre><code class="php">/**
- * Return unique name for this form
- *
- * @return string
- */
-public function getName()
-{
-    return 'elcodi_admin_banner_form_type_banner';
-}
-</code></pre></div>
+<p>Please, this header will allow some engines to detect your website as an
+implementation of Elcodi. This means more installations, more development, and
+this always means more confidence for other people.</p></div>
             
         </div>
 
