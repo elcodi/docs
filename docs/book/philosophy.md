@@ -56,7 +56,7 @@ definition
 Of course, all non-code-related must be removed in order to no create visual
 noise and to not introduce ambiguity.
 
-# Real pragmatism
+## Real pragmatism
 
 We assume that to reach a goal there are always many ways. Some of them are can
 be considered as good ways and could be treated as such. That's because each
@@ -84,7 +84,7 @@ We work so hard to bring to the community the possibility to have a big voice.
 We listen them everyday to concrete our roadmap, so they can actively
 participate to the progress of the project
 
-# Community first
+## Community first
 
 One of our virtues is that the project was born from the community, we exist
 because of the community and we strongly think that the community will be, at
