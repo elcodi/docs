@@ -27,6 +27,7 @@ Related links - Set of internal and external related links
 ### Usage
 
 * [How to Use Referrer Domain](usage/referrer-domain.md)
+* [How to Use Elcodi Watermark](usage/elcodi-watermark.md)
 
 ### Overwrite Elcodi & Bamboo
 
