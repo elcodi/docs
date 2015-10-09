@@ -143,6 +143,22 @@ final class ElcodiMediaImageResizeTypes
 As you can see in the adapter interface, by default this resize must force
 measures.
 
+### Used Adapter
+
+The adapter used by the Dependency Injection is the one aliased with the name
+`elcodi.media_resize_adapter`.
+
+If you want to change the adapter, the only thing you must do is overwrite the
+Media Bundle configuration in your project, by adding this in your
+`/app/config/config_local.yml` file.
+
+``` yaml
+elcodi_media:
+    image:
+        resize:
+            adapter: elcodi.media_resize_adapter.gd
+```
+
 ### Adapters
 
 These are our adapters included in the Core of the application. If you have
@@ -165,3 +181,14 @@ For more info just visit their [installation page](http://php.net/manual/en/imag
 
 > On the installation step you will be asked to provide the Imagick installation
 > path. Ensure to configure the parameter imagick_convert_bin_path right
+
+This adapter may need some configuration. This is the reference. Feel free to
+overwrite these values in your project.
+
+``` yaml
+elcodi_media:
+    image:
+        resize:
+            converter_bin_path: /usr/bin/convert
+            converter_default_profile: /usr/share/color/icc/colord/sRGB.icc
+```
