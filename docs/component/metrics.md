@@ -411,7 +411,7 @@ services:
 ```
 
 You can create new adapters as well. Please read the
-[Metric Adapters Cookbook](../cookbook/adapters/metrics-bucket.md)
+[Metric Adapters Cookbook](../cookbook/adapters/metric-bucket.md)
 
 ## Twig extension
 
