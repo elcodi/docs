@@ -7,12 +7,15 @@ Add a simple asynchronous metrics layer into your Symfony project.
 
 ## Requirements
 
-Metrics requires Redis to be installed. It uses some complex data structures to
-all metrics cache and read, and Redis offers this structures with a very fast
-reading time penalty.
+Metrics main adapter requires Redis to be installed. It uses some complex data 
+structures to all metrics cache and read, and Redis offers by default this 
+structures with a very fast reading time penalty.
 
 It is required to install Redis in version, at least, `v2.8.9`. This version
 introduced used methods like `HyperLogLog`.
+
+If any other bucket adapter is installed and used, then you may not require
+Redis but other libraries (each adapter should document it).
 
 ## What offers
 
@@ -338,12 +341,12 @@ all this data from our backend? Well, the component itself uses a set of
 services with a very simple way of doing that job.
 
 ``` php
-namespace Elcodi\Component\Metric\Core\Bucket;
+namespace Elcodi\Component\Metric\Core\Bucket\Abstracts;
 
 /**
- * Class RedisMetricsBucket
+ * Class AbstractMetricsBucket
  */
-class RedisMetricsBucket extends AbstractMetricsBucket
+abstract class AbstractMetricsBucket
 {
     /**
      * Get number of unique beacons given an event and a set of dates
@@ -406,6 +409,9 @@ services:
         arguments:
             - @elcodi.metrics_bucket
 ```
+
+You can create new adapters as well. Please read the
+[Metric Adapters Cookbook](../cookbook/adapters/metrics-bucket.md)
 
 ## Twig extension
 
