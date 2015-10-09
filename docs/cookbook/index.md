@@ -39,6 +39,7 @@ Related links - Set of internal and external related links
 
 * [How to add a new Currency Rates Populator adapter](adapters/currency-rates-populator.md)
 * [How to add a new Image Resize adapter](adapters/image-resize.md)
+* [How to add a new Metric Bucket adapter](adapters/metric-bucket.md)
 
 ## Ask your cookbook
 

@@ -62,6 +62,21 @@ the command line.
 $ php app/console elcodi:exchangerates:populate
 ```
 
+### Used Adapter
+
+The adapter used by the Dependency Injection is the one aliased with the name
+`elcodi.currency_exchange_rate_adapter`.
+
+If you want to change the adapter, the only thing you must do is overwrite the
+Currency Bundle configuration in your project, by adding this in your
+`/app/config/config_local.yml` file.
+
+``` yaml
+elcodi_currency:
+    rates_provider:
+        adapter: elcodi.currency_exchange_rate_adapter.yahoo_finances
+```
+
 ### Adapters
 
 These are our adapters included in the Core of the application. If you have 
