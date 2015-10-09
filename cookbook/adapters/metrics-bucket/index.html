@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="http://www.elcodi.io/cookbook/adapters/image-resize/">
+        <link rel="canonical" href="http://www.elcodi.io/cookbook/adapters/metrics-bucket/">
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-        <title>Image resize - Elcodi Documentation</title>
+        <title>Metrics bucket - Elcodi Documentation</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -283,8 +283,8 @@
 
         
             
-<li class="active">
-    <a href="./">Image resize</a>
+<li >
+    <a href="../image-resize/">Image resize</a>
 </li>
 
         
@@ -295,8 +295,8 @@
 
         
             
-<li >
-    <a href="../metrics-bucket/">Metrics bucket</a>
+<li class="active">
+    <a href="./">Metrics bucket</a>
 </li>
 
         
@@ -466,12 +466,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../currency-rates-populator/">
+                        <a rel="next" href="../location-provider/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../location-provider/">
+                        <a rel="prev" href="../../workflow/create-automatic-coupon/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -496,7 +496,7 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#how-to-add-a-new-image-resize-adapter">How to add a new Image Resize adapter</a></li>
+        <li class="main active"><a href="#how-to-add-a-new-metric-bucket-adapter">How to add a new Metric Bucket adapter</a></li>
         
             <li><a href="#scenario">Scenario</a></li>
         
@@ -507,174 +507,154 @@
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="how-to-add-a-new-image-resize-adapter">How to add a new Image Resize adapter<a class="headerlink" href="#how-to-add-a-new-image-resize-adapter" title="Permanent link"> #</a></h1>
-<p>Elcodi is served with a simple but very useful built-in image server. One of
-the most important actions this server is intended for is resizing images.</p>
+<h1 id="how-to-add-a-new-metric-bucket-adapter">How to add a new Metric Bucket adapter<a class="headerlink" href="#how-to-add-a-new-metric-bucket-adapter" title="Permanent link"> #</a></h1>
+<p>By default, Elcodi provides one Metric Bucket implementation, based on Redis.
+You can read more information about this in the
+<a href="../../book/metrics.md">Book Metrics Chapter</a>. This feature has been implemented
+using Adapters as well, so you could implement your own.</p>
 <h2 id="scenario">Scenario<a class="headerlink" href="#scenario" title="Permanent link"> #</a></h2>
-<p>You need your application to be deployed to a server with PHP GD, but you want
-to use another image resize engine, for example an external API.</p>
-<p>Elcodi provides you a set of limited adapters for image resizing, so we should
-implement this new adapter. Elcodi provides you a simple, fast and amazing way
-to do it without many pain</p>
+<p>You have your store installed in third party environment. Bad news... Redis is
+not installed and you cannot install it even if you want it. This scenario is
+very common, so you should be able to use Metrics as well, even without Redis.</p>
 <h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link"> #</a></h2>
-<p>You can create your own image resize engine by adding a new adapter. By default,
-Elcodi is built with an implementation using the PHP GD Extension (you will
-probably find this extension already installed with your regular PHP
-distribution). This adapter can be easily replaced by creating a new class
-implementing <code>CurrencyExchangeRatesProviderAdapterInterface</code>.</p>
-<pre><code class="php">&lt;?php
+<p>Well, first of all you should think about where to place your metric cache. A
+bucket is nothing but a cache layer for your metrics. Each metric entry is a
+database entry as well, but because only working with Doctrine would be so hard
+for your server and user, we work with a cache layer.</p>
+<p>This cache implementation should be able to build results in a very fast way, so
+this is the reason why default implementation uses Redis.</p>
+<h3 id="abstractmetricsbucket">AbstractMetricsBucket<a class="headerlink" href="#abstractmetricsbucket" title="Permanent link"> #</a></h3>
+<p>Like every other adapters implementations, there is an Interface for that.
+Remember that an abstract class can work as an interface as well if you define
+methods as abstract.</p>
+<p>AbstractMetricsBucket is your class if you want to create a new adapter for
+that.</p>
+<pre><code class="php">namespace Elcodi\Component\Metric\Core\Bucket\Abstracts;
 
-namespace Elcodi\Component\Media\Adapter\Resizer\Interfaces;
-
-use Elcodi\Component\Media\ElcodiMediaImageResizeTypes;
+use Elcodi\Component\Metric\Core\Entity\Interfaces\EntryInterface;
 
 /**
- * Interface ResizerAdapterInterface
+ * Class AbstractMetricsBucket
  */
-interface ResizeAdapterInterface
+abstract class AbstractMetricsBucket
 {
     /**
-     * Interface for resize implementations
+     * Add Metric into Bucket
      *
-     * @param string  $imageData Image Data
-     * @param integer $height    Height value
-     * @param integer $width     Width value
-     * @param integer $type      Type
+     * @param EntryInterface $entry Entry
      *
-     * @return string Resized image data
+     * @return $this Self Object
      */
-    public function resize(
-        $imageData,
-        $height,
-        $width,
-        $type = ElcodiMediaImageResizeTypes::FORCE_MEASURES
-    );
+    abstract public function add(EntryInterface $entry);
+
+    /**
+     * Get number of unique beacons given an event and a set of dates
+     *
+     * @param string $token Event
+     * @param string $event Token
+     * @param array  $dates Dates
+     *
+     * @return integer Number of hits
+     */
+    abstract public function getBeaconsUnique($token, $event, array $dates);
+
+    /**
+     * Get the total of beacons given an event and a set of dates
+     *
+     * @param string $token Event
+     * @param string $event Token
+     * @param array  $dates Dates
+     *
+     * @return integer Number of beacons, given an event and dates
+     */
+    abstract public function getBeaconsTotal($token, $event, array $dates);
+
+    /**
+     * Get distributions given an event and a set of dates
+     *
+     * @param string $token Event
+     * @param string $event Token
+     * @param array  $dates Dates
+     *
+     * @return integer Accumulation of event and given dates
+     */
+    abstract public function getAccumulation($token, $event, array $dates);
+
+    /**
+     * Get distributions given an event and a set of dates
+     *
+     * [
+     *      &quot;value3&quot;: 24,
+     *      &quot;value7&quot;: 13,
+     *      &quot;value8&quot;: 9,
+     * ]
+     *
+     * @param string $token Event
+     * @param string $event Token
+     * @param array  $dates Dates
+     *
+     * @return array Distribution with totals
+     */
+    abstract public function getDistributions($token, $event, array $dates);
 }
 </code></pre>
 
-<p>Then, you need to define your class as a service.</p>
-<pre><code class="yml">services:
-
-    #
-    # My image resizer adapter
-    #
-    my_image_resizer_adapter:
-        class: My\Image\Resizer\Adapter
-</code></pre>
-
-<p>And finally you need to expose your adapter implementation as the used by the
-framework when resizing an existing image. You can do that by configuring the
-MediaBundle and setting your new service id.</p>
-<pre><code class="yml">elcodi_media:
-    images:
-        resize:
-            client: my_image_resizer_adapter
-</code></pre>
-
-<p>Now, everytime an image needs to be resized, you will see your new adapter in
-action.</p>
-<h3 id="resize-types">Resize types<a class="headerlink" href="#resize-types" title="Permanent link"> #</a></h3>
-<p>Elcodi resize adapter must complain 6 different resize types. Each type is
-defined using the constants placed in <code>ElcodiMediaImageResizeTypes</code>.</p>
-<pre><code class="php">
-/**
- * Class ElcodiMediaImageResizeTypes
+<p>This class provides you some helpers as well, related to how cache keys should
+be built in order to avoid collisions inside the bucket</p>
+<pre><code class="php">/**
+ * Create key given an entry
+ *
+ * @param string $token Event
+ * @param string $event Token
+ * @param string $date  Date
+ *
+ * @return string key
  */
-final class ElcodiMediaImageResizeTypes
+protected function generateEntryKey($token, $event, $date)
 {
-    /**
-     * @var integer
-     *
-     * Do not resize the image
-     */
-    const NO_RESIZE = 0;
+    return
+        $this-&gt;normalizeForKey($token) .
+        '.' .
+        $this-&gt;normalizeForKey($event) .
+        '.' .
+        $this-&gt;normalizeForKey($date);
+}
 
-    /**
-     * @var integer
-     *
-     * Resize mode FORCE_MEASURES sets the image to the desired size.
-     * DOES NOT preserve original aspect ratio.
-     * Best for fixed size images like banners
-     */
-    const FORCE_MEASURES = 1;
-
-    /**
-     * @var integer
-     *
-     * Resize mode INSET sets the image to the desired size.
-     * Preserves original aspect ratio so it might not fill the box.
-     * Best for large thumbnails
-     */
-    const INSET = 2;
-
-    /**
-     * @var integer
-     *
-     * Resize mode INSET_FILL_WHITE sets the image to the desired size.
-     * Preserves original aspect ratio and adds white color to the background in order to fill the box.
-     * Best for small thumbnails
-     */
-    const INSET_FILL_WHITE = 3;
-
-    /**
-     * @var integer
-     *
-     * Outbound resizing
-     */
-    const OUTBOUNDS_FILL_WHITE = 4;
-
-    /**
-     * @var integer
-     *
-     * Resize mode 5 sets the image to the desired size.
-     * Preserves original aspect ratio and crops image for only get this area.
-     */
-    const OUTBOUND_CROP = 5;
+/**
+ * Normalize string for key format
+ *
+ * @param string $string String
+ *
+ * @return string String normalized
+ */
+public function normalizeForKey($string)
+{
+    return str_replace('.', '_', $string);
 }
 </code></pre>
 
-<p>As you can see in the adapter interface, by default this resize must force
-measures.</p>
 <h3 id="used-adapter">Used Adapter<a class="headerlink" href="#used-adapter" title="Permanent link"> #</a></h3>
 <p>The adapter used by the Dependency Injection is the one aliased with the name
-<code>elcodi.media_resize_adapter</code>.</p>
+<code>elcodi.metrics_bucket</code>.</p>
 <p>If you want to change the adapter, the only thing you must do is overwrite the
-Media Bundle configuration in your project, by adding this in your
+Metric Bundle configuration in your project, by adding this in your
 <code>/app/config/config_local.yml</code> file.</p>
-<pre><code class="yaml">elcodi_media:
-    image:
-        resize:
-            adapter: elcodi.media_resize_adapter.gd
+<pre><code class="yaml">elcodi_metric:
+    bucket:
+        client: elcodi.redis_metrics_bucket
 </code></pre>
 
 <h3 id="adapters">Adapters<a class="headerlink" href="#adapters" title="Permanent link"> #</a></h3>
 <p>These are our adapters included in the Core of the application. If you have
 implemented another adapter and you think that can be interesting to share it,
 then you can create a pull request with your work. We will appreciate it.</p>
-<h4 id="gd-extension-adapter">GD Extension Adapter<a class="headerlink" href="#gd-extension-adapter" title="Permanent link"> #</a></h4>
+<h4 id="redis-bucket-adapter">Redis Bucket Adapter<a class="headerlink" href="#redis-bucket-adapter" title="Permanent link"> #</a></h4>
 <ul>
-<li>Namespace - Elcodi\Component\Media\Adapter\Resizer\GDResizeAdapter</li>
-<li>DI name - <code>elcodi.media_resize_adapter.gd</code></li>
+<li>Namespace - Elcodi\Component\Metric\Core\Bucket\RedisMetricsBucket</li>
+<li>DI name - <code>elcodi.redis_metrics_bucket</code></li>
 </ul>
-<p>This extension doesn't need any extra installation</p>
-<h4 id="imagemagick-adapter">Imagemagick Adapter<a class="headerlink" href="#imagemagick-adapter" title="Permanent link"> #</a></h4>
-<ul>
-<li>Namespace - Elcodi\Component\Media\Adapter\Resizer\ImageMagickResizeAdapter</li>
-<li>DI name - <code>elcodi.media_resize_adapter.imagemagick</code></li>
-</ul>
-<p>For more info just visit their <a href="http://php.net/manual/en/imagick.setup.php">installation page</a></p>
-<blockquote>
-<p>On the installation step you will be asked to provide the Imagick installation
-path. Ensure to configure the parameter imagick_convert_bin_path right</p>
-</blockquote>
-<p>This adapter may need some configuration. This is the reference. Feel free to
-overwrite these values in your project.</p>
-<pre><code class="yaml">elcodi_media:
-    image:
-        resize:
-            converter_bin_path: /usr/bin/convert
-            converter_default_profile: /usr/share/color/icc/colord/sRGB.icc
-</code></pre></div>
+<p>This extension doesn't need any extra installation. If redis-server is not
+installed, then nothing happens. If it is, then will work properly.</p></div>
             
         </div>
 
