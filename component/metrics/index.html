@@ -536,11 +536,13 @@
 <li><a href="https://github.com/elcodi/MetricBundle">Bundle Repository</a></li>
 </ul>
 <h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permanent link"> #</a></h2>
-<p>Metrics requires Redis to be installed. It uses some complex data structures to
-all metrics cache and read, and Redis offers this structures with a very fast
-reading time penalty.</p>
+<p>Metrics main adapter requires Redis to be installed. It uses some complex data 
+structures to all metrics cache and read, and Redis offers by default this 
+structures with a very fast reading time penalty.</p>
 <p>It is required to install Redis in version, at least, <code>v2.8.9</code>. This version
 introduced used methods like <code>HyperLogLog</code>.</p>
+<p>If any other bucket adapter is installed and used, then you may not require
+Redis but other libraries (each adapter should document it).</p>
 <h2 id="what-offers">What offers<a class="headerlink" href="#what-offers" title="Permanent link"> #</a></h2>
 <p>This package provides a simple but powerful metrics layer, ready to be used in
 your Symfony project, and inspired by how Google Analytics uses your client
@@ -799,12 +801,12 @@ user.</p>
 <p>Okay, now our website tracks some values for your analysis. But how can we read
 all this data from our backend? Well, the component itself uses a set of
 services with a very simple way of doing that job.</p>
-<pre><code class="php">namespace Elcodi\Component\Metric\Core\Bucket;
+<pre><code class="php">namespace Elcodi\Component\Metric\Core\Bucket\Abstracts;
 
 /**
- * Class RedisMetricsBucket
+ * Class AbstractMetricsBucket
  */
-class RedisMetricsBucket extends AbstractMetricsBucket
+abstract class AbstractMetricsBucket
 {
     /**
      * Get number of unique beacons given an event and a set of dates
@@ -866,6 +868,8 @@ class RedisMetricsBucket extends AbstractMetricsBucket
             - @elcodi.metrics_bucket
 </code></pre>
 
+<p>You can create new adapters as well. Please read the
+<a href="../../cookbook/adapters/metrics-bucket/">Metric Adapters Cookbook</a></p>
 <h2 id="twig-extension">Twig extension<a class="headerlink" href="#twig-extension" title="Permanent link"> #</a></h2>
 <p>You can read this information as well in your twig layer. In that case, you
 should have stored in a twig local variable the array of Datetime instances. In
