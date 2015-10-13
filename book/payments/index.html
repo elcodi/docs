@@ -559,7 +559,7 @@ engine.</p>
 use the service created specifically for that.</p>
 <pre><code class="php">$paymentMethods = $this
     -&gt;get('elcodi.wrapper.payment_methods')
-    -&gt;get();
+    -&gt;get($cart);
 </code></pre>
 
 <p>Internally, this piece of code dispatches an event called 
