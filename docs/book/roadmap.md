@@ -34,6 +34,7 @@ Each new tag will be properly documented and comunicated.
 * Product API will be added
 * User API will be added
 * Cart API will be added
+* Some Media improvements, like new media types
 * New shop template will be added
 * Back panel documentation
 
