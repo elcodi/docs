@@ -485,6 +485,16 @@ use Elcodi\Component\Payment\Event\PaymentCollectionEvent;
  */
 public function doSomething(PaymentCollectionEvent $event)
 {
+    $cart = $event->getCart();
+
+    /**
+     * Only available with Carts that ...
+     */
+    if ($cart->getPrice() < //) {
+
+        return;
+    }
+
     $paymentMethod = new PaymentMethod(
         'my-payment-method-24872378942',
         'payment name',
