@@ -49,7 +49,7 @@ use the service created specifically for that.
 ``` php
 $paymentMethods = $this
     ->get('elcodi.wrapper.payment_methods')
-    ->get();
+    ->get($cart);
 ```
 
 Internally, this piece of code dispatches an event called 
