@@ -17,6 +17,7 @@ chapters you will understand how we have resolved some approaches and you can be
 part of it by adding your own business logic.
 
 * [Quick Start](../quick-start.md)
+* [Quick Start using Vagrant](vagrant-quick-start.md)
 * [Processes](processes.md)
 * [Emails](emails.md)
 * [Dictionary](dictionary.md)
