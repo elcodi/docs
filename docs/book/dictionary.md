@@ -51,7 +51,7 @@ of them:
 
 Some of our components are detailed and documented in this documentation.
 
-* [Elcodi Components](../components)
+* [Elcodi Components](../component)
 
 And some other components are described as book chapters, describing a little
 bit more its architecture and workflow.
