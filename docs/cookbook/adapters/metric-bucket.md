@@ -1,5 +1,4 @@
-How to add a new Metric Bucket adapter
-======================================
+# How to add a new Metric Bucket adapter¡
 
 By default, Elcodi provides one Metric Bucket implementation, based on Redis.
 You can read more information about this in the
