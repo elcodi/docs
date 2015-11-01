@@ -19,7 +19,10 @@ focus on offering a good product, we take care of the rest.
 We're trying to build this project with a light default dependencies. These are
 ours.
 
-> The following dependencies are required for local installation, if you want we also provide a provisioning system to run bamboo on a virtual machine using Vagrant. Read more about the [Vagrant quickstart](cookbook/vagrant-quickstart.md).
+> The following dependencies are required for local installation, if you want we
+> also provide a provisioning system to run bamboo on a virtual machine using 
+> Vagrant. Read more about the
+[Vagrant quickstart](book/vagrant-quick-start.md).
 
 ### PHP
 
