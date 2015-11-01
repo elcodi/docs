@@ -6,10 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="http://www.elcodi.io/cookbook/implementation/implement-a-controller-and-a-command/">
+        <link rel="canonical" href="http://www.elcodi.io/cookbook/adapters/location-loader/">
         <link rel="shortcut icon" href="../../../img/favicon.ico">
 
-        <title>Implement a controller and a command - Elcodi Documentation</title>
+        <title>Location loader - Elcodi Documentation</title>
 
         <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -290,37 +290,37 @@
         
             
 <li >
-    <a href="../../adapters/currency-rates-populator/">Currency rates populator</a>
+    <a href="../currency-rates-populator/">Currency rates populator</a>
 </li>
 
         
             
 <li >
-    <a href="../../adapters/image-resize/">Image resize</a>
+    <a href="../image-resize/">Image resize</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">Location loader</a>
 </li>
 
         
             
 <li >
-    <a href="../../adapters/location-loader/">Location loader</a>
+    <a href="../location-populator/">Location populator</a>
 </li>
 
         
             
 <li >
-    <a href="../../adapters/location-populator/">Location populator</a>
+    <a href="../location-provider/">Location provider</a>
 </li>
 
         
             
 <li >
-    <a href="../../adapters/location-provider/">Location provider</a>
-</li>
-
-        
-            
-<li >
-    <a href="../../adapters/metric-bucket/">Metric bucket</a>
+    <a href="../metric-bucket/">Metric bucket</a>
 </li>
 
         
@@ -371,43 +371,43 @@
         
             
 <li >
-    <a href="../implement-a-collector/">Implement a collector</a>
-</li>
-
-        
-            
-<li class="active">
-    <a href="./">Implement a controller and a command</a>
+    <a href="../../implementation/implement-a-collector/">Implement a collector</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-a-factory/">Implement a factory</a>
+    <a href="../../implementation/implement-a-controller-and-a-command/">Implement a controller and a command</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-a-form-type/">Implement a form type</a>
+    <a href="../../implementation/implement-a-factory/">Implement a factory</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-a-repository/">Implement a repository</a>
+    <a href="../../implementation/implement-a-form-type/">Implement a form type</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-an-entity/">Implement an entity</a>
+    <a href="../../implementation/implement-a-repository/">Implement a repository</a>
 </li>
 
         
             
 <li >
-    <a href="../implement-an-event-listener/">Implement an event listener</a>
+    <a href="../../implementation/implement-an-entity/">Implement an entity</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../implementation/implement-an-event-listener/">Implement an event listener</a>
 </li>
 
         
@@ -490,12 +490,12 @@
                 </li>
                 
                     <li >
-                        <a rel="next" href="../implement-a-collector/">
+                        <a rel="next" href="../image-resize/">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../implement-a-factory/">
+                        <a rel="prev" href="../location-populator/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -520,168 +520,14 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
     
-        <li class="main active"><a href="#how-to-implement-a-controller-or-a-command">How to Implement a Controller or a Command</a></li>
-        
-            <li><a href="#scenario">Scenario</a></li>
-        
-            <li><a href="#solution">Solution</a></li>
-        
-            <li><a href="#related-links">Related links</a></li>
+        <li class="main active"><a href="#how-to-add-a-new-location-loader-adapter">How to add a new Location Loader adapter</a></li>
         
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="how-to-implement-a-controller-or-a-command">How to Implement a Controller or a Command<a class="headerlink" href="#how-to-implement-a-controller-or-a-command" title="Permanent link"> #</a></h1>
-<p>Controllers and Commands in Elcodi are exactly the same than Controllers and 
-Commands in Symfony. No difference between them. But in Elcodi we have a strong
-philosophy about how to create them in order to be valid or usable in the Open
-Source environment.</p>
-<h2 id="scenario">Scenario<a class="headerlink" href="#scenario" title="Permanent link"> #</a></h2>
-<p>We have a Bamboo-based application in our server and we need to create a new 
-entry-point for our application, for example a new Controller to manage orders
-from specific users, in order to create special newsletters and increase the
-number of orders per customer.</p>
-<p>Controllers and Commands are designed and implemented following a simple but
-specific way. We need to know how both classes are created in Elcodi in order to
-follow the same philosophy in all places.</p>
-<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link"> #</a></h2>
-<p>Following this specific way, we need to know the differences between creating
-Controllers and Commands as services, or simply rely to the framework the way
-these classes are auto-discovered.</p>
-<h3 id="services-in-elcodi">Services in Elcodi<a class="headerlink" href="#services-in-elcodi" title="Permanent link"> #</a></h3>
-<p>All Elcodi Controllers and Commands are defined as services. This is because we
-are <em>Overwriting Oriented Programming</em> and we have in mind that every single
-implementation sensible to be changed between projects must be easily 
-customized.</p>
-<p>In Symfony, and because Dependency Injection definition has a very well documented
-overwriting strategy, we have decided that everything must be defined as a 
-service.</p>
-<p>We have a convention about how a Controller and a Command must be registered in
-your DI container</p>
-<pre><code class="yaml">elcodi.controller.image_upload
-elcodi.command.populate_currency_rates
-</code></pre>
-
-<p>Of course, and because it should only depend on the Symfony Components, but never
-the Symfony Framework nor the FrameworkBundle, both implementations must not extend
-Framework classes.</p>
-<h3 id="framework-controllers-in-bamboo">Framework Controllers in Bamboo<a class="headerlink" href="#framework-controllers-in-bamboo" title="Permanent link"> #</a></h3>
-<p>When you work in Bamboo (or in your project on top of Elcodi Components and 
-Bundles) we don't recommend the usage of Controllers and Commands as services.
-We think that both implementations are Entry Points and should be Framework
-related.</p>
-<p>This means that your Controllers or Commands should never have business logic,
-and should place all this logic in your service layer.</p>
-<p>Having said that, we recommend the usage of <em>FrameworkBundle</em> Controller class to
-endow your controllers with easy access to the DI container and a good set of
-pre-built methods.</p>
-<pre><code class="php">use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-/**
- * Cart controllers
- */
-class CartController extends Controller
-{
-}
-</code></pre>
-
-<h3 id="framework-commands-in-bamboo">Framework Commands in Bamboo<a class="headerlink" href="#framework-commands-in-bamboo" title="Permanent link"> #</a></h3>
-<p>We have the same opinion for Commands and Controllers.</p>
-<pre><code class="php">use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-
-/**
- * Cart controllers
- */
-class MyCommand extends ContainerAwareCommand
-{
-}
-</code></pre>
-
-<h3 id="annotations-in-bamboo-controllers">Annotations in Bamboo Controllers<a class="headerlink" href="#annotations-in-bamboo-controllers" title="Permanent link"> #</a></h3>
-<p>In Bamboo, we use annotations in all our controllers in order to make the code more
-understandable and to focus only on business logic. Annotations solve
-repetitive things and should be perfectly documented.</p>
-<blockquote>
-<p>Magic? Yes, of course, same magic than yml readers, than Container
-compilation, than service builds... so what?</p>
-</blockquote>
-<p>For this reason, we are using 
-<a href="http://github.com/mmoreram/ControllerExtraBundle">ControllerExtraBundle</a> and
-<a href="https://github.com/sensiolabs/SensioFrameworkExtraBundle">SensioFrameworkExtraBundle</a>.</p>
-<p>Let's see an example.</p>
-<pre><code class="php">use Mmoreram\ControllerExtraBundle\Annotation\Entity as AnnotationEntity;
-use Mmoreram\ControllerExtraBundle\Annotation\Form as AnnotationForm;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-/**
- * Cart controllers
- *
- * @Route(
- *      path = &quot;/cart&quot;,
- * )
- */
-class CartController extends Controller
-{
-    /**
-     * Cart view
-     *
-     * @param FormView      $formView Form view
-     * @param CartInterface $cart     Cart
-     *
-     * @return Response Response
-     *
-     * @Route(
-     *      path = &quot;&quot;,
-     *      name = &quot;store_cart_view&quot;,
-     *      methods = {&quot;GET&quot;}
-     * )
-     *
-     * @AnnotationEntity(
-     *      class = {
-     *          &quot;factory&quot; = &quot;elcodi.wrapper.cart&quot;,
-     *          &quot;method&quot; = &quot;loadCart&quot;,
-     *          &quot;static&quot; = false,
-     *      },
-     *      name = &quot;cart&quot;
-     * )
-     * @AnnotationForm(
-     *      class = &quot;store_cart_form_type_cart&quot;,
-     *      name  = &quot;formView&quot;,
-     *      entity = &quot;cart&quot;,
-     * )
-     */
-    public function viewAction(
-        FormView $formView,
-        CartInterface $cart
-    ) {
-        // ...
-
-        return $this-&gt;renderTemplate(
-            'Pages:cart-view.html.twig',
-            [
-                // ...
-            ]
-        );
-    }
-}
-</code></pre>
-
-<p>You can find some documentation of both annotation packages</p>
-<ul>
-<li><a href="https://github.com/mmoreram/ControllerExtraBundle/blob/master/README.md">ControllerExtraBundle</a></li>
-<li><a href="http://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html">SensioFrameworkExtraBundle</a></li>
-</ul>
-<p>Please, before using annotations in your project make sure that you know how
-they work and how to use them. Read the documentation of both packages and try
-to understand their meaning.</p>
-<h2 id="related-links">Related links<a class="headerlink" href="#related-links" title="Permanent link"> #</a></h2>
-<ul>
-<li><a href="http://symfony.com/doc/current/cookbook/controller/service.html">Symfony docs - How to define controllers as services</a></li>
-<li><a href="http://symfony.com/doc/current/cookbook/console/commands_as_services.html">Symfony docs - How to define commands as services</a></li>
-</ul></div>
+<h1 id="how-to-add-a-new-location-loader-adapter">How to add a new Location Loader adapter<a class="headerlink" href="#how-to-add-a-new-location-loader-adapter" title="Permanent link"> #</a></h1></div>
             
         </div>
 
