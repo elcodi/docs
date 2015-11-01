@@ -20,8 +20,6 @@ replaced by creating a new class implementing
 `CurrencyExchangeRatesProviderAdapterInterface`.
 
 ``` php
-<?php
- 
 namespace Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\Interfaces;
 
 /**
