@@ -522,12 +522,67 @@
     
         <li class="main active"><a href="#how-to-add-a-new-location-populator-adapter">How to add a new Location Populator adapter</a></li>
         
+            <li><a href="#scenario">Scenario</a></li>
+        
+            <li><a href="#solution">Solution</a></li>
+        
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="how-to-add-a-new-location-populator-adapter">How to add a new Location Populator adapter<a class="headerlink" href="#how-to-add-a-new-location-populator-adapter" title="Permanent link"> #</a></h1></div>
+<h1 id="how-to-add-a-new-location-populator-adapter">How to add a new Location Populator adapter<a class="headerlink" href="#how-to-add-a-new-location-populator-adapter" title="Permanent link"> #</a></h1>
+<p>By default Elcodi uses an external website called
+<a href="http://www.geonames.org/">Geonames</a>. This website proposes some data files with
+country location references. This data is treated, organized and inserted as
+entities in our Doctrine infrastructure.</p>
+<p>This adapter just takes this data from that service and populates that country.</p>
+<h2 id="scenario">Scenario<a class="headerlink" href="#scenario" title="Permanent link"> #</a></h2>
+<p>You have your own location server, for example, a non-free service that proposes
+you this structure in a more precise way.</p>
+<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link"> #</a></h2>
+<p>You can create your own adapter for that. You just need to implement a simple
+Interface, with one single method. That easy.</p>
+<pre><code class="php">namespace Elcodi\Component\Geo\Adapter\LocationPopulator\Interfaces;
+
+use Elcodi\Component\Geo\Entity\Interfaces\LocationInterface;
+
+/**
+ * Interface PopulatorInterface
+ */
+interface LocationPopulatorAdapterInterface
+{
+    /**
+     * Populate a country
+     *
+     * @param string $countryCode Country Code
+     *
+     * @return LocationInterface Root location
+     */
+    public function populate($countryCode);
+}
+</code></pre>
+
+<h3 id="used-adapter">Used Adapter<a class="headerlink" href="#used-adapter" title="Permanent link"> #</a></h3>
+<p>The adapter used by the Dependency Injection is the one aliased with the name
+<code>elcodi.location_populator</code>.</p>
+<p>If you want to change the adapter, the only thing you must do is overwrite the
+Geo Bundle configuration in your project, by adding this in your
+<code>/app/config/config_local.yml</code> file.</p>
+<pre><code class="yaml">elcodi_geo:
+    location:
+        populator_adapter: elcodi.location_populator_adapter.geonames
+</code></pre>
+
+<h3 id="adapters">Adapters<a class="headerlink" href="#adapters" title="Permanent link"> #</a></h3>
+<p>These are our adapters included in the Core of the application. If you have
+implemented another adapter and you think that can be interesting to share it,
+then you can create a pull request with your work. We will appreciate it.</p>
+<h4 id="geonames-populator-adapter">Geonames Populator Adapter<a class="headerlink" href="#geonames-populator-adapter" title="Permanent link"> #</a></h4>
+<ul>
+<li>Namespace - Elcodi\Component\Geo\Adapter\LocationPopulator\GeonamesLocationPopulatorAdapter</li>
+<li>DI name - <code>elcodi.location_populator_adapter.geonames</code></li>
+</ul></div>
             
         </div>
 

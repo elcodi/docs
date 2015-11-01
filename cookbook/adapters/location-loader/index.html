@@ -522,12 +522,83 @@
     
         <li class="main active"><a href="#how-to-add-a-new-location-loader-adapter">How to add a new Location Loader adapter</a></li>
         
+            <li><a href="#scenario">Scenario</a></li>
+        
+            <li><a href="#solution">Solution</a></li>
+        
     
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="how-to-add-a-new-location-loader-adapter">How to add a new Location Loader adapter<a class="headerlink" href="#how-to-add-a-new-location-loader-adapter" title="Permanent link"> #</a></h1></div>
+<h1 id="how-to-add-a-new-location-loader-adapter">How to add a new Location Loader adapter<a class="headerlink" href="#how-to-add-a-new-location-loader-adapter" title="Permanent link"> #</a></h1>
+<p>Elcodi uses by default the Github implementaton, retrieving data from some a
+Github repository.</p>
+<h2 id="scenario">Scenario<a class="headerlink" href="#scenario" title="Permanent link"> #</a></h2>
+<p>You are using another implementation for Locations. This means that your
+database structure is not the same as Elcodi proposes. Then, if you still want
+to use this feature for fast location loading, then you must implement your own
+loader adapter.</p>
+<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link"> #</a></h2>
+<p>For your own adapter implementation you only need to know where your actual data
+is stored. The adapter itself is only a class that implements interface
+<code>Elcodi\Component\Geo\Adapter\LocationLoader\GithubLocationLoaderAdapter</code>.</p>
+<pre><code class="php">namespace Elcodi\Component\Geo\Adapter\LocationLoader\Interfaces;
+
+/**
+ * Interface LocationLoaderAdapterInterface
+ */
+interface LocationLoaderAdapterInterface
+{
+    /**
+     * Given a country name, return the sql to be loaded
+     *
+     * @param string $countryName Country name
+     *
+     * @return string Sql to be loaded
+     */
+    public function getSqlForCountry($countryName);
+}
+</code></pre>
+
+<h3 id="used-adapter">Used Adapter<a class="headerlink" href="#used-adapter" title="Permanent link"> #</a></h3>
+<p>The adapter used by the Dependency Injection is the one aliased with the name
+<code>elcodi.location_loader</code>.</p>
+<p>If you want to change the adapter, the only thing you must do is overwrite the
+Geo Bundle configuration in your project, by adding this in your
+<code>/app/config/config_local.yml</code> file.</p>
+<pre><code class="yaml">elcodi_geo:
+    location:
+        loader_adapter: elcodi.location_loader_adapter.github
+</code></pre>
+
+<h3 id="adapters">Adapters<a class="headerlink" href="#adapters" title="Permanent link"> #</a></h3>
+<p>These are our adapters included in the Core of the application. If you have
+implemented another adapter and you think that can be interesting to share it,
+then you can create a pull request with your work. We will appreciate it.</p>
+<h4 id="github-loader-adapter">Github Loader Adapter<a class="headerlink" href="#github-loader-adapter" title="Permanent link"> #</a></h4>
+<p>Uses Github repository
+<a href="https://github.com/elcodi/LocationDumps">elcodi/LocationDumps</a>, and actually
+only some countries have been pre-generated.</p>
+<ul>
+<li>Namespace - Elcodi\Component\Geo\Adapter\LocationLoader\GithubLocationLoaderAdapter</li>
+<li>DI name - <code>elcodi.location_loader_adapter.github</code></li>
+</ul>
+<p>Countries generated:
+<em> <a href="https://raw.githubusercontent.com/elcodi/LocationDumps/master/AD.sql">Andorra - AD</a>
+</em> <a href="https://raw.githubusercontent.com/elcodi/LocationDumps/master/AT.sql">Austria - AT</a>
+<em> <a href="https://raw.githubusercontent.com/elcodi/LocationDumps/master/BE.sql">Belgium - BE</a>
+</em> <a href="https://raw.githubusercontent.com/elcodi/LocationDumps/master/CH.sql">Switzerland - CH</a>
+<em> <a href="https://raw.githubusercontent.com/elcodi/LocationDumps/master/DE.sql">Germany - AD</a>
+</em> <a href="https://raw.githubusercontent.com/elcodi/LocationDumps/master/DK.sql">Denmark - DK</a>
+<em> <a href="https://raw.githubusercontent.com/elcodi/LocationDumps/master/ES.sql">Spain - ES</a>
+</em> <a href="https://raw.githubusercontent.com/elcodi/LocationDumps/master/FI.sql">Finland - FI</a>
+<em> <a href="https://raw.githubusercontent.com/elcodi/LocationDumps/master/FR.sql">France - FR</a>
+</em> <a href="https://raw.githubusercontent.com/elcodi/LocationDumps/master/GB.sql">United Kingdom - GB</a>
+<em> <a href="https://raw.githubusercontent.com/elcodi/LocationDumps/master/IT.sql">Italy - IT</a>
+</em> <a href="https://raw.githubusercontent.com/elcodi/LocationDumps/master/PL.sql">Poland - PL</a></p>
+<p>If you generate your country and is not in this list or is not updated, then
+don't hesitate to create a PR and ping us</p></div>
             
         </div>
 
