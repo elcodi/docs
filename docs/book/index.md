@@ -19,6 +19,7 @@ part of it by adding your own business logic.
 * [Quick Start](../quick-start.md)
 * [Quick Start using Vagrant](vagrant-quick-start.md)
 * [Processes](processes.md)
+* [Commands](commands.md)
 * [Emails](emails.md)
 * [Dictionary](dictionary.md)
 * [Events](events.md)

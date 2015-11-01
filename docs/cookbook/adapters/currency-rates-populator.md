@@ -1,5 +1,19 @@
 # How to add a new Currency Rates Populator adapter
 
+Bamboo works with several currencies at the same time. This happens when your
+shop work with different countries.
+
+## Scenario
+
+Because you have several currencies, but all products are defined using one
+currency, you need to know the equivalence value between them all.
+
+The point is that there are a lot of services that provide this information, and
+maybe you want to use one specific, non implemented yet or even your own
+currency rates server.
+
+## Solution
+
 You can create a new adapter for Currency Rates populator. By default, Elcodi
 implementation works with the Yahoo Finance provider. This adapter can be easily
 replaced by creating a new class implementing 
