@@ -83,6 +83,7 @@ Elcodi resize adapter must complain 6 different resize types. Each type is
 defined using the constants placed in `ElcodiMediaImageResizeTypes`.
 
 ``` php
+namespace Elcodi\Component\Media;
 
 /**
  * Class ElcodiMediaImageResizeTypes
