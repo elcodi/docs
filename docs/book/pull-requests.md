@@ -9,7 +9,7 @@ You will find some information about how to create a pull request using github
 in their 
 [help article](https://help.github.com/articles/creating-a-pull-request/).
 
-### Branch
+## Branch
 
 The name of the branch should be explicative enough for everyone interested in
 reviewing. Github is used to propose names like `patch-1`, so please, check the
@@ -24,7 +24,7 @@ fix/fixes-this-thing
 typo/fixes-this-typo
 ```
 
-### Commits
+## Commits
 
 Each branch can have as much commits as desired. But the question here is... how
 many commits do I need in order to create an acceptable Pull Request? The answer
@@ -45,7 +45,7 @@ d7aa7df Some additions
 As you can see here, these messages do not explain absolutely nothing about your
 work, so please check your branches before any Pull Request.
 
-### Commit description
+## Commit description
 
 How should a commit description describe our changes? Well, you can follow this
 structure to follow good practices.
@@ -62,3 +62,23 @@ commit about. Don't hesitate to add as much information as needed.
 * And more bullets
 * Related to this commit
 ```
+
+## PR Description
+
+Anytime a PR is created, you should describe a small description about all
+things this set of commits are going to change. This is important because we
+should understand in a simple way what is this PR about.
+
+Symfony introduced some time ago a small structure for providing some standard
+information about the PR.
+
+| Q             | A
+| ------------- | ---
+| Bug fix?      | no
+| New feature?  | yes
+| BC breaks?    | no
+| Deprecations? | no
+| Fixed tickets | -
+| License       | MIT
+
+Make sure that all your PRs start with this structure and with the right data
