@@ -534,6 +534,8 @@
         
             <li><a href="#commit-description">Commit description</a></li>
         
+            <li><a href="#pr-description">PR Description</a></li>
+        
     
     </ul>
 </div></div>
@@ -547,7 +549,7 @@ addition easy to understand and integrate.</p>
 <p>You will find some information about how to create a pull request using github
 in their 
 <a href="https://help.github.com/articles/creating-a-pull-request/">help article</a>.</p>
-<h3 id="branch">Branch<a class="headerlink" href="#branch" title="Permanent link"> #</a></h3>
+<h2 id="branch">Branch<a class="headerlink" href="#branch" title="Permanent link"> #</a></h2>
 <p>The name of the branch should be explicative enough for everyone interested in
 reviewing. Github is used to propose names like <code>patch-1</code>, so please, check the
 name before any Pull Request.</p>
@@ -558,7 +560,7 @@ fix/fixes-this-thing
 typo/fixes-this-typo
 </code></pre>
 
-<h3 id="commits">Commits<a class="headerlink" href="#commits" title="Permanent link"> #</a></h3>
+<h2 id="commits">Commits<a class="headerlink" href="#commits" title="Permanent link"> #</a></h2>
 <p>Each branch can have as much commits as desired. But the question here is... how
 many commits do I need in order to create an acceptable Pull Request? The answer
 is as many as you need, but taking into account the possible usage of the git
@@ -574,7 +576,7 @@ d7aa7df Some additions
 
 <p>As you can see here, these messages do not explain absolutely nothing about your
 work, so please check your branches before any Pull Request.</p>
-<h3 id="commit-description">Commit description<a class="headerlink" href="#commit-description" title="Permanent link"> #</a></h3>
+<h2 id="commit-description">Commit description<a class="headerlink" href="#commit-description" title="Permanent link"> #</a></h2>
 <p>How should a commit description describe our changes? Well, you can follow this
 structure to follow good practices.</p>
 <pre><code>This is a short description
@@ -587,7 +589,49 @@ commit about. Don't hesitate to add as much information as needed.
 * Finally, you can add some extra information using bullets
 * And more bullets
 * Related to this commit
-</code></pre></div>
+</code></pre>
+
+<h2 id="pr-description">PR Description<a class="headerlink" href="#pr-description" title="Permanent link"> #</a></h2>
+<p>Anytime a PR is created, you should describe a small description about all
+things this set of commits are going to change. This is important because we
+should understand in a simple way what is this PR about.</p>
+<p>Symfony introduced some time ago a small structure for providing some standard
+information about the PR.</p>
+<table>
+<thead>
+<tr>
+<th>Q</th>
+<th>A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bug fix?</td>
+<td>no</td>
+</tr>
+<tr>
+<td>New feature?</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>BC breaks?</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Deprecations?</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Fixed tickets</td>
+<td>-</td>
+</tr>
+<tr>
+<td>License</td>
+<td>MIT</td>
+</tr>
+</tbody>
+</table>
+<p>Make sure that all your PRs start with this structure and with the right data</p></div>
             
         </div>
 
