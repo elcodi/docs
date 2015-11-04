@@ -74,7 +74,7 @@ the command line.
 $ php app/console elcodi:exchangerates:populate
 ```
 
-### Used Adapter
+## Used Adapter
 
 The adapter used by the Dependency Injection is the one aliased with the name
 `elcodi.currency_exchange_rate_adapter`.
@@ -89,13 +89,13 @@ elcodi_currency:
         adapter: elcodi.currency_exchange_rate_adapter.yahoo_finances
 ```
 
-### Adapters
+## Adapters
 
 These are our adapters included in the Core of the application. If you have 
 implemented another adapter and you think that can be interesting to share it,
 then you can create a pull request with your work. We will appreciate it.
 
-#### Yahoo Finances Adapter
+### Yahoo Finances Adapter
 
 * Namespace - Elcodi\Component\Currency\Adapter\CurrencyExchangeRatesProvider\YahooFinanceProviderAdapter
 * DI name - `elcodi.currency_exchange_rate_adapter.yahoo_finances`

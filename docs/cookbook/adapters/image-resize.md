@@ -77,7 +77,7 @@ elcodi_media:
 Now, everytime an image needs to be resized, you will see your new adapter in
 action.
 
-### Resize types
+## Resize types
 
 Elcodi resize adapter must complain 6 different resize types. Each type is
 defined using the constants placed in `ElcodiMediaImageResizeTypes`.
@@ -144,7 +144,7 @@ final class ElcodiMediaImageResizeTypes
 As you can see in the adapter interface, by default this resize must force
 measures.
 
-### Used Adapter
+## Used Adapter
 
 The adapter used by the Dependency Injection is the one aliased with the name
 `elcodi.media_resize_adapter`.
@@ -160,20 +160,20 @@ elcodi_media:
             adapter: elcodi.media_resize_adapter.gd
 ```
 
-### Adapters
+## Adapters
 
 These are our adapters included in the Core of the application. If you have
 implemented another adapter and you think that can be interesting to share it,
 then you can create a pull request with your work. We will appreciate it.
 
-#### GD Extension Adapter
+### GD Extension Adapter
 
 * Namespace - Elcodi\Component\Media\Adapter\Resizer\GDResizeAdapter
 * DI name - `elcodi.media_resize_adapter.gd`
 
 This extension doesn't need any extra installation
 
-#### Imagemagick Adapter
+### Imagemagick Adapter
 
 * Namespace - Elcodi\Component\Media\Adapter\Resizer\ImageMagickResizeAdapter
 * DI name - `elcodi.media_resize_adapter.imagemagick`

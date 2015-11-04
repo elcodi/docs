@@ -86,7 +86,7 @@ interface LocationProviderAdapterInterface
 }
 ```
 
-### Used Adapter
+## Used Adapter
 
 The adapter used by the Dependency Injection is the one aliased with the name
 `elcodi.location_provider`.
@@ -101,13 +101,13 @@ elcodi_geo:
         provider_adapter: elcodi.location_provider_adapter.service
 ```
 
-### Adapters
+## Adapters
 
 These are our adapters included in the Core of the application. If you have
 implemented another adapter and you think that can be interesting to share it,
 then you can create a pull request with your work. We will appreciate it.
 
-#### Service Provider Adapter
+### Service Provider Adapter
 
 This adapter uses a single service to make calls. This is useful for centralized
 systems. Easy and simple.
@@ -115,7 +115,7 @@ systems. Easy and simple.
 * Namespace - Elcodi\Component\Geo\Adapter\LocationProvider\LocationServiceProviderAdapter
 * DI name - `lcodi.location_provider_adapter.service`
 
-#### API Provider Adapter
+### API Provider Adapter
 
 This adapter offers the same data but using a simple API infrastructure. This is
 useful, for example, if you work with several projects at the same time, so you

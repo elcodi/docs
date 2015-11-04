@@ -21,7 +21,7 @@ for your server and user, we work with a cache layer.
 This cache implementation should be able to build results in a very fast way, so
 this is the reason why default implementation uses Redis.
 
-### AbstractMetricsBucket
+## AbstractMetricsBucket
 
 Like every other adapters implementations, there is an Interface for that.
 Remember that an abstract class can work as an interface as well if you define
@@ -137,7 +137,7 @@ public function normalizeForKey($string)
 }
 ```
 
-### Used Adapter
+## Used Adapter
 
 The adapter used by the Dependency Injection is the one aliased with the name
 `elcodi.metrics_bucket`.
@@ -152,13 +152,13 @@ elcodi_metric:
         client: elcodi.redis_metrics_bucket
 ```
 
-### Adapters
+## Adapters
 
 These are our adapters included in the Core of the application. If you have
 implemented another adapter and you think that can be interesting to share it,
 then you can create a pull request with your work. We will appreciate it.
 
-#### Redis Bucket Adapter
+### Redis Bucket Adapter
 
 * Namespace - Elcodi\Component\Metric\Core\Bucket\RedisMetricsBucket
 * DI name - `elcodi.redis_metrics_bucket`
