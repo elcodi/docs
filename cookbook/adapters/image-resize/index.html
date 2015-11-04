@@ -115,6 +115,12 @@
                             
                                 
 <li >
+    <a href="../../../book/features/">Features</a>
+</li>
+
+                            
+                                
+<li >
     <a href="../../../book/">Home</a>
 </li>
 
@@ -330,6 +336,12 @@
 </li>
 
         
+            
+<li >
+    <a href="../related-purchasables-provider/">Related purchasables provider</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -532,6 +544,12 @@
         
             <li><a href="#solution">Solution</a></li>
         
+            <li><a href="#resize-types">Resize types</a></li>
+        
+            <li><a href="#used-adapter">Used Adapter</a></li>
+        
+            <li><a href="#adapters">Adapters</a></li>
+        
     
     </ul>
 </div></div>
@@ -603,7 +621,7 @@ MediaBundle and setting your new service id.</p>
 
 <p>Now, everytime an image needs to be resized, you will see your new adapter in
 action.</p>
-<h3 id="resize-types">Resize types<a class="headerlink" href="#resize-types" title="Permanent link"> #</a></h3>
+<h2 id="resize-types">Resize types<a class="headerlink" href="#resize-types" title="Permanent link"> #</a></h2>
 <p>Elcodi resize adapter must complain 6 different resize types. Each type is
 defined using the constants placed in <code>ElcodiMediaImageResizeTypes</code>.</p>
 <pre><code class="php">namespace Elcodi\Component\Media;
@@ -666,7 +684,7 @@ final class ElcodiMediaImageResizeTypes
 
 <p>As you can see in the adapter interface, by default this resize must force
 measures.</p>
-<h3 id="used-adapter">Used Adapter<a class="headerlink" href="#used-adapter" title="Permanent link"> #</a></h3>
+<h2 id="used-adapter">Used Adapter<a class="headerlink" href="#used-adapter" title="Permanent link"> #</a></h2>
 <p>The adapter used by the Dependency Injection is the one aliased with the name
 <code>elcodi.media_resize_adapter</code>.</p>
 <p>If you want to change the adapter, the only thing you must do is overwrite the
@@ -678,17 +696,17 @@ Media Bundle configuration in your project, by adding this in your
             adapter: elcodi.media_resize_adapter.gd
 </code></pre>
 
-<h3 id="adapters">Adapters<a class="headerlink" href="#adapters" title="Permanent link"> #</a></h3>
+<h2 id="adapters">Adapters<a class="headerlink" href="#adapters" title="Permanent link"> #</a></h2>
 <p>These are our adapters included in the Core of the application. If you have
 implemented another adapter and you think that can be interesting to share it,
 then you can create a pull request with your work. We will appreciate it.</p>
-<h4 id="gd-extension-adapter">GD Extension Adapter<a class="headerlink" href="#gd-extension-adapter" title="Permanent link"> #</a></h4>
+<h3 id="gd-extension-adapter">GD Extension Adapter<a class="headerlink" href="#gd-extension-adapter" title="Permanent link"> #</a></h3>
 <ul>
 <li>Namespace - Elcodi\Component\Media\Adapter\Resizer\GDResizeAdapter</li>
 <li>DI name - <code>elcodi.media_resize_adapter.gd</code></li>
 </ul>
 <p>This extension doesn't need any extra installation</p>
-<h4 id="imagemagick-adapter">Imagemagick Adapter<a class="headerlink" href="#imagemagick-adapter" title="Permanent link"> #</a></h4>
+<h3 id="imagemagick-adapter">Imagemagick Adapter<a class="headerlink" href="#imagemagick-adapter" title="Permanent link"> #</a></h3>
 <ul>
 <li>Namespace - Elcodi\Component\Media\Adapter\Resizer\ImageMagickResizeAdapter</li>
 <li>DI name - <code>elcodi.media_resize_adapter.imagemagick</code></li>

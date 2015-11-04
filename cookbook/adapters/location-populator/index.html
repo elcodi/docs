@@ -115,6 +115,12 @@
                             
                                 
 <li >
+    <a href="../../../book/features/">Features</a>
+</li>
+
+                            
+                                
+<li >
     <a href="../../../book/">Home</a>
 </li>
 
@@ -330,6 +336,12 @@
 </li>
 
         
+            
+<li >
+    <a href="../related-purchasables-provider/">Related purchasables provider</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -532,6 +544,10 @@
         
             <li><a href="#solution">Solution</a></li>
         
+            <li><a href="#used-adapter">Used Adapter</a></li>
+        
+            <li><a href="#adapters">Adapters</a></li>
+        
     
     </ul>
 </div></div>
@@ -569,7 +585,7 @@ interface LocationPopulatorAdapterInterface
 }
 </code></pre>
 
-<h3 id="used-adapter">Used Adapter<a class="headerlink" href="#used-adapter" title="Permanent link"> #</a></h3>
+<h2 id="used-adapter">Used Adapter<a class="headerlink" href="#used-adapter" title="Permanent link"> #</a></h2>
 <p>The adapter used by the Dependency Injection is the one aliased with the name
 <code>elcodi.location_populator</code>.</p>
 <p>If you want to change the adapter, the only thing you must do is overwrite the
@@ -580,11 +596,11 @@ Geo Bundle configuration in your project, by adding this in your
         populator_adapter: elcodi.location_populator_adapter.geonames
 </code></pre>
 
-<h3 id="adapters">Adapters<a class="headerlink" href="#adapters" title="Permanent link"> #</a></h3>
+<h2 id="adapters">Adapters<a class="headerlink" href="#adapters" title="Permanent link"> #</a></h2>
 <p>These are our adapters included in the Core of the application. If you have
 implemented another adapter and you think that can be interesting to share it,
 then you can create a pull request with your work. We will appreciate it.</p>
-<h4 id="geonames-populator-adapter">Geonames Populator Adapter<a class="headerlink" href="#geonames-populator-adapter" title="Permanent link"> #</a></h4>
+<h3 id="geonames-populator-adapter">Geonames Populator Adapter<a class="headerlink" href="#geonames-populator-adapter" title="Permanent link"> #</a></h3>
 <ul>
 <li>Namespace - Elcodi\Component\Geo\Adapter\LocationPopulator\GeonamesLocationPopulatorAdapter</li>
 <li>DI name - <code>elcodi.location_populator_adapter.geonames</code></li>

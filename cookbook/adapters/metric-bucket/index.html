@@ -115,6 +115,12 @@
                             
                                 
 <li >
+    <a href="../../../book/features/">Features</a>
+</li>
+
+                            
+                                
+<li >
     <a href="../../../book/">Home</a>
 </li>
 
@@ -330,6 +336,12 @@
 </li>
 
         
+            
+<li >
+    <a href="../related-purchasables-provider/">Related purchasables provider</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -501,7 +513,7 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="../../workflow/create-automatic-coupon/">
+                        <a rel="prev" href="../related-purchasables-provider/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -532,6 +544,12 @@
         
             <li><a href="#solution">Solution</a></li>
         
+            <li><a href="#abstractmetricsbucket">AbstractMetricsBucket</a></li>
+        
+            <li><a href="#used-adapter">Used Adapter</a></li>
+        
+            <li><a href="#adapters">Adapters</a></li>
+        
     
     </ul>
 </div></div>
@@ -553,7 +571,7 @@ database entry as well, but because only working with Doctrine would be so hard
 for your server and user, we work with a cache layer.</p>
 <p>This cache implementation should be able to build results in a very fast way, so
 this is the reason why default implementation uses Redis.</p>
-<h3 id="abstractmetricsbucket">AbstractMetricsBucket<a class="headerlink" href="#abstractmetricsbucket" title="Permanent link"> #</a></h3>
+<h2 id="abstractmetricsbucket">AbstractMetricsBucket<a class="headerlink" href="#abstractmetricsbucket" title="Permanent link"> #</a></h2>
 <p>Like every other adapters implementations, there is an Interface for that.
 Remember that an abstract class can work as an interface as well if you define
 methods as abstract.</p>
@@ -663,7 +681,7 @@ public function normalizeForKey($string)
 }
 </code></pre>
 
-<h3 id="used-adapter">Used Adapter<a class="headerlink" href="#used-adapter" title="Permanent link"> #</a></h3>
+<h2 id="used-adapter">Used Adapter<a class="headerlink" href="#used-adapter" title="Permanent link"> #</a></h2>
 <p>The adapter used by the Dependency Injection is the one aliased with the name
 <code>elcodi.metrics_bucket</code>.</p>
 <p>If you want to change the adapter, the only thing you must do is overwrite the
@@ -674,11 +692,11 @@ Metric Bundle configuration in your project, by adding this in your
         client: elcodi.redis_metrics_bucket
 </code></pre>
 
-<h3 id="adapters">Adapters<a class="headerlink" href="#adapters" title="Permanent link"> #</a></h3>
+<h2 id="adapters">Adapters<a class="headerlink" href="#adapters" title="Permanent link"> #</a></h2>
 <p>These are our adapters included in the Core of the application. If you have
 implemented another adapter and you think that can be interesting to share it,
 then you can create a pull request with your work. We will appreciate it.</p>
-<h4 id="redis-bucket-adapter">Redis Bucket Adapter<a class="headerlink" href="#redis-bucket-adapter" title="Permanent link"> #</a></h4>
+<h3 id="redis-bucket-adapter">Redis Bucket Adapter<a class="headerlink" href="#redis-bucket-adapter" title="Permanent link"> #</a></h3>
 <ul>
 <li>Namespace - Elcodi\Component\Metric\Core\Bucket\RedisMetricsBucket</li>
 <li>DI name - <code>elcodi.redis_metrics_bucket</code></li>

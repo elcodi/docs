@@ -115,6 +115,12 @@
                             
                                 
 <li >
+    <a href="../../../book/features/">Features</a>
+</li>
+
+                            
+                                
+<li >
     <a href="../../../book/">Home</a>
 </li>
 
@@ -330,6 +336,12 @@
 </li>
 
         
+            
+<li >
+    <a href="../related-purchasables-provider/">Related purchasables provider</a>
+</li>
+
+        
     </ul>
   </li>
 
@@ -532,6 +544,10 @@
         
             <li><a href="#solution">Solution</a></li>
         
+            <li><a href="#used-adapter">Used Adapter</a></li>
+        
+            <li><a href="#adapters">Adapters</a></li>
+        
     
     </ul>
 </div></div>
@@ -618,7 +634,7 @@ interface LocationProviderAdapterInterface
 }
 </code></pre>
 
-<h3 id="used-adapter">Used Adapter<a class="headerlink" href="#used-adapter" title="Permanent link"> #</a></h3>
+<h2 id="used-adapter">Used Adapter<a class="headerlink" href="#used-adapter" title="Permanent link"> #</a></h2>
 <p>The adapter used by the Dependency Injection is the one aliased with the name
 <code>elcodi.location_provider</code>.</p>
 <p>If you want to change the adapter, the only thing you must do is overwrite the
@@ -629,18 +645,18 @@ Geo Bundle configuration in your project, by adding this in your
         provider_adapter: elcodi.location_provider_adapter.service
 </code></pre>
 
-<h3 id="adapters">Adapters<a class="headerlink" href="#adapters" title="Permanent link"> #</a></h3>
+<h2 id="adapters">Adapters<a class="headerlink" href="#adapters" title="Permanent link"> #</a></h2>
 <p>These are our adapters included in the Core of the application. If you have
 implemented another adapter and you think that can be interesting to share it,
 then you can create a pull request with your work. We will appreciate it.</p>
-<h4 id="service-provider-adapter">Service Provider Adapter<a class="headerlink" href="#service-provider-adapter" title="Permanent link"> #</a></h4>
+<h3 id="service-provider-adapter">Service Provider Adapter<a class="headerlink" href="#service-provider-adapter" title="Permanent link"> #</a></h3>
 <p>This adapter uses a single service to make calls. This is useful for centralized
 systems. Easy and simple.</p>
 <ul>
 <li>Namespace - Elcodi\Component\Geo\Adapter\LocationProvider\LocationServiceProviderAdapter</li>
 <li>DI name - <code>lcodi.location_provider_adapter.service</code></li>
 </ul>
-<h4 id="api-provider-adapter">API Provider Adapter<a class="headerlink" href="#api-provider-adapter" title="Permanent link"> #</a></h4>
+<h3 id="api-provider-adapter">API Provider Adapter<a class="headerlink" href="#api-provider-adapter" title="Permanent link"> #</a></h3>
 <p>This adapter offers the same data but using a simple API infrastructure. This is
 useful, for example, if you work with several projects at the same time, so you
 only need one location database, shared by all websites.</p>
