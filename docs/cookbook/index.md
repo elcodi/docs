@@ -40,6 +40,10 @@ Related links - Set of internal and external related links
 * [How to add a new Currency Rates Populator adapter](adapters/currency-rates-populator.md)
 * [How to add a new Image Resize adapter](adapters/image-resize.md)
 * [How to add a new Metric Bucket adapter](adapters/metric-bucket.md)
+* [How to add a new Location Provider adapter](adapters/location-provider.md)
+* [How to add a new Location Populator adapter](adapters/location-populator.md)
+* [How to add a new Location Loader adapter](adapters/location-loader.md)
+* [How to add a new Related Purchasables Provider adapter](adapters/related-purchasables-provider.md)
 
 ## Ask your cookbook
 

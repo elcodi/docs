@@ -38,7 +38,7 @@ interface LocationPopulatorAdapterInterface
 }
 ```
 
-### Used Adapter
+## Used Adapter
 
 The adapter used by the Dependency Injection is the one aliased with the name
 `elcodi.location_populator`.
@@ -53,13 +53,13 @@ elcodi_geo:
         populator_adapter: elcodi.location_populator_adapter.geonames
 ```
 
-### Adapters
+## Adapters
 
 These are our adapters included in the Core of the application. If you have
 implemented another adapter and you think that can be interesting to share it,
 then you can create a pull request with your work. We will appreciate it.
 
-#### Geonames Populator Adapter
+### Geonames Populator Adapter
 
 * Namespace - Elcodi\Component\Geo\Adapter\LocationPopulator\GeonamesLocationPopulatorAdapter
 * DI name - `elcodi.location_populator_adapter.geonames`

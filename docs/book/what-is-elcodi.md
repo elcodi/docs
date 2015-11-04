@@ -31,6 +31,7 @@ Elcodi proposes a set of common features, specially implemented to provide a
 basic solution for all E-commerce implementation. Basic doesn't mean
 insufficient nor incomplete, but essential.
 
+* [Features](features.md)
 * [Processes](processes.md)
 
 Of couse, in Elcodi, apart from offering all this technological material, we
