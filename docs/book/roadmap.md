@@ -15,7 +15,7 @@ Each new tag will be properly documented and comunicated.
 
 * Released the 22nd of September, 2015
 * First stable version of Elcodi, from all previousBeta versions
-* FIrst stable version of Bamboo
+* First stable version of Bamboo
 * New website of Elcodi
 * New documentation with basics of Elcodi
 
@@ -23,9 +23,12 @@ Each new tag will be properly documented and comunicated.
 
 * Released the 1st of January, 2016
 * Product of products (Multiproduct) will be introduced and implemented.
+* Better integration with Continuous Integration systems
+* Related products interface
 * New shop template will be added as the default one.
 * Template documentation will be added.
 * Documentation Metrics book chapter will be added.
+* Code Coverage of all components and bundles over 50%
 
 ### v1.2
 
@@ -37,6 +40,7 @@ Each new tag will be properly documented and comunicated.
 * Some Media improvements, like new media types
 * New shop template will be added
 * Back panel documentation
+* Code Coverage of all components and bundles over 60%
 
 ### v1.3
 
@@ -46,6 +50,7 @@ Each new tag will be properly documented and comunicated.
 * New shop template will be added
 * New tempates and plugins website with tons of cool new stuff for all Elcodi
 and Bamboo implementations
+* Code Coverage of all components and bundles over 70%
 
 ### v2.0
 
@@ -56,3 +61,4 @@ and Bamboo implementations
 * Marketplace
 * Elcodi community site will be created.
 * Unknown bunch of new and cool stuff
+* Code Coverage of all components and bundles over 80%
