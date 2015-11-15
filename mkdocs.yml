@@ -4,7 +4,7 @@ site_description: Elcodi documentation website
 
 repo_url: https://github.com/elcodi/docs
 
-docs_dir: docs
+docs_dir: manuscript
 theme_dir: elcodi
 
 markdown_extensions:

@@ -7,7 +7,7 @@ of the image stored locally and the definition for the website
 To build each image, append the value of the definition after
 `http://yuml.me/diagram/scruffy/class/edit/`.
 
-### docs/image/model/cart-component.png
+### manuscript/images/model/cart-component.png
 
 [CartLine|cart;orderLine;purchasable]-1>[note: Purchasable Model{bg:cornsilk],  
 [OrderLine|order;cartLine;purchasable]-1>[note: Purchasable Model{bg:cornsilk],  
@@ -16,23 +16,23 @@ To build each image, append the value of the definition after
 [Cart]<1-0..1>[Order],  
 [CartLine]<1-0..1>[OrderLine]
 
-![Cart component model](docs/image/model/cart-component.png)
+![Cart component model](manuscript/images/model/cart-component.png)
 
-### docs/image/model/cart-cartline.png
+### manuscript/images/model/cart-cartline.png
 
 [CartLine|cart;orderLine;purchasable]-1>[note: Purchasable Model{bg:cornsilk],  
 [Cart|order;cartLines]1++-0..*>[CartLine]
 
-![Cart Cartline model](docs/image/model/cart-cartline.png)
+![Cart Cartline model](manuscript/images/model/cart-cartline.png)
 
-### docs/image/model/order-orderline.png
+### manuscript/images/model/order-orderline.png
 
 [OrderLine|order;cartLine;purchasable]-1>[note: Purchasable Model{bg:cornsilk],  
 [Order|cart;orderLines]<1-0..*>[OrderLine]
 
-![Order Orderline model](docs/image/model/order-orderline.png)
+![Order Orderline model](manuscript/images/model/order-orderline.png)
 
-### docs/image/model/product-component.png
+### manuscript/images/model/product-component.png
 
 [Variant|product;values],
 [Value|attribute],
@@ -42,12 +42,12 @@ To build each image, append the value of the definition after
 [Variant]<*-*>[Value],
 [Attribute]<1-*>[Value]
 
-![Product component model](docs/image/model/product-component.png)
+![Product component model](manuscript/images/model/product-component.png)
 
-### docs/image/model/category.png
+### manuscript/images/model/category.png
 
 [Category|subCategories;parent;products],
 [Category]<1-*>[Category],
 [Category]<*-*>[Product]
 
-![Category model](docs/image/model/category.png)
+![Category model](manuscript/images/model/category.png)
