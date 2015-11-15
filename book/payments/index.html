@@ -576,7 +576,7 @@ lines is showing you how to build your own payment library.</p>
 related with Payments and this implementation. Some extra information will be
 enough to have a base before starting this read.</p>
 <ul>
-<li><a href="../plugins/">Plugins</a></li>
+<li><a href="http://elcodi.io/docs/book/plugins/">Plugins</a></li>
 <li><a href="http://symfony.com/doc/current/components/dependency_injection/introduction.html">Dependency Injection Symfony Component</a></li>
 <li><a href="http://symfony.com/doc/current/components/event_dispatcher/introduction.html">Event Dispatcher Symfony Component</a></li>
 <li><a href="http://github.com/paymentsuite">PaymentSuite Payment PHP Library</a></li>
@@ -605,7 +605,7 @@ use the service created specifically for that.</p>
 </code></pre>
 
 <p>Internally, this piece of code dispatches an event called 
-<em><a href="../events/#payment.collect">"payment.collect"</a></em>, responsible exclusively for
+<em><a href="http://elcodi.io/docs/book/events/#payment.collect">"payment.collect"</a></em>, responsible exclusively for
 collecting all these payment methods.</p>
 <p>It is necessary to say that at this point, the Event Dispatcher component is not
 working in a very strict way it should work, so it's being used as a collector
@@ -616,13 +616,13 @@ the object Event has a <code>hasXXX</code> method, so, even not being imortant t
 of the listeners execution, the event is being modified on the fly. A changer
 event... weird, right?</p>
 <ul>
-<li><a href="../../cookbook/implementation/implement-a-collector/">Implement a collector</a></li>
+<li><a href="http://elcodi.io/docs/cookbook/implementation/implement-a-collector/">Implement a collector</a></li>
 </ul>
 <p>Anyway, the recollection event is dispatched and all installed and initialized
 Plugins (in Kernel) are called to add some payment methods there.</p>
 <h2 id="adding-new-payment-method">Adding new Payment Method<a class="headerlink" href="#adding-new-payment-method" title="Permanent link"> #</a></h2>
 <p>For you, developer, that you want to add a payment method, that's your chapter.
-Remember the event <em><a href="../events/#shipping.collect">"shipping.collect"</a></em>? Well, we
+Remember the event <em><a href="http://elcodi.io/docs/book/events/#shipping.collect">"shipping.collect"</a></em>? Well, we
 must listen it in order to add new payment methods.</p>
 <p>Since now, none object is passed though the event in order to decide if a
 payment method is available or not, so only the plugin statement should be
@@ -891,7 +891,7 @@ $order = $this
 on this documentation, please take a look at the State Transition Machine 
 documentation.</p>
 <ul>
-<li><a href="../../component/state-transition-machine/">State Transition Machine</a></li>
+<li><a href="http://elcodi.io/docs/component/state-transition-machine/">State Transition Machine</a></li>
 </ul>
 <p>Bamboo. by default, proposes a payment state diagram like we can see here.</p>
 <table>

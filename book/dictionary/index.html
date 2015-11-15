@@ -585,7 +585,7 @@ do you store how many units of a product you want to buy?</p>
 middle class, then you cannot store this information.</p>
 <p>So, a CartLine is an object in the middle between any purchasable and a cart to
 store information about this purchasable instance and the cart.</p>
-<p><img alt="Cart Cartline model" src="../../image/model/cart-cartline.png" /></p>
+<p><img alt="Cart Cartline model" src="../images/model-cart-cartline.png" /></p>
 <h3 id="component">Component<a class="headerlink" href="#component" title="Permanent link"> #</a></h3>
 <p>A component is a simple PHP Library. Only PHP Classes are placed inside this 
 package and must be framework agnostic. Because this project is a Symfony
@@ -602,13 +602,13 @@ of them:</p>
 </ul>
 <p>Some of our components are detailed and documented in this documentation.</p>
 <ul>
-<li><a href="../../component">Elcodi Components</a></li>
+<li><a href="http://elcodi.io/docs/component/">Elcodi Components</a></li>
 </ul>
 <p>And some other components are described as book chapters, describing a little
 bit more its architecture and workflow.</p>
 <ul>
-<li><a href="../cart-architecture/">Cart Architecture</a></li>
-<li><a href="../product-architecture/">Product Architecture</a></li>
+<li><a href="http://elcodi.io/docs/book/cart-architecture/">Cart Architecture</a></li>
+<li><a href="http://elcodi.io/docs/book/product-architecture/">Product Architecture</a></li>
 </ul>
 <h3 id="factory">Factory<a class="headerlink" href="#factory" title="Permanent link"> #</a></h3>
 <p>PHP Class with one single responsibility: create a new entity instance. This
@@ -624,7 +624,7 @@ an specific environment</p>
 </ul>
 <p>To know a little bit more about factories, please follow this interesting links:</p>
 <ul>
-<li><a href="../../cookbook/implementation/implement-a-factory/">How to implement a factory</a></li>
+<li><a href="http://elcodi.io/docs/cookbook/implementation/implement-a-factory/">How to implement a factory</a></li>
 <li><a href="http://mmoreram.com/blog/2013/12/23/factory-pattern-in-symfony2/">Factory pattern in Symfony2</a></li>
 </ul>
 <h3 id="plugin">Plugin<a class="headerlink" href="#plugin" title="Permanent link"> #</a></h3>
@@ -637,14 +637,14 @@ Plugins, following their specification.</p>
 <p>There is a full book chapter about Elcodi plugins, and this part is going to be
 improved day by day with new ideas, with new developments and with new
 specifications.</p>
-<p><a href="../plugins/">Elcodi Plugins</a></p>
+<p><a href="http://elcodi.io/docs/book/plugins/">Elcodi Plugins</a></p>
 <h3 id="repository">Repository<a class="headerlink" href="#repository" title="Permanent link"> #</a></h3>
 <p>Each entity has it's own repository. When we refer to a repository, we are
 automatically referring to the Doctrine Repositories.</p>
 <p>Each repository is created by default and defined inside the Dependency
 Injection service map using the structure <code>elcodi.repository.{entity_name}</code>.</p>
 <p>To know more about Repositories in Elcodi, please check these links.</p>
-<p><a href="../../cookbook/implementation/implement-a-repository/">How to implement a Repository</a>
+<p><a href="http://elcodi.io/docs/cookbook/implementation/implement-a-repository/">How to implement a Repository</a>
 <a href="http://doctrine-orm.readthedocs.org/en/latest/reference/working-with-objects.html">Doctrine Repositories</a></p>
 <h3 id="value">Value<a class="headerlink" href="#value" title="Permanent link"> #</a></h3>
 <p>Refers to a value of an attribute and assigned to a Variant.<br />

@@ -586,10 +586,10 @@ you a complete service layer for your application, so knowing and understanding
 this layer will help you a lot in your own implementation.</p>
 <p>We will split all the model in two parts, the Cart part and the Order part. Both
 parts are connected but they can (and should) be treated in a very isolated way.</p>
-<p><img alt="Cart component model" src="../../image/model/cart-component.png" /></p>
+<p><img alt="Cart component model" src="../images/model-cart-component.png" /></p>
 <p>First of all, forget about the Purchasable instance. This is just the way we
 will refer to the concept of Product (please, read the 
-<a href="../product-architecture/">Product Architecture</a> chapter in order to know more
+<a href="http://elcodi.io/docs/book/product-architecture/">Product Architecture</a> chapter in order to know more
 about it. Let's focus on how the Cart and Order are built.</p>
 <h2 id="cart">Cart<a class="headerlink" href="#cart" title="Permanent link"> #</a></h2>
 <p>The bucket itself. Every customer has it's own cart, and it's life is connected
@@ -620,7 +620,7 @@ CartLine is designed using
 <a href="https://en.wikipedia.org/wiki/Object_composition">Object Composition</a>. It means
 that the life of all CartLine instances are coupled to the life of the Cart
 instance.</p>
-<p><img alt="Cart model" src="../../image/model/cart-cartline.png" /></p>
+<p><img alt="Cart model" src="../images/model-cart-cartline.png" /></p>
 <h2 id="loading-the-cart">Loading the cart<a class="headerlink" href="#loading-the-cart" title="Permanent link"> #</a></h2>
 <p>As we said, the cart is loaded each time, but, who loads it? In fact, and
 because of our service layer, you will find that loading cart is as easy as
@@ -650,9 +650,9 @@ checks, and invalid cart lines will be safely removed. Of course, and because
 the project uses a strong event layer, some events will be dispatched during the
 process.</p>
 <ul>
-<li><a href="../events/#cartpreload">cart.preload</a></li>
-<li><a href="../events/#cartonload">cart.onload</a></li>
-<li><a href="../events/#cartinconsistent">cart.inconsistent</a></li>
+<li><a href="http://elcodi.io/docs/book/events/#cartpreload">cart.preload</a></li>
+<li><a href="http://elcodi.io/docs/book/events/#cartonload">cart.onload</a></li>
+<li><a href="http://elcodi.io/docs/book/events/#cartinconsistent">cart.inconsistent</a></li>
 </ul>
 <p>The question then is... how can I know that a cart has been loaded? Well, easy
 indeed.</p>
@@ -673,7 +673,7 @@ $isLoaded = $cart-&gt;isLoaded();
 
 <h2 id="adding-purchasables">Adding Purchasables<a class="headerlink" href="#adding-purchasables" title="Permanent link"> #</a></h2>
 <p>The main action of a cart is to add a new Product, right? Well, as you will see
-in the <a href="../product-architecture/">Product architecture</a> chapter, we are not
+in the <a href="http://elcodi.io/docs/book/product-architecture/">Product architecture</a> chapter, we are not
 working with products, but with Purchasable instances.</p>
 <p>Each purchasable must be added into the cart by using the CartManager, a service
 that is intended for managing Purchasables and Lines in a very intuitive way.</p>
@@ -709,8 +709,10 @@ implementations, so in this example we use Product.</p>
 product only if they are really available to be purchased. Otherwise, you will
 get some exceptions. The cart is automatically reloaded as well, and
 all prices are rebuilt again.</p>
-<p>This method dispatches these events:
-* <a href="../events#cart_lineonadd">cart_line.onadd</a></p>
+<p>This method dispatches these events:</p>
+<ul>
+<li><a href="http://elcodi.io/docs/book/events/#cart_lineonadd">cart_line.onadd</a></li>
+</ul>
 <h2 id="removing-purchasables">Removing Purchasables<a class="headerlink" href="#removing-purchasables" title="Permanent link"> #</a></h2>
 <p>You can remove purchasables as well, by using another method in the service
 CartManager. Let's see an example using the same service and construction
@@ -735,9 +737,11 @@ quantity of the purchasable in the cart, then this line is removed from the
 cart.</p>
 <p>After that, the cart is automatically reloaded as well, and all prices are
 rebuilt again.</p>
-<p>This method dispatches these events:
-* <a href="../events#cart_lineonremove">cart_line.onadd</a> only if the purchasable is removed
-from the cart</p>
+<p>This method dispatches these events:</p>
+<ul>
+<li><a href="http://elcodi.io/docs/book/events/#cart_lineonremove">cart_line.onadd</a> only if the purchasable is removed
+from the cart</li>
+</ul>
 <h2 id="adding-a-coupon">Adding a coupon<a class="headerlink" href="#adding-a-coupon" title="Permanent link"> #</a></h2>
 <p>You can add some coupons as well in your cart. Because we think that both
 concepts are not the same and shouldn't be coupled at all, we decided to
@@ -745,7 +749,7 @@ separate them in two components.</p>
 <p>Both components have their own events, so all logic regarding how to add coupons
 into the cart is placed in a third component called CartCoupon. To know a little
 bit more about coupons, please read
-<a href="../coupon-architecture/">Coupon Architecture</a> chapter.</p>
+<a href="http://elcodi.io/docs/book/coupon-architecture/">Coupon Architecture</a> chapter.</p>
 <p>For adding a new coupon into the cart, you need to use the service
 <code>CartCouponManager</code>. This service has some interesting methods for the
 management of all coupons in your cart.</p>
@@ -792,8 +796,10 @@ $this
 
 <p>The definition of that example is not the same than the last one, so this one
 depends on the <code>CouponRepository</code> service as well.</p>
-<p>This method dispatches these events:
-* <a href="../events#cartcoupononapply">cart_coupon.onapply</a></p>
+<p>This method dispatches these events:</p>
+<ul>
+<li><a href="http://elcodi.io/docs/book/events/#cartcoupononapply">cart_coupon.onapply</a></li>
+</ul>
 <h2 id="removing-a-coupon">Removing a coupon<a class="headerlink" href="#removing-a-coupon" title="Permanent link"> #</a></h2>
 <p>You can remove a coupon from a cart using the same service than the
 last example.</p>
@@ -824,8 +830,10 @@ $this
 </code></pre>
 
 <p>After these actions, the cart is completely reloaded, like other actions.</p>
-<p>This method dispatches these events:
-* <a href="../events#cartcoupononremove">cart_coupon.onremove</a></p>
+<p>This method dispatches these events:</p>
+<ul>
+<li><a href="http://elcodi.io/docs/book/events/#cartcoupononremove">cart_coupon.onremove</a></li>
+</ul>
 <h2 id="getting-cart-coupons">Getting Cart coupons<a class="headerlink" href="#getting-cart-coupons" title="Permanent link"> #</a></h2>
 <p>Given a cart, you should be able to get all coupons applied. We'll
 use the same manager again.</p>
@@ -849,9 +857,9 @@ $order = $this
 
 <p>This action produces as well some new events.</p>
 <ul>
-<li><a href="../events/#orderprecreated">order.precreated</a></li>
-<li><a href="../events/#orderoncreated">order.oncreated</a></li>
-<li><a href="../events/#orderlineoncreated">order_line.oncreated</a></li>
+<li><a href="http://elcodi.io/docs/book/events/#orderprecreated">order.precreated</a></li>
+<li><a href="http://elcodi.io/docs/book/events/#orderoncreated">order.oncreated</a></li>
+<li><a href="http://elcodi.io/docs/book/events/#orderlineoncreated">order_line.oncreated</a></li>
 </ul>
 <p>After this action, the cart becomes ordered</p>
 <pre><code class="php">$cart = $this-&gt;getLoadedCart();
@@ -868,7 +876,7 @@ $cartIsOrdered = $cart-&gt;isOrdered();
 <p>The order should always be a plain copy of a cart. Because the
 object's behaviour should be as immutable as possible, all prices are calculated
 and saved in database.</p>
-<p><img alt="Order model" src="../../image/model/order-orderline.png" /></p>
+<p><img alt="Order model" src="../images/model-order-orderline.png" /></p>
 <p>Inside the entity, you will find this information:</p>
 <ul>
 <li>Cart where the order belongs</li>
@@ -896,8 +904,8 @@ $orderCoupons = $this
 <p>When an order is created, each instance can travel through an amount of
 predefined states.</p>
 <p>With the basic implementation, you will find defined state machines for payment
-and shipping. To know more about this, please, read the <a href="../payments/">Payments</a>
-and the <a href="../shipping/">Shipping</a> chapters</p></div>
+and shipping. To know more about this, please, read the <a href="http://elcodi.io/docs/book/payments/">Payments</a>
+and the <a href="http://elcodi.io/docs/book/shipping/">Shipping</a> chapters</p></div>
             
         </div>
 

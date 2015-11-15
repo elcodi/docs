@@ -601,7 +601,7 @@ the user or using stored-in-session data</li>
 <li>Some currency information is loaded the same way than language</li>
 <li>The request is processed</li>
 </ul>
-<p><img alt="Top bar" src="../../image/top-bar.png" /></p>
+<p><img alt="Top bar" src="../images/top-bar.png" /></p>
 <p>Related links</p>
 <ul>
 <li><a href="http://symfony.com/doc/current/book/http_fundamentals.html">HTTP Fundamentals</a></li>
@@ -614,7 +614,7 @@ that the way of retrieving the products is by filtering by the field <code>inHom
 <p><strong>Given</strong> - As a user, no matter the credentials<br />
 <strong>When</strong> - We visit the home page, http://localhost:8000<br />
 <strong>Then</strong> - We can see the N first products  </p>
-<p><img alt="Homepage" src="../../image/homepage.png" /></p>
+<p><img alt="Homepage" src="../images/homepage.png" /></p>
 <h2 id="load-the-product-page">Load the product page<a class="headerlink" href="#load-the-product-page" title="Permanent link"> #</a></h2>
 <p>The product page is one of the most important landing pages in the whole
 e-commerce project. You will find all product related information and all the
@@ -624,10 +624,10 @@ needed buttons for adding the product in your Cart.</p>
 <strong>Then</strong> - All the product information is reached from the database and shown in
 a single page. Because the product has no variants, you can add this product in
 your cart by pushing the <em>add to cart</em> button.</p>
-<p><img alt="Homepage" src="../../image/product.png" /></p>
+<p><img alt="Homepage" src="../images/product.png" /></p>
 <p>Related links</p>
 <ul>
-<li><a href="../product-architecture/">Product Architecture</a></li>
+<li><a href="http://elcodi.io/docs/book/product-architecture/">Product Architecture</a></li>
 </ul>
 <p>Improvements</p>
 <ul>
@@ -647,10 +647,10 @@ well all the variants information.</p>
 <strong>Then</strong> - All the product information is reached from the database and shown in
 a single page. Each variant will provide you the information about adding it
 into cart, considering each variant as a product with some defined values.</p>
-<p><img alt="Variant" src="../../image/variant.png" /></p>
+<p><img alt="Variant" src="../images/variant.png" /></p>
 <p>Related links</p>
 <ul>
-<li><a href="../product-architecture/">Product Architecture</a></li>
+<li><a href="http://elcodi.io/docs/book/product-architecture/">Product Architecture</a></li>
 </ul>
 <h2 id="load-the-category-page">Load the category page<a class="headerlink" href="#load-the-category-page" title="Permanent link"> #</a></h2>
 <p>Just a search page, filtering by categories</p>
@@ -658,10 +658,10 @@ into cart, considering each variant as a product with some defined values.</p>
 <strong>When</strong> - We want to see all products from a category, http://localhost:8000/category/women-shirts/1<br />
 <strong>Then</strong> - This page has the same behavior than the home page, but filtering by
 category.</p>
-<p><img alt="Category" src="../../image/category.png" /></p>
+<p><img alt="Category" src="../images/category.png" /></p>
 <p>Related links</p>
 <ul>
-<li><a href="../product-architecture/">Product Architecture</a></li>
+<li><a href="http://elcodi.io/docs/book/product-architecture/">Product Architecture</a></li>
 </ul>
 <h2 id="register">Register<a class="headerlink" href="#register" title="Permanent link"> #</a></h2>
 <p>Register a new user in the application.</p>
@@ -671,11 +671,11 @@ category.</p>
 <em>register</em> button, a new user is added into the database. Is important to know
 that our stored password is never saved plain and decrypted. We use BCrypt for
 that reason.</p>
-<p><img alt="Register" src="../../image/register.png" /></p>
+<p><img alt="Register" src="../images/register.png" /></p>
 <p>Events dispatched</p>
 <ul>
-<li><a href="../events#userregister">user.register</a></li>
-<li><a href="../events#customerregister">customer.register</a></li>
+<li><a href="http://elcodi.io/docs/book/events/#userregister">user.register</a></li>
+<li><a href="http://elcodi.io/docs/book/events/#customerregister">customer.register</a></li>
 </ul>
 <p>Sent emails</p>
 <ul>
@@ -695,7 +695,7 @@ that reason.</p>
 given password and stored one is the same. If they are, then the user is
 authenticated in current session and allowed to access into the private zone.
 Otherwise, the user is redirected to the same page with relevant errors.</p>
-<p><img alt="Login" src="../../image/login.png" /></p>
+<p><img alt="Login" src="../images/login.png" /></p>
 <p>Related links</p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Bcrypt">Bcrypt in Wikipedia</a></li>

@@ -636,7 +636,7 @@ project indeed.</li>
 dependencies. Remember that Elcodi has it's own bundle dependencies resolver.
 Please, read careful this chapter in order to understand how to define properly
 these dependencies.</p>
-<p><a href="../../cookbook/installation/install-dependent-bundles/">How to Install dependent Bundles</a></p>
+<p><a href="http://elcodi.io/docs/cookbook/installation/install-dependent-bundles/">How to Install dependent Bundles</a></p>
 <h2 id="plugin-definition">Plugin definition<a class="headerlink" href="#plugin-definition" title="Permanent link"> #</a></h2>
 <p>There is a very simple way to define a Plugin. What is the name of the plugin, 
 what are the fields that will configure it, and some more information is what
@@ -887,7 +887,7 @@ is required, the result will be exactly the same than the last piece of code.</p
 <p>You can do that using the command console by using the <code>elcodi:plugins:load</code>
 command. If you have configured your plugin the right way, then you should have
 your Plugin configuration panel in the admin side.</p>
-<p><a href="../../cookbook/installation/install-a-plugin/">How to Install a plugin</a></p>
+<p><a href="http://elcodi.io/docs/cookbook/installation/install-a-plugin/">How to Install a plugin</a></p>
 <p>After loading the plugin, of course, you need to add it in your AppKernel file.
 Because some plugins have dependencies and because it's main mission is 
 overwriting logic, you should instantiate them at the end of the class.</p>
@@ -944,8 +944,8 @@ have to overwrite your desired entities, and old ones will not be used anymore
 as the main entity (unless you extend them, of course).</p>
 <p>You can take a look at these chapters in order to understand properly how easy
 is overwriting the Elcodi model.</p>
-<p><a href="../../cookbook/implementation/implement-an-entity/">How to implement an entity</a>
-<a href="../../cookbook/overwrite/overwrite-an-entity/">How to overwrite an entity</a></p>
+<p><a href="http://elcodi.io/docs/cookbook/implementation/implement-an-entity/">How to implement an entity</a>
+<a href="http://elcodi.io/docs/cookbook/overwrite/overwrite-an-entity/">How to overwrite an entity</a></p>
 <p>If a plugin overwrites a new entity or creates new entities that depends on 
 existing ones, then these dependant bundles that own these entities become 
 dependencies of the plugins itself. Ensure that they are defined as such.</p>
@@ -954,9 +954,9 @@ dependencies of the plugins itself. Ensure that they are defined as such.</p>
 Symfony way. You will find some nice information in the Symfony documentation
 about how to overwrite any part of the bundle, and in some of our cookbooks.</p>
 <p><a href="http://symfony.com/doc/current/cookbook/bundles/override.html">How to Override any Part of a Bundle</a>
-<a href="../../cookbook/overwrite/overwrite-a-service/">How to overwrite a service</a></p>
+<a href="http://elcodi.io/docs/cookbook/overwrite/overwrite-a-service/">How to overwrite a service</a></p>
 <p>Of course, you can overwrite some parameters</p>
-<p><a href="../../cookbook/overwrite/overwrite-a-parameter/">How to overwrite a parameter</a></p>
+<p><a href="http://elcodi.io/docs/cookbook/overwrite/overwrite-a-parameter/">How to overwrite a parameter</a></p>
 <h2 id="adding-configuration">Adding configuration<a class="headerlink" href="#adding-configuration" title="Permanent link"> #</a></h2>
 <p>One of the main plugin responsibilities (and needs many times) is to add
 configuration values into the main project. This means that not only should be
@@ -981,7 +981,7 @@ project will automatically detect new routes.</p>
 project, and the cleanest way of doing that is by adding some listeners to our
 events.</p>
 <p>Please, take a look at our event list.</p>
-<p><a href="../events/">Elcodi Events</a></p></div>
+<p><a href="http://elcodi.io/docs/book/events/">Elcodi Events</a></p></div>
             
         </div>
 

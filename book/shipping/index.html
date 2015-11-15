@@ -580,10 +580,10 @@ ciertas prácticas de arquitectura.</p>
 <p>A continuación te ofrecemos una serie de enlaces donde puedes informarte un poco
 más.</p>
 <ul>
-<li><a href="../plugins/">Plugins</a></li>
+<li><a href="http://elcodi.io/docs/book/plugins/">Plugins</a></li>
 <li><a href="http://symfony.com/doc/current/components/dependency_injection/introduction.html">Dependency Injection Symfony Component</a></li>
 <li><a href="http://symfony.com/doc/current/components/event_dispatcher/introduction.html">Event Dispatcher Symfony Component</a></li>
-<li><a href="../../component/state-transition-machine/">Elcodi State Transition Machine Component</a></li>
+<li><a href="http://elcodi.io/docs/component/state-transition-machine/">Elcodi State Transition Machine Component</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Finite-state_machine">Finite State Machine</a></li>
 </ul>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link"> #</a></h2>
@@ -615,7 +615,7 @@ $shippingMethods = $this
 </code></pre>
 
 <p>Internamente, este trozo de código lanza un evento llamado 
-<em><a href="../events/#shipping.collect">"shipping.collect"</a></em>, encargado exclusivamente de
+<em><a href="http://elcodi.io/docs/book/events/#shipping.collect">"shipping.collect"</a></em>, encargado exclusivamente de
 recolectar todos estos métodos de envío.</p>
 <p>Es necesario decir que en este punto, el componente Event Dispatcher de Symfony
 no se está utilizando de forma estricta a su definición, pues sé utiliza como 
@@ -625,14 +625,14 @@ listeners), pero en este caso, el objeto evento tiene un método <code>add</code
 que, aún no importando realmente el orden de ejecución de los listeners, se está
 modificando el propio evento. Un evento que cambia... esto es raro, verdad?</p>
 <ul>
-<li><a href="../../cookbook/implementation/implement-a-collector/">Implement a collector</a></li>
+<li><a href="http://elcodi.io/docs/cookbook/implementation/implement-a-collector/">Implement a collector</a></li>
 </ul>
 <p>Pero bueno, el evento de recolección es lanzado, y todos los Plugins que están
 escuchados son llamados a añadir sus métodos a partir del Cart proporcionado
 por el evento</p>
 <h2 id="adding-new-shipping-methods">Adding new Shipping Methods<a class="headerlink" href="#adding-new-shipping-methods" title="Permanent link"> #</a></h2>
 <p>Para tí, programador, que quieres añadir un método de envío, este es tu sitio.
-Recuerdas el evento <em><a href="../events/#shipping.collect">"shipping.collect"</a></em>? Pues 
+Recuerdas el evento <em><a href="http://elcodi.io/docs/book/events/#shipping.collect">"shipping.collect"</a></em>? Pues 
 bien, debemos escucharlo para añadir nuestras formas de envío.</p>
 <p>Para nuestro ejemplo, debemos considerar si nuestro Cart cumple las espectativas
 que nosotros queremos, y de ser así, añadir un nuevo sistema de envío gratuito.</p>
@@ -810,7 +810,7 @@ $orderShippingAmount = $order-&gt;getShippingAmount();
 on this documentation, please take a look at the State Transition Machine 
 documentation.</p>
 <ul>
-<li><a href="../../component/state-transition-machine/">State Transition Machine</a></li>
+<li><a href="http://elcodi.io/docs/component/state-transition-machine/">State Transition Machine</a></li>
 </ul>
 <p>Bamboo por defecto propone un diagrama de estados de envío como el que podemos
 ver aqui.</p>
