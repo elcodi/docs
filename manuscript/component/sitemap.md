@@ -318,6 +318,7 @@ elcodi.sitemap_dumper.main
 Calling this service, the DI will create a SitemapDumper instance, ready
 to be used.
 
+``` php
 /**
  * Class SitemapDumper
  */
@@ -331,6 +332,7 @@ class SitemapDumper
      */
     public function dump($basepath, $language = null);
 }
+```
 
 As you can see, both services require the basepath of the site. It means that
 you can call, for example, the `build` method using firstly the basepath 
