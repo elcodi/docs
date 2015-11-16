@@ -826,19 +826,21 @@ builders.</p>
 
 <p>Calling this service, the DI will create a SitemapDumper instance, ready
 to be used.</p>
-<p>/<strong>
+<pre><code class="php">/**
  * Class SitemapDumper
  */
 class SitemapDumper
 {
-    /</strong>
+    /**
      * Dump builder using a dumper
-     <em>
+     *
      * @param string      $basepath Base path
      * @param string|null $language Language
-     </em>/
+     */
     public function dump($basepath, $language = null);
-}</p>
+}
+</code></pre>
+
 <p>As you can see, both services require the basepath of the site. It means that
 you can call, for example, the <code>build</code> method using firstly the basepath 
 <code>http://localhost:8000</code> and then <code>https://myurl.com</code>. Because this information
