@@ -2,7 +2,7 @@ How to Install a plugin
 =======================
 
 To read about plugins, please read all the 
-[Plugins Chapter](http://elcodi.io/docs/book/bundles/plugins/) of our book.
+[Plugins Chapter](http://elcodi.io/docs/book/plugins/) of our book.
 
 To install a plugin, you must treat it as a simple third party bundle.
 

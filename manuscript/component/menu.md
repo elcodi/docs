@@ -487,7 +487,7 @@ This bundle define all changers in this order
 ## Cache
 
 Each changer can be used before or after cache by setting its stage. Please, 
-read the [component documentation](http://elcodi.io/docs/components/menu/) to 
+read the [component documentation](http://elcodi.io/docs/component/menu/) to 
 understand what means this configuration and what is indended for.
 
 ``` yaml

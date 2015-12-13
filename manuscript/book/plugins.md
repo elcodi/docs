@@ -173,7 +173,7 @@ so you will make sure that everybody will understand more easily what you're
 trying to do.
 
 * [How to install dependent Bundles](http://elcodi.io/docs/cookbook/installation/install-dependent-bundles/)
-* [Extensions](http://elcodi.io/docs/book/bundles/extensions/)
+* [Extensions](http://elcodi.io/docs/book/standards/#bundles)
 * [Some Dependency Injection standards](http://elcodi.io/docs/book/standards/dependency-injection/)
 
 Remember to follow some of our philosophy. Small services and well defined.
