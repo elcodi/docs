@@ -80,7 +80,7 @@ twig, but how many users use the controller.
 
 If our desire is tracking the page view, then you should use the Javascript
 library, designed and created for that purpose. Read the
-[#initializing-metrics](Initializing metrics) section
+Initializing metrics section
 
 ``` jinja
 _etc.push(["123456789", 'homepage', {{user.id}}, '1']);
