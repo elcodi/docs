@@ -35,49 +35,226 @@ Please, follow this cookbook if you need more information about elcodi factories
 
 ## Coupon types
 
-There are two type of coupons available in Elcodi, the amout coupons and the
-percent coupons.
+> Important. This part of the documentation describes how Elcodi manages the
+> types involving the elcodi's Cart implementation.
 
-``` php
-/**
- * Class ElcodiCouponTypes
- */
-final class ElcodiCouponTypes
-{
-    /**
-     * @var integer
-     *
-     * Coupon type absolute amount
-     */
-    const TYPE_AMOUNT = 1;
-    
-    /**
-     * @var integer
-     *
-     * Coupon type percent
-     */
-    const TYPE_PERCENT = 2;
-}
-```
-
-The Coupon class has a private property called `$type` and can be filled using
-always static variables of that final class.
+There are several types of application in elcodi Coupons and each of them uses
+a certain part of the Coupon entity. The type of the coupon can be defined using
+the field `$type` of Coupon.
 
 ``` php
 use Elcodi\Component\Coupon\Entity\Coupon;
-use Elcodi\Component\Coupon\ElcodiCouponTypes;
 
 $coupon = new Coupon();
-$coupon->setType(ElcodiCouponTypes::TYPE_AMOUNT);
+$coupon->setType($type);
 ```
 
-By default, any coupon created from the Coupon factory uses 
-`TYPE_AMOUNT` type.
+Let's take a look to each one.
 
-When the coupon type is the amount one, you can use the method `setPrice()` to
-define the total value of the coupon, while if the coupon type is the percent
-one, then you must use the method `setDiscount` in order to allow the system
-calculate the final value of the Cart.
+### Absolute value coupons
+
+This is the common and default coupon type. You apply an specific discount for
+the cart defined by an specific amount, for example 10 euros.
+
+``` php
+use Elcodi\Component\CartCoupon\Applicator\AbsoluteCartCouponApplicator;
+
+$price = ... // Money instance
+
+$coupon->setType(AbsoluteCartCouponApplicator::id();
+$coupon->setPrice($price);
+```
+
+### Percent coupons
+
+This coupon introduces a percent discount for the final cart.
+
+``` php
+use Elcodi\Component\CartCoupon\Applicator\PercentCartCouponApplicator;
+
+$coupon->setType(PercentCartCouponApplicator::id();
+$coupon->setDiscount(15);
+```
+
+### NxM coupons
+
+This coupon is intended to be a *"buy n units and pay only m"*. Because the
+system should always be opened for evolution, the configuration of this coupon
+is done by using an specific syntax.
+
+``` php
+use Elcodi\Component\CartCoupon\Applicator\Abstracts\AbstractMxNCartCouponApplicator;
+
+$coupon->setType(AbstractMxNCartCouponApplicator::id();
+$coupon->setValue('xxx');
+```
+
+In this chapter we will explain how to configure these coupons. This
+configuration is splitted in three blocks. Each one defines an specific part of
+the coupon and they are splitted by the symbol `:`.
+
+#### NxM Configuration
+
+First block. Configures the NxM definition:
+
+* N: Units to buy
+* M: Units to pay
+
+For example, 3x2 means pay 2 and buy 3. That simple.
+
+#### Filtering Configuration
+
+The second block aims to be the filter of the coupon. What elements should this
+coupon be applied on? You can filter by using product ids, category ids or
+manufacturer ids.
+
+Let's see some examples with the explanation of the meaning (all of them start
+with Pay 2 and Buy 3):
+
+* **3x2:p(12)** - Only applies to purchasables with id 12
+* **3x2:p(50,2)** - Only applies to purchasables with id 50 or 2
+* **3x2:c(1)** - Only applies to purchasables of category with id 1
+* **3x2:c(1,3)** - Only applies to purchasables of category with id 1 or 3
+* **3x2:m(5)** - Only applies to purchasables of manufacturer with id 5
+* **3x2:m(5,45)** - Only applies to purchasables of manufacturer with id 5 or 45
+* **3x2:c(50)&m(2)** - Only applies to purchasables of category with id 50 and
+manufacturer with id 2
+* **3x2:p(10)|m(2)|c(4,10)** - Only applies to purchasables that have id 50, or
+with category 4 or 10, or with manufacturer 2.
+
+#### Modifiers Configuration
+
+Last block. Once you've filtered, you can configure some special behaviors of
+your coupon. Each one of the modifiers are a simple letter at the end of the
+expression. You can add as many as you need, no matter the order between them.
+
+The first group of modifiers are related to what family of Purchasables this
+coupon should apply with.
+
+* P - Coupon applicable only on Products
+* V - Coupon applicable only on Variants
+* K - Coupon applicable only on Packs
+
+You can combine them all
+
+* PK - Coupon applicable only on Products and Packs
+
+Lets see an example
+
+* **3x2:c(12):PK** - Pay 2 and buy 3. Applicable only on products and packs that
+are from category with id 12.
+
+The second group of modifiers are related to how to apply the coupon once all
+purchasable elements are selected.
+
+By default, your MxN coupon is applied to each purchasable selected. For
+example, if your cart has a product 3 times and a pack 3 times, both available
+for a 3x2 coupon, the coupon will be applied for each one in an independent way,
+so you will pay 2 products and 2 packs. One of each them will be free.
+
+* G - Group modificator. This modificator allow you to treat all purchasables as
+the same when applying the coupon. With the last example, you would have 6
+purchasables, and you would get free only the 2 most cheap (no matter if they
+are products or packs).
+
+**3x2:c(12):PKG**
+
+### Adding a new filter
+
+You can add a new filter by creating a new implementation of interface
+`Symfony\Component\ExpressionLanguage\ExpressionLanguage`.
+
+This filter uses the ExpressionLanguage that Symfony provides, so make sure you
+know how it works.
+
+This interface requires you to implement a method called registerFunction.
+
+``` php
+/**
+ * Interface ExpressionLanguageFunctionInterface.
+ */
+interface ExpressionLanguageFunctionInterface
+{
+    /**
+     * Register function.
+     *
+     * @param ExpressionLanguage $expressionLanguage Expression language
+     */
+    public function registerFunction(ExpressionLanguage $expressionLanguage);
+}
+```
+
+Once you have created this implementation, you need to register it in your
+dependency injection file with a tag.
+
+``` yml
+services:
+    elcodi.cart_coupon_applicator_function.custom:
+        class: My\Custom\Applicator\Function\Namespace
+        public: false
+        tags:
+            - { name: elcodi.cart_coupon_applicator_function }
+```
+
+### Adding a new Type
+
+You can add a new Type as well. In that case you must create a new
+implementation for interface
+`Elcodi\Component\CartCoupon\Applicator\Interfaces\CartCouponApplicatorInterface`.
+
+This interface requires you to implement these methods.
+
+``` php
+/**
+ * Interface CartCouponApplicatorInterface.
+ */
+interface CartCouponApplicatorInterface
+{
+    /**
+     * Get the id of the Applicator.
+     *
+     * @return string Applicator id
+     */
+    public static function id();
+
+    /**
+     * Can be applied.
+     *
+     * @param CartInterface   $cart   Cart
+     * @param CouponInterface $coupon Coupon
+     *
+     * @return bool Can be applied
+     */
+    public function canBeApplied(
+        CartInterface $cart,
+        CouponInterface $coupon
+    );
+
+    /**
+     * Calculate coupon absolute value.
+     *
+     * @param CartInterface   $cart   Cart
+     * @param CouponInterface $coupon Coupon
+     *
+     * @return MoneyInterface|false Absolute value for this coupon in this cart.
+     */
+    public function getCouponAbsoluteValue(
+        CartInterface $cart,
+        CouponInterface $coupon
+    );
+}
+```
+
+Once you have implemented this method, then you need to register your new
+service in your dependency injection configuration file.
+
+``` yml
+services:
+    elcodi.cart_coupon_applicator.custom:
+        class: My\Custom\Applicator\Namespace
+        tags:
+            - { name: elcodi.cart_coupon_applicator }
+```
 
 ## Coupon enforcement
 
