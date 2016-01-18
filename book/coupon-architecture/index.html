@@ -583,44 +583,194 @@ the name <code>elcodi.factory.coupon</code> and is available for injection as fo
 <li><a href="http://elcodi.io/docs/cookbook/implementation/implement-a-factory/">How to implement a factory</a></li>
 </ul>
 <h2 id="coupon-types">Coupon types<a class="headerlink" href="#coupon-types" title="Permanent link"> #</a></h2>
-<p>There are two type of coupons available in Elcodi, the amout coupons and the
-percent coupons.</p>
+<blockquote>
+<p>Important. This part of the documentation describes how Elcodi manages the
+types involving the elcodi's Cart implementation.</p>
+</blockquote>
+<p>There are several types of application in elcodi Coupons and each of them uses
+a certain part of the Coupon entity. The type of the coupon can be defined using
+the field <code>$type</code> of Coupon.</p>
+<pre><code class="php">use Elcodi\Component\Coupon\Entity\Coupon;
+
+$coupon = new Coupon();
+$coupon-&gt;setType($type);
+</code></pre>
+
+<p>Let's take a look to each one.</p>
+<h3 id="absolute-value-coupons">Absolute value coupons<a class="headerlink" href="#absolute-value-coupons" title="Permanent link"> #</a></h3>
+<p>This is the common and default coupon type. You apply an specific discount for
+the cart defined by an specific amount, for example 10 euros.</p>
+<pre><code class="php">use Elcodi\Component\CartCoupon\Applicator\AbsoluteCartCouponApplicator;
+
+$price = ... // Money instance
+
+$coupon-&gt;setType(AbsoluteCartCouponApplicator::id();
+$coupon-&gt;setPrice($price);
+</code></pre>
+
+<h3 id="percent-coupons">Percent coupons<a class="headerlink" href="#percent-coupons" title="Permanent link"> #</a></h3>
+<p>This coupon introduces a percent discount for the final cart.</p>
+<pre><code class="php">use Elcodi\Component\CartCoupon\Applicator\PercentCartCouponApplicator;
+
+$coupon-&gt;setType(PercentCartCouponApplicator::id();
+$coupon-&gt;setDiscount(15);
+</code></pre>
+
+<h3 id="nxm-coupons">NxM coupons<a class="headerlink" href="#nxm-coupons" title="Permanent link"> #</a></h3>
+<p>This coupon is intended to be a <em>"buy n units and pay only m"</em>. Because the
+system should always be opened for evolution, the configuration of this coupon
+is done by using an specific syntax.</p>
+<pre><code class="php">use Elcodi\Component\CartCoupon\Applicator\Abstracts\AbstractMxNCartCouponApplicator;
+
+$coupon-&gt;setType(AbstractMxNCartCouponApplicator::id();
+$coupon-&gt;setValue('xxx');
+</code></pre>
+
+<p>In this chapter we will explain how to configure these coupons. This
+configuration is splitted in three blocks. Each one defines an specific part of
+the coupon and they are splitted by the symbol <code>:</code>.</p>
+<h4 id="nxm-configuration">NxM Configuration<a class="headerlink" href="#nxm-configuration" title="Permanent link"> #</a></h4>
+<p>First block. Configures the NxM definition:</p>
+<ul>
+<li>N: Units to buy</li>
+<li>M: Units to pay</li>
+</ul>
+<p>For example, 3x2 means pay 2 and buy 3. That simple.</p>
+<h4 id="filtering-configuration">Filtering Configuration<a class="headerlink" href="#filtering-configuration" title="Permanent link"> #</a></h4>
+<p>The second block aims to be the filter of the coupon. What elements should this
+coupon be applied on? You can filter by using product ids, category ids or
+manufacturer ids.</p>
+<p>Let's see some examples with the explanation of the meaning (all of them start
+with Pay 2 and Buy 3):</p>
+<ul>
+<li><strong>3x2:p(12)</strong> - Only applies to purchasables with id 12</li>
+<li><strong>3x2:p(50,2)</strong> - Only applies to purchasables with id 50 or 2</li>
+<li><strong>3x2:c(1)</strong> - Only applies to purchasables of category with id 1</li>
+<li><strong>3x2:c(1,3)</strong> - Only applies to purchasables of category with id 1 or 3</li>
+<li><strong>3x2:m(5)</strong> - Only applies to purchasables of manufacturer with id 5</li>
+<li><strong>3x2:m(5,45)</strong> - Only applies to purchasables of manufacturer with id 5 or 45</li>
+<li><strong>3x2:c(50)&amp;m(2)</strong> - Only applies to purchasables of category with id 50 and
+manufacturer with id 2</li>
+<li><strong>3x2:p(10)|m(2)|c(4,10)</strong> - Only applies to purchasables that have id 50, or
+with category 4 or 10, or with manufacturer 2.</li>
+</ul>
+<h4 id="modifiers-configuration">Modifiers Configuration<a class="headerlink" href="#modifiers-configuration" title="Permanent link"> #</a></h4>
+<p>Last block. Once you've filtered, you can configure some special behaviors of
+your coupon. Each one of the modifiers are a simple letter at the end of the
+expression. You can add as many as you need, no matter the order between them.</p>
+<p>The first group of modifiers are related to what family of Purchasables this
+coupon should apply with.</p>
+<ul>
+<li>P - Coupon applicable only on Products</li>
+<li>V - Coupon applicable only on Variants</li>
+<li>K - Coupon applicable only on Packs</li>
+</ul>
+<p>You can combine them all</p>
+<ul>
+<li>PK - Coupon applicable only on Products and Packs</li>
+</ul>
+<p>Lets see an example</p>
+<ul>
+<li><strong>3x2:c(12):PK</strong> - Pay 2 and buy 3. Applicable only on products and packs that
+are from category with id 12.</li>
+</ul>
+<p>The second group of modifiers are related to how to apply the coupon once all
+purchasable elements are selected.</p>
+<p>By default, your MxN coupon is applied to each purchasable selected. For
+example, if your cart has a product 3 times and a pack 3 times, both available
+for a 3x2 coupon, the coupon will be applied for each one in an independent way,
+so you will pay 2 products and 2 packs. One of each them will be free.</p>
+<ul>
+<li>G - Group modificator. This modificator allow you to treat all purchasables as
+the same when applying the coupon. With the last example, you would have 6
+purchasables, and you would get free only the 2 most cheap (no matter if they
+are products or packs).</li>
+</ul>
+<p><strong>3x2:c(12):PKG</strong></p>
+<h3 id="adding-a-new-filter">Adding a new filter<a class="headerlink" href="#adding-a-new-filter" title="Permanent link"> #</a></h3>
+<p>You can add a new filter by creating a new implementation of interface
+<code>Symfony\Component\ExpressionLanguage\ExpressionLanguage</code>.</p>
+<p>This filter uses the ExpressionLanguage that Symfony provides, so make sure you
+know how it works.</p>
+<p>This interface requires you to implement a method called registerFunction.</p>
 <pre><code class="php">/**
- * Class ElcodiCouponTypes
+ * Interface ExpressionLanguageFunctionInterface.
  */
-final class ElcodiCouponTypes
+interface ExpressionLanguageFunctionInterface
 {
     /**
-     * @var integer
+     * Register function.
      *
-     * Coupon type absolute amount
+     * @param ExpressionLanguage $expressionLanguage Expression language
      */
-    const TYPE_AMOUNT = 1;
-
-    /**
-     * @var integer
-     *
-     * Coupon type percent
-     */
-    const TYPE_PERCENT = 2;
+    public function registerFunction(ExpressionLanguage $expressionLanguage);
 }
 </code></pre>
 
-<p>The Coupon class has a private property called <code>$type</code> and can be filled using
-always static variables of that final class.</p>
-<pre><code class="php">use Elcodi\Component\Coupon\Entity\Coupon;
-use Elcodi\Component\Coupon\ElcodiCouponTypes;
-
-$coupon = new Coupon();
-$coupon-&gt;setType(ElcodiCouponTypes::TYPE_AMOUNT);
+<p>Once you have created this implementation, you need to register it in your
+dependency injection file with a tag.</p>
+<pre><code class="yml">services:
+    elcodi.cart_coupon_applicator_function.custom:
+        class: My\Custom\Applicator\Function\Namespace
+        public: false
+        tags:
+            - { name: elcodi.cart_coupon_applicator_function }
 </code></pre>
 
-<p>By default, any coupon created from the Coupon factory uses 
-<code>TYPE_AMOUNT</code> type.</p>
-<p>When the coupon type is the amount one, you can use the method <code>setPrice()</code> to
-define the total value of the coupon, while if the coupon type is the percent
-one, then you must use the method <code>setDiscount</code> in order to allow the system
-calculate the final value of the Cart.</p>
+<h3 id="adding-a-new-type">Adding a new Type<a class="headerlink" href="#adding-a-new-type" title="Permanent link"> #</a></h3>
+<p>You can add a new Type as well. In that case you must create a new
+implementation for interface
+<code>Elcodi\Component\CartCoupon\Applicator\Interfaces\CartCouponApplicatorInterface</code>.</p>
+<p>This interface requires you to implement these methods.</p>
+<pre><code class="php">/**
+ * Interface CartCouponApplicatorInterface.
+ */
+interface CartCouponApplicatorInterface
+{
+    /**
+     * Get the id of the Applicator.
+     *
+     * @return string Applicator id
+     */
+    public static function id();
+
+    /**
+     * Can be applied.
+     *
+     * @param CartInterface   $cart   Cart
+     * @param CouponInterface $coupon Coupon
+     *
+     * @return bool Can be applied
+     */
+    public function canBeApplied(
+        CartInterface $cart,
+        CouponInterface $coupon
+    );
+
+    /**
+     * Calculate coupon absolute value.
+     *
+     * @param CartInterface   $cart   Cart
+     * @param CouponInterface $coupon Coupon
+     *
+     * @return MoneyInterface|false Absolute value for this coupon in this cart.
+     */
+    public function getCouponAbsoluteValue(
+        CartInterface $cart,
+        CouponInterface $coupon
+    );
+}
+</code></pre>
+
+<p>Once you have implemented this method, then you need to register your new
+service in your dependency injection configuration file.</p>
+<pre><code class="yml">services:
+    elcodi.cart_coupon_applicator.custom:
+        class: My\Custom\Applicator\Namespace
+        tags:
+            - { name: elcodi.cart_coupon_applicator }
+</code></pre>
+
 <h2 id="coupon-enforcement">Coupon enforcement<a class="headerlink" href="#coupon-enforcement" title="Permanent link"> #</a></h2>
 <p>Another possible coupon configuration is the enforcement. The real meaning of
 that value is for <em>How the coupon is applied</em>. Values can be manually and
